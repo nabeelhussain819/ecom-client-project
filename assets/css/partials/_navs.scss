@@ -1,0 +1,16 @@
+.ant-layout-header{
+    background: $primary;
+}
+.ant-menu{
+    background: $primary;
+    color:white
+}
+
+.no-hover-nav,.ant-menu.ant-menu-dark .ant-menu-item-selected{
+    background-color:transparent ;
+}
+
+
+.ant-input-group-wrapper{
+    vertical-align: middle;
+}
