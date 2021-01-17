@@ -145,7 +145,7 @@ export default {
     },
   },
   head: {
-    title: 'Regular Nuxt',
+    title: 'Home page',
   },
 }
 </script>
