@@ -14,7 +14,10 @@ export default {
   css: ['ant-design-vue/dist/antd.css', '@/assets/css/style.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['@/plugins/antd-ui'],
+  plugins: [
+    '@/plugins/antd-ui',
+    { src: '~/plugins/vue-masonry-css', mode: 'client' },
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
