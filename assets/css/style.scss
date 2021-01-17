@@ -1,3 +1,17 @@
 @import "partials/variables";
 @import "partials/_navs.scss";
+@import "partials/masonry.scss";
 
+.p-1 {
+    padding: .25rem;
+}
+
+
+body,.ant-layout{
+    background-color:white;
+}
+
+.main-container{
+    max-width:1200px;
+    margin:auto;
+}

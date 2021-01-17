@@ -1,0 +1,29 @@
+.img-responsive {
+  width: 100%;
+}
+
+.masonry-container {
+    margin-top:15px;
+    // display: flex;
+    // flex-direction: column;
+    // flex-wrap: wrap;
+    // max-height: 1000px;
+    
+  .product-masonry {
+    border: 1px solid #d4d1d1;
+    margin: auto 15px;
+    
+    .detail{
+        padding: 0 15px;
+        .title {
+            color: #444546;
+            font-size: 16px;
+          }
+          .vendor {
+          }
+          .prices {
+          }
+    }
+  }
+}
+
