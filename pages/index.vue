@@ -1,9 +1,10 @@
 <template>
-  <div class="container">here</div>
+  <div class="container"><masonryList /></div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
-
-export default Vue.extend({})
+import masonryList from '~/components/products/masonryList.vue'
+const components = { masonryList }
+export default Vue.extend({ components })
 </script>

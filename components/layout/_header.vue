@@ -6,7 +6,7 @@
       theme="dark"
       class="header_nav"
       mode="horizontal"
-      :style="{ lineHeight: '64px', float: right }"
+      :style="{ lineHeight: '64px', float: 'right' }"
     >
       <a-menu-item key="4" class="no-hover-nav">
         <a-input default-value="Search">
