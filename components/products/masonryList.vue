@@ -146,15 +146,14 @@ export default {
       this.visible = true
     },
     handleSubmit(e) {
-      console.log(getFormValues())
       e.preventDefault()
-      const fields = this.form.getFieldsValue(['name', 'price', 'description'])
-      this.form.validateFields((err, values) => {
-        if (!err) {
-          this.updateProduct(id, values)
-          alert('Product Added')
-        }
-      })
+      // this.form.validateFields((err, values) => {
+      //   if (!err) {
+      //     this.updateProduct(values).then(() => {
+      //       console.log(values)
+      //     })
+      //   }
+      // })
     },
     mounted() {
       this.fetchData()
