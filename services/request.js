@@ -1,34 +1,32 @@
 import axios from 'axios'
 
-const client = axios.create();
+const client = axios.create()
 // client.setHeader('Authorization', '123');
 const request = function (options) {
-    const onSuccess = function (response) {
-        return response.data;
-    };
+  const onSuccess = function (response) {
+    return response.data
+  }
 
-    const onError = function (err) {
-        if (err.response) {
-            // Request was made but server responded with something other than 2xx
-         
-        } else {
-            // Something else happened while setting up the request triggered the error
-          
-        }
+  const onError = function (err) {
+    if (err.response) {
+      // Request was made but server responded with something other than 2xx
+    } else {
+      // Something else happened while setting up the request triggered the error
+    }
 
-        //return Promise.reject(err.response || err.message);
-        return Promise.reject(err);
-    };
+    // return Promise.reject(err.response || err.message);
+    return Promise.reject(err)
+  }
 
-    // let headers = {
-    //     headers: {
-    //         Authorization:`Bearer ${localStorage.getItem('access_token')}`,
-    //     }
-    // }   
+  // let headers = {
+  //     headers: {
+  //         Authorization:`Bearer ${localStorage.getItem('access_token')}`,
+  //     }
+  // }
 
-    return client({ ...options })
-        .then(onSuccess)
-        .catch(onError);
-};
+  return client({ ...options })
+    .then(onSuccess)
+    .catch(onError)
+}
 
-export default request;
+export default request

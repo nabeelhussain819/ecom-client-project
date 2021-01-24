@@ -78,29 +78,11 @@
     </client-only>
   </div>
 </template>
-
-<style scoped>
-.delete-btn {
-  color: white;
-  background-color: tomato;
-  border-radius: 4px;
-  border: none;
-  font-size: 0.8rem;
-}
-.update-btn {
-  color: white;
-  background-color: yellowgreen;
-  border-radius: 4px;
-  border: none;
-  font-size: 0.8rem;
-}
-</style>
-
 <script>
 import Products from '~/services/API/Product'
 export default {
   async fetch() {
-    this.articles = await this.fetchData()
+    // this.articles = await this.fetchData()
   },
   data() {
     return {
@@ -108,13 +90,7 @@ export default {
       limit: 4,
       articles: [],
       selectedImage: '',
-      images: [
-        'https://static-01.daraz.pk/p/73f58ef4af4e68fc80398e0d7c214bdb.jpg',
-        'https://static-01.daraz.pk/p/62db935bfe713de8a90df8ace8d8564e.jpg',
-        'https://static-01.daraz.pk/p/62db935bfe713de8a90df8ace8d8564e.jpg',
-        'https://static-01.daraz.pk/p/c6a7418673b9b156378b3cb005ab5903.jpg',
-        'https://static-01.daraz.pk/p/73f58ef4af4e68fc80398e0d7c214bdb.jpg',
-      ],
+      images: [],
       visible: false,
       interval: null,
     }
