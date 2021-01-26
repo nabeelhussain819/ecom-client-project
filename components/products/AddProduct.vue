@@ -141,8 +141,6 @@ export default {
       this.form.validateFields((err, values) => {
         if (!err) {
           this.save(values)
-          alert('Product Added')
-          location.reload()
         }
       })
     },
