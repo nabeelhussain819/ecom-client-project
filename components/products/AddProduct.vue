@@ -131,13 +131,13 @@ export default {
     },
     handleSubmit(e) {
       e.preventDefault()
-
-      const fields = this.form.getFieldsValue([
-        'name',
-        'price',
-        'description',
-        'category_id',
-      ])
+      // @@annyoing
+      // const fields = this.form.getFieldsValue([
+      //   'name',
+      //   'price',
+      //   'description',
+      //   'category_id',
+      // ])
       this.form.validateFields((err, values) => {
         if (!err) {
           this.save(values)

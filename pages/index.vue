@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <carousel />
-    <masonryList />
+    <masonry-list />
     <a-modal
       v-model="visible"
       title="Add Products"
