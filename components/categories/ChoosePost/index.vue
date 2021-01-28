@@ -10,10 +10,10 @@
       <a-col>
         <a-card class="tiles-card" size="small" title="Choose A Category">
           <a-col :xs="24" :md="12">
-            <tile :image="image" title="Sale Item" @click="test" />
+            <tile :image="image" title="Sale Item" @click="chooseCategory" />
           </a-col>
           <a-col :xs="24" :md="12">
-            <tile :image="image" title="Sale Item" @click="test" />
+            <tile :image="image" title="Sale Item" @click="chooseCategory" />
           </a-col>
         </a-card>
       </a-col>
@@ -32,8 +32,8 @@ export default {
     }
   },
   methods: {
-    test() {
-      console.log('asd')
+    chooseCategory() {
+      return true
     },
   },
 }
