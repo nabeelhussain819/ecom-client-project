@@ -13,7 +13,7 @@ const components = { MasonryList, Carousel }
 function showProductModal() {}
 
 function data() {
-  return { visible: false }
+  return {}
 }
 
 const method = { showProductModal }

@@ -18,10 +18,12 @@
       <a-menu-item key="1"><nuxt-link to="/">Home</nuxt-link></a-menu-item>
       <a-menu-item key="2">Login</a-menu-item>
       <a-menu-item key="3">Sign Up</a-menu-item>
-      <!-- <a-menu-item key="4"><nuxt-link to="/product/posts">Show Your Post</nuxt-link></a-menu-item> -->
-      <a-menu-item key="4" @click="showProductModal">
-        <a-icon type="plus-circle" />Post</a-menu-item
-      >
+      <!-- <a-menu-item key="4"><nuxt-link to="/products/posts">Show Your Post</nuxt-link></a-menu-item> -->
+      <a-menu-item key="4">
+        <nuxt-link to="/products/create">
+          <a-icon type="plus-circle" />Post
+        </nuxt-link>
+      </a-menu-item>
     </a-menu>
   </a-layout-header>
 </template>
@@ -36,10 +38,10 @@ export default {
   },
   created() {},
   methods: {
-    showProductModal() {
-      this.$nuxt.$emit('showProductModal', true)
-      this.visible = true
-    },
+    // showProductModal() {
+    //   this.$nuxt.$emit('showProductModal', true)
+    //   this.visible = true
+    // },
   },
 }
 </script>

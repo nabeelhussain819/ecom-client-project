@@ -1,7 +1,7 @@
 <template>
   <a-layout id="components-layout-demo-top" class="layout">
     <Header />
-    <a-layout-content>
+    <a-layout-content class="main-container">
       <Nuxt />
     </a-layout-content>
     <a-layout-footer style="text-align: center">
