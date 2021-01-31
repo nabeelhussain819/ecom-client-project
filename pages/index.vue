@@ -8,7 +8,7 @@
 <script>
 import Vue from 'vue'
 import MasonryList from '~/components/products/masonryList.vue'
-import Carousel from '~/components/UI/Carousel.vue'
+import Carousel from '~/components/ui/Carousel'
 const components = { MasonryList, Carousel }
 function showProductModal() {}
 
