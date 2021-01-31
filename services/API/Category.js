@@ -18,9 +18,17 @@ function save(data) {
   })
 }
 
+function productAttributes(categoryId, params = {}) {
+  return request({
+    url: `${baseUrl}/product-attributes/${categoryId}`,
+    params,
+  })
+}
+
 const Category = {
   all,
   save,
+  productAttributes,
 }
 
 export default Category

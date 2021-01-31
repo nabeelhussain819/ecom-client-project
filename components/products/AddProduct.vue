@@ -60,6 +60,7 @@
           :allow-clear="true"
           :filter-option="filterOption"
           style="width: 100%"
+          @change="selectCategory"
         >
           <a-select-option
             v-for="category in categories"
@@ -74,6 +75,10 @@
       >
         <a-button type="primary" html-type="submit"> submit </a-button>
       </a-form-item>
+      <attribute-grid
+        v-if="categoryId !== null"
+        :category-id="categoryId"
+      ></attribute-grid>
     </a-form>
   </a-layout-content>
 </template>
@@ -81,6 +86,7 @@
 <script>
 import Product from '~/services/API/Product'
 import Category from '~/services/API/Category'
+import AttributeGrid from '~/components/products/AttributesGrid'
 
 const formItemLayout = {
   labelCol: {
@@ -101,7 +107,7 @@ const formTailLayout = {
 }
 
 export default {
-  components: {},
+  components: { AttributeGrid },
   data() {
     return {
       formItemLayout,
@@ -112,6 +118,7 @@ export default {
       categories: {},
       visible: false,
       componentKey: 0,
+      categoryAttributes: null,
     }
   },
   mounted() {
@@ -121,7 +128,6 @@ export default {
     getAllCategories() {
       Category.all().then((response) => {
         this.categories = response
-        // this.getAllCategories()
       })
     },
     save(params = {}) {
@@ -131,24 +137,20 @@ export default {
     },
     handleSubmit(e) {
       e.preventDefault()
-      // @@annyoing
-      // const fields = this.form.getFieldsValue([
-      //   'name',
-      //   'price',
-      //   'description',
-      //   'category_id',
-      // ])
+
       this.form.validateFields((err, values) => {
         if (!err) {
           this.save(values)
         }
       })
     },
-
     filterOption(input, option) {
       return option.componentOptions.children[0].text
         .toLowerCase()
         .includes(input.toLowerCase())
+    },
+    selectCategory(categoryId) {
+      this.categoryId = categoryId
     },
   },
 }
