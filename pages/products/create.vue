@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import AddProduct from '~/components/products/AddProduct'
 import Product from '~/components/products'
 import ChoosePost from '~/components/categories/ChoosePost'
 import { PRODUCT_ID, CATEGORY_ID } from '~/services/Constant'
@@ -45,7 +44,7 @@ const methods = {
   offAllDiv,
 }
 export default {
-  components: { AddProduct, ChoosePost, Product },
+  components: { ChoosePost, Product },
   data() {
     return {
       showCategory: false,

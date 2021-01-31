@@ -20,7 +20,7 @@
       <a-menu-item key="3">Sign Up</a-menu-item>
       <!-- <a-menu-item key="4"><nuxt-link to="/products/posts">Show Your Post</nuxt-link></a-menu-item> -->
       <a-menu-item key="4">
-        <nuxt-link to="/products/create">
+        <nuxt-link to="/post/choose">
           <a-icon type="plus-circle" />Post
         </nuxt-link>
       </a-menu-item>

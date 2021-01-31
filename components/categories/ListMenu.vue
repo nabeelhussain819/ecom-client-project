@@ -29,6 +29,7 @@
 </template>
 <script>
 import Category from '~/services/API/Category'
+import { isEmpty } from '~/services/Helpers'
 function data() {
   return {
     accordion: false,
@@ -50,7 +51,9 @@ function getAllCategories() {
     })
 }
 function onChange(categoryId) {
-  this.$emit('getCategoryId', categoryId)
+  if (!isEmpty(categoryId)) {
+    this.$emit('getCategoryId', categoryId)
+  }
 }
 const methods = {
   getAllCategories,
