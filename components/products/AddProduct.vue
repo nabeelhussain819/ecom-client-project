@@ -69,16 +69,18 @@
           </a-select-option>
         </a-select>
       </a-form-item>
+      <a-form-item>
+        <attribute-grid
+          v-if="categoryId !== null"
+          :category-id="categoryId"
+        ></attribute-grid>
+      </a-form-item>
       <a-form-item
         :label-col="formTailLayout.labelCol"
         :wrapper-col="formTailLayout.wrapperCol"
       >
         <a-button type="primary" html-type="submit"> submit </a-button>
       </a-form-item>
-      <attribute-grid
-        v-if="categoryId !== null"
-        :category-id="categoryId"
-      ></attribute-grid>
     </a-form>
   </a-layout-content>
 </template>
@@ -119,6 +121,7 @@ export default {
       visible: false,
       componentKey: 0,
       categoryAttributes: null,
+      categoryId: null,
     }
   },
   mounted() {

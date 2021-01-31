@@ -1,6 +1,9 @@
 <template>
   <div>
-    <span v-if="!showChose" @click="getPostType()">back</span>
+    <a-button v-if="!showChose" class="editable-add-btn" @click="getPostType()">
+      Back
+    </a-button>
+
     <a-row>
       <a-col :xs="24" :span="12">
         <add-product v-if="showProduct" />

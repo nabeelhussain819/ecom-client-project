@@ -1,7 +1,7 @@
 <template>
   <a-select @change="handleChange">
     <a-select-option v-for="attribute in attributes" :key="attribute.id">
-      {{ attribute.name }}
+      {{ attribute.id }}
     </a-select-option>
   </a-select>
 </template>
@@ -11,22 +11,22 @@ function handleChange(e) {
   this.$emit('handleChange', e)
 }
 
+const props = {
+  categoryId: {
+    type: String,
+    default: null,
+  },
+  attributes: {
+    type: Array,
+    default: () => [],
+    required: true,
+  },
+}
+
 const methods = {
   handleChange,
 }
 const mounted = () => {}
-
-const props = {
-  attributes: {
-    type: Array,
-    default: () => [],
-  },
-  categoryId: {
-    type: Number,
-    default: null,
-    required: true,
-  },
-}
 
 const data = () => {
   return {

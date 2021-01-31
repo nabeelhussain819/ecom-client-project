@@ -2,6 +2,16 @@
   <div>
     <a-button class="editable-add-btn" @click="handleAdd"> Add </a-button>
     <a-table bordered :data-source="dataSource" :columns="columns">
+      <template slot="property">
+        <a-select>
+          <a-select-option
+            v-for="category in categoriesAttribute"
+            :key="category.id"
+          >
+            {{ category.attribute.name }}
+          </a-select-option>
+        </a-select>
+      </template>
       <template slot="operation" slot-scope="text, record">
         <a-popconfirm
           v-if="dataSource.length"
@@ -18,16 +28,38 @@
 <script>
 import Category from '~/services/API/Category'
 import { isEmpty } from '~/services/Helpers'
-function selectCategory(categoryId) {
-  if (!isEmpty(categoryId)) {
-    Category.productAttributes(categoryId).then((categories) => {
-      console.log('categories', categories)
-      this.attributes = !isEmpty(categories.attribute)
-        ? categories.attribute
-        : []
-    })
+import ProductAttributesLookp from '~/components/attributes/ProductAttributesLookp'
+
+function data() {
+  return {
+    dataSource: [],
+    count: 2,
+    columns: [
+      {
+        title: 'Property',
+        dataIndex: 'attribute_id',
+        scopedSlots: { customRender: 'property' },
+      },
+      {
+        title: '',
+        dataIndex: 'address',
+      },
+      {
+        title: 'operation',
+        dataIndex: 'operation',
+        scopedSlots: { customRender: 'operation' },
+      },
+    ],
+    attributes: [],
+    unitTypes: [],
+    categoriesAttribute: [],
   }
 }
+
+const components = {
+  ProductAttributesLookp,
+}
+
 function updated() {}
 
 const methods = {
@@ -54,7 +86,15 @@ const methods = {
     this.dataSource = [...dataSource, newData]
     this.count = count + 1
   },
-  selectCategory,
+  selectCategory(categoryId) {
+    const $this = this
+    if (!isEmpty(categoryId)) {
+      Category.productAttributes(categoryId).then((categories) => {
+        $this.categoriesAttribute = categories
+      })
+    }
+  },
+  isEmpty,
 }
 
 const props = {
@@ -66,65 +106,19 @@ const props = {
 }
 
 function mounted() {
-  selectCategory(this.categoryId)
-}
-
-function data() {
-  return {
-    dataSource: [
-      {
-        key: '0',
-        name: 'Edward King 0',
-        age: '32',
-        address: 'London, Park Lane no. 0',
-      },
-      {
-        key: '1',
-        name: 'Edward King 1',
-        age: '32',
-        address: 'London, Park Lane no. 1',
-      },
-    ],
-    count: 2,
-    columns: [
-      //   {
-      //     title: 'property',
-      //     dataIndex: 'name',
-      //     width: '30%',
-      //     //   scopedSlots: { customRender: 'name' },
-      //     customRender: () => <a-input placeholder="Basic usage" />,
-      //   },
-      //   {
-      //     title: 'age',
-      //     dataIndex: 'age',
-      //     customRender: () => <a-input placeholder="Basic usage" />,
-      //   },
-      {
-        title: 'address',
-        dataIndex: 'address',
-      },
-      {
-        title: 'operation',
-        dataIndex: 'operation',
-        scopedSlots: { customRender: 'operation' },
-      },
-    ],
-    attributes: [],
-  }
+  this.selectCategory(this.categoryId)
 }
 
 const watch = {
   categoryId(next, prev) {
     if (next !== prev) {
       this.categoryId = next
-      selectCategory(next)
+      this.selectCategory(next)
     }
   },
 }
 export default {
-  components: {
-    // EditableCell,
-  },
+  components,
   props,
   data,
   watch,
