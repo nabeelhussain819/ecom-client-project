@@ -6,7 +6,7 @@
 
     <a-row>
       <a-col :xs="24" :span="12">
-        <add-product v-if="showProduct" />
+        <product v-if="showProduct" />
       </a-col>
 
       <a-col v-if="showChose" :xs="24" :span="12">
@@ -18,6 +18,7 @@
 
 <script>
 import AddProduct from '~/components/products/AddProduct'
+import Product from '~/components/products'
 import ChoosePost from '~/components/categories/ChoosePost'
 import { PRODUCT_ID, CATEGORY_ID } from '~/services/Constant'
 
@@ -44,7 +45,7 @@ const methods = {
   offAllDiv,
 }
 export default {
-  components: { AddProduct, ChoosePost },
+  components: { AddProduct, ChoosePost, Product },
   data() {
     return {
       showCategory: false,
