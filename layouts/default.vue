@@ -4,14 +4,25 @@
     <a-layout-content class="main-container">
       <Nuxt />
     </a-layout-content>
-    <a-layout-footer style="text-align: center">
-      Ant Design ©2018 Created by Ant UED
-    </a-layout-footer>
+    <NewsLetter/>
+    <Footer/>
   </a-layout>
 </template>
 
+<style scoped>
+
+</style>
+
 <script>
-import Header from '~/components/layout/_header.vue'
-const components = { Header }
-export default { components }
+  import Header from '~/components/layout/_header.vue'
+  import NewsLetter from '~/components/layout/_newsletter.vue'
+  import Footer from '~/components/layout/_footer.vue'
+  const components = {
+    Header,
+    NewsLetter,
+    Footer,
+  }
+  export default {
+    components
+  }
 </script>

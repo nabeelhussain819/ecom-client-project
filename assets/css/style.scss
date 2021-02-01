@@ -8,7 +8,79 @@
 
 
 
-body,.ant-layout{
-    background-color:white;
+body,
+.ant-layout {
+  background-color: white;
+}
+.ant-modal-header{
+    text-align: center;
+}
+.footer {
+  text-align: center;
+  background-color: #231f1f;
+  color: white;
+  height: 230px;
+}
+.footer-newsletter{
+    background-color: $primary;
+    color: white;
+    h2{
+        color: white;
+    }
+}
+.copyright-para {
+  margin: 8px;
 }
 
+#space-icon {
+  font-size: 20px;
+  margin: 8px;
+}
+
+#space-links {
+  margin: 8px;
+}
+//repetitive css here @todo optimizations
+.dot-facebook {
+    height: 30px;
+    width: 30px;
+    background-color: #4267B2;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .dot-twitter {
+    height: 30px;
+    width: 30px;
+    background-color: #1C9CEA;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .dot-linkedin {
+    height: 30px;
+    width: 30px;
+    background-color: #1C9CEA;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .dot-instagram{
+    height: 30px;
+    width: 30px;
+    background-color: #F77737;
+    border-radius: 50%;
+    display: inline-block;
+  }
+    .dot-youtube{
+    height: 30px;
+    width: 30px;
+    background-color: #FF0000;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .dot-mail{
+       height: 30px;
+    width: 30px;
+    background-color: #DB4437;
+    border-radius: 50%;
+    display: inline-block;
+  }

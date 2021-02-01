@@ -13,13 +13,15 @@
             <tile
               :image="image"
               title="Sale Item"
+              alignment='middle'
               @click="chooseCategory(PRODUCT_ID)"
             />
           </a-col>
           <a-col :xs="24" :md="12">
             <tile
               :image="image"
-              title="Sale Item"
+              title="Provide Services"
+              alignment='middle'
               @click="chooseCategory(CATEGORY_ID)"
             />
           </a-col>
