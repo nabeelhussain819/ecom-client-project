@@ -13,3 +13,7 @@ export const isEmpty = (value, depth = 1, level = 0) => {
     (typeof value === 'string' && value.trim().length === 0)
   )
 }
+
+export function success($this, props) {
+  return $this.$notification.open({ ...props, class: 'success-notification' })
+}

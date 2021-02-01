@@ -3,7 +3,6 @@
     <a-layout-content>
       <bread-crumb />
       <a-divider />
-      <h2 class="sub-heading">Confrim Your Location</h2>
       <a-form :form="form" @submit="handleSubmit">
         <a-form-item
           :label-col="formItemLayout.labelCol"
@@ -14,6 +13,7 @@
             v-decorator="[
               'name',
               {
+                initialValue: product.name,
                 rules: [
                   { required: true, message: 'Please enter product name' },
                 ],
@@ -32,6 +32,7 @@
             v-decorator="[
               'price',
               {
+                initialValue: product.price,
                 rules: [
                   { required: true, message: 'Please enter product price' },
                 ],
@@ -52,6 +53,7 @@
             v-decorator="[
               'description',
               {
+                initialValue: product.description,
                 rules: [
                   { required: true, message: 'Please enter description' },
                 ],
@@ -77,6 +79,7 @@
             v-decorator="[
               'location',
               {
+                initialValue: removeHtml(product.location),
                 rules: [
                   { required: true, message: 'Please enter your location' },
                 ],
@@ -90,7 +93,7 @@
             v-decorator="[
               'longitude',
               {
-                initialValue: null,
+                initialValue: product.longitude,
               },
             ]"
             hidden
@@ -101,7 +104,7 @@
             v-decorator="[
               'latitude',
               {
-                initialValue: null,
+                initialValue: product.latitude,
               },
             ]"
             hidden
@@ -110,9 +113,9 @@
         <a-form-item class="d-none">
           <a-input
             v-decorator="[
-              'google_location',
+              'google_address',
               {
-                initialValue: null,
+                initialValue: product.google_address,
               },
             ]"
             hidden
@@ -125,7 +128,7 @@
             size="large"
             html-type="submit"
           >
-            Post Now
+            {{ isCreated ? 'Update Post' : 'Post Now' }}
           </a-button>
         </a-form-item>
       </a-form>
@@ -139,6 +142,7 @@ import Category from '~/services/API/Category'
 import Upload from '~/components/products/Upload'
 import BreadCrumb from '~/components/ui/BreadCrumb'
 import AutoComplete from '~/components/google/AutoComplete'
+import { success } from '~/services/Helpers'
 const formItemLayout = {
   labelCol: {
     span: 24,
@@ -159,6 +163,16 @@ const formTailLayout = {
 
 export default {
   components: { BreadCrumb, Upload, AutoComplete },
+  props: {
+    product: {
+      type: Object,
+      default: () => {},
+    },
+    isCreated: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       loading: false,
@@ -178,6 +192,7 @@ export default {
   },
   mounted() {
     this.category_id = this.$route.query.category_id
+    console.log(this.isCreated)
   },
   methods: {
     getAllCategories() {
@@ -189,7 +204,22 @@ export default {
       this.loading = true
       Product.save(params)
         .then((response) => {
+          success(this, { message: response.message })
           this.$emit('onComplete', response)
+          this.$router.push({
+            path: `/user/product/${response.product.guid}`,
+          })
+        })
+        .finally(() => {
+          this.loading = false
+        })
+    },
+    update(params = {}) {
+      this.loading = true
+      Product.update(this.product.guid, params)
+        .then((response) => {
+          success(this, { message: response.message })
+          this.$emit('update', response)
         })
         .finally(() => {
           this.loading = false
@@ -200,7 +230,8 @@ export default {
 
       this.form.validateFields((err, values) => {
         if (!err) {
-          this.save({ ...values, category_id: this.category_id })
+          const params = { ...values, category_id: this.category_id }
+          this.isCreated ? this.update(params) : this.save(params)
         }
       })
     },
@@ -217,8 +248,15 @@ export default {
         longitude: location.geometry.location.lng(),
         latitude: location.geometry.location.lat(),
         location: location.adr_address,
-        google_location: location.adr_address,
+        google_address: location.adr_address,
       })
+    },
+    removeHtml(location) {
+      if (location !== null) {
+        console.log(location.replace(/<[^>]*>?/gm, ''))
+        return location.replace(/<[^>]*>?/gm, '')
+      }
+      return null
     },
   },
 }
