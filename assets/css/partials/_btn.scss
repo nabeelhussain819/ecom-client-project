@@ -1,6 +1,6 @@
 .ant-btn-primary{
 @extend .primary-btn-base;
-    &:active{
+    &:active,&:hover, &:focus{      
         @extend .primary-btn-base;
     }
 }
