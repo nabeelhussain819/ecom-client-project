@@ -1,0 +1,11 @@
+.ant-btn-primary{
+@extend .primary-btn-base;
+    &:active{
+        @extend .primary-btn-base;
+    }
+}
+
+.primary-btn-base{
+    background-color: $primary;
+    border-color: $primary;
+}

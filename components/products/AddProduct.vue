@@ -1,10 +1,13 @@
 <template>
   <a-layout-content>
+    <bread-crumb />
+    <a-divider />
+    <h2 class="sub-heading">Confrim Your Location</h2>
     <a-form :form="form" @submit="handleSubmit">
       <a-form-item
         :label-col="formItemLayout.labelCol"
         :wrapper-col="formItemLayout.wrapperCol"
-        label="Product Name"
+        label="Add Title"
       >
         <a-input
           v-decorator="[
@@ -13,13 +16,14 @@
               rules: [{ required: true, message: 'Please enter product name' }],
             },
           ]"
+          :size="size"
           placeholder="Please Enter Product Namee"
         />
       </a-form-item>
       <a-form-item
         :label-col="formItemLayout.labelCol"
         :wrapper-col="formItemLayout.wrapperCol"
-        label="Product price"
+        label="price"
       >
         <a-input
           v-decorator="[
@@ -30,6 +34,8 @@
               ],
             },
           ]"
+          :size="size"
+          addon-before="USD"
           placeholder="Please Enter Product Price"
         />
       </a-form-item>
@@ -45,41 +51,20 @@
               rules: [{ required: true, message: 'Please enter description' }],
             },
           ]"
+          :size="size"
           placeholder="Description"
           :rows="4"
         />
       </a-form-item>
-      <a-form-item label="Category" v-bind="formItemLayout">
-        <a-select
-          v-decorator="[
-            'category_id',
-            {
-              rules: [{ required: true, message: 'Please select a Category' }],
-            },
-          ]"
-          :allow-clear="true"
-          :filter-option="filterOption"
-          style="width: 100%"
-          @change="selectCategory"
-        >
-          <a-select-option
-            v-for="category in categories"
-            :key="category.id.toString()"
-            >{{ category.name }}
-          </a-select-option>
-        </a-select>
-      </a-form-item>
+
+      <a-divider />
+      <Upload />
+      <a-divider />
+      <h2 class="sub-heading">Confrim Your Location</h2>
       <a-form-item>
-        <attribute-grid
-          v-if="categoryId !== null"
-          :category-id="categoryId"
-        ></attribute-grid>
-      </a-form-item>
-      <a-form-item
-        :label-col="formTailLayout.labelCol"
-        :wrapper-col="formTailLayout.wrapperCol"
-      >
-        <a-button type="primary" html-type="submit"> submit </a-button>
+        <a-button type="primary" size="large" html-type="submit">
+          Post Now
+        </a-button>
       </a-form-item>
     </a-form>
   </a-layout-content>
@@ -88,14 +73,14 @@
 <script>
 import Product from '~/services/API/Product'
 import Category from '~/services/API/Category'
-import AttributeGrid from '~/components/products/AttributesGrid'
-
+import Upload from '~/components/products/Upload'
+import BreadCrumb from '~/components/ui/BreadCrumb'
 const formItemLayout = {
   labelCol: {
-    span: 4,
+    span: 24,
   },
   wrapperCol: {
-    span: 20,
+    span: 24,
   },
 }
 const formTailLayout = {
@@ -109,7 +94,7 @@ const formTailLayout = {
 }
 
 export default {
-  components: { AttributeGrid },
+  components: { BreadCrumb, Upload },
   data() {
     return {
       formItemLayout,
@@ -122,6 +107,7 @@ export default {
       componentKey: 0,
       categoryAttributes: null,
       categoryId: null,
+      size: 'large',
     }
   },
   mounted() {
