@@ -1,7 +1,7 @@
 <template>
   <a-skeleton :loading="false">
     <a-layout-content>
-     <h2 class="sub-heading">Include Some Details</h2>
+      <h2 class="sub-heading">Include Some Details</h2>
       <a-form :form="form" @submit="handleSubmit">
         <a-form-item
           :label-col="formItemLayout.labelCol"
@@ -184,7 +184,7 @@ export default {
       categoryId: null,
       size: 'large',
       category_id: null,
-      errors: ''
+      errors: '',
     }
   },
   mounted() {
@@ -205,8 +205,9 @@ export default {
           this.$router.push({
             path: `/user/product/${response.product.guid}`,
           })
-        }).catch((e)=>{
-            this.errors = e.response.data.errors;
+        })
+        .catch((e) => {
+          this.errors = e.response.data.errors
         })
         .finally(() => {
           this.loading = false
