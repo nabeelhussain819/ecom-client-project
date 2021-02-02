@@ -36,6 +36,7 @@ export default {
       src: '~/plugins/vue-masonry-css',
       mode: 'client',
     },
+    { src: '@/plugins/google-maps.js', ssr: false },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

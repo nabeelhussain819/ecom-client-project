@@ -1,6 +1,6 @@
 <template>
   <div>    
-   <div @click="showModal">
+   <div @click="showRegisterModal">
       Sign Up
     </div>
     <a-modal
@@ -9,6 +9,7 @@
       :confirm-loading="confirmLoading"
       @ok="handleOk"
       @cancel="handleCancel"
+      footer=""
     >
         <RegisterForm/>
     </a-modal>
@@ -26,7 +27,7 @@ export default {
     };
   },
   methods: {
-    showModal() {
+    showRegisterModal() {
       this.visible = true;
     },
     handleOk(e) {

@@ -8,7 +8,10 @@
 import ListMenu from '~/components/categories/ListMenu'
 const components = { ListMenu }
 function getCategoryId(categoryId) {
-  this.$router.push({ path: `/post/product/create/${categoryId}` })
+  this.$router.push({
+    path: `/post/product/create/${categoryId}`,
+    query: { category_id: categoryId },
+  })
   this.showProduct = true
 }
 

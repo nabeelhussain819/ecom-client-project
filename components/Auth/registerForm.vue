@@ -1,57 +1,97 @@
+<!-- Input is not working under row idk why  -->
 <template>
-<div>
-  <a-form :form="form" :label-col="{ span: 8 }" :wrapper-col="{ span: 12 }" @submit="handleSubmit">
-    <a-form-item label="First Name">
-      <a-input
-        v-decorator="['f_name', { rules: [{ required: true, message: 'Please input your First Name!' }] }]"
-      />
-    </a-form-item>
-    <a-form-item label="Last Name">
-      <a-input
-        v-decorator="['l_name', { rules: [{ required: true, message: 'Please input your Last Name!' }] }]"
-      />
-    </a-form-item>
-   <a-form-item label="Password">
-        <a-input
-           v-decorator="['password',{rules:[{required:true, message:'Please input your password'}]}]"
-           />
-    </a-form-item>
-    <a-form-item label="Confirm Password">
-      <a-input
-        v-decorator="['c_password', { rules: [{ required: true, message: 'Passwords dont match' }] }]"
-      />
-    </a-form-item>
- 
-    <!-- <a-form-item :wrapper-col="{ span: 12, offset: 15 }">
-      <a-button type="primary" html-type="submit">
-        Submit
-      </a-button>
-    </a-form-item> -->
-  </a-form>
+  <div>
     <social-login />
+    <a-form :form="form" @submit="handleSubmit">
+      <a-form-item label="Name">
+        <a-input v-decorator="['name', { rules: [{ required: true, message: 'Please input your First Name!' }] }]" />
+      </a-form-item>
+      <a-form-item label="Email">
+        <a-input
+          v-decorator="['email', { rules: [{ required: true, message: 'Please input your enter your email!' }] }]" />
+      </a-form-item>
 
-</div>
+      <a-form-item label="Password">
+        <a-input v-decorator="['password',{rules:[{required:true, message:'Please input your password'}]}]" />
+      </a-form-item>
+      <a-form-item label="Confirm Password">
+        <a-input
+          v-decorator="['password_confirmation', { rules: [{ required: true, message: 'Passwords dont match' }] }]" />
+      </a-form-item>
+
+      <a-form-item>
+        <a-button block type="primary" html-type="submit">
+          SIGN UP
+        </a-button>
+      </a-form-item>
+      <p style="text-align:center">Forget Password ?</p>
+    </a-form>
+  </div>
 </template>
+<style scoped>
+  .ant-col-12 {
+    padding: 10px;
+  }
+
+</style>
 
 <script>
-import SocialLogin from './SocialLogin.vue';
-export default {
-  components: { SocialLogin },
-  data() {
-    return {
-      formLayout: 'horizontal',
-      form: this.$form.createForm(this, { name: 'coordinated' }),
-    };
-  },
-  methods: {
-    handleSubmit(e) {
-      e.preventDefault();
-      this.form.validateFields((err, values) => {
-        if (!err) {
-          console.log('Received values of form: ', values);
-        }
-      });
+  import AuthService from '~/services/Api/AuthService';
+  import {
+    setAccessToken,
+    setUserDetails
+  } from '~/services/Auth';
+  import SocialLogin from './SocialLogin.vue';
+  export default {
+    components: {
+      SocialLogin
     },
-  },
-};
+    data() {
+      return {
+        formLayout: 'horizontal',
+        form: this.$form.createForm(this, {
+          name: 'coordinated'
+        }),
+      };
+    },
+    methods: {
+      handleSubmit(e) {
+        e.preventDefault();
+        this.form.validateFields((err, values) => {
+          if (!err) {
+              this.register(this.form);
+          }
+        });
+      },
+      getUserDetails() {
+        UserService.detail()
+          .then((user) => {
+            setUserDetails(user);
+            this.$store.commit("setUser", user);
+          })
+          .then(() => this.$router.go());
+      },
+      register: function (params = {}) {
+        AuthService.register(params)
+          .then((response) => {
+            setAccessToken(response.access_token);
+            this.$store.commit('authStatus', {
+              token: response.access_token,
+              status: true
+            });
+            this.getUserDetails();
+            this.$notification.open({
+              message: "Registration",
+              description: response.message,
+              class: "successNotification",
+            });
+          })
+          .catch((e) => {
+            this.errors = e.response.data.errors;
+            this.responseError = "Invalid input";
+          })
+      }
+    },
+  };
+
 </script>

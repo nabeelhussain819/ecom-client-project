@@ -9,6 +9,8 @@
       :confirm-loading="confirmLoading"
       @ok="handleOk"
       @cancel="handleCancel"
+      footer=''
+
     >
         <LoginForm/>
     </a-modal>

@@ -1,7 +1,7 @@
-    let getters = {
-         posts: state => {
-             return state.posts
-         }
-    }
+const getters = {
+  posts: (state) => {
+    return state.posts
+  },
+}
 
-    export default  getters
+export default getters
