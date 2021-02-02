@@ -1,13 +1,14 @@
 <template>
   <div class="clearfix">
     <a-upload
-      action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
       list-type="picture-card"
       :file-list="fileList"
+      :remove="deleteImage"
+      :custom-request="dummyRequest"
       @preview="handlePreview"
       @change="handleChange"
     >
-      <div v-if="fileList.length < 8">
+      <div v-if="fileList.length < 2">
         <a-icon type="plus" />
         <div class="ant-upload-text">Upload</div>
       </div>
@@ -15,9 +16,15 @@
     <a-modal :visible="previewVisible" :footer="null" @cancel="handleCancel">
       <img alt="example" style="width: 100%" :src="previewImage" />
     </a-modal>
+
+    <div class="text-right">
+      <a-button type="primary" @click="close">Done</a-button>
+    </div>
   </div>
 </template>
 <script>
+import Product from '~/services/API/Product'
+import { isEmpty } from '~/services/Helpers'
 function getBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader()
@@ -26,38 +33,30 @@ function getBase64(file) {
     reader.onerror = (error) => reject(error)
   })
 }
+
 export default {
+  props: {
+    product: {
+      type: Object,
+      default: () => {},
+      required: true,
+    },
+    flist: {
+      type: Array,
+      default: () => [],
+    },
+  },
+
   data() {
     return {
       previewVisible: false,
       previewImage: '',
-      fileList: [
-        {
-          uid: '-1',
-          name: 'image.png',
-          status: 'done',
-        },
-        {
-          uid: '-2',
-          name: 'image.png',
-          status: 'done',
-        },
-        {
-          uid: '-3',
-          name: 'image.png',
-          status: 'done',
-        },
-        {
-          uid: '-4',
-          name: 'image.png',
-          status: 'done',
-        },
-        {
-          uid: '-5',
-          name: 'image.png',
-          status: 'error',
-        },
-      ],
+      fileList: [],
+    }
+  },
+  mounted() {
+    if (!isEmpty(this.fList)) {
+      this.fileList = this.fList
     }
   },
   methods: {
@@ -68,11 +67,41 @@ export default {
       if (!file.url && !file.preview) {
         file.preview = await getBase64(file.originFileObj)
       }
+
       this.previewImage = file.url || file.preview
       this.previewVisible = true
     },
-    handleChange({ fileList }) {
-      this.fileList = fileList
+    handleChange(f) {
+      // this.fileList = f.fileList;
+    },
+    geturl(f) {},
+
+    dummyRequest(f) {
+      const formData = new FormData()
+      formData.append('file', f.file)
+
+      Product.uploadImages(this.product.guid, formData).then((f) => {
+        this.fileList = [...this.fileList, f]
+      })
+      setTimeout(() => {
+        f.onSuccess('ok')
+      }, 0)
+    },
+    close() {
+      this.$notification.open({
+        message: 'Job Post',
+        description: 'Your add is now pending approval and will be live soon',
+        class: 'successNotification',
+      })
+      this.$emit('closeEmit')
+    },
+    getServiceFileList() {},
+    deleteImage(id) {
+      Product.removeServiceImage(id.uid).then((f) => {
+        this.fileList = this.fileList
+          .filter((f) => f.uid !== id.uid)
+          .map((f) => f)
+      })
     },
   },
 }
@@ -87,5 +116,13 @@ export default {
 .ant-upload-select-picture-card .ant-upload-text {
   margin-top: 8px;
   color: #666;
+}
+
+.successNotification {
+  background-color: #28a745 !important;
+  color: white;
+}
+.successNotification .ant-notification-notice-message {
+  color: white;
 }
 </style>

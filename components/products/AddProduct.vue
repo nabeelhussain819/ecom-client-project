@@ -1,8 +1,6 @@
 <template>
   <a-skeleton :loading="false">
     <a-layout-content>
-      <bread-crumb />
-      <a-divider />
       <a-form :form="form" @submit="handleSubmit">
         <a-form-item
           :label-col="formItemLayout.labelCol"
@@ -65,9 +63,6 @@
           />
         </a-form-item>
 
-        <a-divider />
-        <upload />
-        <a-divider />
         <h2 class="sub-heading">Confrim Your Location</h2>
 
         <a-form-item
@@ -139,10 +134,8 @@
 <script>
 import Product from '~/services/API/Product'
 import Category from '~/services/API/Category'
-import Upload from '~/components/products/Upload'
-import BreadCrumb from '~/components/ui/BreadCrumb'
 import AutoComplete from '~/components/google/AutoComplete'
-import { success } from '~/services/Helpers'
+import { isEmpty, success } from '~/services/Helpers'
 const formItemLayout = {
   labelCol: {
     span: 24,
@@ -162,11 +155,13 @@ const formTailLayout = {
 }
 
 export default {
-  components: { BreadCrumb, Upload, AutoComplete },
+  components: { AutoComplete },
   props: {
     product: {
       type: Object,
-      default: () => {},
+      default() {
+        return {}
+      },
     },
     isCreated: {
       type: Boolean,
@@ -192,7 +187,6 @@ export default {
   },
   mounted() {
     this.category_id = this.$route.query.category_id
-    console.log(this.isCreated)
   },
   methods: {
     getAllCategories() {
@@ -252,8 +246,7 @@ export default {
       })
     },
     removeHtml(location) {
-      if (location !== null) {
-        console.log(location.replace(/<[^>]*>?/gm, ''))
+      if (!isEmpty(location)) {
         return location.replace(/<[^>]*>?/gm, '')
       }
       return null

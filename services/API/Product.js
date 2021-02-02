@@ -39,12 +39,21 @@ function destroy(id) {
     method: 'DELETE',
   })
 }
+function uploadImages(productId, data) {
+  return request({
+    url: `${baseUrl}/upload/${productId}`,
+    data,
+    method: 'POST',
+  })
+}
+
 const Products = {
   all,
   save,
   update,
   get,
   destroy,
+  uploadImages,
 }
 
 export default Products
