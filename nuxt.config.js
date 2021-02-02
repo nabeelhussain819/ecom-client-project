@@ -37,6 +37,7 @@ export default {
       mode: 'client',
     },
     { src: '@/plugins/google-maps.js', ssr: false },
+    { src: '@/plugins/persistedState.js' },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

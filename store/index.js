@@ -1,48 +1,49 @@
-import Vuex from "vuex";
-import location from "./modules/location";
+import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
+import location from './modules/location'
+import auth from './modules/auth'
+export const strict = false
 
-export const strict = false;
+const store = () =>
+  new Vuex.Store({
+    state: {
+      status: false,
+      token: null,
 
-const store = () => new Vuex.Store({
-  state: {
-    status: false,
-    token: null,
-    user: {},
-    language: null,
-    currentLocation: null,
-    searchParams: {}
-  },
-  mutations: {
-    authStatus(state, payload) {
-      state.status = payload.status;
-      state.token = payload.token;
+      language: null,
+      currentLocation: null,
+      searchParams: {},
     },
-    setUser(state, payload) {
-      state.user = payload;
-    },
-    setCurrentLocation(state, payload) {
-      state.currentLocation = payload;
-    },
-    setSearchParams(state, payload) {
-      state.searchParams = payload;
-    }
-  },
-  actions: {},
+    mutations: {
+      authStatus(state, payload) {
+        state.status = payload.status
+        state.token = payload.token
+      },
 
-  getters: {
-    isAuthenticated(state) {
-      return state.status;
+      setCurrentLocation(state, payload) {
+        state.currentLocation = payload
+      },
+      setSearchParams(state, payload) {
+        state.searchParams = payload
+      },
     },
-    getCurrentLocation(state) {
-      return state.currentLocation;
-    },
-    getUserDetails(state) {
-      return state.user;
-    },
-    getSearchParams(state) {
-      return state.searchParams;
-    }
-  }, modules: { location }
-});
+    actions: {},
 
-export default store;
+    getters: {
+      isAuthenticated(state) {
+        return state.status
+      },
+      getCurrentLocation(state) {
+        return state.currentLocation
+      },
+      getUserDetails(state) {
+        return state.user
+      },
+      getSearchParams(state) {
+        return state.searchParams
+      },
+    },
+    modules: { location, auth },
+  })
+
+export default store
