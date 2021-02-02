@@ -184,6 +184,7 @@ export default {
       categoryId: null,
       size: 'large',
       category_id: null,
+      errors: ''
     }
   },
   mounted() {
@@ -204,6 +205,8 @@ export default {
           this.$router.push({
             path: `/user/product/${response.product.guid}`,
           })
+        }).catch((e)=>{
+            this.errors = e.response.data.errors;
         })
         .finally(() => {
           this.loading = false

@@ -20,9 +20,6 @@
 
 <script>
   import SocialLogin from './SocialLogin.vue';
-  import AuthServices from "~/services/Api/AuthService";
-  import UserService from '~/services/Api/UserServices';
-
   import {
     CLIENT_ID,
     CLIENT_SECRET,
@@ -34,9 +31,11 @@
     setRefreshToken,
     getAccessToken
   } from "~/services/Auth";
-  export default {
+  import AuthServices from "~/services/Api/AuthService";
+  import UserService from '~/services/Api/UserServices';
+export default {
     components: {
-      SocialLogin
+      SocialLogin,
     },
     data() {
       return {

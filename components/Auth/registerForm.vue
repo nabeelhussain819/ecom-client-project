@@ -24,7 +24,6 @@
           SIGN UP
         </a-button>
       </a-form-item>
-      <p style="text-align:center">Forget Password ?</p>
     </a-form>
   </div>
 </template>
@@ -59,7 +58,7 @@
         e.preventDefault();
         this.form.validateFields((err, values) => {
           if (!err) {
-              this.register(this.form);
+              this.register({...values});
           }
         });
       },
@@ -87,7 +86,7 @@
             });
           })
           .catch((e) => {
-            this.errors = e.response.data.errors;
+            this.errors = e.response;
             this.responseError = "Invalid input";
           })
       }
