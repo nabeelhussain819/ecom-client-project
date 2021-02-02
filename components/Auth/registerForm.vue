@@ -68,9 +68,9 @@
 
 <script>
 import SocialLogin from './SocialLogin.vue'
-import AuthService from '~/services/Api/AuthService'
+import AuthService from '~/services/API/AuthService'
 import { setAccessToken, setUserDetails } from '~/services/Auth'
-import UserService from '~/services/Api/UserServices'
+import UserService from '~/services/API/UserServices'
 export default {
   components: {
     SocialLogin,

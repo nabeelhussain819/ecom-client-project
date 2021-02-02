@@ -26,11 +26,22 @@
         />
       </a-form-item>
       <!-- commented -->
+
+      <!-- --- should be a component ---- -->
+      <a-alert
+        v-for="error in errors"
+        :key="error"
+        :message="error"
+        banner
+        closable
+      />
+      <!-- --- should be a component ---- -->
       <a-form-item>
         <a-button
           type="primary"
           style="text-align: center"
           block
+          :loading="loading"
           :disabled="loading"
           html-type="submit"
         >
@@ -44,13 +55,14 @@
 <script>
 import SocialLogin from './SocialLogin.vue'
 import { CLIENT_ID, CLIENT_SECRET, GRANT_TYPE } from '~/services/Constant'
+
 import {
   setUserDetails,
   setAccessToken,
   setRefreshToken,
 } from '~/services/Auth'
-import AuthServices from '~/services/Api/AuthService'
-import UserService from '~/services/Api/UserServices'
+import AuthServices from '~/services/API/AuthService'
+import UserService from '~/services/API/UserServices'
 export default {
   components: {
     SocialLogin,
@@ -60,7 +72,7 @@ export default {
       formLayout: 'horizontal',
       loading: false,
       successResponse: '',
-      errors: '',
+      errors: null,
       form: this.$form.createForm(this, {
         name: 'coordinated',
       }),
@@ -89,7 +101,7 @@ export default {
         .then((response) => {
           const token = response.refresh_token
           setRefreshToken(token)
-          setAccessToken(response.access_token)
+          setAccessToken(response.token)
           this.$store.commit('setToken', {
             token: response.token,
             status: true,
@@ -100,7 +112,7 @@ export default {
         .catch((e) => {
           if (e.code === 401) {
           }
-          this.errors = e.response
+          this.errors = e.response.data.errors
         })
         .then(() => (this.loading = false))
     },
@@ -110,7 +122,9 @@ export default {
           setUserDetails(user)
           this.$store.commit('setUser', user)
         })
-        .then(() => this.$router.go())
+        .then(() => {
+          // this.$router.go()
+        })
     },
   },
 }
