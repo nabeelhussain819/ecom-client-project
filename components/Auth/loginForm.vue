@@ -110,9 +110,10 @@ export default {
           this.getUserDetails()
         })
         .catch((e) => {
+          console.log(e.response)
           if (e.code === 401) {
           }
-          this.errors = e.response.data.errors
+          // this.errors = e.response.data.errors
         })
         .then(() => (this.loading = false))
     },

@@ -18,13 +18,13 @@ const request = function (options) {
     return Promise.reject(err)
   }
 
-  // let headers = {
-  //     headers: {
-  //         Authorization:`Bearer ${localStorage.getItem('access_token')}`,
-  //     }
-  // }
+  const headers = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+    },
+  }
 
-  return client({ ...options })
+  return client({ ...options, ...headers })
     .then(onSuccess)
     .catch(onError)
 }
