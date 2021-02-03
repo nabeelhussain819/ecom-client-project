@@ -1,7 +1,12 @@
 <template>
   <a-layout-header class="clearfix">
     <div class="logo" />
-    <a-menu theme="dark" class="header_nav" mode="horizontal" :style="{ lineHeight: '64px', float: 'right' }">
+    <a-menu
+      theme="dark"
+      class="header_nav"
+      mode="horizontal"
+      :style="{ lineHeight: '64px', float: 'right' }"
+    >
       <a-menu-item key="5" class="no-hover-nav">
         <a-input id="search" default-value="Search">
           <a-select slot="addonAfter" default-value="buy" style="width: 90px">
@@ -26,26 +31,25 @@
 </template>
 
 <script>
-  import RegisterModal from "~/components/Auth/RegisterModal.vue";
-  import LoginModal from "~/components/Auth/LoginModal.vue";
+import RegisterModal from '~/components/Auth/RegisterModal.vue'
+import LoginModal from '~/components/Auth/LoginModal.vue'
 
-  export default {
-    components: {
-      RegisterModal,
-      LoginModal
-    },
-    data() {
-      return {
-        visible: false,
-      }
-    },
-    created() {},
-    methods: {
-      // showProductModal() {
-      //   this.$nuxt.$emit('showProductModal', true)
-      //   this.visible = true
-      // },
-    },
-  }
-
+export default {
+  components: {
+    RegisterModal,
+    LoginModal,
+  },
+  data() {
+    return {
+      visible: false,
+    }
+  },
+  created() {},
+  methods: {
+    // showProductModal() {
+    //   this.$nuxt.$emit('showProductModal', true)
+    //   this.visible = true
+    // },
+  },
+}
 </script>

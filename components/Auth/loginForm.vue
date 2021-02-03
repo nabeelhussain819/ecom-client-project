@@ -63,6 +63,8 @@ import {
 } from '~/services/Auth'
 import AuthServices from '~/services/API/AuthService'
 import UserService from '~/services/API/UserServices'
+import { isEmpty } from '~/services/Utilities'
+import { success } from '~/services/Helpers/notifications'
 export default {
   components: {
     SocialLogin,
@@ -106,14 +108,14 @@ export default {
             token: response.token,
             status: true,
           })
+          success(this, { message: response.message })
           // this.$bvModal.hide('login-modal') // Larry tesler have a huge repect for you
-          this.getUserDetails()
+          this.close()
         })
         .catch((e) => {
-          console.log(e.response)
-          if (e.code === 401) {
+          if (e.response && !isEmpty(e.response.data)) {
+            this.errors = e.response.data.errors
           }
-          // this.errors = e.response.data.errors
         })
         .then(() => (this.loading = false))
     },
@@ -126,6 +128,9 @@ export default {
         .then(() => {
           // this.$router.go()
         })
+    },
+    close() {
+      this.$emit('close')
     },
   },
 }
