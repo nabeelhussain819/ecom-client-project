@@ -80,9 +80,11 @@ export default {
       }),
     }
   },
+  mounted() {},
   methods: {
     handleSubmit(e) {
       e.preventDefault()
+
       this.form.validateFields((err, values) => {
         if (!err) {
           const client = {
@@ -109,7 +111,7 @@ export default {
             status: true,
           })
           success(this, { message: response.message })
-          // this.$bvModal.hide('login-modal') // Larry tesler have a huge repect for you
+          this.getUserDetails()
           this.close()
         })
         .catch((e) => {

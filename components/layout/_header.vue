@@ -20,15 +20,20 @@
       <a-menu-item v-if="!isAuth" key="2"><LoginModal /></a-menu-item>
 
       <a-menu-item v-if="!isAuth" key="3"><RegisterModal /></a-menu-item>
-      <a-button v-if="isAuth" type="link" @click="logout">Logout</a-button>
-
-      <a-sub-menu class="header-menu">
+      <a-menu-item key="4">
+        <nuxt-link to="/post/choose">
+          <a-icon type="plus-circle" />Post
+        </nuxt-link>
+      </a-menu-item>
+      <a-sub-menu v-if="isAuth" class="header-menu">
         <span slot="title" class="submenu-title-wrapper"
           ><a-avatar
             src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
           />
-          <span :style="{ marginLeft: 16, verticalAlign: 'middle' }"
-            >Muhammad Naved</span
+          <span
+            class="text-capitalize"
+            :style="{ marginLeft: 16, verticalAlign: 'middle' }"
+            >{{ user.name }}</span
           ></span
         >
         <a-menu-item key="offer" class="f-black m-0">My Offer</a-menu-item>
@@ -43,12 +48,6 @@
           Logout
         </a-menu-item>
       </a-sub-menu>
-
-      <a-menu-item key="4">
-        <nuxt-link to="/post/choose">
-          <a-icon type="plus-circle" />Post
-        </nuxt-link>
-      </a-menu-item>
     </a-menu>
   </a-layout-header>
 </template>
@@ -72,8 +71,14 @@ export default {
     isAuth() {
       return this.$store.getters.isAuthorize
     },
+    user() {
+      return this.$store.getters.getUser
+    },
   },
   created() {},
+  mounted() {
+    console.log(this.user)
+  },
   methods: {
     logout() {
       this.$store.commit('setToken', {
