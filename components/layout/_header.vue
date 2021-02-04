@@ -18,8 +18,8 @@
       <a-menu-item key="1">
         <nuxt-link to="/">Home</nuxt-link>
       </a-menu-item>
-      <a-menu-item key="2"><LoginModal /></a-menu-item>
-      <a-menu-item key="3"><RegisterModal /></a-menu-item>
+      <a-menu-item v-if="!isAuth" key="2"><LoginModal /></a-menu-item>
+      <a-menu-item v-if="!isAuth" key="3"><RegisterModal /></a-menu-item>
       <!-- <a-menu-item key="4"><nuxt-link to="/products/posts">Show Your Post</nuxt-link></a-menu-item> -->
       <a-menu-item key="4">
         <nuxt-link to="/post/choose">
@@ -43,6 +43,12 @@ export default {
     return {
       visible: false,
     }
+  },
+
+  computed: {
+    isAuth() {
+      return this.$store.getters.isAuthorize
+    },
   },
   created() {},
   methods: {
