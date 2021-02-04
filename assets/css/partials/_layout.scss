@@ -11,3 +11,20 @@
 .d-none{
     display: none;
 }
+
+// #REgion
+header{
+    .ant-btn-link, .nuxt-link-active,.ant-menu-dark .ant-menu-item > a,.ant-menu-horizontal > .ant-menu-item > a{
+        color:white;
+    }
+   
+}
+
+.f-black{
+    color:black;
+    margin-bottom: 0;
+}
+
+.m-0{
+    margin:0;
+}
