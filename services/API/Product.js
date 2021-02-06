@@ -39,11 +39,26 @@ function destroy(id) {
     method: 'DELETE',
   })
 }
+
 function uploadImages(productId, data) {
   return request({
     url: `${baseUrl}/upload/${productId}`,
     data,
     method: 'POST',
+  })
+}
+
+function images(serviceId) {
+  return request({
+    url: `${baseUrl}/media/${serviceId}`,
+    method: 'GET',
+  })
+}
+
+function removeImage(mediaId) {
+  return request({
+    url: `${baseUrl}/media/${mediaId}`,
+    method: 'DELETE',
   })
 }
 
@@ -54,6 +69,8 @@ const Products = {
   get,
   destroy,
   uploadImages,
+  images,
+  removeImage,
 }
 
 export default Products

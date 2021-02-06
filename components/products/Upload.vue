@@ -16,10 +16,6 @@
     <a-modal :visible="previewVisible" :footer="null" @cancel="handleCancel">
       <img alt="example" style="width: 100%" :src="previewImage" />
     </a-modal>
-
-    <div class="text-right">
-      <a-button type="primary" @click="close">Done</a-button>
-    </div>
   </div>
 </template>
 <script>
@@ -36,14 +32,14 @@ function getBase64(file) {
 
 export default {
   props: {
+    fList: {
+      type: Array,
+      default: () => [],
+    },
     product: {
       type: Object,
       default: () => {},
       required: true,
-    },
-    flist: {
-      type: Array,
-      default: () => [],
     },
   },
 
@@ -55,10 +51,9 @@ export default {
     }
   },
   mounted() {
-    if (!isEmpty(this.fList)) {
-      this.fileList = this.fList
-    }
+    this.boot()
   },
+  updated() {},
   methods: {
     handleCancel() {
       this.previewVisible = false
@@ -71,11 +66,14 @@ export default {
       this.previewImage = file.url || file.preview
       this.previewVisible = true
     },
-    handleChange(f) {
+    boot() {
+      if (!isEmpty(this.fList)) {
+        this.fileList = this.fList
+      }
+    },
+    handleChange() {
       // this.fileList = f.fileList;
     },
-    geturl(f) {},
-
     dummyRequest(f) {
       const formData = new FormData()
       formData.append('file', f.file)
@@ -93,11 +91,10 @@ export default {
         description: 'Your add is now pending approval and will be live soon',
         class: 'successNotification',
       })
-      this.$emit('closeEmit')
     },
     getServiceFileList() {},
     deleteImage(id) {
-      Product.removeServiceImage(id.uid).then((f) => {
+      Product.removeImage(id.uid).then(() => {
         this.fileList = this.fileList
           .filter((f) => f.uid !== id.uid)
           .map((f) => f)
@@ -106,23 +103,3 @@ export default {
   },
 }
 </script>
-<style>
-/* you can make up upload button and sample style by using stylesheets */
-.ant-upload-select-picture-card i {
-  font-size: 32px;
-  color: #999;
-}
-
-.ant-upload-select-picture-card .ant-upload-text {
-  margin-top: 8px;
-  color: #666;
-}
-
-.successNotification {
-  background-color: #28a745 !important;
-  color: white;
-}
-.successNotification .ant-notification-notice-message {
-  color: white;
-}
-</style>

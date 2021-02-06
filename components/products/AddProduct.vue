@@ -215,7 +215,7 @@ export default {
     },
     update(params = {}) {
       this.loading = true
-      Product.update(this.product.guid, params)
+      Product.update(this.product.id, params)
         .then((response) => {
           success(this, { message: response.message })
           this.$emit('update', response)
