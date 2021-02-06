@@ -76,9 +76,7 @@ export default {
     },
   },
   created() {},
-  mounted() {
-    console.log(this.user)
-  },
+  mounted() {},
   methods: {
     logout() {
       this.$store.commit('setToken', {

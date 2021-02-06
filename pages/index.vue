@@ -1,13 +1,12 @@
 <template>
   <div class="container">
-    <carousel />
     <masonry-list />
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import MasonryList from '~/components/products/masonryList.vue'
+import MasonryList from '~/components/products/masonryList'
 import Carousel from '~/components/ui/Carousel'
 const components = { MasonryList, Carousel }
 function showProductModal() {}
