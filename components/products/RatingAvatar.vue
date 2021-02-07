@@ -19,6 +19,12 @@
 
 <script>
 export default {
+  props: {
+    product: {
+      type: Object,
+      default: () => {},
+    },
+  },
   data() {
     return {
       rating: 4.5,

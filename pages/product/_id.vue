@@ -4,9 +4,18 @@
       <a-row :gutter="16">
         <a-col :xs="24" class="border" :sm="18">
           <image-slider :images="images" />
+          <h1 :title="product.name" class="primary-text">
+            ${{ product.price }} {{ product.name }}
+          </h1>
+
+          <a-divider></a-divider>
+          <h2 class="heading">Description</h2>
+          {{ product.description }}
         </a-col>
-        <a-col :xs="24" :sm="6"> <rating-avatar /> </a-col>
+        <a-col :xs="24" :sm="6"> <owner-detail :product="product" /> </a-col>
       </a-row>
+      <a-divider></a-divider>
+      <h2 class="heading">Add Comment</h2>
       <comments /></div
   ></a-skeleton>
 </template>
@@ -14,14 +23,13 @@
 import Product from '~/services/API/Product'
 import comments from '~/components/comments'
 import imageSlider from '~/components/sliders/ImageSlider'
-
-import ratingAvatar from '~/components/products/RatingAvatar'
+import OwnerDetail from '~/components/products/OwnerDetail'
 import { isEmpty } from '~/services/Utilities'
 
 export default {
-  props: {
+  components: {
     comments,
-    ratingAvatar,
+    OwnerDetail,
     imageSlider,
   },
   data() {

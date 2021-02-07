@@ -23,7 +23,8 @@
           <article class="detail">
             <h5 class="title">{{ item.name }}</h5>
             <p class="prices">$ {{ item.price }}</p>
-            <p class="category">{{ item.categories[0].id }}</p>
+            <!-- <p class="category">{{ item.categories[0].id }}</p> -->
+            <p class="category">{{ item.description }}</p>
           </article>
         </nuxt-link>
       </masonry>
