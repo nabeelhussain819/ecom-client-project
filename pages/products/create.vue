@@ -1,3 +1,4 @@
+/* that template is not in used*/
 <template>
   <div>
     <a-button v-if="!showChose" class="editable-add-btn" @click="getPostType()">

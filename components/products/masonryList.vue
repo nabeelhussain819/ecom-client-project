@@ -11,7 +11,6 @@
           :key="index"
           class="product-masonry product-grid"
           :to="item.url"
-          @click="showModal"
         >
           <figure>
             <img
