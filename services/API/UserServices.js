@@ -9,6 +9,7 @@ function all(params = {}) {
     params,
   })
 }
+
 function detail(params = {}) {
   return request({
     url: `${baseUrl}detail`,
@@ -16,9 +17,18 @@ function detail(params = {}) {
   })
 }
 
+function upload(data) {
+  return request({
+    url: `${baseUrl}upload`,
+    data,
+    method: 'POST',
+  })
+}
+
 const UserService = {
   all,
   detail,
+  upload,
 }
 
 export default UserService

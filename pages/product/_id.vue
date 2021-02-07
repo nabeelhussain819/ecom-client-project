@@ -2,7 +2,7 @@
   <a-skeleton :loading="loading">
     <div class="center-container">
       <a-row :gutter="16">
-        <a-col :xs="24" class="border" :sm="18">
+        <a-col :xs="24" :sm="18">
           <image-slider :images="images" />
           <h1 :title="product.name" class="primary-text">
             ${{ product.price }} {{ product.name }}

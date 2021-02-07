@@ -38,7 +38,11 @@
         >
         <a-menu-item key="offer" class="f-black m-0">My Offer</a-menu-item>
         <a-menu-item key="board" class="f-black m-0">My Board </a-menu-item>
-        <a-menu-item key="profile" class="f-black m-0">
+        <a-menu-item
+          key="profile"
+          class="f-black m-0"
+          @click="redirectTo('/user/profile')"
+        >
           My Profile
         </a-menu-item>
         <a-menu-item key="accoutn" class="f-black m-0">
@@ -78,6 +82,9 @@ export default {
   created() {},
   mounted() {},
   methods: {
+    redirectTo(url) {
+      this.$router.push({ path: url })
+    },
     logout() {
       this.$store.commit('setToken', {
         token: null,

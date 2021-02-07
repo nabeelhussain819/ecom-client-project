@@ -1,6 +1,6 @@
 <template>
   <a-row :gutter="2">
-    <a-col :xs="24" class="border" :sm="6">
+    <a-col :xs="24" :sm="6">
       <avatar
         :size="avatarSize"
         image="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
