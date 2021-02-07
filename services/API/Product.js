@@ -62,6 +62,13 @@ function removeImage(mediaId) {
   })
 }
 
+function self(params = {}) {
+  return request({
+    url: `${baseUrl}/self`,
+    params,
+  })
+}
+
 const Products = {
   all,
   save,
@@ -71,6 +78,7 @@ const Products = {
   uploadImages,
   images,
   removeImage,
+  self,
 }
 
 export default Products
