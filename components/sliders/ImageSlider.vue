@@ -1,48 +1,33 @@
 <template>
-  <div id="app">
-    <vue-image-slider
-      :images="images"
-      :interval-val="interval"
-      :height="height"
-      :width="width"
-    />
+  <div class="detail-slider">
+    <VueSlickCarousel
+      v-if="images.length > 0"
+      :arrows="true"
+      :adaptive-height="true"
+      :dots="true"
+    >
+      <img
+        v-for="image in images"
+        :key="image"
+        class="img-fluid"
+        :src="image"
+      />
+    </VueSlickCarousel>
   </div>
 </template>
 
 <script>
-import VueImageSlider from 'vue-image-slider'
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 
 export default {
-  components: {
-    VueImageSlider,
-  },
+  components: { VueSlickCarousel },
   props: {
-    height: {
-      type: Number,
-      default: 400,
-    },
-    width: {
-      type: Number,
-      default: 400,
-    },
-    interval: {
-      type: Number,
-      default: 4000,
-    },
     images: {
       type: Array,
       default: () => [],
     },
-  },
-  data() {
-    return {
-      imageArray: [
-        'https://cdn.pixabay.com/photo/2015/12/12/15/24/amsterdam-1089646_1280.jpg',
-        'https://cdn.pixabay.com/photo/2016/02/17/23/03/usa-1206240_1280.jpg',
-        'https://cdn.pixabay.com/photo/2015/05/15/14/27/eiffel-tower-768501_1280.jpg',
-        'https://cdn.pixabay.com/photo/2016/12/04/19/30/berlin-cathedral-1882397_1280.jpg',
-      ],
-    }
   },
 }
 </script>
