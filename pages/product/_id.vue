@@ -12,7 +12,10 @@
           <h2 class="heading">Description</h2>
           {{ product.description }}
         </a-col>
-        <a-col :xs="24" :sm="7"> <owner-detail :product="product" /> </a-col>
+        <a-col :xs="24" :sm="7">
+          <owner-detail :product="product" />
+          <map-view />
+        </a-col>
       </a-row></div
   ></a-skeleton>
 </template>
@@ -20,12 +23,14 @@
 import Product from '~/services/API/Product'
 import imageSlider from '~/components/sliders/ImageSlider'
 import OwnerDetail from '~/components/products/OwnerDetail'
+import mapView from '~/components/maps/MapView'
 import { isEmpty } from '~/services/Utilities'
 
 export default {
   components: {
     OwnerDetail,
     imageSlider,
+    mapView,
   },
   data() {
     return { loading: false, product: {}, images: [] }

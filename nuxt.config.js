@@ -66,5 +66,7 @@ export default {
     grant_type: process.env.VUE_APP_GRANT_TYPE,
   },
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {},
+  build: {
+    transpile: [/^vue2-google-maps($|\/)/, 'vue-google-autocomplete'],
+  },
 }
