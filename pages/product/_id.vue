@@ -2,7 +2,7 @@
   <a-skeleton :loading="loading">
     <div class="center-container">
       <a-row :gutter="16">
-        <a-col :xs="24" :sm="18">
+        <a-col :xs="24" :sm="17">
           <image-slider :images="images" />
           <h1 :title="product.name" class="primary-text">
             ${{ product.price }} {{ product.name }}
@@ -12,7 +12,7 @@
           <h2 class="heading">Description</h2>
           {{ product.description }}
         </a-col>
-        <a-col :xs="24" :sm="6"> <owner-detail :product="product" /> </a-col>
+        <a-col :xs="24" :sm="7"> <owner-detail :product="product" /> </a-col>
       </a-row></div
   ></a-skeleton>
 </template>
