@@ -18,5 +18,9 @@
   </client-only>
 </template>
 <script>
-export default {}
+export default {
+  data() {
+    return { markers: [] }
+  },
+}
 </script>
