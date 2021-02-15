@@ -15,12 +15,7 @@
             :xs="{ span: 24 }"
             :sm="{ span: 6 }"
           >
-            <a-card hoverable>
-              <img slot="cover" alt="example" :src="product.media[0].url" />
-              <a-card-meta :title="product.name">
-                <template slot="description"> www.instagram.com </template>
-              </a-card-meta>
-            </a-card>
+            <tile :product="product" />
           </a-col>
         </a-row>
       </a-skeleton>
@@ -32,7 +27,11 @@
 <script>
 import Category from '~/services/API/Category'
 import Product from '~/services/API/Product'
+import Tile from '~/components/products/tile'
 export default {
+  components: {
+    Tile,
+  },
   data() {
     return {
       categories: [],
