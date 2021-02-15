@@ -7,7 +7,6 @@
           <h1 :title="product.name" class="primary-text">
             ${{ product.price }} {{ product.name }}
           </h1>
-
           <a-divider></a-divider>
           <div>{{ product.categoryDetails }}</div>
           <a-divider></a-divider>

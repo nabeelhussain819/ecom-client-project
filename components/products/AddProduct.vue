@@ -193,7 +193,7 @@ export default {
   methods: {
     getAllCategories() {
       Category.all().then((response) => {
-        this.categories = response
+        this.categories = response.data
       })
     },
     save(params = {}) {

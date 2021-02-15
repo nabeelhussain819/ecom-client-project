@@ -44,7 +44,7 @@ function getAllCategories() {
   this.loading = true
   Category.all()
     .then((response) => {
-      this.categories = response
+      this.categories = response.data
     })
     .finally(() => {
       this.loading = false

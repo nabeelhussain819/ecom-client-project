@@ -25,10 +25,18 @@ function productAttributes(categoryId, params = {}) {
   })
 }
 
+function tabs(params = {}) {
+  return request({
+    url: `${baseUrl}/tabs`,
+    params,
+  })
+}
+
 const Category = {
   all,
   save,
   productAttributes,
+  tabs,
 }
 
 export default Category

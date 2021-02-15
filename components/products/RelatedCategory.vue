@@ -1,60 +1,73 @@
 <template>
-  <div class="realtedCategory">
+  <div v-if="showTabs" class="realtedCategory">
     <a-card
       style="width: 100%"
-      :tab-list="tabListNoTitle"
-      :active-tab-key="noTitleKey"
-      @tabChange="(key) => onTabChange(key, 'noTitleKey')"
+      :tab-list="categories"
+      :active-tab-key="currentKey"
+      @tabChange="(key) => onTabChange(key)"
     >
-      <p v-if="noTitleKey === 'article'">article content</p>
-      <p v-else-if="noTitleKey === 'app'">app content</p>
-      <!-- <p v-else="noTitleKey === 'project'">project content</p> -->
-      <a slot="tabBarExtraContent" href="#">More</a>
+      <!-- --card-- -->
+      <a-skeleton :loading="productLoad">
+        <a-row type="flex" :gutter="[16, 16]" align="top">
+          <a-col
+            v-for="product in products"
+            :key="product.id"
+            :xs="{ span: 24 }"
+            :sm="{ span: 6 }"
+          >
+            <a-card hoverable>
+              <img slot="cover" alt="example" :src="product.media[0].url" />
+              <a-card-meta :title="product.name">
+                <template slot="description"> www.instagram.com </template>
+              </a-card-meta>
+            </a-card>
+          </a-col>
+        </a-row>
+      </a-skeleton>
+      <!-- --- Cards --- -->
     </a-card>
   </div>
 </template>
 
 <script>
+import Category from '~/services/API/Category'
+import Product from '~/services/API/Product'
 export default {
   data() {
     return {
-      tabList: [
-        {
-          key: 'tab1',
-          // tab: 'tab1',
-          scopedSlots: { tab: 'customRender' },
-        },
-        {
-          key: 'tab2',
-          tab: 'tab2',
-        },
-      ],
-      contentList: {
-        tab1: 'content1',
-        tab2: 'content2',
-      },
-      tabListNoTitle: [
-        {
-          key: 'article',
-          tab: 'article',
-        },
-        {
-          key: 'app',
-          tab: 'app',
-        },
-        {
-          key: 'project',
-          tab: 'project',
-        },
-      ],
-      key: 'tab1',
-      noTitleKey: 'app',
+      categories: [],
+      showTabs: false,
+      currentKey: null,
+      products: [],
+      productLoad: false,
     }
   },
+  mounted() {
+    this.getCategories()
+  },
   methods: {
-    onTabChange(key, type) {
-      console.log(key, type)
-      this[type] = key
+    onTabChange(key) {
+      this.currentKey = key
+      this.loadProducts(key)
+    },
+    loadProducts(category) {
+      this.productLoad = true
+      Product.all({ categories: [category] })
+        .then((products) => {
+          this.products = products.data
+        })
+        .finally(() => (this.productLoad = false))
+    },
+    getCategories() {
+      Category.tabs().then((categories) => {
+        if (categories.length > 0) {
+          this.categories = categories
+          const firstCategory = categories[0].key
+          this.loadProducts(firstCategory)
+          this.currentKey = `${firstCategory}`
+          this.showTabs = true
+        }
+      })
     },
   },
 }
