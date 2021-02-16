@@ -1,5 +1,5 @@
 <template>
-  <a-card hoverable>
+  <a-card hoverable @click="goto(product.guid)">
     <img slot="cover" alt="example" :src="product.media[0].url" />
     <a-card-meta :title="product.name">
       <template slot="description">${{ product.price }} </template>
@@ -11,12 +11,15 @@
 export default {
   props: {
     product: {
-      type: Array,
-      default: () => [],
+      type: Object,
+      default: () => {},
     },
   },
   methods: {
     setImage() {},
+    goto(guid) {
+      this.$router.push({ path: `/product/${guid}` })
+    },
   },
 }
 </script>

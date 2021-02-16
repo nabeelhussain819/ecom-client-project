@@ -27,7 +27,7 @@
 <script>
 import Category from '~/services/API/Category'
 import Product from '~/services/API/Product'
-import Tile from '~/components/products/tile'
+import Tile from '~/components/products/Tile'
 export default {
   components: {
     Tile,

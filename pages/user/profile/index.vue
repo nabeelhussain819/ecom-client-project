@@ -7,30 +7,26 @@
           <h2 class="heading text-center text-capitalize">{{ user.name }}</h2>
         </a-col>
         <a-col :xs="24" :sm="16">
-          <a-card
-            v-for="product in products"
-            :key="product.id"
-            hoverable
-            style="width: 240px"
-          >
-            <img slot="cover" alt="example" :src="product.media[0].url" />
-            <a-card-meta :title="product.name">
-              <template slot="description">
-                {{ product.description }}
-                <span @click="goto(product.guid)">edit</span>
-              </template>
-            </a-card-meta>
-          </a-card>
+          <a-row align="center" :gutter="18">
+            <a-col
+              v-for="product in products"
+              :key="product.id"
+              :xs="24"
+              :sm="6"
+            >
+              <tile :product="product" />
+            </a-col>
+          </a-row>
         </a-col>
-      </a-row>
-    </div></a-skeleton
-  >
+      </a-row></div
+  ></a-skeleton>
 </template>
 <script>
 import upload from '~/components/user/upload'
 import Product from '~/services/API/Product'
+import tile from '~/components/products/Tile'
 export default {
-  components: { upload },
+  components: { upload, tile },
   data() {
     return { loading: false, user: {}, products: [] }
   },
