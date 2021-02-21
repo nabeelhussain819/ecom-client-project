@@ -133,7 +133,7 @@
 </template>
 
 <script>
-import Product from '~/services/API/Product'
+import Services from '~/services/API/Services'
 import Category from '~/services/API/Category'
 import AutoComplete from '~/components/google/AutoComplete'
 import { isEmpty, success } from '~/services/Helpers'
@@ -198,12 +198,12 @@ export default {
     },
     save(params = {}) {
       this.loading = true
-      Product.save(params)
+      Services.save(params)
         .then((response) => {
           success(this, { message: response.message })
           this.$emit('onComplete', response)
           this.$router.push({
-            path: `/user/product/${response.product.guid}`,
+            path: `/user/services/${response.service.guid}`,
           })
         })
         .catch((e) => {
@@ -215,7 +215,7 @@ export default {
     },
     update(params = {}) {
       this.loading = true
-      Product.update(this.product.id, params)
+      Services.update(this.service.id, params)
         .then((response) => {
           success(this, { message: response.message })
           this.$emit('update', response)

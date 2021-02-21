@@ -11,7 +11,7 @@ function getCategoryId(categoryId) {
   if (this.$route.params.id === '2') {
     this.$router.push({
       path: `/post/service/create/${categoryId}`,
-      // query: { category_id: categoryId },
+      query: { category_id: categoryId },
     })
     return true
   }
