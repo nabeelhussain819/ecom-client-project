@@ -37,12 +37,12 @@ function data() {
     loading: false,
     expandIconPosition: 'right',
     categories: [],
-    text: `A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.`,
+    text: '',
   }
 }
 function getAllCategories() {
   this.loading = true
-  Category.all()
+  Category.all({ type: this.$route.params.id })
     .then((response) => {
       this.categories = response.data
     })
