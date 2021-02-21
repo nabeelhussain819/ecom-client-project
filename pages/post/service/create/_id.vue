@@ -2,14 +2,14 @@
   <a-card class="tiles-card dark-header" size="small" title="Choose A Category">
     <bread-crumb />
     <a-divider />
-    <add-product :product="{}" />
+    <add-item :product="{}" />
   </a-card>
 </template>
 <script>
-import AddProduct from '~/components/products/AddProduct'
+import AddItem from '~/components/services/AddService'
 import BreadCrumb from '~/components/ui/BreadCrumb'
 const components = {
-  AddProduct,
+  AddItem,
   BreadCrumb,
 }
 export default { components }
