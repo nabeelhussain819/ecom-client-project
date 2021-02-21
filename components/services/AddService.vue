@@ -12,14 +12,14 @@
             v-decorator="[
               'name',
               {
-                initialValue: product.name,
+                initialValue: service.name,
                 rules: [
-                  { required: true, message: 'Please enter product name' },
+                  { required: true, message: 'Please enter service name' },
                 ],
               },
             ]"
             :size="size"
-            placeholder="Please Enter Product Name"
+            placeholder="Please Enter service Name"
           />
         </a-form-item>
 
@@ -32,7 +32,7 @@
             v-decorator="[
               'description',
               {
-                initialValue: product.description,
+                initialValue: service.description,
                 rules: [
                   { required: true, message: 'Please enter description' },
                 ],
@@ -52,16 +52,16 @@
             v-decorator="[
               'price',
               {
-                initialValue: product.price,
+                initialValue: service.price,
                 rules: [
-                  { required: true, message: 'Please enter product price' },
+                  { required: true, message: 'Please enter service price' },
                 ],
               },
             ]"
             type="number"
             :size="size"
             addon-before="USD"
-            placeholder="Please Enter Product Price"
+            placeholder="Please Enter service Price"
           />
         </a-form-item>
         <h2 class="sub-heading">Confrim Your Location</h2>
@@ -75,7 +75,7 @@
             v-decorator="[
               'location',
               {
-                initialValue: removeHtml(product.location),
+                initialValue: removeHtml(service.location),
                 rules: [
                   { required: true, message: 'Please enter your location' },
                 ],
@@ -89,7 +89,7 @@
             v-decorator="[
               'longitude',
               {
-                initialValue: product.longitude,
+                initialValue: service.longitude,
               },
             ]"
             hidden
@@ -100,7 +100,7 @@
             v-decorator="[
               'latitude',
               {
-                initialValue: product.latitude,
+                initialValue: service.latitude,
               },
             ]"
             hidden
@@ -111,7 +111,7 @@
             v-decorator="[
               'google_address',
               {
-                initialValue: product.google_address,
+                initialValue: service.google_address,
               },
             ]"
             hidden
@@ -158,7 +158,7 @@ const formTailLayout = {
 export default {
   components: { AutoComplete },
   props: {
-    product: {
+    service: {
       type: Object,
       default() {
         return {}

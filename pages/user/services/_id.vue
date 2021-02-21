@@ -3,37 +3,37 @@
     <a-skeleton :loading="loading">
       <bread-crumb />
       <a-divider />
-      <add-product :is-created="true" :product="product" />
+      <add-service :is-created="true" :service="service" />
       <a-divider />
       <h2 class="sub-heading">Upload Product Images</h2>
       <a-skeleton :loading="!showUploader">
-        <upload :product="product" :f-list="fileList" />
+        <upload :product="service" :f-list="fileList" />
       </a-skeleton>
     </a-skeleton>
   </a-card>
 </template>
 
 <script>
-import AddProduct from '~/components/products/AddProduct'
-import Product from '~/services/API/Product'
+import AddService from '~/components/services/AddService'
+import Services from '~/services/API/Services'
 import upload from '~/components/products/Upload'
 import BreadCrumb from '~/components/ui/BreadCrumb'
 const components = {
-  AddProduct,
+  AddService,
   BreadCrumb,
   upload,
 }
 function data() {
   return {
     loading: true,
-    product: [],
+    service: [],
     fileList: [],
     showUploader: false,
   }
 }
 
 function mounted() {
-  this.getProduct()
+  this.getService()
 }
 
 export default {
@@ -41,16 +41,16 @@ export default {
   data,
   mounted,
   methods: {
-    getProduct() {
-      Product.get(this.$route.params.id)
-        .then((product) => {
-          this.product = product
-          this.galery(product.guid)
+    getService() {
+      Services.get(this.$route.params.id)
+        .then((service) => {
+          this.service = service
+          this.galery(service.guid)
         })
         .finally(() => (this.loading = false))
     },
     galery(id) {
-      Product.images(id).then((fileList) => {
+      Services.images(id).then((fileList) => {
         this.fileList = fileList
         this.showUploader = true
       })
