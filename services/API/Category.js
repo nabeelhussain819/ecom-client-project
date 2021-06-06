@@ -1,5 +1,5 @@
 import request from '~/services/request'
-import { BASE_API } from '~/services/Constant'
+import {BASE_API} from '~/services/Constant'
 
 const baseUrl = `${BASE_API}categories`
 
@@ -32,11 +32,18 @@ function tabs(params = {}) {
   })
 }
 
+function get(id) {
+  return request({
+    url: `${baseUrl}/${id}`,
+  })
+}
+
 const Category = {
   all,
   save,
   productAttributes,
   tabs,
+  get,
 }
 
 export default Category

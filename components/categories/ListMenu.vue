@@ -44,7 +44,7 @@ function getAllCategories() {
   this.loading = true
   Category.all({ type: this.$route.params.id })
     .then((response) => {
-      this.categories = response.data
+      this.categories = response
     })
     .finally(() => {
       this.loading = false

@@ -64,7 +64,31 @@
             placeholder="Please Enter Product Price"
           />
         </a-form-item>
-        <h2 class="sub-heading">Confrim Your Location</h2>
+        <h2 class="sub-heading">Attributes</h2>
+
+        <a-form-item
+          v-for="(attribute, index) in category.attributes"
+          :label-col="formItemLayout.labelCol"
+          :wrapper-col="formItemLayout.wrapperCol"
+          :label="attribute.name"
+        >
+          <a-input
+            hidden
+            v-decorator="[
+              `attributes[${index}][id]`,
+              {initialValue: attribute.id},
+            ]"
+          />
+          <a-input
+            v-decorator="[
+              `attributes[${index}][value]`,
+              {initialValue: product.products_attributes.find(a => a.attribute_id === attribute.id) ? product.products_attributes.find(a => a.attribute_id === attribute.id).value : ''},
+            ]"
+            :placeholder="'Please Enter ' + attribute.name"
+          />
+        </a-form-item>
+
+        <h2 class="sub-heading">Confirm Your Location</h2>
 
         <a-form-item
           :label-col="formItemLayout.labelCol"
@@ -185,10 +209,14 @@ export default {
       size: 'large',
       category_id: null,
       errors: '',
+      category: {},
     }
   },
   mounted() {
     this.category_id = this.$route.query.category_id
+    Category.get(this.category_id || this.product.categories[0].category_id)
+      .then(category => this.category = category)
+      .catch(e => this.errors = e.response.data.errors)
   },
   methods: {
     getAllCategories() {
@@ -215,7 +243,7 @@ export default {
     },
     update(params = {}) {
       this.loading = true
-      Product.update(this.product.id, params)
+      Product.update(this.product.guid, params)
         .then((response) => {
           success(this, { message: response.message })
           this.$emit('update', response)
