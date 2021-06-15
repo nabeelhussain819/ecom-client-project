@@ -6,3 +6,11 @@ export const GRANT_TYPE = process.env.grant_type
 
 export const PRODUCT_ID = 1
 export const CATEGORY_ID = 2
+
+export const ATTRIBUTE_TYPES = {
+  TEXT: 'TEXT',
+  CHECKBOX: 'CHECKBOX',
+  CHECKBOX_GROUP: 'CHECKBOX_GROUP',
+  RADIO_GROUP: 'RADIO_GROUP',
+  SELECT: 'SELECT',
+};

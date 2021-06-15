@@ -79,13 +79,7 @@
               {initialValue: attribute.id},
             ]"
           />
-          <a-input
-            v-decorator="[
-              `attributes[${index}][value]`,
-              {initialValue: product.products_attributes.find(a => a.attribute_id === attribute.id) ? product.products_attributes.find(a => a.attribute_id === attribute.id).value : ''},
-            ]"
-            :placeholder="'Please Enter ' + attribute.name"
-          />
+          <attribute :decorator="`attributes[${index}][value]`" :attribute="attribute"/>
         </a-form-item>
 
         <h2 class="sub-heading">Confirm Your Location</h2>
@@ -160,6 +154,7 @@
 import Product from '~/services/API/Product'
 import Category from '~/services/API/Category'
 import AutoComplete from '~/components/google/AutoComplete'
+import Attribute from '~/components/common/Attribute'
 import { isEmpty, success } from '~/services/Helpers'
 const formItemLayout = {
   labelCol: {
@@ -180,7 +175,7 @@ const formTailLayout = {
 }
 
 export default {
-  components: { AutoComplete },
+  components: { AutoComplete, Attribute },
   props: {
     product: {
       type: Object,
