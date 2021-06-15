@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <a-form-item>
     <a-input
       v-if="attribute.type === TYPES.TEXT"
       v-decorator="[decorator]"
@@ -27,7 +27,7 @@
       v-decorator="[decorator]"
       :options="attribute.options.map(option => {return {value: option, label: option}})"
     />
-  </div>
+  </a-form-item>
 </template>
 
 <script>
