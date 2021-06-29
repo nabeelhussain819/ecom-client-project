@@ -48,12 +48,23 @@
           LOGIN
         </a-button>
       </a-form-item>
+      <a @click="showModal">Forgotten Password?</a>
+
+      <a-modal
+        title="Reset Password"
+        :visible="visible"
+        :footer=null
+        @cancel="handleOk"
+      >
+        <forget-password/>
+      </a-modal>
     </a-form>
   </div>
 </template>
 
 <script>
 import SocialLogin from './SocialLogin.vue'
+import ForgetPassword from '~/components/Auth/ForgetPassword'
 import { CLIENT_ID, CLIENT_SECRET, GRANT_TYPE } from '~/services/Constant'
 
 import {
@@ -68,9 +79,11 @@ import { success } from '~/services/Helpers/notifications'
 export default {
   components: {
     SocialLogin,
+    ForgetPassword
   },
   data() {
     return {
+      visible: false,
       formLayout: 'horizontal',
       loading: false,
       successResponse: '',
@@ -133,6 +146,12 @@ export default {
     },
     close() {
       this.$emit('close')
+    },
+    showModal() {
+      this.visible = true
+    },
+    handleOk() {
+      this.visible = false
     },
   },
 }
