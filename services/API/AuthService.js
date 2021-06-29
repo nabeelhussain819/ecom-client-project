@@ -38,7 +38,7 @@ function logout(data = {}) {
 
 function forgetpassword(data) {
   return request({
-    url: `${baseApi}password/create`,
+    url: `${baseApi}forgot-password`,
     data,
     method: 'POST',
   })
