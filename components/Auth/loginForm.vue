@@ -56,7 +56,7 @@
         :footer=null
         @cancel="handleOk"
       >
-        <forget-password/>
+        <forget-password @close="handleOk"/>
       </a-modal>
     </a-form>
   </div>
