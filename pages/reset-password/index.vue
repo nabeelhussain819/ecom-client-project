@@ -26,15 +26,8 @@
             'password_confirmation',
             {
               rules: [
-                { required: true, message: 'Please retype password' },
-                // ({ getFieldValue }) => ({
-                //   validator(_, value) {
-                //     if (!value || getFieldValue('password') === value) {
-                //       return Promise.resolve();
-                //     }
-                //     return Promise.reject(new Error('The two passwords that you entered do not match!'));
-                //   },
-                // }),
+                { required: true, message: 'Please retype your password' },
+                {validator: compareToFirstPassword},
               ],
             },
           ]"
@@ -81,6 +74,14 @@ export default {
             .then(() => this.loading = false);
         }
       })
+    },
+    compareToFirstPassword(rule, value, callback) {
+      const form = this.form;
+      if (value && value !== form.getFieldValue('password')) {
+        callback('Two passwords that you enter is inconsistent!');
+      } else {
+        callback();
+      }
     },
   }
 }
