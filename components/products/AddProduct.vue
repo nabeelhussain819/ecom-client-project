@@ -76,10 +76,13 @@
             hidden
             v-decorator="[
               `attributes[${index}][id]`,
-              {initialValue: attribute.id},
+              { initialValue: attribute.id },
             ]"
           />
-          <attribute :decorator="`attributes[${index}][value]`" :attribute="attribute"/>
+          <attribute
+            :decorator="`attributes[${index}][value]`"
+            :attribute="attribute"
+          />
         </a-form-item>
 
         <h2 class="sub-heading">Confirm Your Location</h2>
@@ -210,8 +213,8 @@ export default {
   mounted() {
     this.category_id = this.$route.query.category_id
     Category.get(this.category_id || this.product.categories[0].category_id)
-      .then(category => this.category = category)
-      .catch(e => this.errors = e.response.data.errors)
+      .then((category) => (this.category = category))
+      .catch((e) => (this.errors = e.response.data.errors))
   },
   methods: {
     getAllCategories() {
