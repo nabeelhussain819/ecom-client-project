@@ -8,6 +8,8 @@
 import Vue from 'vue'
 import MasonryList from '~/components/products/masonryList'
 import Carousel from '~/components/ui/Carousel'
+import {FACEBOOK_APP_ID} from '~/services/Constant'
+
 const components = { MasonryList, Carousel }
 function showProductModal() {}
 
@@ -20,10 +22,23 @@ export default Vue.extend({
   components,
   method,
   data,
-  created() {
-    // this.$nuxt.$on('showProductModal', (a, b) => {
-    //   $this.visible = true
-    // })
+  mounted() {
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: FACEBOOK_APP_ID,
+        cookie: true,
+        xfbml: true,
+        version: 'v8.0'
+      });
+    };
+
+    (function (d, s, id) {
+      let js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) { return; }
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
   },
 })
 </script>

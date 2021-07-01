@@ -51,12 +51,31 @@ function resetPassword(data) {
     method: 'POST',
   })
 }
+
+function facebookLogin(data) {
+  return request({
+    url: `${baseApi}auth/facebook-login`,
+    data,
+    method: 'POST',
+  })
+}
+
+function googleLogin(data) {
+  return request({
+    url: `${baseApi}auth/google-login`,
+    data,
+    method: 'POST',
+  })
+}
+
 const AuthService = {
   register,
   login,
   logout,
   forgetpassword,
   resetPassword,
+  facebookLogin,
+  googleLogin
 }
 
 export default AuthService
