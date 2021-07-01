@@ -8,7 +8,8 @@
 import Vue from 'vue'
 import MasonryList from '~/components/products/masonryList'
 import Carousel from '~/components/ui/Carousel'
-import {FACEBOOK_APP_ID} from '~/services/Constant'
+import GoogleAuth from '@/plugins/google-auth'
+import {FACEBOOK_APP_ID, GOOGLE_CLIENT_ID} from '~/services/Constant'
 
 const components = { MasonryList, Carousel }
 function showProductModal() {}
@@ -16,6 +17,12 @@ function showProductModal() {}
 function data() {
   return {}
 }
+
+Vue.use(GoogleAuth, {
+  clientId: GOOGLE_CLIENT_ID,
+  scope: 'profile email',
+  prompt: 'select_account'
+})
 
 const method = { showProductModal }
 export default Vue.extend({

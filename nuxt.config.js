@@ -65,6 +65,7 @@ export default {
     client_secret: process.env.VUE_APP_CLIENT_SECRET,
     grant_type: process.env.VUE_APP_GRANT_TYPE,
     facebook_app_id: process.env.FACEBOOK_APP_ID,
+    google_client_id: process.env.GOOGLE_CLIENT_ID,
   },
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
