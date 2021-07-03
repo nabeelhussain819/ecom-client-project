@@ -1,8 +1,8 @@
 <template>
   <a-card hoverable @click="goto(product.guid)">
-    <img slot="cover" alt="example" :src="product.media[0].url" />
+    <img slot="cover" alt="example" />
     <a-card-meta :title="product.name">
-      <template slot="description">${{ product.price }} </template>
+      <template slot="description">$ {{ product.price }} </template>
     </a-card-meta>
   </a-card>
 </template>

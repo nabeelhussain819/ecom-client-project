@@ -24,8 +24,7 @@ const components = {
   AddProduct,
   ListMenu,
 }
-function getCategoryId(categoryId) {
-  console.log(categoryId)
+function getCategoryId() {
   this.showProduct = true
 }
 

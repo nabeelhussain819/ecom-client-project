@@ -37,7 +37,7 @@ export default {
       }, 2000)
     },
     handleCancel(e) {
-      console.log('Clicked cancel button')
+      // console.log('Clicked cancel button')
       this.visible = false
     },
   },

@@ -82,9 +82,7 @@ export default {
           this.$emit('onComplete', response)
           alert('Added Category')
         })
-        .catch((err) => {
-          console.log(err)
-        })
+        .catch()
     },
   },
 }

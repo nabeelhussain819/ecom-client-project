@@ -73,7 +73,6 @@ export default {
 
   computed: {
     isAuth() {
-      console.log(this.$store.getters)
       return this.$store.getters.isAuthorize
     },
     user() {

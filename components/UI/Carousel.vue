@@ -17,9 +17,9 @@
 <script>
 export default {
   methods: {
-    onChange(a, b, c) {
-      console.log(a, b, c)
-    },
+    // onChange(a, b, c) {
+    //   console.log(a, b, c)
+    // },
   },
 }
 </script>
