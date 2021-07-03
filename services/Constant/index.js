@@ -3,6 +3,8 @@ export const BASE_API = process.env.api
 export const CLIENT_ID = process.env.client_id
 export const CLIENT_SECRET = process.env.client_secret
 export const GRANT_TYPE = process.env.grant_type
+export const FACEBOOK_APP_ID = process.env.facebook_app_id
+export const GOOGLE_CLIENT_ID = process.env.google_client_id
 
 export const PRODUCT_ID = 1
 export const CATEGORY_ID = 2
