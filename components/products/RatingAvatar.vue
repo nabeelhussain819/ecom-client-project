@@ -1,9 +1,9 @@
 <template>
   <a-row :gutter="2">
     <a-col :xs="24" :sm="6">
-      <avatar
+      <a-avatar
         :size="avatarSize"
-        image="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+        src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
       />
     </a-col>
     <a-col :xs="24" :sm="18">
