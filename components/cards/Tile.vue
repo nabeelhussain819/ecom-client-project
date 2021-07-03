@@ -26,10 +26,10 @@ export default {
       type: Boolean,
       default: false,
     },
-    alignment:{
-      type:String,
-      default:''
-    }
+    alignment: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {}

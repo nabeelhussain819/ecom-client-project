@@ -24,8 +24,8 @@ function getBase64(img, callback) {
   reader.readAsDataURL(img)
 }
 export default {
-  middleware: 'authenticated',
   layout: 'dashboard',
+  middleware: 'authenticated',
   props: {
     // currentUser: { default: {} },
   },

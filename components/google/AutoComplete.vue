@@ -6,7 +6,7 @@
       :value="addrs"
       @place_changed="getAddressData"
     >
-      <template v-slot:input="slotProps">
+      <template #input="slotProps">
         <a-input
           ref="input"
           outlined

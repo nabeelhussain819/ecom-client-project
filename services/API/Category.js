@@ -1,5 +1,5 @@
 import request from '~/services/request'
-import {BASE_API} from '~/services/Constant'
+import { BASE_API } from '~/services/Constant'
 
 const baseUrl = `${BASE_API}categories`
 

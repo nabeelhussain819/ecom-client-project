@@ -34,9 +34,6 @@
 <script>
 import Products from '~/services/API/Product'
 export default {
-  async fetch() {
-    // this.articles = await this.fetchData()
-  },
   data() {
     return {
       page: 0,
@@ -48,6 +45,12 @@ export default {
       interval: null,
     }
   },
+  async fetch() {
+    // this.articles = await this.fetchData()
+  },
+  head: {
+    title: 'Home page',
+  },
   mounted() {
     this.fetchData()
   },
@@ -58,9 +61,6 @@ export default {
         this.products = products.data
       })
     },
-  },
-  head: {
-    title: 'Home page',
   },
 }
 </script>

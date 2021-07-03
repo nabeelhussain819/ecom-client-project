@@ -8,7 +8,7 @@
       }`"
       item-layout="horizontal"
     >
-      <a-list-item slot="renderItem" slot-scope="item, index">
+      <a-list-item slot="renderItem" slot-scope="item">
         <a-comment
           :author="item.author"
           :avatar="item.avatar"

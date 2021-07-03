@@ -1,7 +1,5 @@
 <template>
-  <div class="container">
-    <masonry-list />
-  </div>
+  <div class="container"></div>
 </template>
 
 <script>

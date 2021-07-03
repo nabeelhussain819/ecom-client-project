@@ -1,22 +1,22 @@
-@import "partials/variables";
-@import "partials/btn";
-@import "partials/navs";
-@import "partials/masonry";
-@import "partials/cards";
-@import "partials/layout";
-@import "partials/padding";
-@import "partials/sliders";
-@import "partials/ownerDetails";
-@import "partials/typography";
-@import "partials/avartar";
-@import "components/saveAndshare";
+@import 'partials/variables';
+@import 'partials/btn';
+@import 'partials/navs';
+@import 'partials/masonry';
+@import 'partials/cards';
+@import 'partials/layout';
+@import 'partials/padding';
+@import 'partials/sliders';
+@import 'partials/ownerDetails';
+@import 'partials/typography';
+@import 'partials/avartar';
+@import 'components/saveAndshare';
 
 body,
 .ant-layout {
   background-color: white;
 }
-.ant-modal-header{
-    text-align: center;
+.ant-modal-header {
+  text-align: center;
 }
 .footer {
   text-align: center;
@@ -24,12 +24,12 @@ body,
   color: white;
   height: 230px;
 }
-.footer-newsletter{
-    background-color: $primary;
+.footer-newsletter {
+  background-color: $primary;
+  color: white;
+  h2 {
     color: white;
-    h2{
-        color: white;
-    }
+  }
 }
 .copyright-para {
   margin: 8px;
@@ -45,45 +45,45 @@ body,
 }
 //repetitive css here @todo optimizations
 .dot-facebook {
-    height: 30px;
-    width: 30px;
-    background-color: #4267B2;
-    border-radius: 50%;
-    display: inline-block;
-  }
+  height: 30px;
+  width: 30px;
+  background-color: #4267b2;
+  border-radius: 50%;
+  display: inline-block;
+}
 
-  .dot-twitter {
-    height: 30px;
-    width: 30px;
-    background-color: #1C9CEA;
-    border-radius: 50%;
-    display: inline-block;
-  }
-  .dot-linkedin {
-    height: 30px;
-    width: 30px;
-    background-color: #1C9CEA;
-    border-radius: 50%;
-    display: inline-block;
-  }
-  .dot-instagram{
-    height: 30px;
-    width: 30px;
-    background-color: #F77737;
-    border-radius: 50%;
-    display: inline-block;
-  }
-    .dot-youtube{
-    height: 30px;
-    width: 30px;
-    background-color: #FF0000;
-    border-radius: 50%;
-    display: inline-block;
-  }
-  .dot-mail{
-       height: 30px;
-    width: 30px;
-    background-color: #DB4437;
-    border-radius: 50%;
-    display: inline-block;
-  }
+.dot-twitter {
+  height: 30px;
+  width: 30px;
+  background-color: #1c9cea;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot-linkedin {
+  height: 30px;
+  width: 30px;
+  background-color: #1c9cea;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot-instagram {
+  height: 30px;
+  width: 30px;
+  background-color: #f77737;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot-youtube {
+  height: 30px;
+  width: 30px;
+  background-color: #f00;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot-mail {
+  height: 30px;
+  width: 30px;
+  background-color: #db4437;
+  border-radius: 50%;
+  display: inline-block;
+}

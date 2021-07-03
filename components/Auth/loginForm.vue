@@ -53,10 +53,10 @@
       <a-modal
         title="Reset Password"
         :visible="visible"
-        :footer=null
+        :footer="null"
         @cancel="handleOk"
       >
-        <forget-password @close="handleOk"/>
+        <forget-password @close="handleOk" />
       </a-modal>
     </a-form>
   </div>
@@ -79,7 +79,7 @@ import { success } from '~/services/Helpers/notifications'
 export default {
   components: {
     SocialLogin,
-    ForgetPassword
+    ForgetPassword,
   },
   data() {
     return {

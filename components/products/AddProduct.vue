@@ -67,8 +67,8 @@
         <h2 class="sub-heading">Attributes</h2>
 
         <a-form-item
-          :key="index"
           v-for="(attribute, index) in category.attributes"
+          :key="index"
           :label-col="formItemLayout.labelCol"
           :wrapper-col="formItemLayout.wrapperCol"
           :label="attribute.name"

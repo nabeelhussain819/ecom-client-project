@@ -68,7 +68,7 @@ export default {
   methods: {
     categorySubmit(e) {
       e.preventDefault()
-      const fields = this.form.getFieldsValue(['name', 'type'])
+      //  const fields = this.form.getFieldsValue(['name', 'type'])
       this.form.validateFields((err, values) => {
         if (!err) {
           this.save(values)

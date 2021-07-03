@@ -1,36 +1,38 @@
 <template>
   <a-form :form="form" @submit="handleSubmit">
     <a-form-item hidden>
-      <a-input v-decorator="['token', {initialValue: this.$route.query.token}]"/>
+      <a-input v-decorator="['token', { initialValue: $route.query.token }]" />
     </a-form-item>
     <a-form-item label="Email">
       <a-input
         v-decorator="[
-            'email',
-            {rules: [{ required: true, message: 'Please input your Email!' }],},
-          ]"
+          'email',
+          { rules: [{ required: true, message: 'Please input your Email!' }] },
+        ]"
       />
     </a-form-item>
     <a-form-item label="Password">
       <a-input
         v-decorator="[
-            'password',
-            {rules: [{ required: true, message: 'Please input your password' }]},
-          ]"
+          'password',
+          {
+            rules: [{ required: true, message: 'Please input your password' }],
+          },
+        ]"
         type="password"
       />
     </a-form-item>
     <a-form-item label="Confirm Password">
       <a-input
         v-decorator="[
-            'password_confirmation',
-            {
-              rules: [
-                { required: true, message: 'Please retype your password' },
-                {validator: compareToFirstPassword},
-              ],
-            },
-          ]"
+          'password_confirmation',
+          {
+            rules: [
+              { required: true, message: 'Please retype your password' },
+              { validator: compareToFirstPassword },
+            ],
+          },
+        ]"
         type="password"
       />
     </a-form-item>
@@ -53,11 +55,11 @@
 import AuthServices from '~/services/API/AuthService'
 
 export default {
-  name: "index",
+  name: 'Index',
   data() {
     return {
       loading: false,
-      form: this.$form.createForm(this, {name: 'reset_password'}),
+      form: this.$form.createForm(this, { name: 'reset_password' }),
     }
   },
   methods: {
@@ -66,23 +68,23 @@ export default {
 
       this.form.validateFields((err, values) => {
         if (!err) {
-          this.loading = true;
+          this.loading = true
           AuthServices.resetPassword(values)
-            .then(response => this.$router.push({path: '/'}))
-            .catch(err => {
-            })
-            .then(() => this.loading = false);
+            .then(() => this.$router.push({ path: '/' }))
+            .catch()
+            .then(() => (this.loading = false))
         }
       })
     },
     compareToFirstPassword(rule, value, callback) {
-      const form = this.form;
+      const form = this.form
       if (value && value !== form.getFieldValue('password')) {
-        callback('Two passwords that you enter is inconsistent!');
+        // eslint-disable-next-line standard/no-callback-literal
+        callback('Two passwords that you enter is inconsistent!')
       } else {
-        callback();
+        callback()
       }
     },
-  }
+  },
 }
 </script>
