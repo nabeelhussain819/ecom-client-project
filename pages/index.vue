@@ -11,11 +11,10 @@
 <script>
 import Vue from 'vue'
 import GoogleAuth from '@/plugins/google-auth'
-import Carousel from '~/components/ui/Carousel'
 import { FACEBOOK_APP_ID, GOOGLE_CLIENT_ID } from '~/services/Constant'
 import Products from '~/services/API/Product'
 import Tile from '~/components/products/Tile'
-const components = { Carousel, Tile }
+const components = { Tile }
 
 // move to login component
 Vue.use(GoogleAuth, {
