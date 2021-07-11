@@ -64,6 +64,28 @@
             placeholder="Please Enter service Price"
           />
         </a-form-item>
+        <h2 class="sub-heading">Attributes</h2>
+
+        <a-form-item
+          v-for="(attribute, index) in category.attributes"
+          :key="index"
+          :label-col="formItemLayout.labelCol"
+          :wrapper-col="formItemLayout.wrapperCol"
+          :label="attribute.name"
+        >
+          <a-input
+            v-decorator="[
+              `attributes[${index}][id]`,
+              { initialValue: attribute.id },
+            ]"
+            hidden
+          />
+          <attribute
+            :decorator="`attributes[${index}][value]`"
+            :attribute="attribute"
+          />
+        </a-form-item>
+
         <h2 class="sub-heading">Confrim Your Location</h2>
 
         <a-form-item
@@ -136,6 +158,7 @@
 import Services from '~/services/API/Services'
 import Category from '~/services/API/Category'
 import AutoComplete from '~/components/google/AutoComplete'
+import Attribute from '~/components/common/Attribute'
 import { isEmpty, success } from '~/services/Helpers'
 const formItemLayout = {
   labelCol: {
@@ -156,7 +179,7 @@ const formTailLayout = {
 }
 
 export default {
-  components: { AutoComplete },
+  components: { AutoComplete, Attribute },
   props: {
     service: {
       type: Object,
@@ -185,10 +208,14 @@ export default {
       size: 'large',
       category_id: null,
       errors: '',
+      category: {},
     }
   },
   mounted() {
     this.category_id = this.$route.query.category_id
+    Category.get(this.category_id || this.service.categories[0].category_id)
+      .then((category) => (this.category = category))
+      .catch((e) => (this.errors = e.response.data.errors))
   },
   methods: {
     getAllCategories() {
