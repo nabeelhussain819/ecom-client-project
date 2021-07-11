@@ -1,6 +1,6 @@
 <template>
   <a-layout-header class="clearfix header">
-    <div class="logo" />
+    <img src="#" class="logo" />
     <a-menu
       class="header_nav"
       mode="horizontal"

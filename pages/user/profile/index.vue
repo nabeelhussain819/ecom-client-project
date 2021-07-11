@@ -7,7 +7,7 @@
           <h2 class="heading text-center text-capitalize">{{ user.name }}</h2>
         </a-col>
         <a-col :xs="24" :sm="16">
-          <a-row align="center" :gutter="18">
+          <a-row :align="center" :gutter="18">
             <a-col
               v-for="product in products"
               :key="product.id"
