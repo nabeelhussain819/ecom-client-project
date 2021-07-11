@@ -3,11 +3,11 @@
     <div class="center-container user-profile">
       <a-row :gutter="18">
         <a-col :xs="24" class="border profile-detail" :sm="6">
-          <upload />
+          <upload v-if="!isEmpty(user)" :user="user" />
           <h2 class="heading text-center text-capitalize">{{ user.name }}</h2>
         </a-col>
         <a-col :xs="24" :sm="16">
-          <a-row :align="center" :gutter="18">
+          <a-row :gutter="18">
             <a-col
               v-for="product in products"
               :key="product.id"
@@ -25,6 +25,7 @@
 import upload from '~/components/user/upload'
 import Product from '~/services/API/Product'
 import tile from '~/components/products/Tile'
+import { isEmpty } from '~/services/Utilities'
 export default {
   components: { upload, tile },
   data() {
@@ -35,6 +36,7 @@ export default {
     this.getProducts()
   },
   methods: {
+    isEmpty,
     getProducts() {
       Product.self().then((products) => {
         this.products = products.data

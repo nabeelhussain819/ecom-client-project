@@ -17,7 +17,9 @@
 </template>
 
 <script>
+// revamp required component
 import UserService from '~/services/API/UserServices'
+import { isEmpty } from '~/services/Utilities'
 function getBase64(img, callback) {
   const reader = new FileReader()
   reader.addEventListener('load', () => callback(reader.result))
@@ -27,17 +29,16 @@ export default {
   layout: 'dashboard',
   middleware: 'authenticated',
   props: {
-    // currentUser: { default: {} },
+    user: { default: () => {}, type: Object },
   },
   data() {
     return {
-      user: [],
       fileList: [],
       previewVisible: false,
       previewImage: '',
       form: this.$form.createForm(this, { name: 'profile' }),
       loading: false,
-      imageUrl: '',
+      imageUrl: null,
     }
   },
   updated() {},
@@ -87,10 +88,10 @@ export default {
       }, 0)
     },
     getUserDetails() {
-      UserService.detail().then((user) => {
-        this.imageUrl = user.image_url
-        this.user = user
-      })
+      if (!isEmpty(this.user)) {
+        console.log(this.user)
+        this.imageUrl = this.user.profile_url
+      }
     },
   },
 }

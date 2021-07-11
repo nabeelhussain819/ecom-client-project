@@ -2,7 +2,11 @@
   <a-card hoverable @click="goto(product.guid)">
     <img slot="cover" alt="example" :src="product.cover_image" />
     <a-card-meta :title="product.name">
-      <template slot="description">$ {{ product.price }} </template>
+      <template slot="description"
+        >$ {{ product.price }}
+        <br />
+        <span class="loacition" v-html="product.google_address"> </span>
+      </template>
     </a-card-meta>
   </a-card>
 </template>
