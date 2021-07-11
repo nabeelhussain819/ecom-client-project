@@ -1,5 +1,5 @@
 <template>
-  <a-layout-header class="clearfix">
+  <a-layout-header class="clearfix header">
     <div class="logo" />
     <a-menu
       class="header_nav"
