@@ -15,12 +15,12 @@ import { setAccessToken, setRefreshToken } from '~/services/Auth'
 import { success } from '~/services/Helpers/notifications'
 
 export default {
-  data() {
-    return { appId: FACEBOOK_APP_ID }
-  },
   components: {
     FacebookLogin,
     GoogleLogin,
+  },
+  data() {
+    return { appId: FACEBOOK_APP_ID }
   },
   methods: {
     facebookLogin({ authResponse }) {
@@ -31,9 +31,10 @@ export default {
     googleLogin(response) {
       const profile = response.getBasicProfile()
       const user = { name: profile.getName(), email: profile.getEmail() }
-      AuthService.googleLogin({ ...response.getAuthResponse(), user }).then(
-        (resp) => this.setToken(resp)
-      )
+      AuthService.googleLogin({
+        ...response.getAuthResponse(),
+        user,
+      }).then((resp) => this.setToken(resp))
     },
     setToken(response) {
       const token = response.refresh_token
