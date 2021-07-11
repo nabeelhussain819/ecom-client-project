@@ -1,10 +1,12 @@
 <template>
   <div class="container">
-    <a-row :gutter="16">
-      <a-col v-for="(product, index) in products" :key="index" :span="3">
-        <Tile :product="product"
-      /></a-col>
-    </a-row>
+    <a-spin :spinning="loading">
+      <a-row :gutter="16">
+        <a-col v-for="(product, index) in products" :key="index" :span="3">
+          <Tile :product="product"
+        /></a-col>
+      </a-row>
+    </a-spin>
   </div>
 </template>
 
@@ -27,6 +29,7 @@ export default Vue.extend({
   data() {
     return {
       products: [],
+      loading: true,
     }
   },
   mounted() {
@@ -35,9 +38,14 @@ export default Vue.extend({
   },
   methods: {
     fetchProducts() {
-      return Products.all().then((products) => {
-        this.products = products.data
-      })
+      this.loading = true
+      return Products.all()
+        .then((products) => {
+          this.products = products.data
+        })
+        .finally(() => {
+          this.loading = false
+        })
     },
     fbInit() {
       // move to fb login button
