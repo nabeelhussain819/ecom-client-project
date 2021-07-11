@@ -28,7 +28,7 @@ function update(id, data) {
 
 function get(id, params = {}) {
   return request({
-    url: `${baseUrl}/show/${id}`,
+    url: `${baseUrl}/${id}`,
     params,
   })
 }
