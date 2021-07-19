@@ -1,15 +1,25 @@
 <template>
   <div>
-    <div>
+    <div v-if="$route.query.category === undefined">
       <h3>Categories</h3>
       <a-list
         item-layout="horizontal"
         :grid="{ gutter: 0 }"
-        :data-source="Object.keys(categories)"
+        :data-source="categories"
         :split="false"
       >
-        <a-list-item slot="renderItem" slot-scope="key">
-          <a @click="selectCategory(key)">{{ categories[key] }}</a>
+        <a-list-item slot="renderItem" slot-scope="category">
+          <a @click="selectCategory(category.id)">{{ category.name }}</a>
+        </a-list-item>
+      </a-list>
+    </div>
+
+    <div v-else>
+      <h3>Filters</h3>
+      <a-list :data-source="categories[0].attributes">
+        <a-list-item slot="renderItem" slot-scope="attribute">
+          <h4 class="text-capitalize">{{ attribute.name }}</h4>
+          <attribute :attribute="attribute" :filter="true" @changed="changed" />
         </a-list-item>
       </a-list>
     </div>
@@ -44,12 +54,15 @@
 <script>
 import moment from 'moment'
 import Products from '~/services/API/Product'
+import Attribute from '~/components/common/Attribute'
 
 export default {
+  components: { Attribute },
   data() {
     return {
-      categories: {},
+      categories: [],
       products: [],
+      filters: {},
       moment,
     }
   },
@@ -73,6 +86,7 @@ export default {
       const params = { query: this.$route.query.query }
       if (this.$route.query.category) {
         params.category_id = this.$route.query.category
+        params.filters = this.filters
       }
 
       Products.search(params)
@@ -81,6 +95,10 @@ export default {
           this.products = products
         })
         .catch(() => {})
+    },
+    changed(value, attribute) {
+      this.filters = { ...this.filters, [parseInt(attribute.id)]: value }
+      this.search()
     },
   },
 }
