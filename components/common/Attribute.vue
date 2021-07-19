@@ -9,7 +9,7 @@
     <a-checkbox
       v-if="attribute.type === TYPES.CHECKBOX"
       v-decorator="[decorator]"
-      @change="(value) => onChange(value, attribute)"
+      @change="(e) => onChange(e.target.checked, attribute)"
     />
 
     <a-select
