@@ -69,6 +69,13 @@ function self(params = {}) {
   })
 }
 
+function search(params = {}) {
+  return request({
+    url: `${baseUrl}/search`,
+    params,
+  })
+}
+
 const Products = {
   all,
   save,
@@ -79,6 +86,7 @@ const Products = {
   images,
   removeImage,
   self,
+  search,
 }
 
 export default Products
