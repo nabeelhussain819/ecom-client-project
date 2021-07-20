@@ -32,6 +32,7 @@
             :key="index"
             :title="`Rs. ${product.price}`"
             style="cursor: pointer"
+            @click="productDetails(product.guid)"
           >
             <p>{{ product.name }}</p>
             <a-row>
@@ -99,6 +100,9 @@ export default {
     changed(value, attribute) {
       this.filters = { ...this.filters, [parseInt(attribute.id)]: value }
       this.search()
+    },
+    productDetails(guid) {
+      this.$router.push({ path: `/product/${guid}` })
     },
   },
 }
