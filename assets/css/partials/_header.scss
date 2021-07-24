@@ -3,4 +3,33 @@
   .header_nav {
     border-bottom: 0;
   }
+  .search-bar {
+    &:hover {
+      border: transparent;
+    }
+    #search-input {
+      padding: 25px 15px;
+      color: white;
+      min-width: 300px;
+    }
+    .ant-input-group-addon,
+    #search-input {
+      background-color: #bb1267;
+    }
+    .ant-btn-primary {
+      box-shadow: none;
+      border: 0;
+      background-color: transparent;
+    }
+    .ant-input,
+    .ant-divider,
+    .ant-input-group-addon,
+    .ant-input:hover {
+      border-color: #0e0e0e2e;
+    }
+    .ant-divider-vertical {
+      height: 50px;
+      background-color: #0e0e0e2e;
+    }
+  }
 }
