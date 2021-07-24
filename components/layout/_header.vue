@@ -9,11 +9,25 @@
       <a-menu-item key="5" class="no-hover-nav search-bar">
         <a-input id="search-input" placeholder="Search" @pressEnter="search">
           <template slot="addonAfter" default-value="buy" style="width: 90px">
-            <a-button type="primary"> Buying </a-button>
+            <a-button
+              type="primary"
+              :class="type == 1 && `active`"
+              @click="getSearchType(1)"
+            >
+              Buying
+            </a-button>
             <a-divider type="vertical" />
-            <a-button type="primary"> Services </a-button>
+            <a-button
+              type="primary"
+              :class="type == 2 && `active`"
+              @click="getSearchType(2)"
+            >
+              Services
+            </a-button>
             <a-divider type="vertical" />
-            <a-button type="primary"> Go </a-button>
+            <a-button class="go-btn" type="primary" @click="search">
+              Go
+            </a-button>
           </template>
         </a-input>
       </a-menu-item>
@@ -71,6 +85,7 @@ export default {
   data() {
     return {
       visible: false,
+      type: 1,
     }
   },
 
@@ -99,6 +114,10 @@ export default {
         path: '/search',
         query: { query: e.target.value },
       })
+    },
+    getSearchType(type) {
+      // this will save on vuex level so it will handle globaly without handling indiviualy
+      this.type = type
     },
     // showProductModal() {
     //   this.$nuxt.$emit('showProductModal', true)

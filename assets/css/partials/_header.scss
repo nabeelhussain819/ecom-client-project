@@ -3,9 +3,14 @@
   .header_nav {
     border-bottom: 0;
   }
+
   .search-bar {
+    .ant-input:focus {
+      box-shadow: inherit;
+    }
+    border-color: transparent;
     &:hover {
-      border: transparent;
+      border-color: transparent;
     }
     #search-input {
       padding: 25px 15px;
@@ -14,12 +19,13 @@
     }
     .ant-input-group-addon,
     #search-input {
-      background-color: #bb1267;
+      background-color: #bb126775;
     }
     .ant-btn-primary {
       box-shadow: none;
       border: 0;
       background-color: transparent;
+      color: rgba(204, 203, 203, 0.952);
     }
     .ant-input,
     .ant-divider,
@@ -30,6 +36,12 @@
     .ant-divider-vertical {
       height: 50px;
       background-color: #0e0e0e2e;
+    }
+    .active {
+      color: white;
+    }
+    .go-btn {
+      color: white;
     }
   }
 }
