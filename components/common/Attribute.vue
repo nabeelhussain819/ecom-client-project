@@ -11,7 +11,7 @@
       v-decorator="[
         decorator,
         {
-          initialValue: defaultValues[attribute.id] === 'true',
+          initialValue: defaultValues[attribute.id],
           valuePropName: 'checked',
         },
       ]"
