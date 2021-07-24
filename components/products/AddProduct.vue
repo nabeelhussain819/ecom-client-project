@@ -83,6 +83,7 @@
           <attribute
             :decorator="`attributes[${index}][value]`"
             :attribute="attribute"
+            :values="product.products_attributes"
           />
         </a-form-item>
 
