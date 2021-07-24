@@ -83,10 +83,11 @@
           <attribute
             :decorator="`attributes[${index}][value]`"
             :attribute="attribute"
+            :values="service.services_attributes"
           />
         </a-form-item>
 
-        <h2 class="sub-heading">Confrim Your Location</h2>
+        <h2 class="sub-heading">Confirm Your Location</h2>
 
         <a-form-item
           :label-col="formItemLayout.labelCol"
@@ -103,6 +104,7 @@
                 ],
               },
             ]"
+            :location="removeHtml(service.location)"
             @currentLocation="currentLocation"
           />
         </a-form-item>

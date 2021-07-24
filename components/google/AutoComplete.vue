@@ -39,6 +39,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    location: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -53,6 +57,7 @@ export default {
   computed: {},
   mounted() {
     // this.setAddress()
+    this.addrs = this.location
   },
   methods: {
     getAddressData(addressData) {
