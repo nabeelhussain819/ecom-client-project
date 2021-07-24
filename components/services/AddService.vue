@@ -104,6 +104,7 @@
                 ],
               },
             ]"
+            :location="removeHtml(service.location)"
             @currentLocation="currentLocation"
           />
         </a-form-item>

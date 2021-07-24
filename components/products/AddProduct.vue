@@ -104,6 +104,7 @@
                 ],
               },
             ]"
+            :location="removeHtml(product.location)"
             @currentLocation="currentLocation"
           />
         </a-form-item>
