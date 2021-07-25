@@ -15,7 +15,7 @@
 
 <script>
 import AddProduct from '~/components/products/AddProduct'
-import Product from '~/services/API/Product'
+import Product from '~/services/API/ProductServices'
 import upload from '~/components/products/Upload'
 import BreadCrumb from '~/components/ui/BreadCrumb'
 const components = {

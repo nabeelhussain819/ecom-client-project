@@ -54,7 +54,7 @@
 
 <script>
 import moment from 'moment'
-import Products from '~/services/API/Product'
+import Products from '~/services/API/ProductServices'
 import Attribute from '~/components/common/Attribute'
 
 export default {

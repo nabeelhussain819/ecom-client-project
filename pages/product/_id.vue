@@ -24,7 +24,7 @@
   ></a-skeleton>
 </template>
 <script>
-import Product from '~/services/API/Product'
+import Product from '~/services/API/ProductServices'
 import imageSlider from '~/components/sliders/ImageSlider'
 import OwnerDetail from '~/components/products/OwnerDetail'
 import mapView from '~/components/maps/MapView'

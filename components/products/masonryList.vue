@@ -32,7 +32,7 @@
   </div>
 </template>
 <script>
-import Products from '~/services/API/Product'
+import Products from '~/services/API/ProductServices'
 export default {
   data() {
     return {

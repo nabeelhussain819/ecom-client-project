@@ -19,7 +19,7 @@
   </div>
 </template>
 <script>
-import Product from '~/services/API/Product'
+import Product from '~/services/API/ProductServices'
 import { isEmpty } from '~/services/Helpers'
 function getBase64(file) {
   return new Promise((resolve, reject) => {

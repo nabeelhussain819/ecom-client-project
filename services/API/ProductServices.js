@@ -1,5 +1,5 @@
 import request from '../request'
-import { BASE_API } from './../Constant'
+import { BASE_API } from '../Constant'
 // @todo this file name should be product service
 const baseUrl = `${BASE_API}products`
 
@@ -76,7 +76,7 @@ function search(params = {}) {
   })
 }
 
-const Products = {
+const ProductServices = {
   all,
   save,
   update,
@@ -89,4 +89,4 @@ const Products = {
   search,
 }
 
-export default Products
+export default ProductServices

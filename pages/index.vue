@@ -14,7 +14,7 @@
 import Vue from 'vue'
 import GoogleAuth from '@/plugins/google-auth'
 import { FACEBOOK_APP_ID, GOOGLE_CLIENT_ID } from '~/services/Constant'
-import Products from '~/services/API/Product'
+import Products from '~/services/API/ProductServices'
 import Tile from '~/components/products/Tile'
 const components = { Tile }
 

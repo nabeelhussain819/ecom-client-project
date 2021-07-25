@@ -157,7 +157,7 @@
 </template>
 
 <script>
-import Product from '~/services/API/Product'
+import Product from '~/services/API/ProductServices'
 import Category from '~/services/API/Category'
 import AutoComplete from '~/components/google/AutoComplete'
 import Attribute from '~/components/common/Attribute'

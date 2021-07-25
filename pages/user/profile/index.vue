@@ -23,7 +23,7 @@
 </template>
 <script>
 import upload from '~/components/user/upload'
-import Product from '~/services/API/Product'
+import Product from '~/services/API/ProductServices'
 import tile from '~/components/products/Tile'
 import { isEmpty } from '~/services/Utilities'
 export default {
