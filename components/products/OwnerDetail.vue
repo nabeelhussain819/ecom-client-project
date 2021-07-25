@@ -6,7 +6,7 @@
     </a-button>
     <a-button class="btn" :size="size"> Ask </a-button>
     <a-button class="btn btn-secondary" :size="size"> Buy Now </a-button>
-    <share-and-save />
+    <share-and-save :product="product" />
   </div>
 </template>
 <script>

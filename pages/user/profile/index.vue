@@ -14,7 +14,7 @@
               :xs="24"
               :sm="6"
             >
-              <tile :product="product" />
+              <tile :show-editable="true" :product="product" />
             </a-col>
           </a-row>
         </a-col>
