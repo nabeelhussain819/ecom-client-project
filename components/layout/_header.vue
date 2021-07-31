@@ -7,7 +7,12 @@
       :style="{ lineHeight: '64px', float: 'right' }"
     >
       <a-menu-item key="5" class="no-hover-nav search-bar">
-        <a-input id="search-input" placeholder="Search" @pressEnter="search">
+        <a-input
+          id="search-input"
+          placeholder="Search"
+          @pressEnter="search"
+          @change="onChange"
+        >
           <template slot="addonAfter" default-value="buy" style="width: 90px">
             <a-button
               type="primary"
@@ -91,6 +96,7 @@ export default {
     return {
       visible: false,
       type: 1,
+      query: '',
     }
   },
 
@@ -114,7 +120,7 @@ export default {
         status: null,
       })
     },
-    search(e) {
+    search() {
       let path = ''
       if (this.type === 1) {
         path = '/product/search'
@@ -124,8 +130,11 @@ export default {
 
       this.$router.push({
         path,
-        query: { query: e.target.value },
+        query: { query: this.query },
       })
+    },
+    onChange(e) {
+      this.query = e.target.value
     },
     getSearchType(type) {
       // this will save on vuex level so it will handle globaly without handling indiviualy
