@@ -26,22 +26,22 @@
 
     <a-divider />
     <div>
-      <a-list :grid="{ gutter: 16, column: 4 }" :data-source="products">
-        <a-list-item slot="renderItem" slot-scope="product, index">
+      <a-list :grid="{ gutter: 16, column: 4 }" :data-source="results">
+        <a-list-item slot="renderItem" slot-scope="result">
           <a-card
-            :key="index"
-            :title="`Rs. ${product.price}`"
+            :key="Search"
+            :title="`Rs. ${result.price}`"
             style="cursor: pointer"
-            @click="productDetails(product.guid)"
+            @click="resultsDetails(result.guid)"
           >
-            <p>{{ product.name }}</p>
+            <p>{{ result.name }}</p>
             <a-row>
               <a-col span="12">
-                <div v-html="`${product.google_address}`" />
+                <div v-html="`${result.google_address}`" />
               </a-col>
               <a-col span="12">
                 <div style="float: right">
-                  {{ moment(product.created_at).fromNow() }}
+                  {{ moment(result.created_at).fromNow() }}
                 </div>
               </a-col>
             </a-row>
@@ -54,15 +54,24 @@
 
 <script>
 import moment from 'moment'
-import Products from '~/services/API/ProductServices'
 import Attribute from '~/components/common/Attribute'
 
 export default {
   components: { Attribute },
+  props: {
+    service: {
+      type: Function,
+      default: () => {},
+    },
+    type: {
+      type: String,
+      default: 'product',
+    },
+  },
   data() {
     return {
       categories: [],
-      products: [],
+      results: [],
       filters: {},
       moment,
     }
@@ -79,7 +88,7 @@ export default {
   methods: {
     selectCategory(category) {
       this.$router.push({
-        path: '/search',
+        path: `/${this.type}/search`,
         query: { query: this.$route.query.query, category },
       })
     },
@@ -90,10 +99,10 @@ export default {
         params.filters = this.filters
       }
 
-      Products.search(params)
-        .then(({ categories, products }) => {
+      this.service(params)
+        .then(({ categories, results }) => {
           this.categories = categories
-          this.products = products
+          this.results = results
         })
         .catch(() => {})
     },
@@ -101,8 +110,8 @@ export default {
       this.filters = { ...this.filters, [parseInt(attribute.id)]: value }
       this.search()
     },
-    productDetails(guid) {
-      this.$router.push({ path: `/product/${guid}` })
+    resultsDetails(guid) {
+      this.$router.push({ path: `/${this.type}/${guid}` })
     },
   },
 }

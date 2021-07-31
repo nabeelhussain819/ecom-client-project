@@ -28,7 +28,7 @@ function update(id, data) {
 
 function get(id, params = {}) {
   return request({
-    url: `${baseUrl}/${id}`,
+    url: `${baseUrl}/show/${id}`,
     params,
   })
 }
@@ -69,6 +69,13 @@ function self(params = {}) {
   })
 }
 
+function search(params = {}) {
+  return request({
+    url: `${baseUrl}/search`,
+    params,
+  })
+}
+
 const Services = {
   all,
   save,
@@ -79,6 +86,7 @@ const Services = {
   images,
   removeImage,
   self,
+  search,
 }
 
 export default Services
