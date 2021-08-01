@@ -162,6 +162,7 @@ import Category from '~/services/API/Category'
 import AutoComplete from '~/components/google/AutoComplete'
 import Attribute from '~/components/common/Attribute'
 import { isEmpty, success } from '~/services/Helpers'
+
 const formItemLayout = {
   labelCol: {
     span: 24,
@@ -215,9 +216,13 @@ export default {
   },
   mounted() {
     this.category_id = this.$route.query.category_id
-    Category.get(this.category_id || this.service.categories[0].category_id)
-      .then((category) => (this.category = category))
-      .catch((e) => (this.errors = e.response.data.errors))
+    if (this.service.category_id) {
+      this.category = this.service.category
+    } else {
+      Category.get(this.category_id)
+        .then((category) => (this.category = category))
+        .catch((e) => (this.errors = e.response.data.errors))
+    }
   },
   methods: {
     getAllCategories() {
