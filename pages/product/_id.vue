@@ -12,6 +12,21 @@
           <a-divider></a-divider>
           <h2 class="heading">Description</h2>
           {{ product.description }}
+
+          <h4 class="heading">Attributes</h4>
+          <ul v-if="product.category">
+            <li
+              v-for="attribute in product.category.attributes"
+              :key="attribute.id"
+            >
+              <strong>{{ attribute.name }}: </strong>
+              {{
+                Array.isArray(values[attribute.id])
+                  ? values[attribute.id].join(', ')
+                  : values[attribute.id]
+              }}
+            </li>
+          </ul>
         </a-col>
         <a-col :xs="24" :sm="7">
           <owner-detail :product="product" />
@@ -20,8 +35,9 @@
         <a-col :xs="24">
           <related-category />
         </a-col>
-      </a-row></div
-  ></a-skeleton>
+      </a-row>
+    </div>
+  </a-skeleton>
 </template>
 <script>
 import Product from '~/services/API/ProductServices'
@@ -39,7 +55,7 @@ export default {
     RelatedCategory,
   },
   data() {
-    return { loading: false, product: {}, images: [] }
+    return { loading: false, product: {}, images: [], values: {} }
   },
   mounted() {
     this.getProduct(this.$route.params.id)
@@ -51,6 +67,10 @@ export default {
         .then((product) => {
           this.product = product
           this.getImages(product)
+
+          product.products_attributes.map(
+            (a) => (this.values[a.attribute_id] = a.value)
+          )
         })
         .finally(() => {
           this.loading = false

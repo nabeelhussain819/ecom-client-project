@@ -12,6 +12,21 @@
           <a-divider></a-divider>
           <h2 class="heading">Description</h2>
           {{ service.description }}
+
+          <h4 class="heading">Attributes</h4>
+          <ul v-if="service.category">
+            <li
+              v-for="attribute in service.category.attributes"
+              :key="attribute.id"
+            >
+              <strong>{{ attribute.name }}: </strong>
+              {{
+                Array.isArray(values[attribute.id])
+                  ? values[attribute.id].join(', ')
+                  : values[attribute.id]
+              }}
+            </li>
+          </ul>
         </a-col>
         <a-col :xs="24" :sm="7">
           <owner-detail :service="service" />
@@ -39,7 +54,7 @@ export default {
     RelatedCategory,
   },
   data() {
-    return { loading: false, service: {}, images: [] }
+    return { loading: false, service: {}, images: [], values: {} }
   },
   mounted() {
     this.getService(this.$route.params.id)
@@ -51,6 +66,10 @@ export default {
         .then((service) => {
           this.service = service
           this.getImages(service)
+
+          service.services_attributes.map(
+            (a) => (this.values[a.attribute_id] = a.value)
+          )
         })
         .finally(() => {
           this.loading = false
