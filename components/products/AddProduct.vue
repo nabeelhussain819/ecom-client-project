@@ -215,9 +215,13 @@ export default {
   },
   mounted() {
     this.category_id = this.$route.query.category_id
-    Category.get(this.category_id || this.product.categories[0].category_id)
-      .then((category) => (this.category = category))
-      .catch((e) => (this.errors = e.response.data.errors))
+    if (this.product.category_id) {
+      this.category = this.product.category
+    } else {
+      Category.get(this.category_id)
+        .then((category) => (this.category = category))
+        .catch((e) => (this.errors = e.response.data.errors))
+    }
   },
   methods: {
     getAllCategories() {

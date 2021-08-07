@@ -7,7 +7,12 @@
       :style="{ lineHeight: '64px', float: 'right' }"
     >
       <a-menu-item key="5" class="no-hover-nav search-bar">
-        <a-input id="search-input" placeholder="Search" @pressEnter="search">
+        <a-input
+          id="search-input"
+          placeholder="Search"
+          @pressEnter="search"
+          @change="onChange"
+        >
           <template slot="addonAfter" default-value="buy" style="width: 90px">
             <a-button
               type="primary"
@@ -34,12 +39,17 @@
       <a-menu-item key="1">
         <nuxt-link to="/">Home</nuxt-link>
       </a-menu-item>
-      <a-menu-item v-if="!isAuth" key="2"><LoginModal /></a-menu-item>
+      <a-menu-item v-if="!isAuth" key="2">
+        <LoginModal />
+      </a-menu-item>
 
-      <a-menu-item v-if="!isAuth" key="3"><RegisterModal /></a-menu-item>
+      <a-menu-item v-if="!isAuth" key="3">
+        <RegisterModal />
+      </a-menu-item>
       <a-menu-item key="4">
         <nuxt-link to="/post/choose">
-          <a-icon type="plus-circle" />Post
+          <a-icon type="plus-circle" />
+          Post
         </nuxt-link>
       </a-menu-item>
       <a-sub-menu v-if="isAuth" class="header-menu">
@@ -54,7 +64,7 @@
           ></span
         >
         <a-menu-item key="offer" class="f-black m-0">My Offer</a-menu-item>
-        <a-menu-item key="board" class="f-black m-0">My Board </a-menu-item>
+        <a-menu-item key="board" class="f-black m-0">My Board</a-menu-item>
         <a-menu-item
           key="profile"
           class="f-black m-0"
@@ -86,6 +96,7 @@ export default {
     return {
       visible: false,
       type: 1,
+      query: '',
     }
   },
 
@@ -109,11 +120,21 @@ export default {
         status: null,
       })
     },
-    search(e) {
+    search() {
+      let path = ''
+      if (this.type === 1) {
+        path = '/product/search'
+      } else {
+        path = '/service/search'
+      }
+
       this.$router.push({
-        path: '/search',
-        query: { query: e.target.value },
+        path,
+        query: { query: this.query },
       })
+    },
+    onChange(e) {
+      this.query = e.target.value
     },
     getSearchType(type) {
       // this will save on vuex level so it will handle globaly without handling indiviualy

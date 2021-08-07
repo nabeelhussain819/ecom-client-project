@@ -4,19 +4,19 @@
       <a-row :gutter="16">
         <a-col :xs="24" :sm="17">
           <image-slider :images="images" />
-          <h1 :title="product.name" class="primary-text">
-            ${{ product.price }} {{ product.name }}
+          <h1 :title="service.name" class="primary-text">
+            ${{ service.price }} {{ service.name }}
           </h1>
           <a-divider></a-divider>
-          <div>{{ product.categoryDetails }}</div>
+          <div>{{ service.categoryDetails }}</div>
           <a-divider></a-divider>
           <h2 class="heading">Description</h2>
-          {{ product.description }}
+          {{ service.description }}
 
           <h4 class="heading">Attributes</h4>
-          <ul v-if="product.category">
+          <ul v-if="service.category">
             <li
-              v-for="attribute in product.category.attributes"
+              v-for="attribute in service.category.attributes"
               :key="attribute.id"
             >
               <strong>{{ attribute.name }}: </strong>
@@ -29,18 +29,17 @@
           </ul>
         </a-col>
         <a-col :xs="24" :sm="7">
-          <owner-detail :product="product" />
+          <owner-detail :service="service" />
           <map-view />
         </a-col>
         <a-col :xs="24">
           <related-category />
         </a-col>
-      </a-row>
-    </div>
-  </a-skeleton>
+      </a-row></div
+  ></a-skeleton>
 </template>
 <script>
-import Product from '~/services/API/ProductServices'
+import Services from '~/services/API/Services'
 import imageSlider from '~/components/sliders/ImageSlider'
 import OwnerDetail from '~/components/products/OwnerDetail'
 import mapView from '~/components/maps/MapView'
@@ -55,20 +54,20 @@ export default {
     RelatedCategory,
   },
   data() {
-    return { loading: false, product: {}, images: [], values: {} }
+    return { loading: false, service: {}, images: [], values: {} }
   },
   mounted() {
-    this.getProduct(this.$route.params.id)
+    this.getService(this.$route.params.id)
   },
   methods: {
-    getProduct(id) {
+    getService(id) {
       this.loading = true
-      Product.get(id)
-        .then((product) => {
-          this.product = product
-          this.getImages(product)
+      Services.get(id)
+        .then((service) => {
+          this.service = service
+          this.getImages(service)
 
-          product.products_attributes.map(
+          service.services_attributes.map(
             (a) => (this.values[a.attribute_id] = a.value)
           )
         })
@@ -76,10 +75,10 @@ export default {
           this.loading = false
         })
     },
-    getImages(product) {
-      if (!isEmpty(product.media)) {
+    getImages(service) {
+      if (!isEmpty(service.media)) {
         const tempImage = []
-        product.media.map((images) => tempImage.push(images.url))
+        service.media.map((images) => tempImage.push(images.url))
         this.images = tempImage
         return []
       }
