@@ -10,6 +10,7 @@
   </a-row>
 </template>
 <script>
+import ProductServices from '~/services/API/ProductServices'
 export default {
   props: {
     product: {
@@ -19,7 +20,7 @@ export default {
   },
   methods: {
     save() {
-      console.log(this.product)
+      ProductServices.saved(this.product.guid, {}).then()
     },
   },
 }

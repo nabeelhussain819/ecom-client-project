@@ -76,6 +76,14 @@ function search(params = {}) {
   })
 }
 
+function saved(productId, data) {
+  return request({
+    url: `${baseUrl}/saved-users/${productId}`,
+    data,
+    method: 'POST',
+  })
+}
+
 const ProductServices = {
   all,
   save,
@@ -87,6 +95,7 @@ const ProductServices = {
   removeImage,
   self,
   search,
+  saved,
 }
 
 export default ProductServices
