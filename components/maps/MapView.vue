@@ -1,7 +1,7 @@
 <template>
   <client-only>
     <GmapMap
-      :center="{ lat: 24.8621536, lng: 67.0701651 }"
+      :center="{ lat: parseInt(lat), lng: parseInt(lng) }"
       :zoom="16"
       map-type-id="terrain"
       style="width: 100%; height: 300px"
@@ -19,6 +19,10 @@
 </template>
 <script>
 export default {
+  props: {
+    lat: { default: 0, type: Number, required: true },
+    lng: { default: 0, type: Number, required: true },
+  },
   data() {
     return { markers: [] }
   },

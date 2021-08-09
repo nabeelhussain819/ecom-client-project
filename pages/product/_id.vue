@@ -14,23 +14,28 @@
           {{ product.description }}
 
           <h4 class="heading">Attributes</h4>
-          <ul v-if="product.category">
-            <li
+
+          <a-descriptions v-if="product.category" title="Properties" bordered>
+            <a-descriptions-item
               v-for="attribute in product.category.attributes"
               :key="attribute.id"
+              :label="attribute.name"
             >
-              <strong>{{ attribute.name }}: </strong>
               {{
                 Array.isArray(values[attribute.id])
                   ? values[attribute.id].join(', ')
                   : values[attribute.id]
-              }}
-            </li>
-          </ul>
+              }}</a-descriptions-item
+            >
+          </a-descriptions>
         </a-col>
         <a-col :xs="24" :sm="7">
           <owner-detail :product="product" />
-          <map-view />
+          <map-view
+            v-if="product"
+            :lat="product.latitude"
+            :lng="product.longitude"
+          />
         </a-col>
         <a-col :xs="24">
           <related-category />
