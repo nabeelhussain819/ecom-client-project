@@ -31,7 +31,7 @@
         />
       </a-form-item>
 
-      <a-form-item label="Password">
+      <a-form-item label="Password" :span: 16>
         <a-input
           v-decorator="[
             'password',
@@ -44,7 +44,7 @@
           type="password"
         />
       </a-form-item>
-      <a-form-item label="Confirm Password">
+      <a-form-item label="Confirm Password" :span: 16>
         <a-input
           v-decorator="[
             'password_confirmation',
@@ -60,11 +60,6 @@
     </a-form>
   </div>
 </template>
-<style scoped>
-.ant-col-12 {
-  padding: 10px;
-}
-</style>
 
 <script>
 import SocialLogin from './SocialLogin.vue'
@@ -123,3 +118,8 @@ export default {
   },
 }
 </script>
+<style scoped>
+.ant-col-12 {
+  padding: 10px;
+}
+</style>
