@@ -159,7 +159,17 @@ body,
 .loginBtn--google:focus {
   background: #e74b37;
 }
-
-
-
 // ================ Maaz styling ==============
+div.ant-modal-title:after {
+  content: "" !important;
+  width: 140px;
+  border: 1px solid #ec2a8b;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 47px;
+}
+.ant-modal-header{
+  border: 0;
+}

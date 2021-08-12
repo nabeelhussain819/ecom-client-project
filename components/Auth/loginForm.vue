@@ -48,8 +48,14 @@
           LOGIN
         </a-button>
       </a-form-item>
-      <a @click="showModal">Forgotten Password?</a>
-
+      <a-row type="flex" justify="center" :style="{ fontWeight: 600 }">
+        <a-col class="text-center" :span="24" @click="showModal"
+          >Forgotten Password?</a-col
+        >
+        <a-col class="text-center" :span="24"
+          >Don't have an account?&nbsp;<a> Sign Up</a></a-col
+        >
+      </a-row>
       <a-modal
         title="Reset Password"
         :visible="visible"

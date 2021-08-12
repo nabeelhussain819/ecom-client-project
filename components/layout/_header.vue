@@ -4,11 +4,13 @@
     <a-menu
       class="header_nav"
       mode="horizontal"
-      :style="{ lineHeight: '64px', float: 'right' }"
+      :style="{ lineHeight: '40px', float: 'right' }"
     >
       <a-menu-item key="5" class="no-hover-nav search-bar">
+        <a-icon type="search" class="icon_search" />
         <a-input
           id="search-input"
+          class="search-input"
           placeholder="Search"
           @pressEnter="search"
           @change="onChange"
@@ -36,6 +38,26 @@
           </template>
         </a-input>
       </a-menu-item>
+      <a-menu-item>
+        <nuxt-link to="">
+          <a-icon
+            type="environment"
+            theme="filled"
+            :style="{
+              background: '#AD1457',
+              padding: '8' + 'px',
+              borderRadius: '50%',
+            }"
+          />
+          Near by
+        </nuxt-link>
+      </a-menu-item>
+      <a-menu-item key="4" class="btn_post">
+        <nuxt-link to="/post/choose">
+          <a-icon type="plus" class="plus_icon" />
+          Post
+        </nuxt-link>
+      </a-menu-item>
       <a-menu-item key="1">
         <nuxt-link to="/">Home</nuxt-link>
       </a-menu-item>
@@ -45,12 +67,6 @@
 
       <a-menu-item v-if="!isAuth" key="3">
         <RegisterModal />
-      </a-menu-item>
-      <a-menu-item key="4">
-        <nuxt-link to="/post/choose">
-          <a-icon type="plus-circle" />
-          Post
-        </nuxt-link>
       </a-menu-item>
       <a-sub-menu v-if="isAuth" class="header-menu">
         <span slot="title" class="submenu-title-wrapper"

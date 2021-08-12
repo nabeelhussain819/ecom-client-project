@@ -13,7 +13,7 @@
       border-color: transparent;
     }
     #search-input {
-      padding: 25px 15px;
+      padding: 25px 15px 25px 35px;
       color: white;
       min-width: 300px;
     }
@@ -27,6 +27,7 @@
       background-color: transparent;
       color: rgba(204, 203, 203, 0.952);
     }
+
     .ant-input,
     .ant-divider,
     .ant-input-group-addon,
@@ -44,4 +45,56 @@
       color: white;
     }
   }
+
+// Maaz Styling //
+.ant-menu-item{
+  border: none !important;
+
+}
+  header .ant-menu-horizontal .ant-menu-item:hover {
+    border: none !important;
+  }
+  // header .ant-menu-horizontal .ant-menu-item:hover,  .ant-menu-item:hover
+  // {
+  //   background-color: black;
+
+  // }
+  header .ant-menu-horizontal .ant-menu-item a:hover,
+  .ant-menu-item div:hover {
+    text-decoration: none;
+  }
+}
+.ant-menu-horizontal {
+  > .ant-menu-item {
+    vertical-align: middle;
+  }
+}
+
+header {
+  padding: 20px 60px !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#search-input {
+  padding-left: 30px !important;
+}
+.icon_search {
+  position: absolute;
+  left: 32px;
+  pointer-events: none;
+  top: 21px;
+  z-index: 9;
+}
+.btn_post {
+  background-color: black !important;
+  padding: 0px 20px;
+  font-size: 13px;
+  height: 40px;
+}
+.plus_icon {
+  margin-right: 0px;
+}
+.go-btn {
+  background: #ad1457;
 }
