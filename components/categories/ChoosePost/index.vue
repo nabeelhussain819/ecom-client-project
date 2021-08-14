@@ -14,6 +14,7 @@
               :image="image"
               title="Sale Item"
               alignment="middle"
+              class="tile_hover"
               @click="chooseCategory(PRODUCT_ID)"
             />
           </a-col>
@@ -22,6 +23,7 @@
               :image="image"
               title="Provide Services"
               alignment="middle"
+              class="tile_hover"
               @click="chooseCategory(CATEGORY_ID)"
             />
           </a-col>
@@ -52,3 +54,8 @@ export default {
   },
 }
 </script>
+<style scoped>
+.tile_hover:hover {
+  background-color: #ffd1d8e0;
+}
+</style>
