@@ -25,9 +25,9 @@
       box-shadow: none;
       border: 0;
       background-color: transparent;
-      color: rgba(204, 203, 203, 0.952);
+      color: rgba(233, 233, 233, 0.952);
     }
-
+ 
     .ant-input,
     .ant-divider,
     .ant-input-group-addon,
@@ -42,6 +42,7 @@
       color: white;
     }
     .go-btn {
+      background-color: #bb126775;
       color: white;
     }
   }
@@ -49,24 +50,16 @@
 // Maaz Styling //
 .ant-menu-item{
   border: none !important;
-
 }
-  header .ant-menu-horizontal .ant-menu-item:hover {
-    border: none !important;
-  }
-  // header .ant-menu-horizontal .ant-menu-item:hover,  .ant-menu-item:hover
-  // {
-  //   background-color: black;
-
-  // }
   header .ant-menu-horizontal .ant-menu-item a:hover,
   .ant-menu-item div:hover {
     text-decoration: none;
+    color: black;
   }
 }
 .ant-menu-horizontal {
   > .ant-menu-item {
-    vertical-align: middle;
+    vertical-align: middle !important;
   }
 }
 
@@ -91,6 +84,7 @@ header {
   padding: 0px 20px;
   font-size: 13px;
   height: 40px;
+  color: #fff !important;
 }
 .plus_icon {
   margin-right: 0px;

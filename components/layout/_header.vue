@@ -1,7 +1,11 @@
 <template>
   <a-layout-header class="clearfix header">
-    <img src="#" class="logo" />
+    <!-- <img src="#" class="logo" /> -->
+
+    <!-- remove heading when apply logo-->
+    <h1 style="color: white">LOGO</h1>
     <a-menu
+      placeholder="check"
       class="header_nav"
       mode="horizontal"
       :style="{ lineHeight: '40px', float: 'right' }"
@@ -33,7 +37,7 @@
             </a-button>
             <a-divider type="vertical" />
             <a-button class="go-btn" type="primary" @click="search">
-              Go
+              GO
             </a-button>
           </template>
         </a-input>
