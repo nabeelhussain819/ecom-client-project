@@ -3,56 +3,74 @@
   <div>
     <social-login />
     <a-form :form="form" @submit="handleSubmit">
-      <a-form-item label="Name">
-        <a-input
-          v-decorator="[
-            'name',
-            {
-              rules: [
-                { required: true, message: 'Please input your First Name!' },
-              ],
-            },
-          ]"
-        />
-      </a-form-item>
-      <a-form-item label="Email">
-        <a-input
-          v-decorator="[
-            'email',
-            {
-              rules: [
+      <a-row>
+        <a-col :span="12">
+          <a-form-item label="Name">
+            <a-input
+              v-decorator="[
+                'name',
                 {
-                  required: true,
-                  message: 'Please input your enter your email!',
+                  rules: [
+                    {
+                      required: true,
+                      message: 'Please input your First Name!',
+                    },
+                  ],
                 },
-              ],
-            },
-          ]"
-        />
-      </a-form-item>
+              ]"
+            />
+          </a-form-item>
+        </a-col>
+        <a-col :span="12">
+          <a-form-item label="Email">
+            <a-input
+              v-decorator="[
+                'email',
+                {
+                  rules: [
+                    {
+                      required: true,
+                      message: 'Please input your enter your email!',
+                    },
+                  ],
+                },
+              ]"
+              span="6"
+            />
+          </a-form-item>
+        </a-col>
+      </a-row>
 
-      <a-form-item label="Password" :span: 16>
-        <a-input
-          v-decorator="[
-            'password',
-            {
-              rules: [
-                { required: true, message: 'Please input your password' },
-              ],
-            },
-          ]"
-          type="password"
-        />
-      </a-form-item>
-      <a-form-item label="Confirm Password" :span: 16>
-        <a-input
-          v-decorator="[
-            'password_confirmation',
-            { rules: [{ required: true, message: 'Passwords dont match' }] },
-          ]"
-          type="password"
-        />
-      </a-form-item>
+      <a-row>
+        <a-col :span="12">
+          <a-form-item label="Password">
+            <a-input
+              v-decorator="[
+                'password',
+                {
+                  rules: [
+                    { required: true, message: 'Please input your password' },
+                  ],
+                },
+              ]"
+              type="password"
+            />
+          </a-form-item>
+        </a-col>
+        <a-col :span="12">
+          <a-form-item label="Confirm Password">
+            <a-input
+              v-decorator="[
+                'password_confirmation',
+                {
+                  rules: [{ required: true, message: 'Passwords dont match' }],
+                },
+              ]"
+              type="password"
+            />
+          </a-form-item>
+        </a-col>
+      </a-row>
 
       <a-form-item>
         <a-button block type="primary" html-type="submit"> SIGN UP </a-button>
@@ -72,7 +90,7 @@ export default {
   },
   data() {
     return {
-      formLayout: 'horizontal',
+      formLayout: 'inline',
       form: this.$form.createForm(this, {
         name: 'coordinated',
       }),

@@ -12,6 +12,11 @@
 @import 'partials/_header';
 @import 'components/saveAndshare';
 
+.ant-layout {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: #bcc1c7;
+}
 body,
 .ant-layout {
   background-color: white;
@@ -159,7 +164,112 @@ body,
 .loginBtn--google:focus {
   background: #e74b37;
 }
-
-
-
 // ================ Maaz styling ==============
+.ant-menu-item .btn_post:hover{
+  color: #fff;
+
+}
+.ant-menu-submenu-title:hover{
+border: 0px;
+}
+.ant-menu-horizontal > .ant-menu-submenu{
+  border-bottom: 0px !important;
+  vertical-align: middle !important;
+}
+.ant-menu-item .anticon, .ant-menu-submenu-title .anticon {
+  font-size: 13px !important;
+}
+.ant-menu-item .anticon, .ant-menu-submenu-title .anticon:hover {
+color: #fff;
+}
+
+div.ant-modal-title:after {
+  content: '' !important;
+  width: 140px;
+  border: 1px solid #ec2a8b;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 47px;
+}
+.ant-modal-header {
+  border: 0;
+}
+//  Product-Category styling ==============
+.ant-menu-horizontal > .ant-menu-item-selected,
+.ant-menu-horizontal > .ant-menu-submenu-selected {
+  color: black;
+  border-bottom: 0px !important;
+}
+.main-filter {
+  .ant-card-head {
+    background-color: black !important;
+    .ant-card-head-title {
+      color: white;
+    }
+  }
+  .ant-card-body {
+    padding: 0;
+    .ant-list-item {
+      margin: 0;
+      padding: 8px 12px;
+      border-bottom: 1px solid rgb(232, 232, 232);
+      // &:last-child{
+      //   border-bottom:none;
+      // }
+    }
+  }
+}
+.ant-select-selection {
+  border-radius: 0px;
+}
+.ant-list-item {
+  > a {
+    color: #999999;
+    font-weight: 500;
+    padding: 5px;
+    line-height: 35px;
+  }
+}
+.container {
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 30px;
+}
+.product_nav {
+  float: right !important;
+}
+.product-nav-width {
+  width: 70%;
+  height: fit-content;
+  margin-left: 5%;
+}
+.side_nav {
+  width: 100%;
+  min-height: 58px !important;
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2%;
+}
+.card-style {
+  margin-bottom: 7%;
+}
+.nav_style {
+  background-color: transparent;
+  color: black;
+  border: none;
+  font-weight: 500;
+  > .ant-menu-item {
+    border-radius: 5px;
+    border: none;
+    &:hover {
+      text-decoration: none;
+      background-color: #ec2a8b;
+      color: white !important;
+      border-radius: 5px;
+      border: none;
+    }
+  }
+}

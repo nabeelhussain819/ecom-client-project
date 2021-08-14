@@ -2,7 +2,7 @@
   <div>
     <div @click="showRegisterModal">Sign Up</div>
     <a-modal
-      title="Register Form"
+      title="Signup Form"
       :visible="visible"
       :confirm-loading="confirmLoading"
       footer=""
