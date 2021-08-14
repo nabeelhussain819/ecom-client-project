@@ -1,7 +1,12 @@
 <template>
   <a-row class="saveAndshare">
     <a-col :xs="{ span: 2 }" :sm="{ span: 11 }">
-      <a-button type="" @click="save" icon="heart"> Save </a-button></a-col
+      <a-button @click="save(!isSaved)">
+        <span v-if="isSaved">
+          <a-icon theme="filled" type="heart" /> Unsave
+        </span>
+        <span v-else> <a-icon type="heart" /> Save </span>
+      </a-button></a-col
     >
     <a-col :xs="{ span: 2 }"> <a-divider type="vertical" /></a-col>
     <a-col :xs="{ span: 2 }" :sm="{ span: 11 }">
@@ -18,8 +23,17 @@ export default {
       default: () => {},
     },
   },
+  data() {
+    return {
+      isSaved: false,
+    }
+  },
+  mounted() {
+    this.isSaved = this.product.isSaved
+  },
   methods: {
-    save() {
+    save(isSaved) {
+      this.isSaved = isSaved
       ProductServices.saved(this.product.guid, {}).then()
     },
   },

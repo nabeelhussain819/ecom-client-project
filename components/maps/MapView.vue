@@ -20,8 +20,8 @@
 <script>
 export default {
   props: {
-    lat: { default: 0, type: Number, required: true },
-    lng: { default: 0, type: Number, required: true },
+    lat: { default: '0', type: String, required: true },
+    lng: { default: '0', type: String, required: true },
   },
   data() {
     return { markers: [] }
