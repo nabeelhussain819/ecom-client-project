@@ -3,7 +3,7 @@
     <div v-if="$route.query.category === undefined" class="container-main">
       <a-row type="flex" justify="center">
         <a-row>
-          <a-col flex="25%" class="card-style main-filter">
+          <a-col flex="21%" class="card-style main-filter">
             <a-card title="Categories" style="width: 250px">
               <a-list
                 item-layout="horizontal"
@@ -74,46 +74,20 @@
               </a-row>
             </div>
             <a-row>
-              <a-col :span="6">
-                <a-card hoverable style="width: auto" class="product_card">
-                  <img slot="cover" alt="Brand Img" :src="image" />
-                  <a-card-meta title="Card Title">
-                    www.example.com
-                  </a-card-meta>
-                  <p>$45</p>
-                  <span>Fort WorthFx</span>
-                </a-card>
-              </a-col>
-              <a-col :span="6">
-                <a-card hoverable style="width: auto" class="product_card">
-                  <img slot="cover" alt="Brand Img" :src="image" />
-                  <a-card-meta title="Card Title">
-                    www.example.com
-                  </a-card-meta>
-                  <p>$45</p>
-                  <span>Fort WorthFx</span>
-                </a-card>
-              </a-col>
-              <a-col :span="6">
-                <a-card hoverable style="width: auto" class="product_card">
-                  <img slot="cover" alt="Brand Img" :src="image" />
-                  <a-card-meta title="Card Title">
-                    www.example.com
-                  </a-card-meta>
-                  <p>$45</p>
-                  <span>Fort WorthFx</span>
-                </a-card>
-              </a-col>
-              <a-col :span="6">
-                <a-card hoverable style="width: auto" class="product_card">
-                  <img slot="cover" alt="Brand Img" :src="image" />
-                  <a-card-meta title="Card Title">
-                    www.example.com
-                  </a-card-meta>
-                  <p>$45</p>
-                  <span>Fort WorthFx</span>
-                </a-card>
-              </a-col>
+              <a-list :data-source="results">
+                <a-list-item>
+                  <a-col :span="6">
+                    <a-card hoverable style="width: auto" class="product_card">
+                      <img slot="cover" alt="Brand Img" :src="image" />
+                      <a-card-meta title="Card Title">
+                        www.example.com
+                      </a-card-meta>
+                      <p>$45</p>
+                      <span class="address">Fort WorthFx</span>
+                    </a-card>
+                  </a-col>
+                </a-list-item>
+              </a-list>
             </a-row>
           </a-col>
         </Content>
@@ -131,28 +105,34 @@
     </div>
     <a-divider />
     <div>
-      <a-list :grid="{ gutter: 16, column: 4 }" :data-source="results">
-        <a-list-item slot="renderItem" slot-scope="result">
-          <a-card
-            :key="Search"
-            :title="`Rs. ${result.price}`"
-            style="cursor: pointer"
-            @click="resultsDetails(result.guid)"
-          >
-            <p>{{ result.name }}</p>
-            <a-row>
-              <a-col span="12">
-                <div v-html="`${result.google_address}`" />
-              </a-col>
-              <a-col span="12">
-                <div style="float: right">
-                  {{ moment(result.created_at).fromNow() }}
+      <a-row type="flex" justify="auto" class="container_bottem">
+        <a-list :data-source="results">
+          <a-list-item slot="renderItem" slot-scope="result">
+            <a-card
+              :key="Search"
+              :title="`Rs. ${result.price}`"
+              class="product_card_bottom"
+              @click="resultsDetails(result.guid)"
+            >
+              <img slot="cover" alt="Brand Img" :src="image" />
+
+              <p>{{ result.name }}</p>
+              <a-row>
+                <div class="address_time">
+                  <a-col span="12">
+                    <div class="address" v-html="`${result.google_address}`" />
+                  </a-col>
+                  <a-col span="12">
+                    <div>
+                      {{ moment(result.created_at).fromNow() }}
+                    </div>
+                  </a-col>
                 </div>
-              </a-col>
-            </a-row>
-          </a-card>
-        </a-list-item>
-      </a-list>
+              </a-row>
+            </a-card>
+          </a-list-item>
+        </a-list>
+      </a-row>
     </div>
   </div>
 </template>
@@ -230,8 +210,3 @@ export default {
   },
 }
 </script>
-<style scoped>
-.product_card {
-  margin: 0px 5px !important;
-}
-</style>

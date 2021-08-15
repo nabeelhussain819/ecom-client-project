@@ -1,12 +1,7 @@
 <template>
   <div>
     <a-layout-footer class="footer-newsletter">
-      <a-row
-        type="flex"
-        justify="space-around"
-        align="middle"
-        :gutter="{ xs: 15, md: 14 }"
-      >
+      <a-row type="flex" justify="space-around" align="middle">
         <a-col :span="5">
           <h2>Join Our NewsLetter Now</h2>
           <p>Register now to get updates on promotions</p>

@@ -1,6 +1,6 @@
 <template>
   <a-col :xs="24" :span="12">
-    <h1 style="text-align: center">Post Your Ad</h1>
+    <h1 style="text-align: center; margin: 15px 0px">Post Your Ad</h1>
     <choose-post @getPostType="getPostType" />
   </a-col>
 </template>

@@ -1,9 +1,7 @@
 <template>
   <a-layout-header class="clearfix header">
-    <!-- <img src="#" class="logo" /> -->
+    <router-link to="/"><img src="#" /></router-link>
 
-    <!-- remove heading when apply logo-->
-    <h1 style="color: white">LOGO</h1>
     <a-menu
       placeholder="check"
       class="header_nav"
@@ -44,15 +42,7 @@
       </a-menu-item>
       <a-menu-item>
         <nuxt-link to="">
-          <a-icon
-            type="environment"
-            theme="filled"
-            :style="{
-              background: '#AD1457',
-              padding: '8' + 'px',
-              borderRadius: '50%',
-            }"
-          />
+          <a-icon type="environment" theme="filled" class="icon_nearby" />
           Near by
         </nuxt-link>
       </a-menu-item>
@@ -92,7 +82,7 @@
         >
           My Profile
         </a-menu-item>
-        <a-menu-item key="accoutn" class="f-black m-0">
+        <a-menu-item key="accountn" class="f-black m-0">
           My Account
         </a-menu-item>
         <a-menu-item key="Logout" class="f-black m-0" @click="logout">
