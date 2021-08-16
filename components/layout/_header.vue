@@ -92,22 +92,17 @@
         </a-sub-menu>
       </a-menu>
     </a-layout-header>
-    <div>
-      <Message />
-    </div>
   </div>
 </template>
 
 <script>
 import RegisterModal from '~/components/Auth/RegisterModal'
 import LoginModal from '~/components/Auth/LoginModal'
-import Message from '~/components/layout/Message'
 
 export default {
   components: {
     RegisterModal,
     LoginModal,
-    Message,
   },
   data() {
     return {
