@@ -15,7 +15,7 @@
         v-for="conversation in conversations"
         :key="conversation.id"
         class="left-inner"
-        @click="fetchMessages(conversation.recipient_id)"
+        @click="fetchMessages(conversation)"
       >
         <div>
           <a-avatar
@@ -98,13 +98,18 @@ export default {
     UserServices.conversations().then((conversations) => {
       this.conversations = conversations
       if (conversations.length > 0) {
-        this.fetchMessages(conversations[0].recipient_id)
+        this.fetchMessages(conversations[0])
       }
     })
   },
   methods: {
-    fetchMessages(userId) {
-      UserServices.messages(userId).then((res) => (this.messages = res.data))
+    fetchMessages(conversation) {
+      const loggedInUser = this.$store.getters.getUser
+      UserServices.messages(
+        loggedInUser.id === conversation.sender_id
+          ? conversation.recipient_id
+          : conversation.sender_id
+      ).then((res) => (this.messages = res.data))
     },
   },
 }
