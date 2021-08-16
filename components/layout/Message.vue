@@ -62,14 +62,10 @@
       </div>
       <div class="msg_text_area">
         <a-form-item class="msg_area">
-          <a-textarea
-            :rows="4"
-            placeholder="Type Message"
-            @change="handleChange"
-          />
+          <a-textarea :rows="4" placeholder="Type Message" />
         </a-form-item>
         <a-form-item>
-          <a-button type="primary" @click="handleSubmit"> Submit</a-button>
+          <a-button type="primary"> Submit</a-button>
         </a-form-item>
       </div>
     </div>
@@ -99,9 +95,12 @@ export default {
     }
   },
   beforeMount() {
-    UserServices.conversations().then(
-      (conversations) => (this.conversations = conversations)
-    )
+    UserServices.conversations().then((conversations) => {
+      this.conversations = conversations
+      if (conversations.length > 0) {
+        this.fetchMessages(conversations[0].recipient_id)
+      }
+    })
   },
   methods: {
     fetchMessages(userId) {
