@@ -25,6 +25,12 @@ function upload(data) {
   })
 }
 
+function conversations() {
+  return request({
+    url: `${baseUrl}conversations`,
+  })
+}
+
 function messages(id, params = {}) {
   return request({
     url: `${baseUrl}${id}/messages`,
@@ -37,6 +43,7 @@ const UserService = {
   detail,
   upload,
   messages,
+  conversations,
 }
 
 export default UserService

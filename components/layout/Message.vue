@@ -11,7 +11,12 @@
     <div class="message_left">
       <h1 class="msg_heading">Conversation</h1>
       <a-divider />
-      <div class="left-inner">
+      <div
+        v-for="conversation in conversations"
+        :key="conversation.id"
+        class="left-inner"
+        @click="fetchMessages(conversation.recipient_id)"
+      >
         <div>
           <a-avatar
             slot="avatar"
@@ -21,9 +26,9 @@
           />
         </div>
         <div class="name_message">
-          <a slot="author">Han Solo</a>
+          <a slot="author">{{ conversation.recipient_name }}</a>
           <p slot="" class="show_message">
-            "Messagesdvdsvv fdsfesfsdv fwfefewf dsfewfc"
+            {{ conversation.data }}
           </p>
         </div>
       </div>
@@ -38,20 +43,17 @@
       />
       <a-divider />
       <div class="section_scrollable">
-        <a-list class="comment-list" :data-source="data">
-          <a-list-item slot="renderItem" slot-scope="item">
+        <a-list class="comment-list" :data-source="messages">
+          <a-list-item slot="renderItem" slot-scope="message">
             <!-- <template slot="actions">
               <span>{{ action }}</span>
             </template> -->
             <p slot="" class="msg_para">
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab,
-              nulla? Sequi vitae adipisci eos corrupti repudiandae, voluptas
-              laboriosam veniam voluptatum dolorem provident placeat id
-              asperiores pariatur quod laborum est? Nesciunt!"
+              {{ message.data }}
             </p>
             <a-tooltip
               slot="datetime"
-              :title="item.datetime.format('YYYY-MM-DD HH:mm:ss')"
+              :title="moment(message.created_at).format('YYYY-MM-DD HH:mm:ss')"
             >
               <span>show date/time</span>
             </a-tooltip>
@@ -67,7 +69,7 @@
           />
         </a-form-item>
         <a-form-item>
-          <a-button type="primary" @click="handleSubmit"> Submit </a-button>
+          <a-button type="primary" @click="handleSubmit"> Submit</a-button>
         </a-form-item>
       </div>
     </div>
@@ -75,6 +77,8 @@
 </template>
 <script>
 import moment from 'moment'
+import UserServices from '~/services/API/UserServices'
+
 export default {
   data() {
     return {
@@ -89,8 +93,20 @@ export default {
           datetime: moment().subtract(1, 'days'),
         },
       ],
+      conversations: [],
+      messages: [],
       moment,
     }
+  },
+  beforeMount() {
+    UserServices.conversations().then(
+      (conversations) => (this.conversations = conversations)
+    )
+  },
+  methods: {
+    fetchMessages(userId) {
+      UserServices.messages(userId).then((res) => (this.messages = res.data))
+    },
   },
 }
 </script>
@@ -105,12 +121,14 @@ export default {
   padding: 10px;
   margin-bottom: 20px;
 }
+
 .message_left,
 .section_scrollable {
   overflow-y: auto;
   position: relative;
   margin-left: -5px;
 }
+
 .message_left {
   width: 25% !important;
   float: left;
@@ -122,6 +140,7 @@ export default {
   position: relative;
   margin-left: -5px;
 }
+
 .left-inner {
   background-color: gainsboro;
   border-radius: 5px;
@@ -130,15 +149,18 @@ export default {
   justify-content: flex-start;
   align-items: center;
 }
+
 .name_message {
   display: flex !important;
   flex-direction: column;
   width: 50%;
   margin-left: 20px;
 }
+
 .msg_heading {
   text-align: center;
 }
+
 .show_message {
   text-overflow: ellipsis;
   width: 45%;
@@ -146,38 +168,46 @@ export default {
   overflow: hidden;
   white-space: nowrap;
 }
+
 .message_right {
   padding: 20px;
   float: right;
   width: 75% !important;
   min-height: 500px;
 }
+
 .avatar_right {
   display: flex;
   justify-content: space-around;
   margin-left: 20px;
 }
+
 .comment-list {
   display: flex;
 }
+
 .msg_avatar {
   width: 40px;
   height: auto;
   border-radius: 50px;
 }
+
 .msg_text_area > .msg_area {
   width: 100%;
 }
+
 .msg_para {
   border-radius: 3px;
   padding: 5px 10px;
   background: #d1d1d1;
 }
+
 .msg_text_area {
   /* position: absolute;
   bottom: 0;
   width: 100%; */
 }
+
 .msg_text_area {
   display: flex;
   justify-content: space-between;
