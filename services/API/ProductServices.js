@@ -84,6 +84,14 @@ function saved(productId, data) {
   })
 }
 
+function offer(id, data) {
+  return request({
+    url: `${baseUrl}/${id}/offer`,
+    data,
+    method: 'POST',
+  })
+}
+
 const ProductServices = {
   all,
   save,
@@ -96,6 +104,7 @@ const ProductServices = {
   self,
   search,
   saved,
+  offer,
 }
 
 export default ProductServices
