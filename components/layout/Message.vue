@@ -62,10 +62,15 @@
       </div>
       <div class="msg_text_area">
         <a-form-item class="msg_area">
-          <a-textarea :rows="4" placeholder="Type Message" />
+          <a-textarea
+            v-model="messageText"
+            :rows="4"
+            placeholder="Type Message"
+            @pressEnter="sendMessage"
+          />
         </a-form-item>
         <a-form-item>
-          <a-button type="primary"> Submit</a-button>
+          <a-button type="primary" @click="sendMessage"> Submit</a-button>
         </a-form-item>
       </div>
     </div>
@@ -90,7 +95,9 @@ export default {
         },
       ],
       conversations: [],
+      active: {},
       messages: [],
+      messageText: '',
       moment,
     }
   },
@@ -104,12 +111,18 @@ export default {
   },
   methods: {
     fetchMessages(conversation) {
+      this.active = conversation
       const loggedInUser = this.$store.getters.getUser
       UserServices.messages(
         loggedInUser.id === conversation.sender_id
           ? conversation.recipient_id
           : conversation.sender_id
       ).then((res) => (this.messages = res.data))
+    },
+    sendMessage() {
+      UserServices.sendMessage(this.active.recipient_id, {
+        message: this.messageText,
+      }).then(() => this.fetchMessages(this.active))
     },
   },
 }
