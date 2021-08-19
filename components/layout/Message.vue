@@ -92,6 +92,9 @@ export default {
       loading: true,
     }
   },
+  mounted() {
+    this.catchEvent()
+  },
   beforeMount() {
     UserServices.conversations()
       .then((conversations) => {
@@ -103,6 +106,12 @@ export default {
       .finally(() => (this.loading = false))
   },
   methods: {
+    catchEvent() {
+      window.Echo.channel('messages').listen('MessageReceived', (e) => {
+        console.log('ad')
+        console.log(e)
+      })
+    },
     fetchMessages(conversation) {
       this.active = conversation
       const loggedInUser = this.$store.getters.getUser
@@ -120,7 +129,10 @@ export default {
       UserServices.sendMessage(this.active.recipient_id, {
         message: this.messageText,
       })
-        .then(() => this.fetchMessages(this.active))
+        .then(() => {
+          this.fetchMessages(this.active)
+          this.messageText = null
+        })
         .finally(() => (this.loading = false))
     },
   },
