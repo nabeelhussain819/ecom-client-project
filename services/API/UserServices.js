@@ -38,12 +38,21 @@ function messages(id, params = {}) {
   })
 }
 
+function sendMessage(id, data) {
+  return request({
+    url: `${baseUrl}${id}/send-message`,
+    data,
+    method: 'POST',
+  })
+}
+
 const UserService = {
   all,
   detail,
   upload,
   messages,
   conversations,
+  sendMessage,
 }
 
 export default UserService
