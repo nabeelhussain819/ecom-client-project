@@ -107,7 +107,7 @@ export default {
   },
   methods: {
     catchEvent() {
-      window.Echo.channel('messages').listen('MessageReceived', (e) => {
+      window.Echo.private('messages.1').listen('MessageReceived', (e) => {
         console.log('ad')
         console.log(e)
       })
