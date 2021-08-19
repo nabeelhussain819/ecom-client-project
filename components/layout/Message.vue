@@ -1,8 +1,7 @@
 <template>
   <div
-    v-flex
     class="msg_container"
-    type="flex"
+    :type="flex"
     justify="space-between"
     wrap
     fill-height
@@ -43,7 +42,7 @@
       />
       <a-divider />
       <div class="section_scrollable">
-        <a-list class="comment-list" :data-source="messages">
+        <a-list :loading="loading" class="comment-list" :data-source="messages">
           <a-list-item slot="renderItem" slot-scope="message">
             <!-- <template slot="actions">
               <span>{{ action }}</span>
@@ -83,46 +82,46 @@ import UserServices from '~/services/API/UserServices'
 export default {
   data() {
     return {
-      data: [
-        {
-          // actions: ['Reply to'],
-          author: 'Han Solo',
-          avatar:
-            'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-          content:
-            'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-          datetime: moment().subtract(1, 'days'),
-        },
-      ],
+      data: [],
       conversations: [],
       active: {},
       messages: [],
       messageText: '',
       moment,
+      flex: 'flex',
+      loading: true,
     }
   },
   beforeMount() {
-    UserServices.conversations().then((conversations) => {
-      this.conversations = conversations
-      if (conversations.length > 0) {
-        this.fetchMessages(conversations[0])
-      }
-    })
+    UserServices.conversations()
+      .then((conversations) => {
+        this.conversations = conversations
+        if (conversations.length > 0) {
+          this.fetchMessages(conversations[0])
+        }
+      })
+      .finally(() => (this.loading = false))
   },
   methods: {
     fetchMessages(conversation) {
       this.active = conversation
       const loggedInUser = this.$store.getters.getUser
+      this.loading = true
       UserServices.messages(
         loggedInUser.id === conversation.sender_id
           ? conversation.recipient_id
           : conversation.sender_id
-      ).then((res) => (this.messages = res.data))
+      )
+        .then((res) => (this.messages = res.data))
+        .finally(() => (this.loading = false))
     },
     sendMessage() {
+      this.loading = true
       UserServices.sendMessage(this.active.recipient_id, {
         message: this.messageText,
-      }).then(() => this.fetchMessages(this.active))
+      })
+        .then(() => this.fetchMessages(this.active))
+        .finally(() => (this.loading = false))
     },
   },
 }
