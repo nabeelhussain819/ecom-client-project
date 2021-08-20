@@ -38,6 +38,7 @@ export default {
     },
     { src: '@/plugins/google-maps.js', ssr: false },
     { src: '@/plugins/persistedState.js' },
+    { src: '@/plugins/echo.js', ssr: false },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -51,8 +52,8 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
+    '@nuxtjs/laravel-echo',
   ],
-
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // https://go.nuxtjs.dev/axios

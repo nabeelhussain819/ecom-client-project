@@ -12,7 +12,12 @@
       <h1 class="msg_heading">Conversation</h1>
       <a-divider />
       <div class="msg_list">
-        <div class="left-inner">
+        <div
+          v-for="conversation in conversations"
+          :key="conversation.id"
+          class="left-inner"
+          @click="fetchMessages(conversation)"
+        >
           <div>
             <a-avatar
               slot="avatar"
@@ -22,9 +27,9 @@
             />
           </div>
           <div class="name_message">
-            <a slot="author">Han Solo</a>
+            <a slot="author">{{ conversation.recipient_name }}</a>
             <p slot="" class="show_message">
-              "Messagesdvdsvv fdsfesfsdv fwfefewf dsfewfc"
+              {{ conversation.data }}
             </p>
           </div>
         </div>
@@ -40,36 +45,43 @@
       />
       <a-divider />
       <div class="section_scrollable">
-        <a-list class="comment-list" :data-source="data">
-          <a-list-item slot="renderItem" slot-scope="item">
-            <!-- <template slot="actions">
+        <div class="msg_list">
+          <a-list
+            :loading="loading"
+            class="comment-list"
+            :data-source="messages"
+          >
+            <a-list-item slot="renderItem" slot-scope="message">
+              <!-- <template slot="actions">
               <span>{{ action }}</span>
             </template> -->
-            <p slot="" class="msg_para">
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab,
-              nulla? Sequi vitae adipisci eos corrupti repudiandae, voluptas
-              laboriosam veniam voluptatum dolorem provident placeat id
-              asperiores pariatur quod laborum est? Nesciunt!"
-            </p>
-            <a-tooltip
-              slot="datetime"
-              :title="item.datetime.format('YYYY-MM-DD HH:mm:ss')"
-            >
-              <span>show date/time</span>
-            </a-tooltip>
-          </a-list-item>
-        </a-list>
+              <p slot="" class="msg_para">
+                {{ message.data }}
+              </p>
+              <a-tooltip
+                slot="datetime"
+                :title="
+                  moment(message.created_at).format('YYYY-MM-DD HH:mm:ss')
+                "
+              >
+                <span>show date/time</span>
+              </a-tooltip>
+            </a-list-item>
+          </a-list>
+        </div>
       </div>
+
       <div class="msg_text_area">
         <a-form-item class="msg_area">
           <a-textarea
+            v-model="messageText"
             :rows="4"
             placeholder="Type Message"
-            @change="handleChange"
+            @pressEnter="sendMessage"
           />
         </a-form-item>
         <a-form-item>
-          <a-button type="primary" @click="handleSubmit"> Submit </a-button>
+          <a-button type="primary" @click="sendMessage"> Submit</a-button>
         </a-form-item>
       </div>
     </div>
@@ -77,22 +89,63 @@
 </template>
 <script>
 import moment from 'moment'
+import UserServices from '~/services/API/UserServices'
 export default {
   data() {
     return {
-      data: [
-        {
-          // actions: ['Reply to'],
-          author: 'Han Solo',
-          avatar:
-            'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-          content:
-            'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-          datetime: moment().subtract(1, 'days'),
-        },
-      ],
+      data: [],
+      conversations: [],
+      active: {},
+      messages: [],
+      messageText: '',
       moment,
+      flex: 'flex',
+      loading: true,
     }
+  },
+  mounted() {
+    this.catchEvent()
+  },
+  beforeMount() {
+    UserServices.conversations()
+      .then((conversations) => {
+        this.conversations = conversations
+        if (conversations.length > 0) {
+          this.fetchMessages(conversations[0])
+        }
+      })
+      .finally(() => (this.loading = false))
+  },
+  methods: {
+    catchEvent() {
+      window.Echo.private('messages.1').listen('MessageReceived', (e) => {
+        console.log('ad')
+        console.log(e)
+      })
+    },
+    fetchMessages(conversation) {
+      this.active = conversation
+      const loggedInUser = this.$store.getters.getUser
+      this.loading = true
+      UserServices.messages(
+        loggedInUser.id === conversation.sender_id
+          ? conversation.recipient_id
+          : conversation.sender_id
+      )
+        .then((res) => (this.messages = res.data))
+        .finally(() => (this.loading = false))
+    },
+    sendMessage() {
+      this.loading = true
+      UserServices.sendMessage(this.active.recipient_id, {
+        message: this.messageText,
+      })
+        .then(() => {
+          this.fetchMessages(this.active)
+          this.messageText = null
+        })
+        .finally(() => (this.loading = false))
+    },
   },
 }
 </script>
