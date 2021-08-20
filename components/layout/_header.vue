@@ -44,13 +44,13 @@
         <a-menu-item>
           <nuxt-link to="">
             <a-icon type="environment" theme="filled" class="icon_nearby" />
-            Near by
+            <span class="nearby_txt">Near by</span>
           </nuxt-link>
         </a-menu-item>
         <a-menu-item key="4" class="btn_post">
           <nuxt-link to="/post/choose">
             <a-icon type="plus" class="plus_icon" />
-            Post
+            <span class="post_txt"> Post</span>
           </nuxt-link>
         </a-menu-item>
         <a-menu-item key="1">

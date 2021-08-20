@@ -1,11 +1,20 @@
 <template>
-  <div>
-    <a-card hoverable @click="goto(`/product/${product.guid}`)">
-      <img slot="cover" alt="example" :src="product.cover_image" />
+  <div class="tile_product">
+    <a-card
+      hoverable
+      class="produce_card"
+      @click="goto(`/product/${product.guid}`)"
+    >
+      <img
+        slot="cover"
+        class="tile_img"
+        alt="example"
+        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+      />
+      <!-- :src="product.cover_image" -- /> -->
       <a-card-meta :title="product.name">
         <template slot="description"
           >$ {{ product.price }}
-          <br />
           <span class="loacition" v-html="product.google_address"> </span>
         </template>
       </a-card-meta>
@@ -39,3 +48,18 @@ export default {
   },
 }
 </script>
+<style scoped>
+.tile_product {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.produce_card {
+  min-height: 230px;
+  max-width: 200px;
+  margin: 3px;
+}
+.tile_img {
+  background-size: cover;
+}
+</style>

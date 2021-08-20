@@ -19,7 +19,7 @@
               </a-list>
             </a-card>
           </a-col>
-          <a-row flex="25%">
+          <a-row>
             <a-col style="width: 250px">
               <!-- bottom side select card -->
               <a-select style="width: 250px" placeholder="Pickup Distance">
@@ -77,7 +77,7 @@
               <a-list :data-source="results">
                 <a-list-item>
                   <a-col :span="6">
-                    <a-card hoverable style="width: auto" class="product_card">
+                    <a-card hoverable style="width: 160px" class="product_card">
                       <img slot="cover" alt="Brand Img" :src="image" />
                       <a-card-meta title="Card Title">
                         www.example.com
@@ -105,9 +105,39 @@
     </div>
     <a-divider />
     <div>
-      <a-row type="flex" justify="auto" class="container_bottem">
+      <a-row class="container_bottem">
         <a-list :data-source="results">
           <a-list-item slot="renderItem" slot-scope="result">
+            <a-card
+              hoverable
+              style="width: 160px"
+              :key="Search"
+              class="product_card product_card_bottom"
+              :title="`Rs. ${result.price}`"
+              @click="resultsDetails(result.guid)"
+            >
+              <img
+                slot="cover"
+                alt="Brand Img"
+                src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+              />
+              <!-- :src="image" -->
+              <a-card-meta title="">
+                {{ result.name }}
+              </a-card-meta>
+              <!-- <div class="address" v-html="`${result.google_address}`" /> -->
+              <span class="address" v-html="`${result.google_address}`"
+                >{result.google_address}</span
+              >
+              <div>
+                {{ moment(result.created_at).fromNow() }}
+              </div>
+            </a-card>
+          </a-list-item>
+
+          <!-- <a-list-item slot="renderItem" slot-scope="result">
+            <img slot="cover" alt="Brand Img" :src="image" />
+
             <a-card
               :key="Search"
               :title="`Rs. ${result.price}`"
@@ -130,7 +160,7 @@
                 </div>
               </a-row>
             </a-card>
-          </a-list-item>
+          </a-list-item> -->
         </a-list>
       </a-row>
     </div>
@@ -210,3 +240,9 @@ export default {
   },
 }
 </script>
+<style scoped>
+.cards_list {
+  display: flex;
+  flex-wrap: wrap;
+}
+</style>
