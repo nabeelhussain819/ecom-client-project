@@ -1,6 +1,5 @@
 <template>
   <div
-    v-flex
     class="msg_container"
     type="flex"
     justify="space-between"
@@ -27,7 +26,7 @@
             />
           </div>
           <div class="name_message">
-            <a slot="author">{{ conversation.recipient_name }}</a>
+            <a slot="author">{{ conversation.name }}</a>
             <p slot="" class="show_message">
               {{ conversation.data }}
             </p>
@@ -90,6 +89,7 @@
 <script>
 import moment from 'moment'
 import UserServices from '~/services/API/UserServices'
+import MessagesServices from '~/services/API/MessagesServices'
 export default {
   data() {
     return {
@@ -107,11 +107,11 @@ export default {
     this.catchEvent()
   },
   beforeMount() {
-    UserServices.conversations()
+    MessagesServices.conversations()
       .then((conversations) => {
-        this.conversations = conversations
+        this.conversations = conversations.data
         if (conversations.length > 0) {
-          this.fetchMessages(conversations[0])
+          // this.fetchMessages(conversations[0])
         }
       })
       .finally(() => (this.loading = false))
@@ -124,6 +124,7 @@ export default {
       })
     },
     fetchMessages(conversation) {
+      console.log('conversation', conversation)
       this.active = conversation
       const loggedInUser = this.$store.getters.getUser
       this.loading = true
@@ -137,8 +138,9 @@ export default {
     },
     sendMessage() {
       this.loading = true
-      UserServices.sendMessage(this.active.recipient_id, {
+      MessagesServices.save({
         message: this.messageText,
+        recipient_id: this.active.recipient_id,
       })
         .then(() => {
           this.fetchMessages(this.active)
