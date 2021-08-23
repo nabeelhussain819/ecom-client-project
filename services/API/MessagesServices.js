@@ -46,6 +46,15 @@ function conversations(params = {}) {
     params,
   })
 }
+
+function saveAssociated(id, data) {
+  return request({
+    url: `${baseUrl}/saveAssociated/${id}`,
+    data,
+    method: 'POST',
+  })
+}
+
 const MessagesServices = {
   get,
   conversations,
@@ -53,6 +62,7 @@ const MessagesServices = {
   save,
   update,
   destroy,
+  saveAssociated,
 }
 
 export default MessagesServices

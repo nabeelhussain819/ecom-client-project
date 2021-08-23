@@ -131,9 +131,8 @@ export default {
     },
     sendMessage() {
       this.loading = true
-      MessagesServices.save({
-        message: this.messageText,
-        recipient_id: this.active.recipient_id,
+      MessagesServices.saveAssociated(this.active.id, {
+        data: this.messageText,
       })
         .then(() => {
           this.fetchMessages(this.active)
