@@ -76,8 +76,8 @@
             <a-row>
               <a-list :data-source="results">
                 <a-list-item>
-                  <a-col :span="6">
-                    <a-card hoverable style="width: 160px" class="product_card">
+                  <a-col>
+                    <a-card hoverable class="product_card">
                       <img slot="cover" alt="Brand Img" :src="image" />
                       <a-card-meta title="Card Title">
                         www.example.com
@@ -108,31 +108,29 @@
       <a-row class="container_bottem">
         <a-list :data-source="results">
           <a-list-item slot="renderItem" slot-scope="result">
-            <a-card
-              hoverable
-              style="width: 160px"
-              :key="Search"
-              class="product_card product_card_bottom"
-              :title="`Rs. ${result.price}`"
-              @click="resultsDetails(result.guid)"
-            >
-              <img
-                slot="cover"
-                alt="Brand Img"
-                src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-              />
-              <!-- :src="image" -->
-              <a-card-meta title="">
-                {{ result.name }}
-              </a-card-meta>
-              <!-- <div class="address" v-html="`${result.google_address}`" /> -->
-              <span class="address" v-html="`${result.google_address}`"
-                >{result.google_address}</span
+            <a-col>
+              <a-card
+                hoverable
+                class="product_card product_card_bottom"
+                @click="resultsDetails(result.guid)"
               >
-              <div>
-                {{ moment(result.created_at).fromNow() }}
-              </div>
-            </a-card>
+                <img
+                  slot="cover"
+                  alt="Brand Img"
+                  src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                />
+                <a-card-meta title="">
+                  {{ result.name }}
+                </a-card-meta>
+                <p>$ {{ result.price }}</p>
+                <span class="address" v-html="`${result.google_address}`"
+                  >{result.google_address}</span
+                >
+                <div>
+                  {{ moment(result.created_at).fromNow() }}
+                </div>
+              </a-card>
+            </a-col>
           </a-list-item>
 
           <!-- <a-list-item slot="renderItem" slot-scope="result">

@@ -214,19 +214,6 @@ div.ant-modal-title:after {
       color: white;
     }
   }
-  .ant-card-body {
-    padding: 0;
-    .ant-list-item {
-      margin: 0;
-      padding: 8px 12px;
-      border-bottom: 1px solid rgb(232, 232, 232);
-      display: flex;
-      flex-wrap: wrap;
-      // &:last-child{
-      //   border-bottom:none;
-      // }
-    }
-  }
 }
 .container_bottem {
   .ant-list-items {
@@ -342,6 +329,11 @@ div.ant-modal-title:after {
   padding: 8px;
   border-radius: 50%;
 }
+// tile styling
+
+li.ant-list-item {
+  border-bottom: 0px !important;
+}
 
 // position: absolute;
 //     display: grid;
@@ -356,7 +348,7 @@ ul li:first-child .ant-menu-submenu-title {
     display: block;
     width: 100%;
     height: 5px;
-    background-color: #000;;
+    background-color: #000;
     transition: all 0.3s;
     backface-visibility: hidden;
     border-radius: 5px;
@@ -366,7 +358,7 @@ ul li:first-child .ant-menu-submenu-title {
     &:before {
       width: 100%;
       height: 5px;
-      background-color: #000;;
+      background-color: #000;
       transition: all 0.3s;
       backface-visibility: hidden;
       border-radius: 5px;
@@ -379,7 +371,7 @@ ul li:first-child .ant-menu-submenu-title {
     &:after {
       width: 100%;
       height: 5px !important;
-      background-color: #000;;
+      background-color: #000;
       transition: all 0.3s;
       backface-visibility: hidden;
       border-radius: 5px;
@@ -392,10 +384,18 @@ ul li:first-child .ant-menu-submenu-title {
   }
 }
 .product_card.ant-card.ant-card-bordered.ant-card-hoverable {
-  min-height: 230px;
-  max-width: 200px;
+  height: 230px !important;
+  width: 200px !important;
   margin: 3px;
 }
+.ant-spin-container {
+		& > .ant-row {
+			& > .ant-col-3 {
+				width: 100% !important;
+			}
+		}
+	}
+
 @media only screen and (max-width: 768px) {
   .header_nav {
     color: black;
@@ -441,9 +441,9 @@ ul li:first-child .ant-menu-submenu-title {
       padding: 5px 10px;
     }
   }
- .msg_heading {
-   font-size: 15px;
- }
+  .msg_heading {
+    font-size: 15px;
+  }
 }
 // @media only screen and (min-width: 769px) {
 //   .header_nav {
