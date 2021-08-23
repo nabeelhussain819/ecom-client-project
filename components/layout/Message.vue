@@ -88,7 +88,6 @@
 </template>
 <script>
 import moment from 'moment'
-import UserServices from '~/services/API/UserServices'
 import MessagesServices from '~/services/API/MessagesServices'
 export default {
   data() {
@@ -110,8 +109,8 @@ export default {
     MessagesServices.conversations()
       .then((conversations) => {
         this.conversations = conversations.data
-        if (conversations.length > 0) {
-          // this.fetchMessages(conversations[0])
+        if (conversations.data.length > 0) {
+          this.fetchMessages(conversations.data[0])
         }
       })
       .finally(() => (this.loading = false))
@@ -124,15 +123,9 @@ export default {
       })
     },
     fetchMessages(conversation) {
-      console.log('conversation', conversation)
       this.active = conversation
-      const loggedInUser = this.$store.getters.getUser
       this.loading = true
-      UserServices.messages(
-        loggedInUser.id === conversation.sender_id
-          ? conversation.recipient_id
-          : conversation.sender_id
-      )
+      MessagesServices.get(conversation.id)
         .then((res) => (this.messages = res.data))
         .finally(() => (this.loading = false))
     },
