@@ -3,12 +3,13 @@
     <a-skeleton :loading="loading">
       <bread-crumb />
       <a-divider />
-      <add-product :is-created="true" :product="product" />
+      <add-product
+        :is-created="true"
+        :product="product"
+        :file-list="fileList"
+        :show-uploader="showUploader"
+      />
       <a-divider />
-      <h2 class="sub-heading">Upload Product Images</h2>
-      <a-skeleton :loading="!showUploader">
-        <upload :product="product" :f-list="fileList" />
-      </a-skeleton>
     </a-skeleton>
   </a-card>
 </template>

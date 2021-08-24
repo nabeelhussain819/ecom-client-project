@@ -1,48 +1,140 @@
 <template>
   <a-skeleton :loading="false">
+    <a-steps :current="step">
+      <a-step title="Details" />
+      <a-step title="Image" />
+      <a-step title="Price" />
+    </a-steps>
     <a-layout-content>
-      <h2 class="sub-heading">Include Some Details</h2>
-      <a-form :form="form" @submit="handleSubmit">
-        <a-form-item
-          :label-col="formItemLayout.labelCol"
-          :wrapper-col="formItemLayout.wrapperCol"
-          label="Add Title"
-        >
-          <a-input
-            v-decorator="[
-              'name',
-              {
-                initialValue: product.name,
-                rules: [
-                  { required: true, message: 'Please enter product name' },
-                ],
-              },
-            ]"
-            :size="size"
-            placeholder="Please Enter Product Name"
-          />
-        </a-form-item>
+      <div v-if="step === 0">
+        <h2 class="sub-heading">Include Some Details</h2>
+        <a-form :form="form">
+          <a-form-item
+            :label-col="formItemLayout.labelCol"
+            :wrapper-col="formItemLayout.wrapperCol"
+            label="Add Title"
+          >
+            <a-input
+              v-decorator="[
+                'name',
+                {
+                  initialValue: product.name,
+                  rules: [
+                    { required: true, message: 'Please enter product name' },
+                  ],
+                },
+              ]"
+              :size="size"
+              placeholder="Please Enter Product Name"
+            />
+          </a-form-item>
 
-        <a-form-item
-          :label-col="formItemLayout.labelCol"
-          :wrapper-col="formItemLayout.wrapperCol"
-          label="Description"
-        >
-          <a-textarea
-            v-decorator="[
-              'description',
-              {
-                initialValue: product.description,
-                rules: [
-                  { required: true, message: 'Please enter description' },
-                ],
-              },
-            ]"
-            :size="size"
-            placeholder="Description"
-            :rows="4"
-          />
-        </a-form-item>
+          <a-form-item
+            :label-col="formItemLayout.labelCol"
+            :wrapper-col="formItemLayout.wrapperCol"
+            label="Description"
+          >
+            <a-textarea
+              v-decorator="[
+                'description',
+                {
+                  initialValue: product.description,
+                  rules: [
+                    { required: true, message: 'Please enter description' },
+                  ],
+                },
+              ]"
+              :size="size"
+              placeholder="Description"
+              :rows="4"
+            />
+          </a-form-item>
+          <h2 class="sub-heading">Attributes</h2>
+
+          <a-form-item
+            v-for="(attribute, index) in category.attributes"
+            :key="index"
+            :label-col="formItemLayout.labelCol"
+            :wrapper-col="formItemLayout.wrapperCol"
+            :label="attribute.name"
+          >
+            <a-input
+              v-decorator="[
+                `attributes[${index}][id]`,
+                { initialValue: attribute.id },
+              ]"
+              hidden
+            />
+            <attribute
+              :decorator="`attributes[${index}][value]`"
+              :attribute="attribute"
+              :values="product.products_attributes"
+            />
+          </a-form-item>
+
+          <h2 class="sub-heading">Confirm Your Location</h2>
+
+          <a-form-item
+            :label-col="formItemLayout.labelCol"
+            :wrapper-col="formItemLayout.wrapperCol"
+            label="Add location"
+          >
+            <auto-complete
+              v-decorator="[
+                'location',
+                {
+                  initialValue: removeHtml(product.location),
+                  rules: [
+                    { required: true, message: 'Please enter your location' },
+                  ],
+                },
+              ]"
+              :location="removeHtml(product.location)"
+              @currentLocation="currentLocation"
+            />
+          </a-form-item>
+          <a-form-item class="d-none">
+            <a-input
+              v-decorator="[
+                'longitude',
+                {
+                  initialValue: product.longitude,
+                },
+              ]"
+              hidden
+            />
+          </a-form-item>
+          <a-form-item class="d-none">
+            <a-input
+              v-decorator="[
+                'latitude',
+                {
+                  initialValue: product.latitude,
+                },
+              ]"
+              hidden
+            />
+          </a-form-item>
+          <a-form-item class="d-none">
+            <a-input
+              v-decorator="[
+                'google_address',
+                {
+                  initialValue: product.google_address,
+                },
+              ]"
+              hidden
+            />
+          </a-form-item>
+        </a-form>
+      </div>
+      <div v-if="step === 1">
+        <h2 class="sub-heading">Upload Product Images</h2>
+        <a-skeleton :loading="!showUploader">
+          <upload :product="product" :f-list="fileList" />
+        </a-skeleton>
+      </div>
+      <a-form v-if="step === 2" :form="form">
         <a-form-item
           :label-col="formItemLayout.labelCol"
           :wrapper-col="formItemLayout.wrapperCol"
@@ -64,94 +156,23 @@
             placeholder="Please Enter Product Price"
           />
         </a-form-item>
-        <h2 class="sub-heading">Attributes</h2>
-
-        <a-form-item
-          v-for="(attribute, index) in category.attributes"
-          :key="index"
-          :label-col="formItemLayout.labelCol"
-          :wrapper-col="formItemLayout.wrapperCol"
-          :label="attribute.name"
-        >
-          <a-input
-            v-decorator="[
-              `attributes[${index}][id]`,
-              { initialValue: attribute.id },
-            ]"
-            hidden
-          />
-          <attribute
-            :decorator="`attributes[${index}][value]`"
-            :attribute="attribute"
-            :values="product.products_attributes"
-          />
-        </a-form-item>
-
-        <h2 class="sub-heading">Confirm Your Location</h2>
-
-        <a-form-item
-          :label-col="formItemLayout.labelCol"
-          :wrapper-col="formItemLayout.wrapperCol"
-          label="Add location"
-        >
-          <auto-complete
-            v-decorator="[
-              'location',
-              {
-                initialValue: removeHtml(product.location),
-                rules: [
-                  { required: true, message: 'Please enter your location' },
-                ],
-              },
-            ]"
-            :location="removeHtml(product.location)"
-            @currentLocation="currentLocation"
-          />
-        </a-form-item>
-        <a-form-item class="d-none">
-          <a-input
-            v-decorator="[
-              'longitude',
-              {
-                initialValue: product.longitude,
-              },
-            ]"
-            hidden
-          />
-        </a-form-item>
-        <a-form-item class="d-none">
-          <a-input
-            v-decorator="[
-              'latitude',
-              {
-                initialValue: product.latitude,
-              },
-            ]"
-            hidden
-          />
-        </a-form-item>
-        <a-form-item class="d-none">
-          <a-input
-            v-decorator="[
-              'google_address',
-              {
-                initialValue: product.google_address,
-              },
-            ]"
-            hidden
-          />
-        </a-form-item>
-        <a-form-item>
-          <a-button
-            :loading="loading"
-            type="primary"
-            size="large"
-            html-type="submit"
-          >
-            {{ isCreated ? 'Update Post' : 'Post Now' }}
-          </a-button>
-        </a-form-item>
       </a-form>
+      <a-button
+        :loading="loading"
+        type="primary"
+        size="large"
+        @click="handleSubmit"
+      >
+        Next
+      </a-button>
+      <a-button
+        v-if="step > 0"
+        size="large"
+        style="margin-left: 2px"
+        @click="step--"
+      >
+        Previous
+      </a-button>
     </a-layout-content>
   </a-skeleton>
 </template>
@@ -162,6 +183,7 @@ import Category from '~/services/API/Category'
 import AutoComplete from '~/components/google/AutoComplete'
 import Attribute from '~/components/common/Attribute'
 import { isEmpty, success } from '~/services/Helpers'
+
 const formItemLayout = {
   labelCol: {
     span: 24,
@@ -193,6 +215,16 @@ export default {
       type: Boolean,
       default: false,
     },
+    fileList: {
+      type: Array,
+      default() {
+        return []
+      },
+    },
+    showUploader: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -211,6 +243,7 @@ export default {
       category_id: null,
       errors: '',
       category: {},
+      step: 0,
     }
   },
   mounted() {
@@ -252,6 +285,10 @@ export default {
         .then((response) => {
           success(this, { message: response.message })
           this.$emit('update', response)
+          if (this.step === 2) {
+            this.$router.push({ path: '/' })
+          }
+          this.step++
         })
         .finally(() => {
           this.loading = false
@@ -260,12 +297,15 @@ export default {
     handleSubmit(e) {
       e.preventDefault()
 
-      this.form.validateFields((err, values) => {
-        if (!err) {
-          const params = { ...values, category_id: this.category_id }
-          this.isCreated ? this.update(params) : this.save(params)
-        }
-      })
+      if (this.step === 1) this.step++
+      else {
+        this.form.validateFields((err, values) => {
+          if (!err) {
+            const params = { ...values, category_id: this.category_id }
+            this.isCreated ? this.update(params) : this.save(params)
+          }
+        })
+      }
     },
     filterOption(input, option) {
       return option.componentOptions.children[0].text
