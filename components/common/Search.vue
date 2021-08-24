@@ -122,7 +122,7 @@
                 <a-card-meta title="">
                   {{ result.name }}
                 </a-card-meta>
-                <p>Rs. {{ result.price }}</p>
+                <p>$ {{ result.price }}</p>
                 <span class="address" v-html="`${result.google_address}`"
                   >{result.google_address}</span
                 >
