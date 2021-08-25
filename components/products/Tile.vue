@@ -1,8 +1,8 @@
 <template>
-  <div class="tile_product">
+  <div>
     <a-card
       hoverable
-      class="produce_card"
+      class="product_card"
       @click="goto(`/product/${product.guid}`)"
     >
       <img
@@ -53,11 +53,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-.produce_card {
-  min-height: 230px;
-  max-width: 200px;
-  margin: 3px;
 }
 .tile_img {
   background-size: cover;
