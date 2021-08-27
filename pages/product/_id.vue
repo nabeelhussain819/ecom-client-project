@@ -3,18 +3,37 @@
     <div class="center-container">
       <a-row :gutter="16">
         <a-col :xs="24" :sm="17">
-          <image-slider :images="images" />
-          <h1 :title="product.name" class="primary-text">
-            ${{ product.price }} {{ product.name }}
+          <image-slider class="product_img_slider" :images="images" />
+          <h1 type="inline " :title="product.name" class="primary-text">
+            ${{ product.price }}
           </h1>
-          <a-divider></a-divider>
+          <h2 type="inline">{{ product.name }}</h2>
+          <div class="local_address">
+            <span slot="renderItem" slot-scope="">
+              <span class="address"
+                >Address point
+                <a-icon
+                  type="environment"
+                  theme="filled"
+                  class="product_view_style"
+                />
+                (near by)
+              </span>
+              <div>
+                Timestamp --times ago in
+                <span class="product_view_style"> {{ product.name }}</span>
+              </div>
+            </span>
+          </div>
           <div>{{ product.categoryDetails }}</div>
-          <a-divider></a-divider>
-          <h2 class="heading">Description</h2>
+          <a-divider />
+          <h3 class="heading">Description</h3>
           {{ product.description }}
-
-          <h4 class="heading">Attributes</h4>
-
+          <a-divider />
+          <h3 class="heading">Pick up Locally</h3>
+          <span>lorem ipsum dolor qwerty fdmkbklndbfl dflkfbmfikmdf</span>
+          <br />
+          <a class="product_view_style">Learn more...</a>
           <a-descriptions v-if="product.category" title="Properties" bordered>
             <a-descriptions-item
               v-for="attribute in product.category.attributes"
@@ -93,3 +112,14 @@ export default {
   },
 }
 </script>
+<style scoped>
+.primary-text {
+  font-size: xx-large;
+}
+.product_img_slider {
+  height: 250px;
+}
+.product_view_style {
+  color: #ec2a8b;
+}
+</style>

@@ -11,7 +11,11 @@
                 :data-source="categories"
                 :split="false"
               >
-                <a-list-item slot="renderItem" slot-scope="category">
+                <a-list-item
+                  slot="renderItem"
+                  slot-scope="category"
+                  class="category_name"
+                >
                   <a @click="selectCategory(category.id)">{{
                     category.name
                   }}</a>
@@ -79,11 +83,9 @@
                   <a-col>
                     <a-card hoverable class="product_card">
                       <img slot="cover" alt="Brand Img" :src="image" />
-                      <a-card-meta title="Card Title">
-                        www.example.com
-                      </a-card-meta>
-                      <p>$45</p>
-                      <span class="address">Fort WorthFx</span>
+                      <a-card-meta title="Card Title"> Brand name </a-card-meta>
+                      <span>$ 65</span>
+                      <span class="address">dummy name</span>
                     </a-card>
                   </a-col>
                 </a-list-item>
@@ -94,12 +96,17 @@
       </a-row>
     </div>
 
-    <div v-else>
-      <h3>Filters</h3>
+    <div v-else class="filter_main">
+      <h3 class="filter_categ_heading">Filters</h3>
       <a-list :data-source="categories[0] ? categories[0].attributes : []">
         <a-list-item slot="renderItem" slot-scope="attribute">
-          <h4 class="text-capitalize">{{ attribute.name }}</h4>
-          <attribute :attribute="attribute" :filter="true" @changed="changed" />
+          <h4 class="text-capitalize">{{ attribute.name }}:</h4>
+          <attribute
+            :attribute="attribute"
+            :filter="true"
+            @changed="changed"
+            class="attribute_type"
+          />
         </a-list-item>
       </a-list>
     </div>
@@ -122,7 +129,7 @@
                 <a-card-meta title="">
                   {{ result.name }}
                 </a-card-meta>
-                <p>$ {{ result.price }}</p>
+                <span>$ {{ result.price }}</span>
                 <span class="address" v-html="`${result.google_address}`"
                   >{result.google_address}</span
                 >
@@ -239,8 +246,14 @@ export default {
 }
 </script>
 <style scoped>
-.cards_list {
-  display: flex;
-  flex-wrap: wrap;
+.filter_categ_heading {
+  text-align: center;
+  font-size: 25px;
+}
+.filter_main > .ant-spin-container > .ant-list-items {
+  width: 100%;
+}
+.category_name {
+  margin: 0px !important;
 }
 </style>

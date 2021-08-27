@@ -56,5 +56,7 @@ export default {
 }
 .tile_img {
   background-size: cover;
+  max-height: 130px !important;
+  object-fit: cover;
 }
 </style>
