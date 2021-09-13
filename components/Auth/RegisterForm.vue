@@ -11,6 +11,7 @@
                 'name',
                 {
                   rules: [
+                    { max: 50 },
                     {
                       required: true,
                       message: 'Please input your First Name!',
@@ -29,6 +30,11 @@
                 {
                   rules: [
                     {
+                      type: 'email',
+                      message: 'The input is not valid E-mail!',
+                    },
+                    { max: 65 },
+                    {
                       required: true,
                       message: 'Please input your enter your email!',
                     },
@@ -43,27 +49,36 @@
 
       <a-row>
         <a-col :span="12">
-          <a-form-item label="Password">
+          <a-form-item label="Password" has-feedback>
             <a-input
               v-decorator="[
                 'password',
                 {
                   rules: [
                     { required: true, message: 'Please input your password' },
+                    {
+                      validator: validateToNextPassword,
+                    },
                   ],
                 },
               ]"
+              @blur="handleConfirmBlur"
               type="password"
             />
           </a-form-item>
         </a-col>
         <a-col :span="12">
-          <a-form-item label="Confirm Password">
+          <a-form-item label="Confirm Password" has-feedback>
             <a-input
               v-decorator="[
                 'password_confirmation',
                 {
-                  rules: [{ required: true, message: 'Passwords dont match' }],
+                  rules: [
+                    { required: true, message: 'Passwords dont match' },
+                    {
+                      validator: compareToFirstPassword,
+                    },
+                  ],
                 },
               ]"
               type="password"
@@ -91,12 +106,33 @@ export default {
   data() {
     return {
       formLayout: 'inline',
+      confirmDirty: false,
       form: this.$form.createForm(this, {
         name: 'coordinated',
       }),
     }
   },
   methods: {
+    handleConfirmBlur(e) {
+      const value = e.target.value
+      this.confirmDirty = this.confirmDirty || !!value
+    },
+    compareToFirstPassword(rule, value, callback) {
+      const form = this.form
+      if (value && value !== form.getFieldValue('password')) {
+        // eslint-disable-next-line standard/no-callback-literal
+        callback('Two passwords that you enter is inconsistent!')
+      } else {
+        callback()
+      }
+    },
+    validateToNextPassword(rule, value, callback) {
+      const form = this.form
+      if (value && this.confirmDirty) {
+        form.validateFields(['password_confirmation'], { force: true })
+      }
+      callback()
+    },
     handleSubmit(e) {
       e.preventDefault()
       this.form.validateFields((err, values) => {
