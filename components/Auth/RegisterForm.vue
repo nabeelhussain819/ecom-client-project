@@ -49,7 +49,13 @@
 
       <a-row>
         <a-col :span="12">
-          <a-form-item label="Password" has-feedback>
+          <a-form-item has-feedback>
+            <span slot="label">
+              Password&nbsp;
+              <a-tooltip :title="passwordMessage">
+                <a-icon type="question-circle-o" />
+              </a-tooltip>
+            </span>
             <a-input
               v-decorator="[
                 'password',
@@ -107,6 +113,8 @@ export default {
     return {
       formLayout: 'inline',
       confirmDirty: false,
+      passwordMessage:
+        'should contain at least one digit,at least one lower case,at least one upper case,at least 8 from the mentioned characters',
       form: this.$form.createForm(this, {
         name: 'coordinated',
       }),
@@ -128,6 +136,10 @@ export default {
     },
     validateToNextPassword(rule, value, callback) {
       const form = this.form
+      const exp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
+      if (!exp.test(value)) {
+        callback(this.passwordMessage)
+      }
       if (value && this.confirmDirty) {
         form.validateFields(['password_confirmation'], { force: true })
       }
