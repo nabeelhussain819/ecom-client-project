@@ -14,7 +14,7 @@
   </div>
 </template>
 <script>
-import RegisterForm from './registerForm.vue'
+import RegisterForm from './RegisterForm.vue'
 export default {
   components: { RegisterForm },
   data() {
