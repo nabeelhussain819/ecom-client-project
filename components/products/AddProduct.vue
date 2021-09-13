@@ -247,6 +247,8 @@ export default {
     }
   },
   mounted() {
+    this.paramNavigate()
+
     this.category_id = this.$route.query.category_id
     if (this.product.category_id) {
       this.category = this.product.category
@@ -257,6 +259,15 @@ export default {
     }
   },
   methods: {
+    gotoStep(step) {
+      this.step = parseInt(step)
+    },
+    paramNavigate() {
+      const params = this.$route.query
+      if (!isEmpty(params.step)) {
+        this.gotoStep(params.step)
+      }
+    },
     getAllCategories() {
       Category.all().then((response) => {
         this.categories = response.data
