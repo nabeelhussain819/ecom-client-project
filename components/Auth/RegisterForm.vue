@@ -68,8 +68,8 @@
                   ],
                 },
               ]"
-              @blur="handleConfirmBlur"
               type="password"
+              @blur="handleConfirmBlur"
             />
           </a-form-item>
         </a-col>
