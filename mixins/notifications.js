@@ -23,12 +23,14 @@ export default {
       let description = ''
       if (!isEmpty(genericError)) {
         for (const key in genericError) {
-          description += `${genericError[key][0]},`
+          description += `${genericError[key][0]}`
         }
-      }
-      const genericException = err.response.data
-      if (!isEmpty(genericException)) {
-        description = genericException.message
+      } else {
+        const genericException = err.response.data
+
+        if (!isEmpty(genericException)) {
+          description = genericException.message
+        }
       }
 
       this.$notification.open({

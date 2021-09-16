@@ -94,7 +94,9 @@
       </a-row>
 
       <a-form-item>
-        <a-button block type="primary" html-type="submit"> SIGN UP </a-button>
+        <a-button :loading="loading" block type="primary" html-type="submit">
+          SIGN UP
+        </a-button>
       </a-form-item>
     </a-form>
   </div>
@@ -105,10 +107,12 @@ import SocialLogin from './SocialLogin.vue'
 import AuthService from '~/services/API/AuthService'
 import { setAccessToken, setUserDetails } from '~/services/Auth'
 import UserService from '~/services/API/UserServices'
+import notifcations from '~/mixins/notifications'
 export default {
   components: {
     SocialLogin,
   },
+  mixins: [notifcations],
   data() {
     return {
       formLayout: 'inline',
@@ -118,6 +122,7 @@ export default {
       form: this.$form.createForm(this, {
         name: 'coordinated',
       }),
+      loading: false,
     }
   },
   methods: {
@@ -162,6 +167,7 @@ export default {
         .then(() => this.$router.go())
     },
     register(params = {}) {
+      this.loading = true
       AuthService.register(params)
         .then((response) => {
           setAccessToken(response.access_token)
@@ -169,17 +175,10 @@ export default {
             token: response.access_token,
             status: true,
           })
-          this.getUserDetails()
-          this.$notification.open({
-            message: 'Registration',
-            description: response.message,
-            class: 'successNotification',
-          })
+          this.success(response.message)
         })
-        .catch((e) => {
-          this.errors = e.response
-          this.responseError = 'Invalid input'
-        })
+        .catch(this.error)
+        .finally(() => (this.loading = false))
     },
   },
 }

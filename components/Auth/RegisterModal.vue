@@ -6,6 +6,7 @@
       :visible="visible"
       :confirm-loading="confirmLoading"
       footer=""
+      :destroy-on-close="true"
       @ok="handleOk"
       @cancel="handleCancel"
     >
