@@ -36,7 +36,7 @@ function logout(data = {}) {
   })
 }
 
-function forgetpassword(data) {
+function forgetPassword(data) {
   return request({
     url: `${baseApi}forgot-password`,
     data,
@@ -68,14 +68,23 @@ function googleLogin(data) {
   })
 }
 
+function verify(userId, hash, data) {
+  return request({
+    url: `${baseApi}auth/verify/${userId}/${hash}`,
+    data,
+    method: 'POST',
+  })
+}
+
 const AuthService = {
   register,
   login,
   logout,
-  forgetpassword,
+  forgetPassword,
   resetPassword,
   facebookLogin,
   googleLogin,
+  verify,
 }
 
 export default AuthService

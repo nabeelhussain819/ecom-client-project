@@ -57,7 +57,7 @@ export default {
     },
     forget(values) {
       this.loading = true
-      AuthServices.forgetpassword(values)
+      AuthServices.forgetPassword(values)
         .then((response) => this.$emit('close'))
         .catch((e) => {
           if (e.response.status === 404) {
