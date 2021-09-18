@@ -1,9 +1,9 @@
 <template>
   <a-skeleton :loading="loading" active>
     <a-result
-      status="error"
-      title="Successfully Purchased Cloud Server ECS!"
-      sub-title="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
+      :status="response.status"
+      :title="response.title"
+      :sub-title="response.sub_title"
     >
       <!-- <template #extra>
         <a-button key="console" type="primary"> Go Console </a-button>
@@ -21,6 +21,11 @@ export default {
   data() {
     return {
       loading: false,
+      response: {
+        status: null,
+        title: null,
+        sub_title: null,
+      },
     }
   },
 
@@ -28,15 +33,25 @@ export default {
     this.verifytoken()
   },
   methods: {
+    setStatus(status, title) {
+      this.response = {
+        status,
+        title,
+      }
+    },
     verifytoken() {
       const params = this.$route.params
 
       if (!isEmpty(params)) {
+        this.loading = true
         AuthServices.verify(params.userId, params.id)
           .then((response) => {
-            console.log('response', response)
+            this.setStatus('success', response.message)
           })
-          .catch(this.error)
+          .catch((e) => {
+            this.setStatus('error', e.response.data.message)
+          })
+          .finally(() => (this.loading = false))
       }
     },
   },
