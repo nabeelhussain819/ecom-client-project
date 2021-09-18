@@ -28,9 +28,9 @@ export default {
       },
     }
   },
-
   mounted() {
     this.verifytoken()
+    this.$nuxt.$emit('login', true)
   },
   methods: {
     setStatus(status, title) {

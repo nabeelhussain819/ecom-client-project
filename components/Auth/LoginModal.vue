@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div @click="showModal">Login</div>
+    <div @click="showModal(true)">Login</div>
 
     <a-modal
       title="Login Form"
@@ -24,9 +24,15 @@ export default {
       confirmLoading: false,
     }
   },
+  mounted() {
+    const show = this.showModal
+    this.$nuxt.$on('login', () => {
+      show(true)
+    })
+  },
   methods: {
-    showModal() {
-      this.visible = true
+    showModal(show) {
+      this.visible = show
     },
     handleOk() {
       this.visible = false
