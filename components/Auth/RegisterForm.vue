@@ -105,7 +105,7 @@
 <script>
 import SocialLogin from './SocialLogin.vue'
 import AuthService from '~/services/API/AuthService'
-import { setAccessToken, setUserDetails } from '~/services/Auth'
+import { setUserDetails } from '~/services/Auth'
 import UserService from '~/services/API/UserServices'
 import notifcations from '~/mixins/notifications'
 export default {
@@ -170,11 +170,7 @@ export default {
       this.loading = true
       AuthService.register(params)
         .then((response) => {
-          setAccessToken(response.access_token)
-          this.$store.commit('authStatus', {
-            token: response.access_token,
-            status: true,
-          })
+          this.$emit('close', false)
           this.success(response.message)
         })
         .catch(this.error)

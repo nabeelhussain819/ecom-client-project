@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div @click="showRegisterModal">Sign Up</div>
+    <div @click="showRegisterModal(true)">Sign Up</div>
     <a-modal
       title="Signup Form"
       :visible="visible"
@@ -10,7 +10,7 @@
       @ok="handleOk"
       @cancel="handleCancel"
     >
-      <RegisterForm />
+      <RegisterForm @close="close" />
     </a-modal>
   </div>
 </template>
@@ -26,8 +26,8 @@ export default {
     }
   },
   methods: {
-    showRegisterModal() {
-      this.visible = true
+    showRegisterModal(show) {
+      this.visible = show
     },
     handleOk(e) {
       this.ModalText = 'The modal will be closed after two seconds'
@@ -36,6 +36,9 @@ export default {
         this.visible = false
         this.confirmLoading = false
       }, 2000)
+    },
+    close(show) {
+      this.showRegisterModal(show)
     },
     handleCancel(e) {
       // console.log('Clicked cancel button')
