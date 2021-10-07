@@ -101,12 +101,7 @@
       <a-list :data-source="categories[0] ? categories[0].attributes : []">
         <a-list-item slot="renderItem" slot-scope="attribute">
           <h4 class="text-capitalize">{{ attribute.name }}:</h4>
-          <attribute
-            :attribute="attribute"
-            :filter="true"
-            @changed="changed"
-            class="attribute_type"
-          />
+          <attribute :attribute="attribute" :filter="true" @changed="changed" />
         </a-list-item>
       </a-list>
     </div>
