@@ -1,19 +1,26 @@
 <template>
-  <a-col :xs="24" :span="12">
-    <h1 style="text-align: center; margin: 15px 0px">Post Your Ad</h1>
-    <choose-post @getPostType="getPostType" />
-  </a-col>
+  <div>
+    <a-row>
+      <a-col :xs="24" :span="12">
+        <h1 style="text-align: center; margin: 15px 0px">Post Your Ad</h1>
+        <choose-post @getPostType="getPostType" />
+      </a-col>
+    </a-row>
+    <!-- temp Ads component -->
+    <Ads />
+  </div>
 </template>
 
 <script>
 import ChoosePost from '~/components/categories/ChoosePost'
+import Ads from '~/components/products/Ads'
 
 function getPostType(type) {
   this.$router.push({ path: `/post/category/${type}` })
 }
 const methods = { getPostType }
 export default {
-  components: { ChoosePost },
+  components: { ChoosePost, Ads },
   middleware: 'auth',
   data() {
     return {}

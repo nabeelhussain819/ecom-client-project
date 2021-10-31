@@ -647,11 +647,101 @@ ul li:first-child .ant-menu-submenu-title {
   }
 }
 .container-main {
-	& > .ant-list-grid {
-		.ant-col {
-			& > .ant-list-item {
-				margin-bottom: 0px !important;
-			}
-		}
-	}
+  & > .ant-list-grid {
+    .ant-col {
+      & > .ant-list-item {
+        margin-bottom: 0px !important;
+      }
+    }
+  }
+}
+
+// --------------- Ads Component -------- //
+@media only screen and (max-width: 480px) {
+  .ant-form-item-children {
+    h1 {
+      position: unset !important;
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+// }
+.ant-form-item-children {
+  h1 {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+  }
+  .ant-row {
+    line-height: 25px;
+  }
+}
+.ad_list {
+  .ant-row.ant-form-item {
+    margin: 0px;
+  }
+  // coloring radio type
+
+  .ant-radio-checked .ant-radio-inner {
+    border-color: #ec2a8b !important ;
+  }
+
+  .ant-radio-checked .ant-radio-inner:after {
+    background-color: #ec2a8b;
+  }
+
+  .ant-radio:hover .ant-radio-inner {
+    border-color: #ec2a8b;
+  }
+  // coloring checkbox type
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #ffffff;
+  }
+  .ant-checkbox-checked .ant-checkbox-inner::after {
+    border-bottom: 2px solid #000;
+    border-right: 2px solid black;
+  }
+}
+.adModel {
+  // width: 950px !important;
+  button.ant-btn {
+    border-radius: 0px;
+    margin: 0px 4px;
+  }
+  button.ant-btn.ant-btn-default {
+    padding: 0px 53px;
+    background: black;
+    color: white;
+  }
+}
+
+.adModel {
+  padding: 10px 8%;
+}
+.ad_list {
+  margin-bottom: 3%;
+  padding: 15px 30px;
+  border: 1px solid #ec2a8b;
+  border-radius: 10px;
+  background: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+}
+.adType {
+  font-size: 20px;
+  font-weight: 600;
+  align-items: center;
+}
+.ad_price {
+  color: #ec2a8b;
+  font-weight: bold;
+  font-size: xx-large;
+}
+.ad_btm_price {
+  line-height: 30px;
+  font-size: large;
+}
+.ads_button {
+  text-align: center;
 }
