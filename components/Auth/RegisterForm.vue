@@ -34,6 +34,7 @@
                       message: 'The input is not valid E-mail!',
                     },
                     { max: 65 },
+
                     {
                       required: true,
                       message: 'Please input your enter your email!',
@@ -62,6 +63,7 @@
                 {
                   rules: [
                     { required: true, message: 'Please input your password' },
+                    { min: 8 },
                     {
                       validator: validateToNextPassword,
                     },
@@ -141,10 +143,10 @@ export default {
     },
     validateToNextPassword(rule, value, callback) {
       const form = this.form
-      const exp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
-      if (!exp.test(value)) {
-        callback(this.passwordMessage)
-      }
+      // const exp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
+      // if (!exp.test(value)) {
+      //   callback(this.passwordMessage)
+      // }
       if (value && this.confirmDirty) {
         form.validateFields(['password_confirmation'], { force: true })
       }

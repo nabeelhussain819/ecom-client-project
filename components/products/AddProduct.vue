@@ -1,5 +1,6 @@
 <template>
   <a-skeleton :loading="false">
+    <!-- <a-steps :current="step"> -->
     <a-steps :current="step">
       <a-step title="Details" />
       <a-step title="Image" />
@@ -156,7 +157,30 @@
             placeholder="Please Enter Product Price"
           />
         </a-form-item>
+        <a-form-item
+          :label-col="formItemLayout.labelCol"
+          :wrapper-col="formItemLayout.wrapperCol"
+          label="Has Shipping"
+        >
+          <a-switch
+            v-decorator="[
+              'has_shipping',
+              {
+                initialValue: product.has_shipping,
+                rules: [
+                  { required: true, message: 'Please enter product price' },
+                ],
+              },
+            ]"
+            type="number"
+            :size="size"
+            addon-before="USD"
+            placeholder="Please Enter Product Price"
+            v-on="showShiping"
+          />
+        </a-form-item>
       </a-form>
+      <div></div>
       <a-button
         :loading="loading"
         type="primary"
@@ -252,6 +276,7 @@ export default {
     this.category_id = this.$route.query.category_id
     if (this.product.category_id) {
       this.category = this.product.category
+      // this.step = 2
     } else {
       Category.get(this.category_id)
         .then((category) => (this.category = category))
@@ -259,6 +284,9 @@ export default {
     }
   },
   methods: {
+    showShiping(a, b) {
+      console.log(a, b)
+    },
     gotoStep(step) {
       this.step = parseInt(step)
     },

@@ -137,6 +137,10 @@ export default {
           if (e.response && !isEmpty(e.response.data)) {
             this.errors = e.response.data.errors
           }
+          if (e.response && !isEmpty(e.response.data.message)) {
+            this.errors = [e.response.data.message]
+          }
+          // if(e.response)
         })
         .then(() => (this.loading = false))
     },
