@@ -155,14 +155,15 @@ export default {
     this.search()
   },
   methods: {
-    selectCategory(category) {
-      this.$router.push({
-        path: `/${this.type}/search`,
-        query: { query: this.$route.query.query, category },
-      })
+    selectCategory(categoryId) {
+      this.search({ category_id: categoryId })
+      // this.$router.push({
+      //   path: `/${this.type}/search`,
+      //   query: { query: this.$route.query.query, category },
+      // })
     },
-    search() {
-      const params = { query: this.$route.query.query }
+    search(searchParams = {}) {
+      const params = { ...searchParams, query: this.$route.query.query }
 
       if (this.$route.query.category) {
         params.category_id = this.$route.query.category
