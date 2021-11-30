@@ -112,14 +112,3 @@ export default {
   },
 }
 </script>
-<style scoped>
-.primary-text {
-  font-size: xx-large;
-}
-.product_img_slider {
-  height: 250px;
-}
-.product_view_style {
-  color: #ec2a8b;
-}
-</style>

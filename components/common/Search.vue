@@ -28,7 +28,7 @@
               <!-- bottom side select card -->
               <a-select style="width: 250px" placeholder="Pickup Distance">
                 <a-select-option value="example1">
-                  <a-radio-group v-model="value" @change="onChange">
+                  <a-radio-group>
                     <a-radio :style="radioStyle" :value="1"> Option A </a-radio>
                     <a-radio :style="radioStyle" :value="2"> Option B </a-radio>
                     <a-radio :style="radioStyle" :value="3"> Option C </a-radio>
@@ -44,7 +44,7 @@
               </a-select>
               <a-select style="width: 250px" placeholder="Price">
                 <a-select-option value="example2">
-                  <a-radio-group v-model="value2" @change="onChange">
+                  <a-radio-group>
                     <a-radio :style="radioStyle" :value="1"> Option A </a-radio>
                     <a-radio :style="radioStyle" :value="2"> Option B </a-radio>
                     <a-radio :style="radioStyle" :value="3"> Option C </a-radio>
@@ -62,37 +62,35 @@
             </a-col>
           </a-row>
         </a-row>
-        <Content class="product-nav-width">
+        <div class="product-nav-width">
           <a-col>
             <div class="side_nav">
               <h2>Heading</h2>
               <a-row class="product_nav">
-                <Content>
+                <div>
                   <a-menu mode="horizontal" class="nav_style">
-                    <a-menu-item key="btn1"> Navigation One </a-menu-item>
-                    <a-menu-item key="btn2"> Navigation Two </a-menu-item>
-                    <a-menu-item key="btn3">Navigation three</a-menu-item>
-                    <a-menu-item key="btn4">Navigation Four</a-menu-item>
-                  </a-menu></Content
-                >
+                    <a-menu-item key="btn1"> Trending </a-menu-item>
+                    <a-menu-item key="btn2">Closest </a-menu-item>
+                    <a-menu-item key="btn3">Popular</a-menu-item>
+                    <a-menu-item key="btn4">Slow/High</a-menu-item>
+                  </a-menu>
+                </div>
               </a-row>
             </div>
+
+            <!-- products -->
             <a-row>
-              <a-list :data-source="results">
-                <a-list-item>
-                  <a-col>
-                    <a-card hoverable class="product_card">
-                      <img slot="cover" alt="Brand Img" :src="image" />
-                      <a-card-meta title="Card Title"> Brand name </a-card-meta>
-                      <span>$ 65</span>
-                      <span class="address">dummy name</span>
-                    </a-card>
-                  </a-col>
-                </a-list-item>
-              </a-list>
+              <a-col
+                v-for="(product, index) in products"
+                :key="index"
+                :span="6"
+              >
+                <Tile :product="product"
+              /></a-col>
             </a-row>
+            <!-- // products -->
           </a-col>
-        </Content>
+        </div>
       </a-row>
     </div>
 
@@ -106,73 +104,16 @@
       </a-list>
     </div>
     <a-divider />
-    <div>
-      <a-row class="container_bottem">
-        <a-list :data-source="results">
-          <a-list-item slot="renderItem" slot-scope="result">
-            <a-col>
-              <a-card
-                hoverable
-                class="product_card product_card_bottom"
-                @click="resultsDetails(result.guid)"
-              >
-                <img
-                  slot="cover"
-                  alt="Brand Img"
-                  src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                />
-                <a-card-meta title="">
-                  {{ result.name }}
-                </a-card-meta>
-                <span>$ {{ result.price }}</span>
-                <span class="address" v-html="`${result.google_address}`"
-                  >{result.google_address}</span
-                >
-                <div>
-                  {{ moment(result.created_at).fromNow() }}
-                </div>
-              </a-card>
-            </a-col>
-          </a-list-item>
-
-          <!-- <a-list-item slot="renderItem" slot-scope="result">
-            <img slot="cover" alt="Brand Img" :src="image" />
-
-            <a-card
-              :key="Search"
-              :title="`Rs. ${result.price}`"
-              class="product_card_bottom"
-              @click="resultsDetails(result.guid)"
-            >
-              <img slot="cover" alt="Brand Img" :src="image" />
-
-              <p>{{ result.name }}</p>
-              <a-row>
-                <div class="address_time">
-                  <a-col span="12">
-                    <div class="address" v-html="`${result.google_address}`" />
-                  </a-col>
-                  <a-col span="12">
-                    <div>
-                      {{ moment(result.created_at).fromNow() }}
-                    </div>
-                  </a-col>
-                </div>
-              </a-row>
-            </a-card>
-          </a-list-item> -->
-        </a-list>
-      </a-row>
-    </div>
   </div>
 </template>
 
 <script>
 import moment from 'moment'
 import Attribute from '~/components/common/Attribute'
+import Tile from '~/components/products/Tile'
 
 export default {
-  components: { Attribute },
+  components: { Attribute, Tile },
   props: {
     service: {
       type: Function,
@@ -187,6 +128,7 @@ export default {
     return {
       categories: [],
       results: [],
+      products: [],
       filters: {},
       moment,
       // dropdown dummy val
@@ -201,13 +143,16 @@ export default {
     }
   },
   watch: {
-    '$route.query.query': {
-      handler() {
-        this.search()
-      },
-      deep: true,
-      immediate: true,
-    },
+    // '$route.query.query': {
+    //   handler() {
+    //     this.search()
+    //   },
+    //   deep: true,
+    //   immediate: true,
+    // },
+  },
+  mounted() {
+    this.search()
   },
   methods: {
     selectCategory(category) {
@@ -218,6 +163,7 @@ export default {
     },
     search() {
       const params = { query: this.$route.query.query }
+
       if (this.$route.query.category) {
         params.category_id = this.$route.query.category
         params.filters = this.filters
@@ -226,7 +172,7 @@ export default {
       this.service(params)
         .then(({ categories, results }) => {
           this.categories = categories
-          this.results = results
+          this.products = results
         })
         .catch(() => {})
     },
