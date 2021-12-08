@@ -113,12 +113,12 @@ export default {
   },
 
   computed: {
-    // isAuth() {
-    //   // return this.$store.getters.isAuthorize
-    // },
-    // user() {
-    //   // return this.$store.getters.getUser
-    // },
+    isAuth() {
+      return this.$store.getters.isAuthorize
+    },
+    user() {
+      return this.$store.getters.getUser
+    },
   },
   created() {},
   mounted() {},
