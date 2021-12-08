@@ -1,11 +1,11 @@
 <template>
   <a-layout id="components-layout-demo-top" class="layout">
-    <Header />
+    <!-- <Header /> -->
     <a-layout-content class="main-container">
       <Nuxt />
     </a-layout-content>
-    <NewsLetter />
-    <Footer />
+    <!-- <NewsLetter /> -->
+    <!-- <Footer /> -->
   </a-layout>
 </template>
 
