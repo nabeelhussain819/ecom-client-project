@@ -48,10 +48,10 @@
           </nuxt-link>
         </a-menu-item>
         <a-menu-item key="4" class="btn_post">
-          <nuxt-link to="/post/choose">
+          <span @click="postHandle">
             <a-icon type="plus" class="plus_icon" />
             <span class="post_txt"> Post</span>
-          </nuxt-link>
+          </span>
         </a-menu-item>
         <a-menu-item key="1">
           <nuxt-link to="/">Home</nuxt-link>
@@ -79,7 +79,7 @@
           <a-menu-item
             key="profile"
             class="f-black m-0"
-            @click="redirectTo('/user/profile')"
+            @click="goto('/user/profile')"
           >
             My Profile
           </a-menu-item>
@@ -98,12 +98,14 @@
 <script>
 import RegisterModal from '~/components/Auth/RegisterModal'
 import LoginModal from '~/components/Auth/LoginModal'
-
+import routeHelpers from '~/mixins/route-helpers'
+import { EVENT_LOGIN_MODAL } from '~/services/Constant'
 export default {
   components: {
     RegisterModal,
     LoginModal,
   },
+  mixins: [routeHelpers],
   data() {
     return {
       visible: false,
@@ -152,10 +154,13 @@ export default {
       // this will save on vuex level so it will handle globaly without handling indiviualy
       this.type = type
     },
-    // showProductModal() {
-    //   this.$nuxt.$emit('showProductModal', true)
-    //   this.visible = true
-    // },
+    postHandle() {
+      if (this.isAuth) {
+        this.goto('/post/choose')
+      } else {
+        this.$nuxt.$emit(EVENT_LOGIN_MODAL, true)
+      }
+    },
   },
 }
 </script>

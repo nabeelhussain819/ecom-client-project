@@ -62,7 +62,7 @@
         :footer="null"
         @cancel="showForgetModal(false)"
       >
-        <forget-password @close="showForgetModal" />
+        <forget-password @close="showForgetModal(true)" />
       </a-modal>
     </a-form>
   </div>
