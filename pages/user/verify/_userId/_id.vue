@@ -15,9 +15,10 @@
 <script>
 import { isEmpty } from '~/services/Helpers'
 import AuthServices from '~/services/API/AuthService'
-import notifcations from '~/mixins/notifications'
+import notifications from '~/mixins/notifications'
+import { EVENT_LOGIN_MODAL } from '~/services/Constant'
 export default {
-  mixins: [notifcations],
+  mixins: [notifications],
   data() {
     return {
       loading: false,
@@ -30,7 +31,7 @@ export default {
   },
   mounted() {
     this.verifytoken()
-    this.$nuxt.$emit('login', true)
+    this.$nuxt.$emit(EVENT_LOGIN_MODAL, true)
   },
   methods: {
     setStatus(status, title) {

@@ -15,7 +15,7 @@
 </template>
 <script>
 import LoginForm from './loginForm.vue'
-
+import { EVENT_LOGIN_MODAL } from '~/services/Constant'
 export default {
   components: { LoginForm },
   data() {
@@ -26,7 +26,7 @@ export default {
   },
   mounted() {
     const show = this.showModal
-    this.$nuxt.$on('login', () => {
+    this.$nuxt.$on(EVENT_LOGIN_MODAL, () => {
       show(true)
     })
   },
