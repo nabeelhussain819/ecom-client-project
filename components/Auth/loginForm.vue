@@ -49,7 +49,7 @@
         </a-button>
       </a-form-item>
       <a-row type="flex" justify="center" :style="{ fontWeight: 600 }">
-        <a-col class="text-center" :span="24" @click="showModal"
+        <a-col class="text-center" :span="24" @click="showForgetModal(true)"
           >Forgotten Password?</a-col
         >
         <a-col class="text-center" @click="showSignUpModal(true)" :span="24"
@@ -60,9 +60,9 @@
         title="Reset Password"
         :visible="visible"
         :footer="null"
-        @cancel="handleOk"
+        @cancel="showForgetModal(false)"
       >
-        <forget-password @close="handleOk" />
+        <forget-password @close="showForgetModal" />
       </a-modal>
     </a-form>
   </div>
@@ -109,6 +109,7 @@ export default {
   methods: {
     showSignUpModal(show) {
       this.$nuxt.$emit(EVENT_SIGNUP_MODAL, show)
+      this.closeLoginModal()
     },
     handleSubmit(e) {
       e.preventDefault()
@@ -140,7 +141,7 @@ export default {
           })
           success(this, { message: response.message })
           this.getUserDetails()
-          this.close()
+          this.closeLoginModal()
         })
         .catch((e) => {
           if (e.response && !isEmpty(e.response.data)) {
@@ -163,14 +164,11 @@ export default {
           // this.$router.go()
         })
     },
-    close() {
+    closeLoginModal() {
       this.$emit('close')
     },
-    showModal() {
-      this.visible = true
-    },
-    handleOk() {
-      this.visible = false
+    showForgetModal(show) {
+      this.visible = show
     },
   },
 }
