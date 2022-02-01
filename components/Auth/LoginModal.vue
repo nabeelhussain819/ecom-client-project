@@ -26,8 +26,8 @@ export default {
   },
   mounted() {
     const show = this.showModal
-    this.$nuxt.$on(EVENT_LOGIN_MODAL, () => {
-      show(true)
+    this.$nuxt.$on(EVENT_LOGIN_MODAL, (flag = true) => {
+      show(flag)
     })
   },
   methods: {

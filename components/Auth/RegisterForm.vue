@@ -109,12 +109,13 @@ import SocialLogin from './SocialLogin.vue'
 import AuthService from '~/services/API/AuthService'
 import { setUserDetails } from '~/services/Auth'
 import UserService from '~/services/API/UserServices'
-import notifcations from '~/mixins/notifications'
+import notifications from '~/mixins/notifications'
+
 export default {
   components: {
     SocialLogin,
   },
-  mixins: [notifcations],
+  mixins: [notifications],
   data() {
     return {
       formLayout: 'inline',

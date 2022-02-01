@@ -52,7 +52,7 @@
         <a-col class="text-center" :span="24" @click="showModal"
           >Forgotten Password?</a-col
         >
-        <a-col class="text-center" :span="24"
+        <a-col class="text-center" @click="showSignUpModal(true)" :span="24"
           >Don't have an account?&nbsp;<a> Sign Up</a></a-col
         >
       </a-row>
@@ -71,7 +71,12 @@
 <script>
 import SocialLogin from './SocialLogin.vue'
 import ForgetPassword from '~/components/Auth/ForgetPassword'
-import { CLIENT_ID, CLIENT_SECRET, GRANT_TYPE } from '~/services/Constant'
+import {
+  CLIENT_ID,
+  CLIENT_SECRET,
+  GRANT_TYPE,
+  EVENT_SIGNUP_MODAL,
+} from '~/services/Constant'
 
 import {
   setUserDetails,
@@ -97,10 +102,14 @@ export default {
       form: this.$form.createForm(this, {
         name: 'coordinated',
       }),
+      EVENT_SIGNUP_MODAL,
     }
   },
   mounted() {},
   methods: {
+    showSignUpModal(show) {
+      this.$nuxt.$emit(EVENT_SIGNUP_MODAL, show)
+    },
     handleSubmit(e) {
       e.preventDefault()
 

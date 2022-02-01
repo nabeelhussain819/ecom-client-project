@@ -16,6 +16,7 @@
 </template>
 <script>
 import RegisterForm from '~/components/Auth/RegisterForm'
+import { EVENT_SIGNUP_MODAL } from '~/services/Constant'
 export default {
   components: { RegisterForm },
   data() {
@@ -25,8 +26,15 @@ export default {
       confirmLoading: false,
     }
   },
+  mounted() {
+    const showRegisterModal = this.showRegisterModal
+    this.$nuxt.$on(EVENT_SIGNUP_MODAL, function (flag) {
+      showRegisterModal(flag)
+    })
+  },
   methods: {
     showRegisterModal(show) {
+      console.log('show', show)
       this.visible = show
     },
     handleOk(e) {
