@@ -100,6 +100,7 @@ import RegisterModal from '~/components/Auth/RegisterModal'
 import LoginModal from '~/components/Auth/LoginModal'
 import routeHelpers from '~/mixins/route-helpers'
 import { EVENT_LOGIN_MODAL } from '~/services/Constant'
+
 export default {
   components: {
     RegisterModal,
@@ -133,6 +134,7 @@ export default {
         token: null,
         status: null,
       })
+      this.goto('/')
     },
     search() {
       let path = ''
