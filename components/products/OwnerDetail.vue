@@ -21,12 +21,13 @@
 import ratingAvatar from '~/components/products/RatingAvatar'
 import ShareAndSave from '~/components/products/ShareAndSave'
 import ProductServices from '~/services/API/ProductServices'
-
+import notifications from '~/mixins/notifications'
 export default {
   components: {
     ratingAvatar,
     ShareAndSave,
   },
+  mixins: [notifications],
   props: {
     product: {
       type: Object,
@@ -47,7 +48,9 @@ export default {
     makeOffer() {
       ProductServices.offer(this.product.guid, {
         offer: this.offer,
-      }).then((res) => this.handleOk())
+      })
+        .then((res) => this.handleOk())
+        .catch(this.error)
     },
   },
 }
