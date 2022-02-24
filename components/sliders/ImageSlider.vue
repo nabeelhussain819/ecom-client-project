@@ -2,7 +2,8 @@
   <div class="detail-slider">
     <VueSlickCarousel
       v-if="images.length > 0"
-      :arrows="true"
+      :arrows="false"
+      :autoplay="true"
       :adaptive-height="true"
       :dots="true"
     >

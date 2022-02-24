@@ -72,7 +72,7 @@
                     <a-menu-item key="btn1"> Trending </a-menu-item>
                     <a-menu-item key="btn2">Closest </a-menu-item>
                     <a-menu-item key="btn3">Popular</a-menu-item>
-                    <a-menu-item key="btn4">Slow/High</a-menu-item>
+                    <!-- <a-menu-item key="btn4">Slow/High</a-menu-item> -->
                   </a-menu>
                 </div>
               </a-row>
