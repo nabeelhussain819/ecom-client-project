@@ -99,6 +99,9 @@
         <a-button :loading="loading" block type="primary" html-type="submit">
           SIGN UP
         </a-button>
+        <a-col class="text-center pt-2" :span="24"
+          >By signing up or loging in you accept our terms & conditions</a-col
+        >
       </a-form-item>
     </a-form>
   </div>

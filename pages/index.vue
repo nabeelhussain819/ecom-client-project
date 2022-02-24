@@ -1,16 +1,21 @@
 <template>
-  <div class="container">
+  <div class="container-fluid">
     <div class="mb-2">
       <slider
         :images="[
           'https://galaxy.pk/wp-content/uploads/2022/01/Apple-Macbook-Pro-6.jpg',
-          'https://galaxy.pk/wp-content/uploads/2022/01/Apple-Macbook-Pro-6.jpg',
+          'https://i.dell.com/is/image/DellContent/content/dam/ss2/page-specific/dell-homepage/apj/heroes/npl-cons-dell-xps-9310nt-uhp-apj-homepage-hero-lf-2400x696.png?fmt=pjpg&pscan=auto&scl=1&hei=696&wid=2400&qlt=100,0&resMode=sharp2&size=2400,696&op_usm=1.75,0.3,2,0',
         ]"
       />
     </div>
-    <a-spin :spinning="loading">
+    <a-spin :spinning="loading" class="p-5">
       <a-row :gutter="16">
-        <a-col v-for="(product, index) in products" :key="index" :span="3">
+        <a-col
+          v-for="(product, index) in products"
+          :key="index"
+          :span="3"
+          class="tile-width"
+        >
           <Tile :product="product"
         /></a-col>
       </a-row>
@@ -83,3 +88,8 @@ export default Vue.extend({
   },
 })
 </script>
+<style scoped lang="scss">
+.tile-width {
+  width: 180px;
+}
+</style>

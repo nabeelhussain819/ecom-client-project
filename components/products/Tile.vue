@@ -12,9 +12,9 @@
         src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
       />
       <!-- :src="product.cover_image" -- /> -->
-      <a-card-meta :title="product.name">
+      <a-card-meta :title="product.name" class="product-title">
         <template slot="description"
-          >$ {{ product.price }}
+          ><span class="price-tag">$ {{ product.price }} </span><br />
           <span class="location" v-html="product.google_address"> </span>
         </template>
       </a-card-meta>
@@ -58,5 +58,12 @@ export default {
   background-size: cover;
   max-height: 130px !important;
   object-fit: cover;
+}
+.price-tag {
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.85);
+}
+.product-title {
+  line-height: 24px;
 }
 </style>

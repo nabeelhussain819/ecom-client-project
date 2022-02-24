@@ -41,6 +41,104 @@
             </template>
           </a-input>
         </a-menu-item>
+        <a-dropdown :trigger="['click']">
+          <a class="ant-dropdown-link" @click="(e) => e.preventDefault()">
+            <a-icon type="down" />
+          </a>
+          <a-menu slot="overlay" class="category-dropdown">
+            <a-menu-item key="0" class="menu-category-heading">
+              Categories
+              <hr />
+            </a-menu-item>
+            <a-sub-menu key="sub1">
+              <span slot="title"><span>Electronic Devices</span></span>
+              <a-menu-item key="3"> Mobile </a-menu-item>
+              <a-menu-item key="4"> Option 4 </a-menu-item>
+              <a-sub-menu key="sub1-2" title="Submenu">
+                <a-menu-item key="5"> Option 5 </a-menu-item>
+                <a-menu-item key="6"> Option 6 </a-menu-item>
+              </a-sub-menu>
+            </a-sub-menu>
+            <a-menu-divider />
+
+            <a-sub-menu key="sub2">
+              <span slot="title"><span>Electronic Accessories</span></span>
+              <a-menu-item key="3"> Mobile </a-menu-item>
+              <a-menu-item key="4"> Option 4 </a-menu-item>
+              <a-sub-menu key="sub1-2" title="Submenu">
+                <a-menu-item key="5"> Option 5 </a-menu-item>
+                <a-menu-item key="6"> Option 6 </a-menu-item>
+              </a-sub-menu>
+            </a-sub-menu>
+            <a-menu-divider />
+
+            <a-sub-menu key="sub3">
+              <span slot="title"><span>TV and Home Appliances</span></span>
+              <a-menu-item key="3"> Mobile </a-menu-item>
+              <a-menu-item key="4"> Option 4 </a-menu-item>
+              <a-sub-menu key="sub1-2" title="Submenu">
+                <a-menu-item key="5"> Option 5 </a-menu-item>
+                <a-menu-item key="6"> Option 6 </a-menu-item>
+              </a-sub-menu>
+            </a-sub-menu>
+            <a-menu-divider />
+
+            <a-sub-menu key="sub4">
+              <span slot="title"><span>Health and Beauty</span></span>
+              <a-menu-item key="3"> Mobile </a-menu-item>
+              <a-menu-item key="4"> Option 4 </a-menu-item>
+              <a-sub-menu key="sub1-2" title="Submenu">
+                <a-menu-item key="5"> Option 5 </a-menu-item>
+                <a-menu-item key="6"> Option 6 </a-menu-item>
+              </a-sub-menu>
+            </a-sub-menu>
+            <a-menu-divider />
+
+            <a-sub-menu key="sub5">
+              <span slot="title"><span>Electronic Devices</span></span>
+              <a-menu-item key="3"> Mobile </a-menu-item>
+              <a-menu-item key="4"> Option 4 </a-menu-item>
+              <a-sub-menu key="sub1-2" title="Submenu">
+                <a-menu-item key="5"> Option 5 </a-menu-item>
+                <a-menu-item key="6"> Option 6 </a-menu-item>
+              </a-sub-menu>
+            </a-sub-menu>
+            <a-menu-divider />
+
+            <a-sub-menu key="sub6">
+              <span slot="title"><span>Electronic Devices</span></span>
+              <a-menu-item key="3"> Mobile </a-menu-item>
+              <a-menu-item key="4"> Option 4 </a-menu-item>
+              <a-sub-menu key="sub1-2" title="Submenu">
+                <a-menu-item key="5"> Option 5 </a-menu-item>
+                <a-menu-item key="6"> Option 6 </a-menu-item>
+              </a-sub-menu>
+            </a-sub-menu>
+            <a-menu-divider />
+
+            <a-sub-menu key="sub7">
+              <span slot="title"><span>Electronic Devices</span></span>
+              <a-menu-item key="3"> Mobile </a-menu-item>
+              <a-menu-item key="4"> Option 4 </a-menu-item>
+              <a-sub-menu key="sub1-2" title="Submenu">
+                <a-menu-item key="5"> Option 5 </a-menu-item>
+                <a-menu-item key="6"> Option 6 </a-menu-item>
+              </a-sub-menu>
+            </a-sub-menu>
+            <a-menu-divider />
+
+            <a-sub-menu key="sub8">
+              <span slot="title"><span>Electronic Devices</span></span>
+              <a-menu-item key="3"> Mobile </a-menu-item>
+              <a-menu-item key="4"> Option 4 </a-menu-item>
+              <a-sub-menu key="sub1-2" title="Submenu">
+                <a-menu-item key="5"> Option 5 </a-menu-item>
+                <a-menu-item key="6"> Option 6 </a-menu-item>
+              </a-sub-menu>
+            </a-sub-menu>
+            <a-menu-divider />
+          </a-menu>
+        </a-dropdown>
         <a-menu-item>
           <nuxt-link to="">
             <a-icon type="environment" theme="filled" class="icon_nearby" />
@@ -50,7 +148,7 @@
         <a-menu-item key="4" class="btn_post">
           <span @click="postHandle">
             <a-icon type="plus" class="plus_icon" />
-            <span class="post_txt"> Post</span>
+            <span class="post_txt"> Post Ads</span>
           </span>
         </a-menu-item>
         <a-menu-item key="1">
@@ -68,23 +166,24 @@
             ><a-avatar
               src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
             />
-            <span
-              class="text-capitalize"
-              :style="{ marginLeft: 16, verticalAlign: 'middle' }"
-              >{{ user.name }}</span
-            ></span
-          >
-          <a-menu-item key="offer" class="f-black m-0">My Offer</a-menu-item>
-          <a-menu-item key="board" class="f-black m-0">My Board</a-menu-item>
+            <span class="text-capitalize" :style="{ marginLeft: 16 }">
+              {{ user.name }}</span
+            >
+            <a class="ant-dropdown-link" @click="(e) => e.preventDefault()">
+              <a-icon type="down" />
+            </a>
+          </span>
+          <a-menu-item key="offer" class="f-black m-0">My Ads</a-menu-item>
+          <a-menu-item key="board" class="f-black m-0">Saved Item</a-menu-item>
           <a-menu-item
             key="profile"
             class="f-black m-0"
             @click="goto('/user/profile')"
           >
-            My Profile
+            Profile
           </a-menu-item>
           <a-menu-item key="accountn" class="f-black m-0">
-            My Account
+            Account
           </a-menu-item>
           <a-menu-item key="Logout" class="f-black m-0" @click="logout">
             Logout
@@ -162,6 +261,9 @@ export default {
       } else {
         this.$nuxt.$emit(EVENT_LOGIN_MODAL, true)
       }
+    },
+    handleClick(e) {
+      console.log('click ', e)
     },
   },
 }
