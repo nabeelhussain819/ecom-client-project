@@ -90,4 +90,5 @@ sw.*
 *.swp
 yarn.lock
 .env
-/assets/css/.sass-cache/*
+assets/css/.sass-cache/*
+assets/css/*.map
