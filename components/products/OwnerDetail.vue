@@ -1,12 +1,22 @@
 <template>
   <div class="owner-detail">
-    <rating-avatar :product="product" />
-    <a-button class="btn primary" type="primary" :size="size" @click="handleOk">
-      Make An Offer
-    </a-button>
-    <a-button class="btn" :size="size"> Ask</a-button>
-    <a-button class="btn btn-secondary" :size="size"> Buy Now</a-button>
-    <share-and-save :product="product" />
+    <div v-if="!product.is_owner">
+      <rating-avatar :product="product" />
+      <a-button
+        class="btn primary"
+        type="primary"
+        :size="size"
+        @click="handleOk"
+      >
+        Make An Offer
+      </a-button>
+      <a-button class="btn" :size="size"> Ask</a-button>
+      <a-button class="btn btn-secondary" :size="size"> Buy Now</a-button>
+      <share-and-save :product="product" />
+    </div>
+    <div v-else>
+      <a-button class="btn" type="primary" :size="size"> Promote</a-button>
+    </div>
     <a-modal
       title="Make an Offer"
       :visible="visible"
