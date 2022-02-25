@@ -46,6 +46,13 @@ function sendMessage(id, data) {
   })
 }
 
+function update(data) {
+  return request({
+    url: `${baseUrl}`,
+    data,
+    method: 'PATCH',
+  })
+}
 const UserService = {
   all,
   detail,
@@ -53,6 +60,7 @@ const UserService = {
   messages,
   conversations,
   sendMessage,
+  update,
 }
 
 export default UserService
