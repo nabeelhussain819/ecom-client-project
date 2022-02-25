@@ -69,6 +69,7 @@
 </template>
 <script>
 import UserServices from '~/services/API/UserServices'
+import notifications from '~/mixins/notifications'
 const formItemLayout = {
   labelCol: {
     span: 24,
@@ -78,6 +79,7 @@ const formItemLayout = {
   },
 }
 export default {
+  mixins: [notifications],
   data() {
     return {
       loading: false,
@@ -103,9 +105,13 @@ export default {
       })
     },
     updateUser(value) {
-      UserServices.update(value).then((response) => {
-        console.log(response)
-      })
+      this.loading = true
+      UserServices.update(value)
+        .then((response) => {
+          this.success(response.message)
+        })
+        .catch(this.error)
+        .finally(() => (this.loading = false))
     },
   },
 }
