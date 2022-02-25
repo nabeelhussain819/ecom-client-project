@@ -32,3 +32,8 @@ export default {
   },
 }
 </script>
+<style scoped>
+.img-fluid {
+  height: 370px;
+}
+</style>

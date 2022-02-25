@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div @click="showRegisterModal(true)">Sign Up</div>
+    <div @click="showRegisterModal(true)" class="form--heading">Sign Up</div>
     <a-modal
       title="Signup Form"
       :visible="visible"

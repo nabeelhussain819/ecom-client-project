@@ -10,6 +10,7 @@
               rules: [{ required: true, message: 'Please input your Email!' }],
             },
           ]"
+          class="input-login"
         />
       </a-form-item>
       <a-form-item label="Password">
@@ -22,6 +23,7 @@
               ],
             },
           ]"
+          class="input-login"
           type="password"
         />
       </a-form-item>
@@ -182,3 +184,8 @@ export default {
   },
 }
 </script>
+<style scoped>
+.input-login {
+  min-height: 38px;
+}
+</style>
