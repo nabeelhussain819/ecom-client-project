@@ -19,6 +19,7 @@
                   ],
                 },
               ]"
+              class="input-signup"
             />
           </a-form-item>
         </a-col>
@@ -42,6 +43,7 @@
                   ],
                 },
               ]"
+              class="input-signup"
               span="6"
             />
           </a-form-item>
@@ -70,6 +72,7 @@
                   ],
                 },
               ]"
+              class="input-signup"
               type="password"
               @blur="handleConfirmBlur"
             />
@@ -89,6 +92,7 @@
                   ],
                 },
               ]"
+              class="input-signup"
               type="password"
             />
           </a-form-item>
@@ -188,5 +192,8 @@ export default {
 <style scoped>
 .ant-col-12 {
   padding: 10px;
+}
+.input-signup {
+  min-height: 38px;
 }
 </style>
