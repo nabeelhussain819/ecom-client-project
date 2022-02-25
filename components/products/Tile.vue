@@ -15,14 +15,15 @@
       <a-card-meta :title="product.name" class="product-title">
         <template slot="description"
           ><span class="price-tag">$ {{ product.price }} </span><br />
-          <span class="location" v-html="product.google_address"> </span>
+          <span class="location d-inline" v-html="product.google_address">
+          </span>
         </template>
       </a-card-meta>
     </a-card>
-
     <a-button
       v-if="showEditable && product.is_owner"
-      type="link"
+      class="btn"
+      type="primary"
       @click="goto(`/user/product/${product.guid}`)"
       >edit</a-button
     >

@@ -42,7 +42,7 @@
             >
               <!-- editabel 'falsed', if needed make 'true'-->
               <tile
-                :show-editable="false"
+                :show-editable="true"
                 :product="product"
                 class="profile-cards"
               />
@@ -73,9 +73,6 @@ export default {
       Product.self().then((products) => {
         this.products = products.data
       })
-    },
-    goto(guid) {
-      this.$router.push({ path: `/user/product/${guid}` })
     },
   },
 }
