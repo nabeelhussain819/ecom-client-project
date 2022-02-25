@@ -127,6 +127,26 @@
               hidden
             />
           </a-form-item>
+          <a-form-item
+            :label-col="formItemLayout.labelCol"
+            :wrapper-col="formItemLayout.wrapperCol"
+            label="Sold"
+          >
+            <a-switch
+              v-decorator="[
+                'is_sold',
+                {
+                  initialValue: product.is_sold,
+                  rules: [
+                    { required: true, message: 'Please enter product price' },
+                  ],
+                  valuePropName: 'checked',
+                },
+              ]"
+              :size="size"
+              placeholder="Please Enter Product Switch"
+            />
+          </a-form-item>
         </a-form>
       </div>
       <div v-if="step === 1">
@@ -205,6 +225,7 @@
 import Product from '~/services/API/ProductServices'
 import Category from '~/services/API/Category'
 import AutoComplete from '~/components/google/AutoComplete'
+import upload from '~/components/products/Upload'
 import Attribute from '~/components/common/Attribute'
 import { isEmpty, success } from '~/services/Helpers'
 
@@ -227,7 +248,7 @@ const formTailLayout = {
 }
 
 export default {
-  components: { AutoComplete, Attribute },
+  components: { AutoComplete, Attribute, upload },
   props: {
     product: {
       type: Object,

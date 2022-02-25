@@ -9,6 +9,7 @@
         :file-list="fileList"
         :show-uploader="showUploader"
       />
+
       <a-divider />
     </a-skeleton>
   </a-card>
