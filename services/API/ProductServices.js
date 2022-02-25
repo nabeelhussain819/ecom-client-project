@@ -91,6 +91,12 @@ function offer(id, data) {
     method: 'POST',
   })
 }
+function getSaved(params = {}) {
+  return request({
+    url: `${baseUrl}/saved`,
+    params,
+  })
+}
 
 const ProductServices = {
   all,
@@ -104,6 +110,7 @@ const ProductServices = {
   self,
   search,
   saved,
+  getSaved,
   offer,
 }
 
