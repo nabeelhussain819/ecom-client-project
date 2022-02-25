@@ -77,3 +77,8 @@ export default {
     transpile: [/^vue2-google-maps($|\/)/, 'vue-google-autocomplete'],
   },
 }
+
+// Command for conventions
+// git config core.autocrlf false
+// git rm --cached -r .
+// git reset --hard

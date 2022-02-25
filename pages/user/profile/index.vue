@@ -10,8 +10,8 @@
             Joined November 2022
           </h3>
           <hr />
-          <span id="profile-icon" :size="size2">
-            <a-button type="" class="icon-email"></a-button>
+          <span id="profile-icon">
+            <a-button type="" class="icon-email"> </a-button>
             <a-button type="" class="icon-mob"> </a-button>
             <a-button class="icon-fb"></a-button>
             <a-button type="" class="icon-chat"> </a-button>
@@ -29,7 +29,9 @@
             >Follow</a-button
           >
         </a-col>
+
         <a-col :xs="24" :sm="16" class="profile-tiles px-3 pt-1 pb-0">
+          <editProfile />
           <a-row :gutter="18">
             <a-col
               v-for="product in products"
@@ -52,11 +54,12 @@
 </template>
 <script>
 import upload from '~/components/user/upload'
+import editProfile from '~/components/user/EditProfile'
 import Product from '~/services/API/ProductServices'
 import tile from '~/components/products/Tile'
 import { isEmpty } from '~/services/Utilities'
 export default {
-  components: { upload, tile },
+  components: { upload, tile, editProfile },
   data() {
     return { loading: false, user: {}, products: [] }
   },
