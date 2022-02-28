@@ -273,3 +273,17 @@ export default {
   },
 }
 </script>
+<style scoped>
+@media only screen and (max-width: 480px) {
+  .ant-dropdown-link {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: fit-content;
+  }
+}
+.ant-dropdown-link > i.anticon.anticon-down {
+  font-size: 18px;
+}
+</style>

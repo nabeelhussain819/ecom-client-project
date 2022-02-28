@@ -79,15 +79,11 @@
             </div>
 
             <!-- products -->
-            <a-row>
-              <a-col
-                v-for="(product, index) in products"
-                :key="index"
-                :span="6"
-              >
+            <div class="category_main">
+              <span v-for="(product, index) in products" :key="index" :span="6">
                 <Tile :product="product"
-              /></a-col>
-            </a-row>
+              /></span>
+            </div>
             <!-- // products -->
           </a-col>
         </div>
@@ -197,5 +193,10 @@ export default {
 }
 .category_name {
   margin: 0px !important;
+}
+.category_main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 </style>

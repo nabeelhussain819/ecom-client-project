@@ -11,10 +11,12 @@
           </h3>
           <hr />
           <span id="profile-icon">
-            <a-button type="" class="icon-email"> </a-button>
-            <a-button type="" class="icon-mob"> </a-button>
-            <a-button class="icon-fb"></a-button>
-            <a-button type="" class="icon-chat"> </a-button>
+            <a href="#" target="_blank"><div class="icon-email"></div> </a>
+            <a href="#" target="_blank"><div class="icon-mob"></div> </a>
+            <a href="https://www.facebook.com/" target="_blank"
+              ><div class="icon-fb"></div>
+            </a>
+            <a href="#" target="_blank"><div class="icon-chat"></div> </a>
           </span>
           <hr />
           <span> Followers (6)</span>
@@ -31,8 +33,9 @@
         </a-col>
 
         <a-col :xs="24" :sm="16" class="profile-tiles px-3 pt-1 pb-0">
-          <editProfile />
-          <a-row :gutter="18">
+          <editProfile class="p-3 edit-profile-form" />
+          <hr />
+          <a-row :gutter="18" class="py-4">
             <a-col
               v-for="product in products"
               :key="product.id"
@@ -40,7 +43,6 @@
               :sm="6"
               class="profile-tile-width"
             >
-              <!-- editabel 'falsed', if needed make 'true'-->
               <tile
                 :show-editable="true"
                 :product="product"
@@ -90,6 +92,16 @@ export default {
     .btn-follow {
       margin-top: 50px;
     }
+  }
+}
+.edit-profile-form {
+  width: 50%;
+  margin: auto;
+}
+@media only screen and (max-width: 768px) {
+  .edit-profile-form {
+    width: 70%;
+    margin: auto;
   }
 }
 </style>

@@ -11,28 +11,26 @@
             'name',
             {
               initialValue: user.name,
-              rules: [{ required: true, message: 'Please enter product name' }],
+              rules: [{ required: true, message: 'Please Enter name' }],
             },
           ]"
-          placeholder="Please Enter Product Name"
+          placeholder="Please Enter Name"
         />
       </a-form-item>
       <a-form-item
         :label-col="formItemLayout.labelCol"
         :wrapper-col="formItemLayout.wrapperCol"
-        label="email"
+        label="Email"
       >
         <a-input
           v-decorator="[
-            'email',
+            'Email',
             {
               initialValue: user.email,
-              rules: [
-                { required: true, message: 'Please enter product email' },
-              ],
+              rules: [{ required: true, message: 'Please Enter Email' }],
             },
           ]"
-          placeholder="Please Enter Product Name"
+          placeholder="Please Enter Email"
         />
       </a-form-item>
       <a-form-item
@@ -42,15 +40,13 @@
       >
         <a-input
           v-decorator="[
-            'phone',
+            'Phone',
             {
               initialValue: user.phone,
-              rules: [
-                { required: true, message: 'Please enter product phone' },
-              ],
+              rules: [{ required: true, message: 'Please Enter Phone Number' }],
             },
           ]"
-          placeholder="Please Enter Product Name"
+          placeholder="Please Enter Phone Number"
         />
       </a-form-item>
 
@@ -59,6 +55,7 @@
           :loading="loading"
           type="primary"
           size="large"
+          class="px-5"
           @click="handleSubmit"
         >
           Save
