@@ -519,12 +519,12 @@ ul li:first-child .ant-menu-submenu-title {
     margin-left: 10px !important;
     .btn-follow {
       position: absolute;
-    margin: auto;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin-bottom:1px; 
-  }
+      margin: auto;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin-bottom: 1px;
+    }
   }
   .profile-tiles {
     // border: 1px solid gainsboro;
@@ -816,7 +816,7 @@ ul li:first-child .ant-menu-submenu-title {
 }
 .tile-width {
   margin-bottom: 6px;
-} 
+}
 .profile-cards {
   margin-bottom: 10px;
   button.btn.ant-btn.ant-btn-primary {
@@ -881,7 +881,7 @@ ul li:first-child .ant-menu-submenu-title {
   .container-fluid {
     .p-5.ant-spin-nested-loading {
       padding: 0px;
-      margin-top:12px;
+      margin-top: 12px;
     }
   }
 }
@@ -916,7 +916,7 @@ ul li:first-child .ant-menu-submenu-title {
   text-align: center;
   color: white;
   border: solid 2px white;
-  opacity: .9;
+  opacity: 0.9;
   border-radius: 3px;
   left: 0;
   right: 0;
@@ -926,6 +926,14 @@ ul li:first-child .ant-menu-submenu-title {
   z-index: 1;
 }
 
-.save-item-container:hover .button {
-  opacity: 1;
+// .save-item-container:hover .button {
+//   opacity: 1;
+// }
+
+.saved-item {
+  &:hover {
+    .button {
+      opacity: 1;
+    }
+  }
 }
