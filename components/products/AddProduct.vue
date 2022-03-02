@@ -128,6 +128,7 @@
             />
           </a-form-item>
           <a-form-item
+            v-if="isCreated"
             :label-col="formItemLayout.labelCol"
             :wrapper-col="formItemLayout.wrapperCol"
             label="Sold"
@@ -137,9 +138,7 @@
                 'is_sold',
                 {
                   initialValue: product.is_sold,
-                  rules: [
-                    { required: true, message: 'Please enter product price' },
-                  ],
+
                   valuePropName: 'checked',
                 },
               ]"
