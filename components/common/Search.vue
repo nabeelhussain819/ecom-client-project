@@ -10,6 +10,7 @@
                 :grid="{ gutter: 0 }"
                 :data-source="categories"
                 :split="false"
+                class="category_name_container"
               >
                 <a-list-item
                   slot="renderItem"

@@ -2,16 +2,20 @@
   <a-skeleton :loading="loading">
     <div class="center-container">
       <a-row :gutter="16">
-        <a-col :xs="24" :sm="17">
+        <a-col :xs="24" :sm="17" class="left_product_detail">
           <image-slider class="product_img_slider" :images="images" />
-          <h1 type="inline " :title="product.name" class="primary-text">
+          <h1
+            type="inline "
+            :title="product.name"
+            class="primary-text product-price"
+          >
             ${{ product.price }}
           </h1>
-          <h2 type="inline">{{ product.name }}</h2>
+          <h2 type="inline" class="product-name">{{ product.name }}</h2>
           <div class="local_address">
             <span slot="renderItem" slot-scope="">
               <span class="address"
-                >Address point
+                >Address
                 <a-icon
                   type="environment"
                   theme="filled"
@@ -20,7 +24,7 @@
                 (near by)
               </span>
               <div>
-                Timestamp --times ago in
+                20/2/2020 ago in
                 <span class="product_view_style"> {{ product.name }}</span>
               </div>
             </span>
@@ -31,10 +35,18 @@
           {{ product.description }}
           <a-divider />
           <h3 class="heading">Pick up Locally</h3>
-          <span>lorem ipsum dolor qwerty fdmkbklndbfl dflkfbmfikmdf</span>
+          <span
+            >lorem ipsum dolor qwerty, repellendus officiis earum sint quibusdam
+            iure!</span
+          >
           <br />
-          <a class="product_view_style">Learn more...</a>
-          <a-descriptions v-if="product.category" title="Properties" bordered>
+          <a class="product_view_style">Learn more about pickup</a>
+          <a-descriptions
+            v-if="product.category"
+            title="Properties"
+            class="pt-3"
+          >
+            <!-- removed bordered above -->
             <a-descriptions-item
               v-for="attribute in product.category.attributes"
               :key="attribute.id"
@@ -48,7 +60,7 @@
             >
           </a-descriptions>
         </a-col>
-        <a-col :xs="24" :sm="7">
+        <a-col :xs="24" :sm="7" class="right_product_detail">
           <owner-detail :product="product" />
           <map-view
             v-if="product"
@@ -105,10 +117,26 @@ export default {
         const tempImage = []
         product.media.map((images) => tempImage.push(images.url))
         this.images = tempImage
-        return []
+        return
       }
-      return []
+      console.log('product', product)
+      this.images = [
+        'https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png',
+      ]
     },
   },
 }
 </script>
+<style scoped>
+.product-price {
+  display: inline-block;
+  font-size: 28px;
+  font-weight: 700;
+}
+.product-name {
+  display: inline-block;
+}
+.product_view_style {
+  color: #ec2a8b;
+}
+</style>

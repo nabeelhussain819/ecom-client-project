@@ -938,3 +938,19 @@ ul li:first-child .ant-menu-submenu-title {
     }
   }
 }
+@media only screen and (min-width: 768px) {
+  .left_product_detail {
+    width: 60%;
+  }
+  .right_product_detail {
+    float: right;
+    margin: auto;
+  }
+}
+.category_name_container {
+  .ant-spin-nested-loading {
+    .ant-spin-container {
+      padding: 0px !important;
+    }
+  }
+}
