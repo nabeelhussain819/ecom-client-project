@@ -9,38 +9,6 @@
         mode="horizontal"
         :style="{ lineHeight: '40px', float: 'right' }"
       >
-        <a-menu-item key="5" class="no-hover-nav search-bar">
-          <a-icon type="search" class="icon_search" />
-          <a-input
-            id="search-input"
-            class="search-input"
-            placeholder="Search"
-            @pressEnter="search"
-            @change="onChange"
-          >
-            <template slot="addonAfter" default-value="buy" style="width: 90px">
-              <a-button
-                type="primary"
-                :class="type == 1 && `active`"
-                @click="getSearchType(1)"
-              >
-                Buying
-              </a-button>
-              <a-divider type="vertical" />
-              <a-button
-                type="primary"
-                :class="type == 2 && `active`"
-                @click="getSearchType(2)"
-              >
-                Services
-              </a-button>
-              <a-divider type="vertical" />
-              <a-button class="go-btn" type="primary" @click="search">
-                GO
-              </a-button>
-            </template>
-          </a-input>
-        </a-menu-item>
         <a-dropdown :trigger="['click']">
           <a class="ant-dropdown-link" @click="(e) => e.preventDefault()">
             <a-icon type="down" />
@@ -139,6 +107,38 @@
             <a-menu-divider />
           </a-menu>
         </a-dropdown>
+        <a-menu-item key="5" class="no-hover-nav search-bar">
+          <a-icon type="search" class="icon_search" />
+          <a-input
+            id="search-input"
+            class="search-input"
+            placeholder="Search"
+            @pressEnter="search"
+            @change="onChange"
+          >
+            <template slot="addonAfter" default-value="buy" style="width: 90px">
+              <a-button
+                type="primary"
+                :class="type == 1 && `active`"
+                @click="getSearchType(1)"
+              >
+                Buying
+              </a-button>
+              <a-divider type="vertical" />
+              <a-button
+                type="primary"
+                :class="type == 2 && `active`"
+                @click="getSearchType(2)"
+              >
+                Services
+              </a-button>
+              <a-divider type="vertical" />
+              <a-button class="go-btn" type="primary" @click="search">
+                GO
+              </a-button>
+            </template>
+          </a-input>
+        </a-menu-item>
         <a-menu-item>
           <nuxt-link to="">
             <a-icon type="environment" theme="filled" class="icon_nearby" />
@@ -281,6 +281,13 @@ export default {
     right: 0;
     margin: auto;
     width: fit-content;
+  }
+  .no-hover-nav.search-bar {
+    margin-top: 20px;
+  }
+  .icon_search {
+    top: 11px;
+    color: #000 !important;
   }
 }
 .ant-dropdown-link > i.anticon.anticon-down {

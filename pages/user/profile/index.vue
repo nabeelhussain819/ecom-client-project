@@ -19,9 +19,14 @@
             <a href="#" target="_blank"><div class="icon-chat"></div> </a>
           </span>
           <hr />
-          <span> Followers (6)</span>
+          <div class="profile-status px-2">
+            <span>Followers </span><span>6</span>
+          </div>
           <hr />
-          <span> Following (9)</span>
+          <div class="profile-status px-2">
+            <span>Following </span><span>9</span>
+          </div>
+
           <hr />
           <a-button
             class="btn-follow"
@@ -93,6 +98,11 @@ export default {
       margin-top: 50px;
     }
   }
+}
+.profile-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .edit-profile-form {
   width: 50%;

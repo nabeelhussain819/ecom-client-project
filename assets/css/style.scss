@@ -317,6 +317,7 @@ div.ant-modal-title:after {
   align-items: center;
   justify-content: flex-start;
   margin-bottom: 20px;
+  padding: 0px 69px;
 }
 .ant-card {
   color: #000000;
@@ -556,8 +557,8 @@ ul li:first-child .ant-menu-submenu-title {
 .ant-spin-container {
   & > .ant-row {
     & > .ant-col-3 {
-      padding-left: 8px;
-      padding-right: 8px;
+      padding-left: 3px !important;
+      padding-right: 3px !important;
       /* width: 100%; */
       width: fit-content;
       /* display: flex; */
