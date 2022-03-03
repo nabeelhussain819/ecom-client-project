@@ -48,6 +48,7 @@
 import upload from '~/components/user/upload'
 import editProfile from '~/components/user/EditProfile'
 import Product from '~/services/API/ProductServices'
+import { isEmpty } from '~/services/Utilities'
 export default {
   components: { upload, editProfile },
   data() {
@@ -58,6 +59,7 @@ export default {
     this.getProducts()
   },
   methods: {
+    isEmpty,
     getProducts() {
       Product.self().then((products) => {
         this.products = products.data
