@@ -187,7 +187,11 @@
           >
             Profile
           </a-menu-item>
-          <a-menu-item key="accountn" class="f-black m-0">
+          <a-menu-item
+            @click="goto('/user/account')"
+            key="accountn"
+            class="f-black m-0"
+          >
             Account
           </a-menu-item>
           <a-menu-item key="Logout" class="f-black m-0" @click="logout">
