@@ -32,18 +32,19 @@
           <owner-detail :service="service" />
           <map-view />
         </a-col>
-        <a-col :xs="24">
+        <!-- <a-col :xs="24">
           <related-category />
-        </a-col>
-      </a-row></div
-  ></a-skeleton>
+        </a-col> -->
+      </a-row>
+    </div></a-skeleton
+  >
 </template>
 <script>
 import Services from '~/services/API/Services'
 import imageSlider from '~/components/sliders/ImageSlider'
-import OwnerDetail from '~/components/products/OwnerDetail'
+import OwnerDetail from '~/components/services/OwnerDetail'
 import mapView from '~/components/maps/MapView'
-import RelatedCategory from '~/components/products/RelatedCategory'
+// import RelatedCategory from '~/components/products/RelatedCategory'
 import { isEmpty } from '~/services/Utilities'
 
 export default {
@@ -51,7 +52,7 @@ export default {
     OwnerDetail,
     imageSlider,
     mapView,
-    RelatedCategory,
+    // RelatedCategory,
   },
   data() {
     return { loading: false, service: {}, images: [], values: {} }

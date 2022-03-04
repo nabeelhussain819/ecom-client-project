@@ -82,7 +82,7 @@
             <!-- products -->
             <div class="category_main">
               <span v-for="(product, index) in products" :key="index" :span="6">
-                <Tile :product="product"
+                <Tile :product="product" goto-link="service"
               /></span>
             </div>
             <!-- // products -->

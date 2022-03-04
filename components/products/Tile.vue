@@ -1,10 +1,6 @@
 <template>
   <div>
-    <a-card
-      hoverable
-      class="product_card"
-      @click="goto(`/product/${product.guid}`)"
-    >
+    <a-card hoverable class="product_card" @click="handleGotoLink(product)">
       <img
         slot="cover"
         class="tile_img"
@@ -40,11 +36,15 @@ export default {
       default: () => {},
     },
     showEditable: { type: Boolean, default: false },
+    gotoLink: { type: String, default: 'product' },
   },
   methods: {
     setImage() {},
     editPage(url) {
       console.log(url)
+    },
+    handleGotoLink(entity) {
+      return this.goto(`/${this.gotoLink}/${entity.guid}`)
     },
   },
 }
