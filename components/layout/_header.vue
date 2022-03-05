@@ -208,6 +208,7 @@ import RegisterModal from '~/components/Auth/RegisterModal'
 import LoginModal from '~/components/Auth/LoginModal'
 import routeHelpers from '~/mixins/route-helpers'
 import { EVENT_LOGIN_MODAL } from '~/services/Constant'
+import { setRefreshToken, setAccessToken } from '~/services/Auth'
 
 export default {
   components: {
@@ -238,10 +239,12 @@ export default {
       this.$router.push({ path: url })
     },
     logout() {
+      localStorage.clear()
       this.$store.commit('setToken', {
         token: null,
         status: null,
       })
+
       this.goto('/')
     },
     search() {
