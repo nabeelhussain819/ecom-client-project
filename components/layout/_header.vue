@@ -2,7 +2,6 @@
   <div>
     <a-layout-header class="clearfix header">
       <router-link to="/"><img src="#" /></router-link>
-
       <a-menu
         placeholder="check"
         class="header_nav"
@@ -11,6 +10,8 @@
       >
         <a-dropdown :trigger="['click']">
           <a class="ant-dropdown-link" @click="(e) => e.preventDefault()">
+            <label>Categories</label>
+
             <a-icon type="down" />
           </a>
           <a-menu slot="overlay" class="category-dropdown">
@@ -161,7 +162,7 @@
         <a-menu-item v-if="!isAuth" key="3">
           <RegisterModal />
         </a-menu-item>
-        <a-sub-menu v-if="isAuth" class="header-menu">
+        <a-sub-menu v-if="isAuth" class="header-menu p-0">
           <span slot="title" class="submenu-title-wrapper"
             ><a-avatar
               src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
@@ -187,11 +188,7 @@
           >
             Profile
           </a-menu-item>
-          <a-menu-item
-            @click="goto('/user/account')"
-            key="accountn"
-            class="f-black m-0"
-          >
+          <a-menu-item key="accountn" class="f-black m-0">
             Account
           </a-menu-item>
           <a-menu-item key="Logout" class="f-black m-0" @click="logout">
@@ -294,7 +291,15 @@ export default {
     color: #000 !important;
   }
 }
+.header-menu > .ant-menu-submenu-title {
+  padding: 0px !important;
+}
 .ant-dropdown-link > i.anticon.anticon-down {
-  font-size: 18px;
+  font-size: 15px;
+}
+.no-hover-nav.search-bar {
+  padding: 0px !important;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 </style>

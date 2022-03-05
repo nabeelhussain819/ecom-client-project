@@ -133,6 +133,9 @@ export default {
   font-size: 28px;
   font-weight: 700;
 }
+.product_img_slider {
+  margin-bottom: 20px;
+}
 .product-name {
   display: inline-block;
 }
