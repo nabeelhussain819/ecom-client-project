@@ -1,5 +1,6 @@
 @import 'partials/variables';
 @import 'partials/btn';
+@import 'partials/bgColors';
 @import 'partials/navs';
 @import 'partials/margin';
 @import 'partials/masonry';
@@ -12,7 +13,7 @@
 @import 'partials/avartar';
 @import 'partials/_header';
 @import 'components/saveAndshare';
-
+@import 'components/relatedCategories';
 .ant-layout {
   min-height: 100vh;
   min-width: 100% !important;
@@ -175,10 +176,7 @@ body,
 .login--label {
   color: #000;
 }
-.loginBtn--google:hover,
-.loginBtn--google:focus {
-  // background: #e74b37;
-}
+
 // ================ Maaz styling ==============
 .ant-menu-item .btn_post:hover {
   color: #fff;

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="showTabs" class="realtedCategory">
+  <div v-if="showTabs" class="related-categories-container">
     <a-card
       style="width: 100%"
       :tab-list="categories"

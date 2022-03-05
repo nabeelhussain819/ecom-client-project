@@ -69,7 +69,9 @@
           />
         </a-col>
         <a-col :xs="24">
-          <related-category />
+          <div class="related-categories">
+            <related-category />
+          </div>
         </a-col>
       </a-row>
     </div>
@@ -119,7 +121,7 @@ export default {
         this.images = tempImage
         return
       }
-      console.log('product', product)
+
       this.images = [
         'https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png',
       ]
