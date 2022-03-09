@@ -188,9 +188,9 @@
             Profile
           </a-menu-item>
           <a-menu-item
-            @click="goto('/user/account')"
             key="accountn"
             class="f-black m-0"
+            @click="goto('/user/account')"
           >
             Account
           </a-menu-item>

@@ -68,6 +68,7 @@ export default {
   },
 }
 </script>
+//some
 <style scoped lang="scss">
 .profile-banner {
   background-image: url('https://www.teahub.io/photos/full/254-2549402_background-facebook-cover-photo-size.jpg');
