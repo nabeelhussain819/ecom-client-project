@@ -26,6 +26,20 @@
           </a-col>
           <a-row>
             <a-col style="width: 250px">
+              <!-- // dynmaic attr -->
+              <a-list
+                :data-source="categories[0] ? categories[0].attributes : []"
+              >
+                <a-list-item slot="renderItem" slot-scope="attribute">
+                  <h4 class="text-capitalize">{{ attribute.name }}</h4>
+                  <attribute
+                    :attribute="attribute"
+                    :filter="true"
+                    @changed="changed"
+                  />
+                </a-list-item>
+              </a-list>
+              <!-- // dynmaic attr -->
               <!-- bottom side select card -->
               <a-select style="width: 250px" placeholder="Pickup Distance">
                 <a-select-option value="example1">
