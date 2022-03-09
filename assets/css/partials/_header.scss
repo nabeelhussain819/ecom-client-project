@@ -1,8 +1,10 @@
 .header {
   height: auto;
+  padding-right: 0px !important;
   .header_nav {
     border-bottom: 0;
     max-width: 100% !important;
+    font-weight: 500;
   }
   .ant-dropdown-link {
     color: #fff;
@@ -55,10 +57,13 @@
   .ant-menu-item {
     border: none !important;
   }
-  header .ant-menu-horizontal .ant-menu-item a:hover,
+  header .ant-menu-horizontal .ant-menu-item:hover, 
   .ant-menu-item div:hover {
     text-decoration: none;
     color: black;
+  }
+  .ant-menu-submenu-title {
+    padding: 0px !important;
   }
 }
 .ant-menu-horizontal {
@@ -73,6 +78,8 @@
   .ant-dropdown-menu {
   .menu-category-heading {
     cursor: context-menu;
+    font-weight: 700;
+    color: #000;
     &:hover {
       background-color: #fff;
     }
@@ -92,7 +99,7 @@ header {
   position: absolute;
   left: 14px;
   pointer-events: none;
-  top: 21px;
+  top: 19px;
   z-index: 9;
 }
 .btn_post {
@@ -108,4 +115,7 @@ header {
 
 .go-btn {
   background: #ad1457;
+}
+.ant-menu-horizontal > .ant-menu-item > a:hover {
+  color: #000 !important;
 }

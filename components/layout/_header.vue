@@ -1,7 +1,13 @@
 <template>
   <div>
     <a-layout-header class="clearfix header">
-      <router-link to="/"><img src="#" /></router-link>
+      <!-- used inline styling on img, temporary -->
+      <router-link to="/"
+        ><img
+          style="border-radius: 100%"
+          width="95px"
+          src="https://www.creativefabrica.com/wp-content/uploads/2020/08/10/Online-Shop-Logo-Design-Template-Vector-Graphics-4916391-1.jpg"
+      /></router-link>
       <a-menu
         placeholder="check"
         class="header_nav"
@@ -205,7 +211,7 @@ import RegisterModal from '~/components/Auth/RegisterModal'
 import LoginModal from '~/components/Auth/LoginModal'
 import routeHelpers from '~/mixins/route-helpers'
 import { EVENT_LOGIN_MODAL } from '~/services/Constant'
-import { setRefreshToken, setAccessToken } from '~/services/Auth'
+// import { setRefreshToken, setAccessToken } from '~/services/Auth'
 
 export default {
   components: {

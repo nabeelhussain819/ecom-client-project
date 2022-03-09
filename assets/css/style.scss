@@ -190,7 +190,7 @@ body,
 }
 .ant-menu-item .anticon,
 .ant-menu-submenu-title .anticon {
-  font-size: 13px !important;
+  font-size: 16px !important;
 }
 .ant-menu-item .anticon,
 .ant-menu-submenu-title .anticon:hover {
@@ -213,7 +213,7 @@ div.ant-modal-title:after {
 //  Product-Category styling ==============
 .ant-menu-horizontal > .ant-menu-item-selected,
 .ant-menu-horizontal > .ant-menu-submenu-selected {
-  color: black;
+  // color: black;
   border-bottom: 0px !important;
 }
 .main-filter {
@@ -358,6 +358,7 @@ div.ant-modal-title:after {
   background: #ad1457;
   padding: 8px;
   border-radius: 50%;
+  margin-right: 0px;
 }
 // tile styling
 
@@ -382,7 +383,7 @@ li.ant-list-item {
   }
 }
 ul li:first-child .ant-menu-submenu-title {
-  padding: 0px;
+  padding: 0px !important;
   span {
     display: block;
     width: 100%;
@@ -518,7 +519,7 @@ ul li:first-child .ant-menu-submenu-title {
     margin-left: 10px !important;
     .btn-follow {
       position: absolute;
-      margin: auto;
+      margin-top: 20px;
       left: 0;
       right: 0;
       bottom: 0;
@@ -803,7 +804,7 @@ ul li:first-child .ant-menu-submenu-title {
   .profile-tiles {
     border: 1px solid gainsboro;
     padding: 20px;
-    width: 72%;
+    width: 100%;
     min-height: 457px;
     margin-left: 20px;
     .ant-row {
@@ -820,7 +821,11 @@ ul li:first-child .ant-menu-submenu-title {
   margin-bottom: 10px;
   button.btn.ant-btn.ant-btn-primary {
     margin: 10px;
+    float: right;
   }
+}
+.profile-icon {
+  padding-left: 8px;
 }
 .icon-fb {
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAkFBMVEX///84Xpg4XZg1YpkzZpk3YJk0ZJn4+vygsMgwZJhHdKLq7/QrZJjz9fktWpaInL1EZ56hrsi+x9q3wdRbe6goW5UrVZRcd6cmXpUnVZONoMBIcaJKbqIzWJYiTpGfssjZ3+mUqcTP1uOuutFtg65Yc6UZSY+UpMPFzt9mf60YUZFyjLRBY51ggqwbVpLh5+7b4THPAAADlUlEQVR4nO3abVPiMBSGYWvbKMtSsNqKL6AirIqu/v9/twjSpsmpZGpnknP2ucdPjh9yTYa84dERQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEELBdDKyOvE9pp4aLR7Hy5fV7dtksvnRis59D62PRmeXs3lZznYdNyoFCBfLP6XB2hZt4y+8X84p3h7IX/hETl8N5C4crg4BoyvWwntzWbGBKWvhom0CNSBrocsMshYOXWaQtXDlBGQsfCqdgHyF9we3iZS58NIRyFaYzx2BbIW3355FNSBX4TM9hQSQq/CFnEIKyFRIb/YkkKnwjNoLaSBTIbVVtAB5CofuM8hUSKykDWAUZXVrjkL7SKoDs6tssny93jde+B5uh5bmx1C/8Ebjxcj3AH/aydusFbh+GPoeXg+N5m3AKHv2Pbhe+pi3zWD24Xts/dRcSvXPYO57aD11XrbM4NL3yPrqsSSB6ZrjvkCmCXXg8cr3wHqrPnc3TjLZk++B9VYlbJ5FxawztdA4bK8l7PW7voQGMMrYH9aqdkLruhQLE1rA6FbKP13shPaFV5iQuNHLEhJAWcIrAihTmEoXptKFqXSh+S4qTmgC0/SGqfB5dWl0MSGBcXxBdhP6vTifz2bV+3V1p6CAsfWLbevQX6f0r7Opjd7w2BW+BYfShJ2A8V/fgkPl9JOFM7B48C04VE4/WbgC4yL4t42cfrJwBcbvwb9t5OSThTMwToLfJXP6ycIVGL/6BhwsJ58snIHhLzRbYXdg/B7+1205+WThClRF6CeaT+EPgHHM4DheC7sAwz/RaMIuQDUNf6GphJ2Aqgh/odkLuwHVNPyF5kvY5SO4AarY9/Ad2go7zqDisNBshV2BLBaaT2FnIIuFZiPsDlThX5025evMrE1YVE33+R69S4ux2fUFTVTWX45PfY++Y6cZKbzxPa7+ahOGf8h2DUL+nRYQcg9C/kHIP1qopAuVdKGSLlTShUq6UEkXKulCJV24B6pfQoVKurDyDYQKa6BQoQaUKdSBIoUNoERhEyhQaADlCU2gOKEFHAxkCW1gIktIAIUKNaAs4ZQAihQ2gBKFTaBAoQGUJzSB4oQWUJrQBgoTEkChwkS6MJEuTKQLE+nCRLrQBIoTWkBpQhsoTEgAIWTVHYTsg5B/d/XtSUvSfyrcTX/bDaaC5nA0pPM9LoQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCH0X/YPwmNtddlVLa0AAAAASUVORK5CYII=')
@@ -833,7 +838,7 @@ ul li:first-child .ant-menu-submenu-title {
   display: inline-block;
 }
 .icon-email {
-  background: url('https://www.iconsdb.com/icons/preview/barbie-pink/email-5-xxl.png')
+  background: url('https://www.pinclipart.com/picdir/big/87-879427_open-email-icon-png-clipart.png')
     0px no-repeat;
   width: 30px;
   height: 30px;
@@ -949,6 +954,14 @@ ul li:first-child .ant-menu-submenu-title {
   .ant-spin-nested-loading {
     .ant-spin-container {
       padding: 0px !important;
+    }
+  }
+}
+
+.detail-slider {
+  .slick-slider {
+    ul.slick-dots {
+      bottom: 10px !important;
     }
   }
 }
