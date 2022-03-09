@@ -2,8 +2,30 @@
 .related-categories {
   .ant-tabs-tab-active {
     background-color: $primary;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    margin: 10px !important;
+    border-bottom: none;
+    padding: 8px !important;
+  }
+  .ant-tabs-tab-active:hover {
+    color: #fff !important;
+  }
+  .ant-tabs-tab {
+    font-weight: 600;
+    margin: 0 !important;
+  }
+  .ant-tabs-tab:hover {
+    color: $primary;
   }
   .ant-card-head {
     padding: 0;
+  }
+  .ant-tabs-ink-bar {
+    background-color: black !important;
+  }
+  .ant-tabs-nav-scroll {
+    padding: 0px 22px;
   }
 }

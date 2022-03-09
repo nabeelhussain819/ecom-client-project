@@ -1,8 +1,13 @@
 <template>
   <div>
     <a-layout-header class="clearfix header">
-      <router-link to="/"><img src="#" /></router-link>
-
+      <!-- used inline styling on img, temporary -->
+      <router-link to="/"
+        ><img
+          style="border-radius: 100%"
+          width="95px"
+          src="https://www.creativefabrica.com/wp-content/uploads/2020/08/10/Online-Shop-Logo-Design-Template-Vector-Graphics-4916391-1.jpg"
+      /></router-link>
       <a-menu
         placeholder="check"
         class="header_nav"
@@ -11,6 +16,8 @@
       >
         <a-dropdown :trigger="['click']">
           <a class="ant-dropdown-link" @click="(e) => e.preventDefault()">
+            <label>Categories</label>
+
             <a-icon type="down" />
           </a>
           <a-menu slot="overlay" class="category-dropdown">
@@ -161,7 +168,7 @@
         <a-menu-item v-if="!isAuth" key="3">
           <RegisterModal />
         </a-menu-item>
-        <a-sub-menu v-if="isAuth" class="header-menu">
+        <a-sub-menu v-if="isAuth" class="header-menu p-0">
           <span slot="title" class="submenu-title-wrapper"
             ><a-avatar
               src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
@@ -208,7 +215,6 @@ import RegisterModal from '~/components/Auth/RegisterModal'
 import LoginModal from '~/components/Auth/LoginModal'
 import routeHelpers from '~/mixins/route-helpers'
 import { EVENT_LOGIN_MODAL } from '~/services/Constant'
-
 export default {
   components: {
     RegisterModal,
@@ -296,7 +302,15 @@ export default {
     color: #000 !important;
   }
 }
+.header-menu > .ant-menu-submenu-title {
+  padding: 0px !important;
+}
 .ant-dropdown-link > i.anticon.anticon-down {
-  font-size: 18px;
+  font-size: 15px;
+}
+.no-hover-nav.search-bar {
+  padding: 0px !important;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 </style>

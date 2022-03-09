@@ -2,7 +2,7 @@
   <a-skeleton :loading="loading">
     <div class="center-container user-profile">
       <a-row :gutter="18">
-        <a-col :xs="24" class="border profile-detail py-4" :sm="6">
+        <!-- <a-col :xs="24" class="border profile-detail py-4" :sm="6">
           <h1 class="text-center heading-profile">Profile</h1>
           <upload v-if="!isEmpty(user)" :user="user" />
           <h2 class="heading text-center text-capitalize">{{ user.name }}</h2>
@@ -35,22 +35,23 @@
             block
             >Follow</a-button
           >
-        </a-col>
+        </a-col> -->
 
-        <a-col :xs="24" :sm="16" class="profile-tiles px-3 pt-1 pb-0">
+        <a-col :xs="24" :sm="16" class="profile-tiles">
           <editProfile class="p-3 edit-profile-form" />
-          <hr />
+          <!-- <hr /> -->
         </a-col>
-      </a-row></div
-  ></a-skeleton>
+      </a-row>
+    </div></a-skeleton
+  >
 </template>
 <script>
-import upload from '~/components/user/upload'
+// import upload from '~/components/user/upload'
 import editProfile from '~/components/user/EditProfile'
 import Product from '~/services/API/ProductServices'
 import { isEmpty } from '~/services/Utilities'
 export default {
-  components: { upload, editProfile },
+  components: { editProfile },
   data() {
     return { loading: false, user: {}, products: [] }
   },

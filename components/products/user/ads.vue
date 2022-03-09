@@ -1,5 +1,5 @@
 <template>
-  <a-row :gutter="18" class="py-4">
+  <div class="py-4 border px-3 pt-1 pb-0 ant-col ant-col-xs-24 ant-col-sm-16">
     <a-col
       v-for="product in products"
       :key="product.id"
@@ -9,7 +9,7 @@
     >
       <tile :show-editable="true" :product="product" class="profile-cards" />
     </a-col>
-  </a-row>
+  </div>
 </template>
 <script>
 import Product from '~/services/API/ProductServices'
