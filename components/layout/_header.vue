@@ -180,7 +180,12 @@
               <a-icon type="down" />
             </a>
           </span>
-          <a-menu-item key="offer" class="f-black m-0">My Ads</a-menu-item>
+          <a-menu-item
+            key="offer"
+            class="f-black m-0"
+            @click="goto('/user/advetisement')"
+            >My Ads</a-menu-item
+          >
           <a-menu-item
             key="board"
             class="f-black m-0"

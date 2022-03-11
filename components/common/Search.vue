@@ -110,6 +110,7 @@
       <a-list :data-source="categories[0] ? categories[0].attributes : []">
         <a-list-item slot="renderItem" slot-scope="attribute">
           <h4 class="text-capitalize">{{ attribute.name }}:</h4>
+
           <attribute :attribute="attribute" :filter="true" @changed="changed" />
         </a-list-item>
       </a-list>
@@ -122,9 +123,14 @@
 import moment from 'moment'
 import Attribute from '~/components/common/Attribute'
 import Tile from '~/components/products/Tile'
-
+import { isEmpty } from '~/services/Utilities'
 export default {
   components: { Attribute, Tile },
+  beforeRouteUpdate(to, from, next) {
+    this.fetch(to.query)
+
+    next()
+  },
   props: {
     service: {
       type: Function,
@@ -163,9 +169,17 @@ export default {
     // },
   },
   mounted() {
-    this.search()
+    this.onFetch()
   },
   methods: {
+    onFetch(params = {}) {
+      this.service(isEmpty(params) ? this.$route.query : params)
+        .then(({ categories, results }) => {
+          this.categories = categories
+          this.products = results
+        })
+        .catch(() => {})
+    },
     selectCategory(categoryId) {
       this.search({ category_id: categoryId })
       // this.$router.push({
@@ -174,19 +188,21 @@ export default {
       // })
     },
     search(searchParams = {}) {
-      const params = { ...searchParams, query: this.$route.query.query }
-
-      if (this.$route.query.category) {
-        params.category_id = this.$route.query.category
-        params.filters = this.filters
+      const params = {
+        ...searchParams,
+        query: this.$route.query.query,
+        ...this.filters,
       }
 
-      this.service(params)
-        .then(({ categories, results }) => {
-          this.categories = categories
-          this.products = results
-        })
-        .catch(() => {})
+      // if (this.$route.query.category) {
+      //   params.category_id = this.$route.query.category
+      //   params.filters = this.filters
+      // }
+      this.params = params
+      this.$router.push({
+        path: '/product/search',
+        query: { ...this.params },
+      })
     },
     changed(value, attribute) {
       this.filters = { ...this.filters, [parseInt(attribute.id)]: value }
