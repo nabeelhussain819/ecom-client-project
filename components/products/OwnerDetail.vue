@@ -16,7 +16,14 @@
         <share-and-save :product="product" />
       </div>
       <div v-else>
-        <a-button class="btn" type="primary" :size="size"> Promote</a-button>
+        <a-button
+          class="btn"
+          type="primary"
+          @click="handlePromoteModal(true)"
+          :size="size"
+        >
+          Promote</a-button
+        >
       </div>
       <a-modal
         title="Make an Offer"
@@ -30,6 +37,14 @@
           style="width: 100%"
         />
       </a-modal>
+      <a-modal
+        title=""
+        :width="1200"
+        :visible="showPromoteModal"
+        @cancel="handlePromoteModal(false)"
+        @click="handlePromoteModal(true)"
+        ><ads
+      /></a-modal>
     </div>
     <div v-else>Sold</div>
   </div>
@@ -39,11 +54,9 @@ import ratingAvatar from '~/components/products/RatingAvatar'
 import ShareAndSave from '~/components/products/ShareAndSave'
 import ProductServices from '~/services/API/ProductServices'
 import notifications from '~/mixins/notifications'
+import ads from '~/components/products/Ads'
 export default {
-  components: {
-    ratingAvatar,
-    ShareAndSave,
-  },
+  components: { ads, ratingAvatar, ShareAndSave },
   mixins: [notifications],
   props: {
     product: {
@@ -56,11 +69,15 @@ export default {
       size: 'large',
       visible: false,
       offer: this.product.price,
+      showPromoteModal: false,
     }
   },
   methods: {
     handleOk() {
       this.visible = !this.visible
+    },
+    handlePromoteModal(show) {
+      this.showPromoteModal = show
     },
     makeOffer() {
       ProductServices.offer(this.product.guid, {

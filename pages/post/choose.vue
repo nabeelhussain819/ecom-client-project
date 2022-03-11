@@ -13,14 +13,13 @@
 
 <script>
 import ChoosePost from '~/components/categories/ChoosePost'
-import Ads from '~/components/products/Ads'
 
 function getPostType(type) {
   this.$router.push({ path: `/post/category/${type}` })
 }
 const methods = { getPostType }
 export default {
-  components: { ChoosePost, Ads },
+  components: { ChoosePost },
   middleware: 'auth',
   data() {
     return {}
