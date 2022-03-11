@@ -73,9 +73,7 @@ export default {
     }
   }
 }
-.divider {
-  border: 1px solid gainsboro !important;
-}
+
 .profile-status {
   display: flex;
   justify-content: space-between;

@@ -2,14 +2,14 @@
   <a-skeleton :loading="loading">
     <div class="center-container user-profile">
       <a-row :gutter="18">
-        <!-- <a-col :xs="24" class="border profile-detail py-4" :sm="6">
-          <h1 class="text-center heading-profile">Profile</h1>
+        <a-col :xs="24" class="border profile-detail py-4" :sm="6">
+          <h1 class="text-center heading-profile">Account</h1>
           <upload v-if="!isEmpty(user)" :user="user" />
           <h2 class="heading text-center text-capitalize">{{ user.name }}</h2>
           <h3 class="join-date text-center text-capitalize">
             Joined November 2022
           </h3>
-          <hr />
+          <hr class="devider" />
           <span id="profile-icon">
             <a href="#" target="_blank"><div class="icon-email"></div> </a>
             <a href="#" target="_blank"><div class="icon-mob"></div> </a>
@@ -18,16 +18,16 @@
             </a>
             <a href="#" target="_blank"><div class="icon-chat"></div> </a>
           </span>
-          <hr />
+          <hr class="devider" />
           <div class="profile-status px-2">
             <span>Followers </span><span>6</span>
           </div>
-          <hr />
+          <hr class="devider" />
           <div class="profile-status px-2">
             <span>Following </span><span>9</span>
           </div>
 
-          <hr />
+          <hr class="devider" />
           <a-button
             class="btn-follow"
             type="primary"
@@ -35,7 +35,7 @@
             block
             >Follow</a-button
           >
-        </a-col> -->
+        </a-col>
 
         <a-col :xs="24" :sm="16" class="profile-tiles">
           <editProfile class="p-3 edit-profile-form" />
@@ -46,12 +46,12 @@
   >
 </template>
 <script>
-// import upload from '~/components/user/upload'
+import upload from '~/components/user/upload'
 import editProfile from '~/components/user/EditProfile'
 import Product from '~/services/API/ProductServices'
 import { isEmpty } from '~/services/Utilities'
 export default {
-  components: { editProfile },
+  components: { editProfile, upload },
   data() {
     return { loading: false, user: {}, products: [] }
   },
@@ -69,7 +69,6 @@ export default {
   },
 }
 </script>
-//some
 <style scoped lang="scss">
 .profile-banner {
   background-image: url('https://www.teahub.io/photos/full/254-2549402_background-facebook-cover-photo-size.jpg');
