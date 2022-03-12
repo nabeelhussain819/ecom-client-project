@@ -183,7 +183,7 @@
           <a-menu-item
             key="offer"
             class="f-black m-0"
-            @click="goto('/user/advetisement')"
+            @click="goto('/user/advertisement')"
             >My Ads</a-menu-item
           >
           <a-menu-item

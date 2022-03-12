@@ -8,7 +8,7 @@
     </a-col>
     <a-col :xs="24" :sm="18">
       <span>
-        <span class="name"> Naveed</span>
+        <span class="name"> {{ product.user.name }}</span>
         <br />
         <a-rate v-model="rating" allow-half />
         <span class="ant-rate-text">{{ rating }}</span>
@@ -23,6 +23,7 @@ export default {
     product: {
       type: Object,
       default: () => {},
+      required: true,
     },
   },
   data() {
