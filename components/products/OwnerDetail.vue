@@ -1,53 +1,55 @@
 <template>
-  <div class="owner-detail">
-    <div v-if="!product.is_sold">
-      <div v-if="!product.is_owner">
+  <a-skeleton :loading="isEmpty(product)">
+    <div class="owner-detail">
+      <div v-if="!product.is_sold">
         <rating-avatar :product="product" />
-        <a-button
-          class="btn primary"
-          type="primary"
-          :size="size"
-          @click="handleOk"
+        <div v-if="!product.is_owner">
+          <a-button
+            class="btn primary"
+            type="primary"
+            :size="size"
+            @click="handleOk"
+          >
+            Make An Offer
+          </a-button>
+          <a-button class="btn" :size="size"> Ask</a-button>
+          <a-button class="btn btn-secondary" :size="size"> Buy Now</a-button>
+          <share-and-save :product="product" />
+        </div>
+        <div v-else>
+          <a-button
+            class="btn"
+            type="primary"
+            @click="handlePromoteModal(true)"
+            :size="size"
+          >
+            Promote</a-button
+          >
+        </div>
+        <a-modal
+          title="Make an Offer"
+          :visible="visible"
+          @cancel="handleOk"
+          @ok="makeOffer"
         >
-          Make An Offer
-        </a-button>
-        <a-button class="btn" :size="size"> Ask</a-button>
-        <a-button class="btn btn-secondary" :size="size"> Buy Now</a-button>
-        <share-and-save :product="product" />
-      </div>
-      <div v-else>
-        <a-button
-          class="btn"
-          type="primary"
+          <a-input-number
+            v-model="offer"
+            placeholder="Offer"
+            style="width: 100%"
+          />
+        </a-modal>
+        <a-modal
+          title=""
+          :width="1200"
+          :visible="showPromoteModal"
+          @cancel="handlePromoteModal(false)"
           @click="handlePromoteModal(true)"
-          :size="size"
-        >
-          Promote</a-button
-        >
+          ><ads
+        /></a-modal>
       </div>
-      <a-modal
-        title="Make an Offer"
-        :visible="visible"
-        @cancel="handleOk"
-        @ok="makeOffer"
-      >
-        <a-input-number
-          v-model="offer"
-          placeholder="Offer"
-          style="width: 100%"
-        />
-      </a-modal>
-      <a-modal
-        title=""
-        :width="1200"
-        :visible="showPromoteModal"
-        @cancel="handlePromoteModal(false)"
-        @click="handlePromoteModal(true)"
-        ><ads
-      /></a-modal>
+      <div v-else>Sold</div>
     </div>
-    <div v-else>Sold</div>
-  </div>
+  </a-skeleton>
 </template>
 <script>
 import ratingAvatar from '~/components/products/RatingAvatar'
@@ -55,6 +57,7 @@ import ShareAndSave from '~/components/products/ShareAndSave'
 import ProductServices from '~/services/API/ProductServices'
 import notifications from '~/mixins/notifications'
 import ads from '~/components/products/Ads'
+import { isEmpty } from '~/services/Helpers'
 export default {
   components: { ads, ratingAvatar, ShareAndSave },
   mixins: [notifications],
@@ -73,6 +76,7 @@ export default {
     }
   },
   methods: {
+    isEmpty,
     handleOk() {
       this.visible = !this.visible
     },
