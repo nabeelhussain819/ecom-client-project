@@ -3,8 +3,10 @@
     <div class="mb-2">
       <slider
         :images="[
-          'https://galaxy.pk/wp-content/uploads/2022/01/Apple-Macbook-Pro-6.jpg',
-          'https://i.dell.com/is/image/DellContent/content/dam/ss2/page-specific/dell-homepage/apj/heroes/npl-cons-dell-xps-9310nt-uhp-apj-homepage-hero-lf-2400x696.png?fmt=pjpg&pscan=auto&scl=1&hei=696&wid=2400&qlt=100,0&resMode=sharp2&size=2400,696&op_usm=1.75,0.3,2,0',
+          'https://pocketapp.in/img/blog-img/electronics1.jpg',
+          'http://www.reliablewash.com/images/slide3.jpg',
+          'https://firstresponsecarpetcleaning.net/wp-content/uploads/2018/02/residential-Carpet-Cleaning-Service.jpg',
+          'https://www.bechtle.com/dam/jcr:a0a76a52-6182-4496-b7f8-0d0553430049/cw42_mainbanner_apple_iphone12-eu.jpg',
         ]"
       />
     </div>

@@ -1,0 +1,103 @@
+.account-rating {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+.user-profile {
+  margin-top: 95px;
+  .profile-tiles {
+    position: relative;
+    border: 1px solid gainsboro;
+    padding: 20px;
+    width: 60%;
+    // min-height: 457px;
+    margin-left: 20px;
+    .ant-row {
+      .profile-tile-width.ant-col {
+        width: fit-content;
+      }
+    }
+  }
+  .account-form-row {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+.account-banner {
+  background-image: url('https://www.teahub.io/photos/full/254-2549402_background-facebook-cover-photo-size.jpg');
+  background-repeat: no-repeat;
+  .heading-profile {
+    font-size: 27px;
+  }
+  .profile-detail {
+    width: 260px;
+    // padding: 15px;
+    .btn-follow {
+      margin-top: 50px;
+    }
+  }
+}
+.menu-account-settings {
+  background-color: #fff !important;
+  color: black;
+  width: 100%;
+  font-weight: 600;
+  li.ant-menu-item.ant-menu-item-selected {
+    background-color: $primary;
+    color: #fff;
+  }
+}
+.profile-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.edit-profile-form {
+  //   width: 50%;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  height: max-content;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  form{
+    font-weight: 500;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .edit-profile-form {
+    width: 60%;
+    margin: auto;
+  }
+}
+// .account-setting-menu {
+//   width: -webkit-fill-available;
+//   .ant-select-selection__rendered {
+//     line-height: 43px;
+//     background-color: $primary;
+//     font-weight: 600;
+//     font-size: 16px;
+//     color: #fff;
+//     margin: 0 !important;
+//     padding: 0px 10px;
+//   }
+//   .ant-select-selection.ant-select-selection--single {
+//     height: 45px !important;
+//     .ant-select-arrow {
+//       color: #fff;
+//     }
+//   }
+// }
+
+// Edit-Profile form
+.account-form-field {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.btn-account {
+  text-align: center;
+  padding: 22px 0px;
+}
