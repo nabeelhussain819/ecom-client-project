@@ -1,24 +1,40 @@
-<template class="profile-banner">
+<template class="account-banner">
   <a-skeleton :loading="loading">
     <div class="center-container user-profile">
-      <a-row :gutter="18">
-        <a-col :xs="24" class="border profile-detail py-4" :sm="6">
-          <h1 class="text-center heading-profile">Account</h1>
+      <a-row :gutter="18" class="account-form-row">
+        <a-col :xs="24" class="border profile-detail pt-4 px-0" :sm="6">
+          <h1 class="text-center heading-profile">Account Settings</h1>
+          <br />
           <upload v-if="!isEmpty(user)" :user="user" />
           <h2 class="heading text-center text-capitalize">{{ user.name }}</h2>
-          <h3 class="join-date text-center text-capitalize">
-            Joined November 2022
-          </h3>
-          <hr class="devider" />
-          <span id="profile-icon">
-            <a href="#" target="_blank"><div class="icon-email"></div> </a>
-            <a href="#" target="_blank"><div class="icon-mob"></div> </a>
-            <a href="https://www.facebook.com/" target="_blank"
-              ><div class="icon-fb"></div>
-            </a>
-            <a href="#" target="_blank"><div class="icon-chat"></div> </a>
+          <span class="account-rating">
+            <a-rate v-model="rating" allow-half />
+            <span class="ant-rate-text">{{ rating }}</span>
           </span>
-          <hr class="devider" />
+          <br />
+          <hr />
+          <br />
+          <a-menu
+            mode="inline"
+            class="menu-account-settings"
+            :default-selected-keys="['1']"
+          >
+            <a-menu-item key="1"> Account Settings </a-menu-item>
+            <a-menu-item key="2"> Transaction History </a-menu-item>
+            <a-menu-item key="3"> payment Methods </a-menu-item>
+            <a-menu-item key="4"> Deposit Account </a-menu-item>
+          </a-menu>
+          <!-- <a-select
+            label-in-value
+            :default-value="{ key: 'Account Settings' }"
+            class="account-setting-menu"
+            @change="handleChange"
+          >
+            <a-select-option value="1"> Transaction History </a-select-option>
+            <a-select-option value="2"> Payment Methods </a-select-option>
+            <a-select-option value="3"> Deposit Account </a-select-option>
+          </a-select> -->
+          <!-- <hr class="devider" />
           <div class="profile-status px-2">
             <span>Followers </span><span>6</span>
           </div>
@@ -34,7 +50,7 @@
             style="text-align: center"
             block
             >Follow</a-button
-          >
+          > -->
         </a-col>
 
         <a-col :xs="24" :sm="16" class="profile-tiles">
@@ -53,13 +69,21 @@ import { isEmpty } from '~/services/Utilities'
 export default {
   components: { editProfile, upload },
   data() {
-    return { loading: false, user: {}, products: [] }
+    return {
+      loading: false,
+      user: {},
+      products: [],
+      rating: 4.5,
+    }
   },
   mounted() {
     this.user = this.$store.getters.getUser
     this.getProducts()
   },
   methods: {
+    handleChange(value) {
+      console.log(value) // account setting values in dropdown
+    },
     isEmpty,
     getProducts() {
       Product.self().then((products) => {
@@ -69,34 +93,3 @@ export default {
   },
 }
 </script>
-<style scoped lang="scss">
-.profile-banner {
-  background-image: url('https://www.teahub.io/photos/full/254-2549402_background-facebook-cover-photo-size.jpg');
-  background-repeat: no-repeat;
-  .heading-profile {
-    font-size: 27px;
-  }
-  .profile-detail {
-    width: 260px;
-    padding: 15px;
-    .btn-follow {
-      margin-top: 50px;
-    }
-  }
-}
-.profile-status {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.edit-profile-form {
-  width: 50%;
-  margin: auto;
-}
-@media only screen and (max-width: 768px) {
-  .edit-profile-form {
-    width: 70%;
-    margin: auto;
-  }
-}
-</style>

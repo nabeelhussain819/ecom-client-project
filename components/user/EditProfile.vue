@@ -1,56 +1,85 @@
 <template>
   <div>
     <a-form :form="form">
-      <a-form-item
-        :label-col="formItemLayout.labelCol"
-        :wrapper-col="formItemLayout.wrapperCol"
-        label="Name"
-      >
-        <a-input
-          v-decorator="[
-            'name',
-            {
-              initialValue: user.name,
-              rules: [{ required: true, message: 'Please Enter name' }],
-            },
-          ]"
-          placeholder="Please Enter Name"
-        />
-      </a-form-item>
-      <a-form-item
-        :label-col="formItemLayout.labelCol"
-        :wrapper-col="formItemLayout.wrapperCol"
-        label="Email"
-      >
-        <a-input
-          v-decorator="[
-            'Email',
-            {
-              initialValue: user.email,
-              rules: [{ required: true, message: 'Please Enter Email' }],
-            },
-          ]"
-          placeholder="Please Enter Email"
-        />
-      </a-form-item>
-      <a-form-item
-        :label-col="formItemLayout.labelCol"
-        :wrapper-col="formItemLayout.wrapperCol"
-        label="phone"
-      >
-        <a-input
-          v-decorator="[
-            'Phone',
-            {
-              initialValue: user.phone,
-              rules: [{ required: true, message: 'Please Enter Phone Number' }],
-            },
-          ]"
-          placeholder="Please Enter Phone Number"
-        />
-      </a-form-item>
+      <a-row class="account-form-field">
+        <a-col :sm="10">
+          <a-form-item
+            :label-col="formItemLayout.labelCol"
+            :wrapper-col="formItemLayout.wrapperCol"
+            label="Name"
+          >
+            <a-input
+              v-decorator="[
+                'name',
+                {
+                  initialValue: user.name,
+                  rules: [{ required: true, message: 'Please Enter name' }],
+                },
+              ]"
+              placeholder="Please Enter Name"
+            /> </a-form-item
+        ></a-col>
+        <a-col :sm="10">
+          <a-form-item
+            :label-col="formItemLayout.labelCol"
+            :wrapper-col="formItemLayout.wrapperCol"
+            label="Phone Number"
+          >
+            <a-input
+              v-decorator="[
+                'Phone',
+                {
+                  initialValue: user.phone,
+                  rules: [
+                    { required: true, message: 'Please Enter Phone Number' },
+                  ],
+                },
+              ]"
+              placeholder="Please Enter Phone Number"
+            />
+          </a-form-item>
+        </a-col>
+      </a-row>
+      <a-row class="account-form-field">
+        <a-col :sm="10">
+          <a-form-item
+            :label-col="formItemLayout.labelCol"
+            :wrapper-col="formItemLayout.wrapperCol"
+            label="Email"
+          >
+            <a-input
+              v-decorator="[
+                'Email',
+                {
+                  initialValue: user.email,
+                  rules: [{ required: true, message: 'Please Enter Email' }],
+                },
+              ]"
+              placeholder="Please Enter Email"
+            />
+          </a-form-item>
+        </a-col>
+        <a-col :sm="10">
+          <a-form-item
+            :label-col="formItemLayout.labelCol"
+            :wrapper-col="formItemLayout.wrapperCol"
+            label="Location"
+          >
+            <a-input
+              v-decorator="[
+                'Location',
+                {
+                  initialValue: user.location,
+                  rules: [{ required: true, message: 'Your Location' }],
+                },
+              ]"
+              placeholder="Your Location"
+            />
+          </a-form-item>
+        </a-col>
+      </a-row>
 
-      <a-form-item>
+      <a-form-item class="btn-account">
         <a-button
           :loading="loading"
           type="primary"
@@ -58,7 +87,7 @@
           class="px-5"
           @click="handleSubmit"
         >
-          Save
+          Save Changes
         </a-button></a-form-item
       >
     </a-form>

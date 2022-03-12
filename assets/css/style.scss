@@ -14,6 +14,7 @@
 @import 'partials/_header';
 @import 'components/saveAndshare';
 @import 'components/relatedCategories';
+@import 'components/accountSettings';
 .ant-layout {
   min-height: 100vh;
   min-width: 100% !important;
@@ -513,13 +514,14 @@ ul li:first-child .ant-menu-submenu-title {
   .profile-tile-width {
     padding: 0px !important;
   }
+  .profile-icon {
+    padding-left: 8px;
+  }
   .profile-detail {
     width: 90% !important;
     position: relative;
     margin-left: 10px !important;
-    .profile-icon {
-      padding-left: 8px;
-    }
+
     .btn-follow {
       position: absolute;
       margin-top: 20px;
@@ -555,7 +557,7 @@ ul li:first-child .ant-menu-submenu-title {
       }
     }
   }
-} 
+}
 .divider {
   border: 1px solid gainsboro !important;
 }
@@ -804,21 +806,6 @@ ul li:first-child .ant-menu-submenu-title {
 }
 .ads_button {
   text-align: center;
-}
-.user-profile {
-  margin-top: 95px;
-  .profile-tiles {
-    border: 1px solid gainsboro;
-    padding: 20px;
-    width: 70%;
-    min-height: 457px;
-    margin-left: 20px;
-    .ant-row {
-      .profile-tile-width.ant-col {
-        width: fit-content;
-      }
-    }
-  }
 }
 .tile-width {
   margin-bottom: 6px;
