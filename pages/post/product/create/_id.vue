@@ -1,16 +1,28 @@
 <template>
   <a-card class="tiles-card dark-header" size="small" title="Choose A Category">
-    <bread-crumb />
+    <bread-crumb :last-crumb="catgoryName" />
     <a-divider />
-    <add-product :product="{}" />
+    <add-product :product="{}" @getCategoryName="getCategoryName" />
   </a-card>
 </template>
 <script>
 import AddProduct from '~/components/products/AddProduct'
 import BreadCrumb from '~/components/ui/BreadCrumb'
 const components = {
-  AddProduct,
+  'add-product': AddProduct,
   BreadCrumb,
 }
-export default { components }
+export default {
+  components,
+  data() {
+    return {
+      catgoryName: null,
+    }
+  },
+  methods: {
+    getCategoryName(categoryName) {
+      this.catgoryName = categoryName
+    },
+  },
+}
 </script>

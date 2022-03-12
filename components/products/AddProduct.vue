@@ -296,10 +296,16 @@ export default {
     this.category_id = this.$route.query.category_id
     if (this.product.category_id) {
       this.category = this.product.category
+
+      this.$emit('getCategoryName', this.category.name)
       // this.step = 2
     } else {
       Category.get(this.category_id)
-        .then((category) => (this.category = category))
+        .then((category) => {
+          this.category = category
+
+          this.$emit('getCategoryName', category.name)
+        })
         .catch((e) => (this.errors = e.response.data.errors))
     }
   },

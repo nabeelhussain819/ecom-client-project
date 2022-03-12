@@ -1,13 +1,14 @@
 <template>
   <a-card class="tiles-card dark-header" size="small" title="Product">
     <a-skeleton :loading="loading">
-      <bread-crumb />
+      <bread-crumb :last-crumb="catgoryName" />
       <a-divider />
       <add-product
         :is-created="true"
         :product="product"
         :file-list="fileList"
         :show-uploader="showUploader"
+        @getCategoryName="getCategoryName"
       />
 
       <a-divider />
@@ -31,6 +32,7 @@ function data() {
     product: [],
     fileList: [],
     showUploader: false,
+    catgoryName: null,
   }
 }
 
@@ -56,6 +58,9 @@ export default {
         this.fileList = fileList
         this.showUploader = true
       })
+    },
+    getCategoryName(categoryName) {
+      this.catgoryName = categoryName
     },
   },
 }
