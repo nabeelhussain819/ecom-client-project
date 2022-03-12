@@ -5,7 +5,7 @@
         slot="cover"
         class="tile_img"
         alt="example"
-        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+        :src="getFirstImage(product)"
       />
       <!-- :src="product.cover_image" -- /> -->
       <a-card-meta :title="product.name" class="product-title">
@@ -28,6 +28,7 @@
 
 <script>
 import routeHelpers from '~/mixins/route-helpers'
+import { isEmpty } from '~/services/Utilities'
 export default {
   mixins: [routeHelpers],
   props: {
@@ -39,7 +40,12 @@ export default {
     gotoLink: { type: String, default: 'product' },
   },
   methods: {
-    setImage() {},
+    getFirstImage(product) {
+      if (!isEmpty(product.media)) {
+        return product.media[0]
+      }
+      return 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
+    },
     editPage(url) {
       console.log(url)
     },
