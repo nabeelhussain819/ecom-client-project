@@ -16,7 +16,7 @@
 <script>
 import AddService from '~/components/services/AddService'
 import Services from '~/services/API/Services'
-import upload from '~/components/products/Upload'
+import upload from '~/components/services/Upload'
 import BreadCrumb from '~/components/ui/BreadCrumb'
 const components = {
   AddService,

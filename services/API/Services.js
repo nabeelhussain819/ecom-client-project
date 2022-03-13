@@ -40,14 +40,6 @@ function destroy(id) {
   })
 }
 
-function uploadImages(productId, data) {
-  return request({
-    url: `${baseUrl}/upload/${productId}`,
-    data,
-    method: 'POST',
-  })
-}
-
 function images(serviceId) {
   return request({
     url: `${baseUrl}/media/${serviceId}`,
@@ -73,6 +65,14 @@ function search(params = {}) {
   return request({
     url: `${baseUrl}/search`,
     params,
+  })
+}
+
+function uploadImages(serviceId, data) {
+  return request({
+    url: `${baseUrl}/upload/${serviceId}`,
+    data,
+    method: 'POST',
   })
 }
 
