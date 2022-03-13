@@ -27,7 +27,7 @@
           <a-row>
             <a-col style="width: 250px">
               <!-- // dynmaic attr -->
-              <a-list
+              <!-- <a-list
                 :data-source="categories[0] ? categories[0].attributes : []"
               >
                 <a-list-item slot="renderItem" slot-scope="attribute">
@@ -38,7 +38,7 @@
                     @changed="changed"
                   />
                 </a-list-item>
-              </a-list>
+              </a-list> -->
               <!-- // dynmaic attr -->
               <!-- bottom side select card -->
               <a-select style="width: 250px" placeholder="Pickup Distance">
@@ -80,7 +80,7 @@
         <div class="product-nav-width">
           <a-col>
             <div class="side_nav">
-              <h2>Heading</h2>
+              <h2>Searched Items</h2>
               <a-row class="product_nav">
                 <div>
                   <a-menu mode="horizontal" class="nav_style">

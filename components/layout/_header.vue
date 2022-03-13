@@ -5,7 +5,7 @@
       <router-link to="/"
         ><img
           style="border-radius: 100%"
-          width="95px"
+          width="80px"
           src="https://www.creativefabrica.com/wp-content/uploads/2020/08/10/Online-Shop-Logo-Design-Template-Vector-Graphics-4916391-1.jpg"
       /></router-link>
       <a-menu
@@ -170,7 +170,9 @@
         </a-menu-item>
         <a-sub-menu v-if="isAuth" class="header-menu p-0">
           <span slot="title" class="submenu-title-wrapper"
-            ><a-avatar :src="user.profile_url" />
+            ><a-avatar
+              src="https://cdn-icons-png.flaticon.com/512/147/147142.png"
+            />
             <span class="text-capitalize" :style="{ marginLeft: 16 }">
               {{ user.name }}</span
             >

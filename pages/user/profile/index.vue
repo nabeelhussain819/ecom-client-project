@@ -35,7 +35,9 @@
           >Follow</a-button
         >
       </a-col>
-      <ads />
+      <a-col :xs="24" class="" :sm="16">
+        <ads />
+      </a-col>
     </a-row>
   </div>
 </template>
@@ -59,12 +61,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.heading-profile {
+  font-size: 24px;
+  font-weight: 700;
+}
 .profile-banner {
   background-image: url('https://www.teahub.io/photos/full/254-2549402_background-facebook-cover-photo-size.jpg');
   background-repeat: no-repeat;
-  .heading-profile {
-    font-size: 27px;
-  }
+
   .profile-detail {
     width: 260px;
     padding: 15px;

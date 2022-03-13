@@ -5,10 +5,11 @@
       <a-divider />
       <add-service :is-created="true" :service="service" />
       <a-divider />
-      <h2 class="sub-heading">Upload Product Images</h2>
+      <h2 class="sub-heading">Upload Service Images</h2>
       <a-skeleton :loading="!showUploader">
         <upload :product="service" :f-list="fileList" />
       </a-skeleton>
+      <a-button type=""> Save </a-button>
     </a-skeleton>
   </a-card>
 </template>

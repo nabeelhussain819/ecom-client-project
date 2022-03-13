@@ -47,7 +47,34 @@
           ><ads
         /></a-modal>
       </div>
-      <div v-else>Sold</div>
+      <div v-else>
+        <a-row :gutter="2">
+          <a-col :xs="24" :sm="4">
+            <a-avatar
+              :size="avatarSize"
+              src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+            />
+          </a-col>
+          <a-col :xs="24" :sm="18">
+            <span>
+              <span class="name"> {{ product.user.name }}</span>
+              <br />
+              <a-rate v-model="rating" allow-half />
+              <span class="ant-rate-text">{{ rating }}</span>
+            </span></a-col
+          >
+        </a-row>
+        Sold
+        <hr />
+        <a-col class="saveAndshare">
+          <a-button @click="save(!isSaved)">
+            <span v-if="isSaved">
+              <a-icon theme="filled" type="heart" /> Unsave
+            </span>
+            <span v-else> <a-icon type="heart" /> Save </span>
+          </a-button></a-col
+        >
+      </div>
     </div>
   </a-skeleton>
 </template>
@@ -71,9 +98,13 @@ export default {
     return {
       size: 'large',
       visible: false,
+      isSaved: false,
       offer: this.product.price,
       showPromoteModal: false,
     }
+  },
+  mounted() {
+    this.isSaved = this.product.isSaved
   },
   methods: {
     isEmpty,
@@ -89,6 +120,10 @@ export default {
       })
         .then((res) => this.handleOk())
         .catch(this.error)
+    },
+    save(isSaved) {
+      this.isSaved = isSaved
+      ProductServices.saved(this.product.guid, {}).then()
     },
   },
 }
