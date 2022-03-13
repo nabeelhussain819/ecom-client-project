@@ -68,16 +68,15 @@ export default {
 .profile-banner {
   background-image: url('https://www.teahub.io/photos/full/254-2549402_background-facebook-cover-photo-size.jpg');
   background-repeat: no-repeat;
-
-  .profile-detail {
-    width: 260px;
-    padding: 15px;
-    .btn-follow {
-      margin-top: 20px;
-    }
+}
+.profile-detail {
+  width: 260px;
+  height: 475px !important;
+  padding: 15px;
+  .btn-follow {
+    margin-top: 20px;
   }
 }
-
 .profile-status {
   display: flex;
   justify-content: space-between;

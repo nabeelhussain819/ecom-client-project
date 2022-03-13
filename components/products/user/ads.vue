@@ -1,5 +1,5 @@
 <template>
-  <div class="py-4 border px-5 pt-1 pb-0 ant-col ant-col-xs-24 ant-col-sm-24">
+  <div class="py-4 border pl-3 pt-1 pb-0 ant-col ant-col-xs-24 ant-col-sm-24">
     <div>
       <h1 class="heading-ads">My Ads</h1>
       <a-col
