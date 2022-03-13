@@ -82,6 +82,7 @@
 <script>
 import SocialLogin from './SocialLogin.vue'
 import ForgetPassword from '~/components/Auth/ForgetPassword'
+import userDetail from '~/mixins/user-detail'
 import {
   CLIENT_ID,
   CLIENT_SECRET,
@@ -89,13 +90,8 @@ import {
   EVENT_SIGNUP_MODAL,
 } from '~/services/Constant'
 
-import {
-  setUserDetails,
-  setAccessToken,
-  setRefreshToken,
-} from '~/services/Auth'
+import { setAccessToken, setRefreshToken } from '~/services/Auth'
 import AuthServices from '~/services/API/AuthService'
-import UserService from '~/services/API/UserServices'
 import { isEmpty } from '~/services/Utilities'
 import { success } from '~/services/Helpers/notifications'
 export default {
@@ -103,6 +99,7 @@ export default {
     SocialLogin,
     ForgetPassword,
   },
+  mixins: [userDetail],
   data() {
     return {
       visible: false,
@@ -165,16 +162,7 @@ export default {
         })
         .then(() => (this.loading = false))
     },
-    getUserDetails() {
-      UserService.detail()
-        .then((user) => {
-          setUserDetails(user)
-          this.$store.commit('setUser', user)
-        })
-        .then(() => {
-          // this.$router.go()
-        })
-    },
+
     closeLoginModal() {
       this.$emit('close')
     },

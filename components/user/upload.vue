@@ -20,12 +20,14 @@
 // revamp required component
 import UserService from '~/services/API/UserServices'
 import { isEmpty } from '~/services/Utilities'
+import notifications from '~/mixins/notifications'
 function getBase64(img, callback) {
   const reader = new FileReader()
   reader.addEventListener('load', () => callback(reader.result))
   reader.readAsDataURL(img)
 }
 export default {
+  mixins: [notifications],
   layout: 'dashboard',
   middleware: 'authenticated',
   props: {
@@ -76,20 +78,18 @@ export default {
     dummyRequest(f) {
       const formData = new FormData()
       formData.append('file', f.file)
-      UserService.upload(formData).then(() => {
-        this.$notification.open({
-          message: 'Image Upload',
-          description: 'Your image has been uploaded',
-          class: 'success-notification',
+      UserService.upload(formData)
+        .then((response) => {
+          this.success('Your image has been uploaded')
+          this.$emit('afterUpload', response)
         })
-      })
+        .catch(this.error)
       setTimeout(() => {
         f.onSuccess('ok')
       }, 0)
     },
     getUserDetails() {
       if (!isEmpty(this.user)) {
-        console.log(this.user)
         this.imageUrl = this.user.profile_url
       }
     },

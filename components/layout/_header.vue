@@ -170,9 +170,7 @@
         </a-menu-item>
         <a-sub-menu v-if="isAuth" class="header-menu p-0">
           <span slot="title" class="submenu-title-wrapper"
-            ><a-avatar
-              src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-            />
+            ><a-avatar :src="user.profile_url" />
             <span class="text-capitalize" :style="{ marginLeft: 16 }">
               {{ user.name }}</span
             >

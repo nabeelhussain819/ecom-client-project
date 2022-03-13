@@ -5,7 +5,11 @@
         <a-col :xs="24" class="border profile-detail pt-4 px-0" :sm="6">
           <h1 class="text-center heading-profile">Account Settings</h1>
           <br />
-          <upload v-if="!isEmpty(user)" :user="user" />
+          <upload
+            v-if="!isEmpty(user)"
+            :user="user"
+            @afterUpload="afterUpload"
+          />
           <h2 class="heading text-center text-capitalize">{{ user.name }}</h2>
           <span class="account-rating">
             <a-rate v-model="rating" allow-half />
@@ -66,8 +70,10 @@ import upload from '~/components/user/upload'
 import editProfile from '~/components/user/EditProfile'
 import Product from '~/services/API/ProductServices'
 import { isEmpty } from '~/services/Utilities'
+import userDetail from '~/mixins/user-detail'
 export default {
   components: { editProfile, upload },
+  mixins: [userDetail],
   data() {
     return {
       loading: false,
@@ -83,6 +89,9 @@ export default {
   methods: {
     handleChange(value) {
       console.log(value) // account setting values in dropdown
+    },
+    afterUpload() {
+      this.getUserDetails()
     },
     isEmpty,
     getProducts() {
