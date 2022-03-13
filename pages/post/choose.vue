@@ -7,7 +7,6 @@
       </a-col>
     </a-row>
     <!-- temp Ads component -->
-    <Ads />
   </div>
 </template>
 
