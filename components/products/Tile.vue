@@ -42,7 +42,7 @@ export default {
   methods: {
     getFirstImage(product) {
       if (!isEmpty(product.media)) {
-        return product.media[0]
+        return product.media[0].url
       }
       return 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
     },
