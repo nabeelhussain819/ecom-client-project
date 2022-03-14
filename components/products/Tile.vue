@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- <pre>{{ product }}</pre> -->
     <a-card hoverable class="product_card" @click="handleGotoLink(product)">
       <img
         slot="cover"
@@ -10,7 +11,11 @@
       <!-- :src="product.cover_image" -- /> -->
       <a-card-meta :title="product.name" class="product-title">
         <template slot="description"
-          ><span class="price-tag">$ {{ product.price }} </span><br />
+          ><span class="price-tag"
+            >$ {{ product.price }}
+            <a-tag v-if="!product.active" color="red">inactive </a-tag> </span
+          ><br />
+
           <span class="location d-inline" v-html="product.google_address">
           </span>
         </template>

@@ -94,7 +94,6 @@ export default {
     },
     getServiceFileList() {},
     deleteImage(media) {
-      console.log(media)
       Product.removeImage(media.guid).then(() => {
         this.fileList = this.fileList
           .filter((f) => f.uid !== media.uid)

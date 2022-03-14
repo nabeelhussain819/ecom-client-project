@@ -10,7 +10,10 @@
       <!-- :src="product.cover_image" -- /> -->
       <a-card-meta :title="service.name" class="product-title">
         <template slot="description"
-          ><span class="price-tag">$ {{ service.price }} </span><br />
+          ><span class="price-tag"
+            >$ {{ service.price }}
+            <a-tag v-if="!service.active" color="red">inactive </a-tag></span
+          ><br />
           <span class="location d-inline" v-html="service.google_address">
           </span>
         </template>
