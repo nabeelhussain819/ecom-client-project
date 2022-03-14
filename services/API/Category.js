@@ -27,7 +27,7 @@ function productAttributes(categoryId, params = {}) {
 
 function tabs(params = {}) {
   return request({
-    url: `${baseUrl}/tabs`,
+    url: `${baseUrl}/tabs/list`,
     params,
   })
 }

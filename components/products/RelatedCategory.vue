@@ -58,7 +58,7 @@ export default {
         .finally(() => (this.productLoad = false))
     },
     getCategories() {
-      Category.tabs().then((categories) => {
+      Category.tabs({ category_type: 1 }).then((categories) => {
         if (categories.length > 0) {
           this.categories = categories
           const firstCategory = categories[0].key
