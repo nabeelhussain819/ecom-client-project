@@ -65,5 +65,6 @@ export default {
   height: 40px;
   width: 40px;
   padding: 0;
+  vertical-align: super;
 }
 </style>

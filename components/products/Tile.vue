@@ -15,9 +15,10 @@
             >$ {{ product.price }}
             <a-tag v-if="!product.active" color="red">inactive </a-tag> </span
           ><br />
-
+          <!-- <vue-title :title="product.google_address"> -->
           <span class="location d-inline" v-html="product.google_address">
           </span>
+          <!-- </vue-title> -->
         </template>
       </a-card-meta>
     </a-card>
@@ -68,8 +69,9 @@ export default {
 }
 .tile_img {
   background-size: cover;
-  max-height: 130px !important;
+  height: 110px !important;
   object-fit: cover;
+  max-width: 100%;
 }
 .price-tag {
   font-weight: 500;

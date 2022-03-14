@@ -1,6 +1,6 @@
 <template>
   <div class="py-4 border pl-3 pt-1 pb-0 ant-col ant-col-xs-24 ant-col-sm-24">
-    <div>
+    <div class="main-ads-container">
       <h1 class="heading-ads">My Ads</h1>
       <a-tabs default-active-key="1" @change="changeTab">
         <a-tab-pane key="1" tab="Products">
@@ -96,5 +96,10 @@ export default {
 }
 .profile-tile-width {
   width: auto;
+}
+.main-ads-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
 }
 </style>
