@@ -93,10 +93,11 @@ export default {
       })
     },
     getServiceFileList() {},
-    deleteImage(id) {
-      Product.removeImage(id.uid).then(() => {
+    deleteImage(media) {
+      console.log(media)
+      Product.removeImage(media.guid).then(() => {
         this.fileList = this.fileList
-          .filter((f) => f.uid !== id.uid)
+          .filter((f) => f.uid !== media.uid)
           .map((f) => f)
       })
     },
