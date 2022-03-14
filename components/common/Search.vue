@@ -96,7 +96,7 @@
             <!-- products -->
             <div class="category_main">
               <span v-for="(product, index) in products" :key="index" :span="6">
-                <Tile :product="product" goto-link="service"
+                <Tile :product="product" :goto-link="type"
               /></span>
             </div>
             <!-- // products -->
@@ -136,6 +136,7 @@ export default {
       type: Function,
       default: () => {},
     },
+    gotoLink: { type: String, default: 'product' },
     type: {
       type: String,
       default: 'product',
