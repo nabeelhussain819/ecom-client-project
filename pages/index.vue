@@ -18,7 +18,7 @@
           :span="3"
           class="tile-width"
         >
-          <service-tile :service="service"
+          <Tile :product="product"
         /></a-col>
       </a-row>
     </a-spin>

@@ -48,12 +48,9 @@
         /></a-modal>
       </div>
       <div v-else>
-        <a-row :gutter="2">
+        <!-- <a-row :gutter="2">
           <a-col :xs="24" :sm="4">
-            <a-avatar
-              :size="avatarSize"
-              src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-            />
+            <a-avatar :size="avatarSize" :src="product.user.profile_url" />
           </a-col>
           <a-col :xs="24" :sm="18">
             <span>
@@ -63,7 +60,7 @@
               <span class="ant-rate-text">{{ rating }}</span>
             </span></a-col
           >
-        </a-row>
+        </a-row> -->
         Sold
         <hr />
         <a-col class="saveAndshare">

@@ -1,10 +1,7 @@
 <template>
   <a-row :gutter="2">
     <a-col :xs="24" :sm="6">
-      <a-avatar
-        :size="avatarSize"
-        src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-      />
+      <a-avatar :size="avatarSize" :src="product.user.profile_url" />
     </a-col>
     <a-col :xs="24" :sm="18">
       <span>
