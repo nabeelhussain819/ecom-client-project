@@ -55,7 +55,7 @@ export default Vue.extend({
   methods: {
     fetchProducts() {
       this.loading = true
-      return Products.all()
+      return Products.all({ is_sold: false })
         .then((products) => {
           this.products = products.data
         })
