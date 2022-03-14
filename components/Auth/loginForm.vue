@@ -2,7 +2,7 @@
   <div>
     <social-login />
     <a-form :form="form" @submit="handleSubmit">
-      <a-form-item label="Name">
+      <a-form-item label="Email">
         <a-input
           v-decorator="[
             'email',

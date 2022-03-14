@@ -14,9 +14,11 @@
           <div class="button"><a href="#" title="Unsave Item"> Unsave </a></div>
         </a-col>
       </a-row>
-      <a-button type="button" title=" Save new item" class="save-new">
-        +</a-button
-      >
+      <router-link to="/">
+        <a-button type="button" title=" Save new item" class="save-new">
+          +</a-button
+        >
+      </router-link>
     </a-spin>
   </div>
 </template>

@@ -2,7 +2,7 @@
   <div>
     <a-row>
       <a-col :xs="24" :span="12">
-        <h1 style="text-align: center; margin: 15px 0px">Post Your Ad</h1>
+        <h1 class="post-add-heading">Post Your Ad</h1>
         <choose-post @getPostType="getPostType" />
       </a-col>
     </a-row>
@@ -26,3 +26,11 @@ export default {
   methods,
 }
 </script>
+<style scoped>
+.post-add-heading {
+  text-align: center;
+  margin: 15px 0px;
+  font-weight: 700;
+  font-size: 23px;
+}
+</style>

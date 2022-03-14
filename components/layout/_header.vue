@@ -2,19 +2,21 @@
   <div>
     <a-layout-header class="clearfix header">
       <!-- used inline styling on img, temporary -->
-      <router-link to="/"
-        ><img
+      <router-link to="/">
+        <h1 class="logo">LOGO</h1>
+        <!-- <img
           style="border-radius: 100%"
-          width="95px"
+          width="80px"
           src="https://www.creativefabrica.com/wp-content/uploads/2020/08/10/Online-Shop-Logo-Design-Template-Vector-Graphics-4916391-1.jpg"
-      /></router-link>
+      /> -->
+      </router-link>
       <a-menu
         placeholder="check"
         class="header_nav"
         mode="horizontal"
         :style="{ lineHeight: '40px', float: 'right' }"
       >
-        <a-dropdown :trigger="['click']">
+        <!-- <a-dropdown :trigger="['click']">
           <a class="ant-dropdown-link" @click="(e) => e.preventDefault()">
             <label>Categories</label>
 
@@ -113,7 +115,7 @@
             </a-sub-menu>
             <a-menu-divider />
           </a-menu>
-        </a-dropdown>
+        </a-dropdown> -->
         <a-menu-item key="5" class="no-hover-nav search-bar">
           <a-icon type="search" class="icon_search" />
           <a-input
@@ -289,6 +291,11 @@ export default {
 }
 </script>
 <style scoped>
+.logo {
+  font-size: 23px;
+  color: #fff;
+  font-weight: 700;
+}
 @media only screen and (max-width: 480px) {
   .ant-dropdown-link {
     position: absolute;

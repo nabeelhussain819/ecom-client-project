@@ -34,6 +34,6 @@ export default {
 </script>
 <style scoped>
 .img-fluid {
-  height: 370px;
+  height: 385px;
 }
 </style>

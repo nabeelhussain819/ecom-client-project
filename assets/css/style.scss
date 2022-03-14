@@ -442,8 +442,9 @@ ul li:first-child .ant-menu-submenu-title {
 .ant-card-cover {
   img {
     background-size: cover;
-    max-height: 130px !important;
-    object-fit: cover;
+    max-height: 150px !important;
+    object-fit: contain;
+    // padding-top: 20px;
   }
 }
 @media only screen and (max-width: 768px) {
@@ -513,6 +514,7 @@ ul li:first-child .ant-menu-submenu-title {
   }
   .profile-tile-width {
     padding: 0px !important;
+    // width: ;
   }
   .profile-icon {
     padding-left: 8px;
@@ -814,6 +816,7 @@ ul li:first-child .ant-menu-submenu-title {
   margin-bottom: 10px;
   button.btn.ant-btn.ant-btn-primary {
     margin: 10px;
+    // margin-right: 42px;
     float: right;
   }
 }
