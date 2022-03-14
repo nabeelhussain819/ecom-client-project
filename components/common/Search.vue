@@ -153,6 +153,10 @@ export default {
       value: 1,
       value1: 1,
       value2: 1,
+      defaultFilters: {
+        active: true,
+        // is_sold: false,
+      },
       radioStyle: {
         display: 'block',
         height: '35px',
@@ -174,6 +178,7 @@ export default {
   },
   methods: {
     onFetch(params = {}) {
+      params = { ...params, ...this.defaultFilters }
       this.service(isEmpty(params) ? this.$route.query : params)
         .then(({ categories, results }) => {
           this.categories = categories
