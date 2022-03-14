@@ -27,7 +27,7 @@
           >
             <a-input
               v-decorator="[
-                'Phone',
+                'phone',
                 {
                   initialValue: user.phone,
                   rules: [
@@ -48,8 +48,9 @@
             label="Email"
           >
             <a-input
+              :disabled="true"
               v-decorator="[
-                'Email',
+                'email',
                 {
                   initialValue: user.email,
                   rules: [{ required: true, message: 'Please Enter Email' }],
@@ -67,7 +68,7 @@
           >
             <a-input
               v-decorator="[
-                'Location',
+                'location',
                 {
                   initialValue: user.location,
                   rules: [{ required: true, message: 'Your Location' }],
@@ -96,6 +97,7 @@
 <script>
 import UserServices from '~/services/API/UserServices'
 import notifications from '~/mixins/notifications'
+import userDetail from '~/mixins/user-detail'
 const formItemLayout = {
   labelCol: {
     span: 24,
@@ -105,7 +107,7 @@ const formItemLayout = {
   },
 }
 export default {
-  mixins: [notifications],
+  mixins: [notifications, userDetail],
   data() {
     return {
       loading: false,
@@ -135,6 +137,7 @@ export default {
       UserServices.update(value)
         .then((response) => {
           this.success(response.message)
+          this.getUserDetails()
         })
         .catch(this.error)
         .finally(() => (this.loading = false))
