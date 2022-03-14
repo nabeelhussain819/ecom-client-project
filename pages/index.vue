@@ -18,7 +18,7 @@
           :span="3"
           class="tile-width"
         >
-          <Tile :product="product"
+          <service-tile :service="service"
         /></a-col>
       </a-row>
     </a-spin>
@@ -31,6 +31,7 @@ import GoogleAuth from '@/plugins/google-auth'
 import { FACEBOOK_APP_ID, GOOGLE_CLIENT_ID } from '~/services/Constant'
 import Products from '~/services/API/ProductServices'
 import Tile from '~/components/products/Tile'
+
 import slider from '~/components/sliders/ImageSlider'
 const components = { Tile, slider }
 

@@ -2,7 +2,7 @@
   <div><ads /></div>
 </template>
 <script>
-import ads from '~/components/products/user/ads.vue'
+import ads from '~/components/products/user/ads'
 export default {
   components: { ads },
 }
