@@ -16,106 +16,7 @@
         mode="horizontal"
         :style="{ lineHeight: '40px', float: 'right' }"
       >
-        <!-- <a-dropdown :trigger="['click']">
-          <a class="ant-dropdown-link" @click="(e) => e.preventDefault()">
-            <label>Categories</label>
-
-            <a-icon type="down" />
-          </a>
-          <a-menu slot="overlay" class="category-dropdown">
-            <a-menu-item key="0" class="menu-category-heading">
-              Categories
-              <hr />
-            </a-menu-item>
-            <a-sub-menu key="sub1">
-              <span slot="title"><span>Electronic Devices</span></span>
-              <a-menu-item key="3"> Mobile </a-menu-item>
-              <a-menu-item key="4"> Option 4 </a-menu-item>
-              <a-sub-menu key="sub1-2" title="Submenu">
-                <a-menu-item key="5"> Option 5 </a-menu-item>
-                <a-menu-item key="6"> Option 6 </a-menu-item>
-              </a-sub-menu>
-            </a-sub-menu>
-            <a-menu-divider />
-
-            <a-sub-menu key="sub2">
-              <span slot="title"><span>Electronic Accessories</span></span>
-              <a-menu-item key="3"> Mobile </a-menu-item>
-              <a-menu-item key="4"> Option 4 </a-menu-item>
-              <a-sub-menu key="sub1-2" title="Submenu">
-                <a-menu-item key="5"> Option 5 </a-menu-item>
-                <a-menu-item key="6"> Option 6 </a-menu-item>
-              </a-sub-menu>
-            </a-sub-menu>
-            <a-menu-divider />
-
-            <a-sub-menu key="sub3">
-              <span slot="title"><span>TV and Home Appliances</span></span>
-              <a-menu-item key="3"> Mobile </a-menu-item>
-              <a-menu-item key="4"> Option 4 </a-menu-item>
-              <a-sub-menu key="sub1-2" title="Submenu">
-                <a-menu-item key="5"> Option 5 </a-menu-item>
-                <a-menu-item key="6"> Option 6 </a-menu-item>
-              </a-sub-menu>
-            </a-sub-menu>
-            <a-menu-divider />
-
-            <a-sub-menu key="sub4">
-              <span slot="title"><span>Health and Beauty</span></span>
-              <a-menu-item key="3"> Mobile </a-menu-item>
-              <a-menu-item key="4"> Option 4 </a-menu-item>
-              <a-sub-menu key="sub1-2" title="Submenu">
-                <a-menu-item key="5"> Option 5 </a-menu-item>
-                <a-menu-item key="6"> Option 6 </a-menu-item>
-              </a-sub-menu>
-            </a-sub-menu>
-            <a-menu-divider />
-
-            <a-sub-menu key="sub5">
-              <span slot="title"><span>Electronic Devices</span></span>
-              <a-menu-item key="3"> Mobile </a-menu-item>
-              <a-menu-item key="4"> Option 4 </a-menu-item>
-              <a-sub-menu key="sub1-2" title="Submenu">
-                <a-menu-item key="5"> Option 5 </a-menu-item>
-                <a-menu-item key="6"> Option 6 </a-menu-item>
-              </a-sub-menu>
-            </a-sub-menu>
-            <a-menu-divider />
-
-            <a-sub-menu key="sub6">
-              <span slot="title"><span>Electronic Devices</span></span>
-              <a-menu-item key="3"> Mobile </a-menu-item>
-              <a-menu-item key="4"> Option 4 </a-menu-item>
-              <a-sub-menu key="sub1-2" title="Submenu">
-                <a-menu-item key="5"> Option 5 </a-menu-item>
-                <a-menu-item key="6"> Option 6 </a-menu-item>
-              </a-sub-menu>
-            </a-sub-menu>
-            <a-menu-divider />
-
-            <a-sub-menu key="sub7">
-              <span slot="title"><span>Electronic Devices</span></span>
-              <a-menu-item key="3"> Mobile </a-menu-item>
-              <a-menu-item key="4"> Option 4 </a-menu-item>
-              <a-sub-menu key="sub1-2" title="Submenu">
-                <a-menu-item key="5"> Option 5 </a-menu-item>
-                <a-menu-item key="6"> Option 6 </a-menu-item>
-              </a-sub-menu>
-            </a-sub-menu>
-            <a-menu-divider />
-
-            <a-sub-menu key="sub8">
-              <span slot="title"><span>Electronic Devices</span></span>
-              <a-menu-item key="3"> Mobile </a-menu-item>
-              <a-menu-item key="4"> Option 4 </a-menu-item>
-              <a-sub-menu key="sub1-2" title="Submenu">
-                <a-menu-item key="5"> Option 5 </a-menu-item>
-                <a-menu-item key="6"> Option 6 </a-menu-item>
-              </a-sub-menu>
-            </a-sub-menu>
-            <a-menu-divider />
-          </a-menu>
-        </a-dropdown> -->
+        <category-lookup />
         <a-menu-item key="5" class="no-hover-nav search-bar">
           <a-icon type="search" class="icon_search" />
           <a-input
@@ -219,11 +120,14 @@
 import RegisterModal from '~/components/Auth/RegisterModal'
 import LoginModal from '~/components/Auth/LoginModal'
 import routeHelpers from '~/mixins/route-helpers'
+import categoryLookup from '~/components/categories/Lookup'
 import { EVENT_LOGIN_MODAL } from '~/services/Constant'
+
 export default {
   components: {
     RegisterModal,
     LoginModal,
+    categoryLookup,
   },
   mixins: [routeHelpers],
   data() {
