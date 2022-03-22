@@ -19,14 +19,8 @@
         <span slot="title"
           ><span>{{ category.name }}</span></span
         >
-        <a-sub-menu
-          v-for="child in category.childs"
-          :key="child.id"
-          :title="child.name"
-        >
-          <!-- <a-menu-item key="5"> Option 5 </a-menu-item> -->
-          <!--   <a-menu-item key="6"> Option 6 </a-menu-item> -->
-        </a-sub-menu>
+
+        <sub-menu :key="category.id" :menu-info="category" />
       </a-sub-menu>
 
       <a-menu-divider />
@@ -34,11 +28,40 @@
   </a-dropdown>
 </template>
 <script>
+import { Menu } from 'ant-design-vue'
 import CategoryServices from '~/services/API/Category'
 // import SubMenus from '~/components/categories/SubMenus'
+
+const childMenu = {
+  template: `
+      <a-sub-menu :key="menuInfo.key" v-bind="$props" v-on="$listeners">
+        <span slot="title">
+          <a-icon type="mail" /><span>{{ menuInfo.name }}</span>
+        </span>
+        <template v-for="item in menuInfo.children_recursive">
+          <a-menu-item v-if="!item.children_recursive" :key="item.id">
+            <a-icon type="pie-chart" />
+            <span>{{ item.title }}</span>
+          </a-menu-item>
+          <sub-menu v-else :key="item.id" :menu-info="item" />
+        </template>
+      </a-sub-menu>
+    `,
+  name: 'SubMenu',
+  // must add isSubMenu: true
+  isSubMenu: true,
+  props: {
+    ...Menu.SubMenu.props,
+    // Cannot overlap with properties within Menu.SubMenu.props
+    menuInfo: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
+}
 export default {
   components: {
-    // SubMenus,
+    'sub-menu': childMenu,
   },
   data() {
     return {
