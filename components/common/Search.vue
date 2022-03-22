@@ -178,7 +178,7 @@ export default {
   },
   methods: {
     onFetch(params = {}) {
-      params = { ...params, ...this.defaultFilters }
+      params = { ...params, ...this.defaultFilters, active: true }
       this.service(isEmpty(params) ? this.$route.query : params)
         .then(({ categories, results }) => {
           this.categories = categories

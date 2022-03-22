@@ -2,7 +2,7 @@
   <div class="owner-detail">
     <div v-if="service.active">
       <div v-if="!service.is_owner">
-        <rating-avatar :product="product" />
+        <rating-avatar :product="service" />
         <a-button
           class="btn primary"
           type="primary"

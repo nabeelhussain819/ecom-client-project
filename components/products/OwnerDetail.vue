@@ -82,6 +82,7 @@ import ProductServices from '~/services/API/ProductServices'
 import notifications from '~/mixins/notifications'
 import ads from '~/components/products/Ads'
 import { isEmpty } from '~/services/Helpers'
+import { EVENT_LOGIN_MODAL } from '~/services/Constant'
 export default {
   components: { ads, ratingAvatar, ShareAndSave },
   mixins: [notifications],
@@ -100,13 +101,22 @@ export default {
       showPromoteModal: false,
     }
   },
+  computed: {
+    isAuth() {
+      return this.$store.getters.isAuthorize
+    },
+  },
   mounted() {
     this.isSaved = this.product.isSaved
   },
   methods: {
     isEmpty,
     handleOk() {
-      this.visible = !this.visible
+      if (this.isAuth) {
+        this.visible = !this.visible
+      } else {
+        this.$nuxt.$emit(EVENT_LOGIN_MODAL, true)
+      }
     },
     handlePromoteModal(show) {
       this.showPromoteModal = show
