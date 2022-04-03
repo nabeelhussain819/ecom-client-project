@@ -16,7 +16,7 @@
           <a-button
             class="btn btn-secondary"
             :size="size"
-            @click="goto('/Buy')"
+            @click="goto('/buy')"
           >
             Buy Now</a-button
           >
