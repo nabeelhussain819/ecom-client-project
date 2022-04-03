@@ -13,7 +13,13 @@
             Make An Offer
           </a-button>
           <a-button class="btn" :size="size"> Ask</a-button>
-          <a-button class="btn btn-secondary" :size="size"> Buy Now</a-button>
+          <a-button
+            class="btn btn-secondary"
+            :size="size"
+            @click="goto('/Buy')"
+          >
+            Buy Now</a-button
+          >
           <share-and-save :product="product" />
         </div>
         <div v-else>
@@ -94,9 +100,11 @@ import ProductServices from '~/services/API/ProductServices'
 import notifications from '~/mixins/notifications'
 import ads from '~/components/products/Ads'
 import { isEmpty } from '~/services/Helpers'
+import routeHelpers from '~/mixins/route-helpers'
+
 export default {
   components: { ads, ratingAvatar, ShareAndSave },
-  mixins: [notifications],
+  mixins: [notifications, routeHelpers],
   props: {
     product: {
       type: Object,

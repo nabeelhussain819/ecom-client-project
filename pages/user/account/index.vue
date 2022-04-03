@@ -25,7 +25,7 @@
           >
             <a-menu-item key="1"> Account Settings </a-menu-item>
             <a-menu-item key="2"> Transaction History </a-menu-item>
-            <a-menu-item key="3"> payment Methods </a-menu-item>
+            <a-menu-item key="3"> Payment Methods </a-menu-item>
             <a-menu-item key="4"> Deposit Account </a-menu-item>
           </a-menu>
           <!-- <a-select

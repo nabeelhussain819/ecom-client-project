@@ -1,0 +1,68 @@
+.container-buy-now {
+  h2 {
+    font-size: 18px;
+  }
+}
+.hdn-purchase {
+  font-weight: 700;
+  font-size: 25px;
+}
+.purchase_img_slider {
+  width: 50%;
+}
+.purchase-content {
+  font-size: 13px;
+  line-height: 35px;
+}
+.shipping-option,
+.payment-method-option,
+.item-price-tag,
+.shipping-price-tag,
+.sales-tax-tag,
+.payed-tag {
+  display: flex;
+  justify-content: space-between;
+}
+.btn-add {
+  font-weight: 700;
+  font-size: 20px;
+  color: $primary;
+  &:hover {
+    color: black !important;
+  }
+}
+.buy-price {
+  line-height: 50px;
+  margin: 0;
+}
+.payed-tag {
+  h2 {
+    font-size: 21px;
+  }
+}
+.shipping-option {
+  font-weight: 700;
+}
+.protect-payment-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    font-size: 15px;
+    color: #000;
+    a {
+      color: $primary;
+    }
+  }
+}
+.label-confirm-purchase {
+  font-size: 15px;
+  color: #000;
+    a {
+      color: $primary;
+    }
+}
+.confirm-purchase-main {
+  text-align: center;
+  line-height: 55px;
+}

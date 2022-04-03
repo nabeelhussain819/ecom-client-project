@@ -73,6 +73,9 @@
             <related-category />
           </div>
         </a-col>
+        <a-col :xs="24">
+          <!-- <Buy /> -->
+        </a-col>
       </a-row>
     </div>
   </a-skeleton>
