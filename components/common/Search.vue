@@ -234,6 +234,9 @@ export default {
 .category_main {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
+}
+.category_main > span {
+  margin-bottom: 6px;
 }
 </style>

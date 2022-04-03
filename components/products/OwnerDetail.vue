@@ -61,16 +61,28 @@
             </span></a-col
           >
         </a-row> -->
-        Sold
+        <div class="sold-product-img" style="text-align: center">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkVEstOO0Jy-dIT9ruP_RLZOd9puscUTE-Vg&usqp=CAU"
+            alt="sold"
+            width="80px"
+          />
+        </div>
         <hr />
-        <a-col class="saveAndshare">
-          <a-button @click="save(!isSaved)">
-            <span v-if="isSaved">
-              <a-icon theme="filled" type="heart" /> Unsave
-            </span>
-            <span v-else> <a-icon type="heart" /> Save </span>
-          </a-button></a-col
-        >
+        <a-row class="saveAndshare">
+          <a-col :xs="{ span: 2 }" :sm="{ span: 11 }">
+            <a-button @click="save(!isSaved)">
+              <span v-if="isSaved">
+                <a-icon theme="filled" type="heart" /> Unsave
+              </span>
+              <span v-else> <a-icon type="heart" /> Save </span>
+            </a-button></a-col
+          >
+          <a-col :xs="{ span: 2 }"> <a-divider type="vertical" /></a-col>
+          <a-col :xs="{ span: 2 }" :sm="{ span: 11 }">
+            <a-button type="" icon="share-alt"> Share </a-button></a-col
+          >
+        </a-row>
       </div>
     </div>
   </a-skeleton>
@@ -135,3 +147,8 @@ export default {
   },
 }
 </script>
+<style scoped>
+.sold-product-img {
+  text-align: center;
+}
+</style>
