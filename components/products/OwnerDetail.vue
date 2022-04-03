@@ -13,7 +13,13 @@
             Make An Offer
           </a-button>
           <a-button class="btn" :size="size"> Ask</a-button>
-          <a-button class="btn btn-secondary" :size="size"> Buy Now</a-button>
+          <a-button
+            v-if="product.has_shipping"
+            class="btn btn-secondary"
+            :size="size"
+          >
+            Buy Now</a-button
+          >
           <share-and-save :product="product" />
         </div>
         <div v-else>
