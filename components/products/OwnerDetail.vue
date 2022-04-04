@@ -138,6 +138,13 @@ export default {
         this.$nuxt.$emit(EVENT_LOGIN_MODAL, true)
       }
     },
+    buyNow() {
+      if (this.isAuth) {
+        this.visible = !this.visible
+      } else {
+        this.goto('/buy')
+      }
+    },
     handlePromoteModal(show) {
       this.showPromoteModal = show
     },
