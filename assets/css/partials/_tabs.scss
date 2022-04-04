@@ -1,8 +1,8 @@
-// ----------- maaz please move this to some other partials -------------------
-.related-categories {
+// ----------- tabs -------------------
+
   .ant-tabs-tab-active {
     background-color: $primary;
-    color: #fff;
+    color: #fff !important;
     border-radius: 8px;
     text-decoration: none;
     margin: 10px !important;
@@ -29,4 +29,3 @@
   .ant-tabs-nav-scroll {
     padding: 0px 22px;
   }
-}

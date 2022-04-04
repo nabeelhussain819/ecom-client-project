@@ -13,12 +13,7 @@
             Make An Offer
           </a-button>
           <a-button class="btn" :size="size"> Ask</a-button>
-          <a-button
-            v-if="product.has_shipping"
-            class="btn btn-secondary"
-            :size="size"
-            @click="buyNow"
-          >
+          <a-button class="btn btn-secondary" :size="size" @click="buyNow">
             Buy Now</a-button
           >
           <share-and-save :product="product" />
@@ -27,8 +22,8 @@
           <a-button
             class="btn"
             type="primary"
-            @click="handlePromoteModal(true)"
             :size="size"
+            @click="handlePromoteModal(true)"
           >
             Promote</a-button
           >
@@ -101,10 +96,12 @@ import ProductServices from '~/services/API/ProductServices'
 import notifications from '~/mixins/notifications'
 import ads from '~/components/products/Ads'
 import { isEmpty } from '~/services/Helpers'
+import routeHelpers from '~/mixins/route-helpers'
+
 import { EVENT_LOGIN_MODAL } from '~/services/Constant'
 export default {
   components: { ads, ratingAvatar, ShareAndSave },
-  mixins: [notifications],
+  mixins: [notifications, routeHelpers],
   props: {
     product: {
       type: Object,
@@ -141,7 +138,7 @@ export default {
       if (this.isAuth) {
         this.visible = !this.visible
       } else {
-        this.$nuxt.$emit(EVENT_LOGIN_MODAL, true)
+        this.goto('/buy')
       }
     },
     handlePromoteModal(show) {
