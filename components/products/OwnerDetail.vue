@@ -17,6 +17,7 @@
             v-if="product.has_shipping"
             class="btn btn-secondary"
             :size="size"
+            @click="buyNow"
           >
             Buy Now</a-button
           >
@@ -130,6 +131,13 @@ export default {
   methods: {
     isEmpty,
     handleOk() {
+      if (this.isAuth) {
+        this.visible = !this.visible
+      } else {
+        this.$nuxt.$emit(EVENT_LOGIN_MODAL, true)
+      }
+    },
+    buyNow() {
       if (this.isAuth) {
         this.visible = !this.visible
       } else {
