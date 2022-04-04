@@ -74,7 +74,7 @@
           </div>
         </a-col>
         <a-col :xs="24">
-          <Buy />
+          <!-- <Buy /> -->
         </a-col>
       </a-row>
     </div>
@@ -83,7 +83,7 @@
 <script>
 import Product from '~/services/API/ProductServices'
 import imageSlider from '~/components/sliders/ImageSlider'
-import Buy from '~/components/purchase/Buy'
+// import Buy from '~/components/purchase/Buy'
 import OwnerDetail from '~/components/products/OwnerDetail'
 import mapView from '~/components/maps/MapView'
 import RelatedCategory from '~/components/products/RelatedCategory'
@@ -94,7 +94,7 @@ export default {
     OwnerDetail,
     imageSlider,
     mapView,
-    Buy,
+    // Buy,
     RelatedCategory,
   },
   data() {

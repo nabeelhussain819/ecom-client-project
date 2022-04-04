@@ -1,68 +1,153 @@
 .container-buy-now {
+  width: 70%;
   h2 {
     font-size: 18px;
   }
-}
-.hdn-purchase {
-  font-weight: 700;
-  font-size: 25px;
-}
-.purchase_img_slider {
-  width: 50%;
-}
-.purchase-content {
-  font-size: 13px;
-  line-height: 35px;
-}
-.shipping-option,
-.payment-method-option,
-.item-price-tag,
-.shipping-price-tag,
-.sales-tax-tag,
-.payed-tag {
-  display: flex;
-  justify-content: space-between;
-}
-.btn-add {
-  font-weight: 700;
-  font-size: 20px;
-  color: $primary;
-  &:hover {
-    color: black !important;
+  h1 {
+    font-weight: 700;
+    font-size: 23px;
   }
-}
-.buy-price {
-  line-height: 50px;
-  margin: 0;
-}
-.payed-tag {
-  h2 {
-    font-size: 21px;
+  .purchase_img_slider {
+    width: 50%;
   }
-}
-.shipping-option {
-  font-weight: 700;
-}
-.protect-payment-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  p {
+  .purchase-content {
+    font-size: 13px;
+    line-height: 35px;
+  }
+  .shipping-option,
+  .payment-method-option,
+  .item-price-tag,
+  .shipping-price-tag,
+  .sales-tax-tag,
+  .payed-tag {
+    display: flex;
+    justify-content: space-between;
+  }
+  .btn-add {
+    font-weight: 700;
+    font-size: 20px;
+    color: $primary;
+    &:hover {
+      color: black !important;
+    }
+  }
+  .buy-price {
+    line-height: 50px;
+    margin: 0;
+  }
+  .payed-tag {
+    h2 {
+      font-size: 21px;
+    }
+  }
+  .shipping-option {
+    font-weight: 700;
+  }
+  .protect-payment-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+      font-size: 15px;
+      color: #000;
+      a {
+        color: $primary;
+      }
+    }
+  }
+  .label-confirm-purchase {
     font-size: 15px;
     color: #000;
-    a {
-      color: $primary;
+      a {
+        color: $primary;
+      }
+  }
+  .confirm-purchase-main {
+    text-align: center;
+    line-height: 55px;
+    .btn.ant-btn {
+      width: 50%;
     }
   }
 }
-.label-confirm-purchase {
-  font-size: 15px;
-  color: #000;
+// ---------------------------- add-shipping's styling ---------------------
+
+.container-shipping {
+  width: 70%;
+  input.ant-input {
+    height: 45px;
+  } 
+  h1 {
+    font-weight: 700;
+    font-size: 23px;
+  }
+  .shipping-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
     a {
-      color: $primary;
+      color: #000;
+      font-size: 18px;
     }
+  }
+  label {
+    color: #000;
+    font-weight: 600;
+    font-size: 18px;
+  }
+  .btn-ship {
+    text-align: center;
+  .btn.ant-btn {
+    width: 50%;
+    margin-top: 50px;
+  }}
+  .basic-location {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  .item-city {
+    width: 60%;
+  }
+  .item-state {
+    width: 35%;
+      }
+  }
+  .item-zip {
+    width: 30%;
+  }
 }
-.confirm-purchase-main {
-  text-align: center;
-  line-height: 55px;
+// ---------------------------- payment-method's styling ---------------------
+
+.container-pay-method {
+  width: 70%;
+  h1 {
+    font-weight: 700;
+    font-size: 23px;
+  }
+  h3 {
+    color: #000;
+    font-weight: 400;
+    font-size: 17px;
+  }
+  .pay-method-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    a {
+      color: #000;
+      font-size: 18px;
+    }
+  }
+  input.ant-input {
+    box-shadow: none !important;
+    border: none;
+    border-bottom: 1px solid #dedede;
+  }
+  .byVisa-main {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
 }

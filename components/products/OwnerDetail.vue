@@ -16,7 +16,7 @@
           <a-button
             class="btn btn-secondary"
             :size="size"
-            @click="goto('/buy')"
+            @click="goto('/purchase/buy')"
           >
             Buy Now</a-button
           >
@@ -26,8 +26,8 @@
           <a-button
             class="btn"
             type="primary"
-            @click="handlePromoteModal(true)"
             :size="size"
+            @click="handlePromoteModal(true)"
           >
             Promote</a-button
           >
