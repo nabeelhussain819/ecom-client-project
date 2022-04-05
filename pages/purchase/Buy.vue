@@ -1,6 +1,6 @@
 <template>
   <div class="container container-buy-now">
-    <h1 class="hdn-purchase">Confirm Purchase</h1>
+    <h1>Confirm Purchase</h1>
     <a-row :gutter="16">
       <a-col :xs="24" :sm="24" class="">
         <image-slider class="purchase_img_slider" :images="images" />
@@ -11,12 +11,14 @@
           <hr />
           <div class="shipping-option">
             <h2>Shipping to (required)</h2>
-            <a href="#" class="btn-add">Add</a>
+            <a class="btn-add" @click="goto('/purchase/add-shipping/')">Add</a>
           </div>
           <hr />
           <div class="payment-method-option">
             <h2>Payment method (required)</h2>
-            <a class="btn-add">Add</a>
+            <a class="btn-add" @click="goto('/purchase/payment-method/')"
+              >Add</a
+            >
           </div>
           <hr />
           <div class="item-price-tag">
@@ -70,11 +72,12 @@
 import imageSlider from '~/components/sliders/ImageSlider'
 import { isEmpty } from '~/services/Utilities'
 import Product from '~/services/API/ProductServices'
-
+import routeHelpers from '~/mixins/route-helpers'
 export default {
   components: {
     imageSlider,
   },
+  mixins: [routeHelpers],
   data() {
     return { loading: false, product: {}, images: [], values: {} }
   },
