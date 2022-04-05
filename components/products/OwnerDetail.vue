@@ -13,7 +13,11 @@
             Make An Offer
           </a-button>
           <a-button class="btn" :size="size"> Ask</a-button>
-          <a-button class="btn btn-secondary" :size="size" @click="buyNow">
+          <a-button
+            class="btn btn-secondary"
+            :size="size"
+            @click="buyNow(product)"
+          >
             Buy Now</a-button
           >
           <share-and-save :product="product" />
@@ -131,14 +135,13 @@ export default {
       if (this.isAuth) {
         this.visible = !this.visible
       } else {
-        this.$nuxt.$emit(EVENT_LOGIN_MODAL, true)
       }
     },
-    buyNow() {
+    buyNow(product) {
       if (this.isAuth) {
-        this.visible = !this.visible
+        this.goto(`/product/purchase/${product.guid}`)
       } else {
-        this.goto('/buy')
+        this.$nuxt.$emit(EVENT_LOGIN_MODAL, true)
       }
     },
     handlePromoteModal(show) {
