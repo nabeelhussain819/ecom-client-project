@@ -13,7 +13,7 @@ window.Echo = new Echo({
   enabledTransports: ['ws', 'wss'],
   disableStats: true,
   forceTLS: true,
-  authEndpoint: 'http://web-api.letsdeploy.us/broadcasting/auth',
+  authEndpoint: 'https://web-api.letsdeploy.us/broadcasting/auth',
   auth: {
     headers: {
       Authorization: `Bearer ${localStorage.getItem('access_token')}`,
