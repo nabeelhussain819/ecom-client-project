@@ -3,10 +3,16 @@
     <h1>Confirm Purchase</h1>
     <a-row :gutter="16">
       <a-col :xs="24" :sm="24" class="">
-        <image-slider class="purchase_img_slider" :images="images" />
-        <h2 type="inline " :title="product.name" class="primary-text buy-price">
-          {{ product.name }}
-        </h2>
+        <div class="d-flex buy-slider-detail">
+          <image-slider class="purchase_img_slider" :images="images" />
+          <h2
+            type="inline "
+            :title="product.name"
+            class="primary-text buy-price"
+          >
+            {{ product.name }}
+          </h2>
+        </div>
         <div class="purchase-content">
           <hr />
           <div class="shipping-option">
