@@ -10,7 +10,7 @@ window.Echo = new Echo({
   secret: 'ABCD1234',
   wsPort: 6001,
   wssPort: 6001,
-  enabledTransports: ['ws', 'wss'],
+  enabledTransports: ['ws'],
   disableStats: true,
   forceTLS: false,
   authEndpoint: 'https://web-api.letsdeploy.us/broadcasting/auth',
