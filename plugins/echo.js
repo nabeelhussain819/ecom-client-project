@@ -5,14 +5,14 @@ window.Pusher = require('pusher-js')
 window.Echo = new Echo({
   broadcaster: 'pusher',
   key: 'ABCD',
-  cluster: 'mt1',
   wsHost: 'web-api.letsdeploy.us',
+  encrypted: false,
+  secret: 'ABCD1234',
   wsPort: 6001,
   wssPort: 6001,
   enabledTransports: ['ws', 'wss'],
   disableStats: true,
-  encrypted: false,
-  forceTLS: true,
+  forceTLS: false,
   authEndpoint: 'https://web-api.letsdeploy.us/broadcasting/auth',
   auth: {
     headers: {
