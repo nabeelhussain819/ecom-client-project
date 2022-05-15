@@ -4,7 +4,7 @@ window.Pusher = require('pusher-js')
 
 window.Echo = new Echo({
   broadcaster: 'pusher',
-  key: 'abcdef',
+  key: 'ABCD',
   cluster: 'mt1',
   wsHost: 'web-api.letsdeploy.us',
   wsPort: 6001,
