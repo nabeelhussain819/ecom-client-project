@@ -1,7 +1,6 @@
 <template>
   <a-skeleton :loading="loading">
     <a-collapse
-      default-active-key="1"
       :bordered="false"
       accordion
       :expand-icon-position="expandIconPosition"
@@ -12,24 +11,33 @@
         :key="category.id"
         :header="category.name"
       >
-        <!-- <p>{{ text }}</p> -->
+        <template v-if="category.children_recursive">
+          <a-collapse
+            :bordered="false"
+            accordion
+            :expand-icon-position="expandIconPosition"
+            @change="onChange"
+          >
+            <a-collapse-panel
+              v-for="chilCategory in category.children_recursive"
+              :key="chilCategory.id"
+              :header="chilCategory.name"
+            >
+            </a-collapse-panel>
+          </a-collapse>
+        </template>
+
+        <!-- <pre>   {{ category }}  </pre> -->
       </a-collapse-panel>
-      <!-- <a-collapse-panel
-        key="2"
-        header="This is panel header 2"
-        :disabled="false"
-      >
-        <p>{{ text }}</p>
-      </a-collapse-panel>
-      <a-collapse-panel key="3" header="This is panel header 3">
-        <p>{{ text }}</p>
-      </a-collapse-panel> -->
     </a-collapse>
+
+    <!-- <tableView :categories="categories"></tableView> -->
   </a-skeleton>
 </template>
 <script>
 import Category from '~/services/API/Category'
 import { isEmpty } from '~/services/Helpers'
+// import tableView from '~/components/categories/tableView'
 function data() {
   return {
     accordion: false,
@@ -50,10 +58,26 @@ function getAllCategories() {
       this.loading = false
     })
 }
-function onChange(categoryId) {
-  if (!isEmpty(categoryId)) {
+function onChange(categoryId, c) {
+  const category = findSelectedCatgory(this.categories, categoryId)
+  const shouldRoute = isEmpty(category.children_recursive)
+
+  if (!isEmpty(categoryId) && shouldRoute) {
     this.$emit('getCategoryId', categoryId)
   }
+}
+function findChild(categories, catId) {
+  return categories.find((category) => category.id === catId)
+}
+function findSelectedCatgory(categories, categoryId) {
+  let category = categories.find((category) => category.id === categoryId)
+
+  if (isEmpty(category)) {
+    for (let cat = 0; cat < categories.length; cat++) {
+      category = findChild(categories[cat].children_recursive, categoryId)
+    }
+  }
+  return category
 }
 const methods = {
   getAllCategories,
@@ -67,5 +91,6 @@ export default {
   data,
   mounted,
   methods,
+  // components: { tableView },
 }
 </script>
