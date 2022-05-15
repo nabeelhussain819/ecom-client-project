@@ -7,11 +7,11 @@ window.Echo = new Echo({
   key: 'abcdef',
   cluster: 'mt1',
   wsHost: 'web-api.letsdeploy.us',
-  encrypted: true,
   wsPort: 6001,
   wssPort: 6001,
   enabledTransports: ['ws', 'wss'],
   disableStats: true,
+  encrypted: false,
   forceTLS: true,
   authEndpoint: 'https://web-api.letsdeploy.us/broadcasting/auth',
   auth: {
