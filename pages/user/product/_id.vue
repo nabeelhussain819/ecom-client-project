@@ -9,6 +9,7 @@
         :file-list="fileList"
         :show-uploader="showUploader"
         @getCategoryName="getCategoryName"
+        @update="updateProductAttr"
       />
 
       <a-divider />
@@ -61,6 +62,9 @@ export default {
     },
     getCategoryName(categoryName) {
       this.catgoryName = categoryName
+    },
+    updateProductAttr(attr) {
+      console.log(attr)
     },
   },
 }

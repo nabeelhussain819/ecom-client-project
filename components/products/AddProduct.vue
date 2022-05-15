@@ -5,6 +5,7 @@
       <a-step title="Details" />
       <a-step title="Image" />
       <a-step title="Price" />
+      <a-step v-if="product.has_shipping" title="Shipping" />
     </a-steps>
     <a-layout-content>
       <div v-if="step === 0">
@@ -199,7 +200,7 @@
           />
         </a-form-item>
       </a-form>
-      <div></div>
+      <div v-if="step === 3">Shiping detial</div>
       <a-button
         :loading="loading"
         type="primary"
@@ -226,7 +227,8 @@ import Category from '~/services/API/Category'
 import AutoComplete from '~/components/google/AutoComplete'
 import upload from '~/components/products/Upload'
 import Attribute from '~/components/common/Attribute'
-import { isEmpty, success } from '~/services/Helpers'
+import { isEmpty } from '~/services/Helpers'
+import notifications from '~/mixins/notifications'
 
 const formItemLayout = {
   labelCol: {
@@ -248,6 +250,7 @@ const formTailLayout = {
 
 export default {
   components: { AutoComplete, Attribute, upload },
+  mixins: [notifications],
   props: {
     product: {
       type: Object,
@@ -331,15 +334,13 @@ export default {
       this.loading = true
       Product.save(params)
         .then((response) => {
-          success(this, { message: response.message })
           this.$emit('onComplete', response)
+          this.success(response.message)
           this.$router.push({
             path: `/user/product/${response.product.guid}`,
           })
         })
-        .catch((e) => {
-          this.errors = e.response.data.errors
-        })
+        .catch(this.error)
         .finally(() => {
           this.loading = false
         })
@@ -348,13 +349,14 @@ export default {
       this.loading = true
       Product.update(this.product.guid, params)
         .then((response) => {
-          success(this, { message: response.message })
+          this.success(response.message)
           this.$emit('update', response)
-          if (this.step === 2) {
-            this.$router.push({ path: '/' })
-          }
+          // if (this.step === 2) {
+          //   this.$router.push({ path: '/' })
+          // }
           this.step++
         })
+        .catch(this.error)
         .finally(() => {
           this.loading = false
         })
