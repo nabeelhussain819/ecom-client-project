@@ -1013,3 +1013,9 @@ ul li:first-child .ant-menu-submenu-title {
     }
   }
 }
+// globally defined class for display as Flex
+.d-flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}

@@ -69,13 +69,13 @@
   </div>
 </template>
 <script>
-import imageSlider from '~/components/sliders/ImageSlider'
+// import imageSlider from '~/components/sliders/ImageSlider'
 import { isEmpty } from '~/services/Utilities'
 import Product from '~/services/API/ProductServices'
 import routeHelpers from '~/mixins/route-helpers'
 export default {
   components: {
-    imageSlider,
+    // imageSlider,
   },
   mixins: [routeHelpers],
   data() {
