@@ -12,7 +12,7 @@
       </router-link>
       <a-menu
         placeholder="check"
-        class="header_nav"
+        class="header_nav no-hover-nav"
         mode="horizontal"
         :style="{ lineHeight: '40px', float: 'right' }"
       >

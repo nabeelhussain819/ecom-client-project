@@ -4,7 +4,7 @@
       <div class="col">
         <div class="shipping-header">
           <h1>Add Shipping Info</h1>
-          <a @click="goto('/purchase/buy')">Cancel</a>
+          <a @click="buyNow()">Cancel</a>
         </div>
         <a-form :form="form">
           <div>
@@ -51,23 +51,49 @@
   </div>
 </template>
 <script>
+// import routeHelpers from '~/mixins/route-helpers'
+// export default {
+//   mixins: [routeHelpers],
+
+//   data() {
+//     return {
+//       formItemLayout: {
+//         labelCol: {
+//           xs: { span: 24 },
+//           sm: { span: 8 },
+//         },
+//         wrapperCol: {
+//           xs: { span: 24 },
+//           sm: { span: 16 },
+//         },
+//       },
+//     }
+//   },
+// }
+//
+</script>
+<script>
 import routeHelpers from '~/mixins/route-helpers'
+
+import { EVENT_LOGIN_MODAL } from '~/services/Constant'
+// import Product from '~/services/API/ProductServices'
+
 export default {
   mixins: [routeHelpers],
-
-  data() {
-    return {
-      formItemLayout: {
-        labelCol: {
-          xs: { span: 24 },
-          sm: { span: 8 },
-        },
-        wrapperCol: {
-          xs: { span: 24 },
-          sm: { span: 16 },
-        },
-      },
-    }
+  computed: {
+    isAuth() {
+      return this.$store.getters.isAuthorize
+    },
+  },
+  methods: {
+    buyNow() {
+      if (this.isAuth) {
+        // ${product.guid}
+        this.goto(`/product/purchase/`)
+      } else {
+        this.$nuxt.$emit(EVENT_LOGIN_MODAL, true)
+      }
+    },
   },
 }
 </script>
