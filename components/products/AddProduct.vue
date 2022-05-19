@@ -5,7 +5,7 @@
       <a-step title="Details" />
       <a-step title="Image" />
       <a-step title="Price" />
-      <a-step v-if="product.has_shipping" title="Shipping" />
+      <a-step v-if="product.has_shipping || has_shiping" title="Shipping" />
     </a-steps>
     <a-layout-content>
       <div v-if="step === 0">
@@ -197,6 +197,7 @@
             addon-before="USD"
             placeholder="Please Enter Product Price"
             v-on="showShiping"
+            @change="handleShipping"
           />
         </a-form-item>
       </a-form>
@@ -291,6 +292,7 @@ export default {
       errors: '',
       category: {},
       step: 0,
+      has_shiping: false,
     }
   },
   mounted() {
@@ -395,6 +397,9 @@ export default {
         return location.replace(/<[^>]*>?/gm, '')
       }
       return null
+    },
+    handleShipping(isTrue) {
+      this.has_shiping = isTrue
     },
   },
 }

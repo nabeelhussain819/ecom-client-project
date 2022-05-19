@@ -64,7 +64,7 @@ export default {
       this.catgoryName = categoryName
     },
     updateProductAttr(attr) {
-      console.log(attr)
+      // console.log(attr)
     },
   },
 }
