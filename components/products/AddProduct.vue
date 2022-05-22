@@ -1,7 +1,7 @@
 <template>
   <a-skeleton :loading="false">
     <!-- <a-steps :current="step"> -->
-    <a-steps :current="step">
+    <a-steps :current="step" @change="changeStep">
       <a-step title="Details" />
       <a-step title="Image" />
       <a-step title="Price" />
@@ -201,7 +201,9 @@
           />
         </a-form-item>
       </a-form>
-      <div v-if="step === 3">Shiping detial</div>
+      <div v-if="step === 3">
+        <a-form :form="form"><Shiping :product="product" /></a-form>
+      </div>
       <a-button
         :loading="loading"
         type="primary"
@@ -228,6 +230,7 @@ import Category from '~/services/API/Category'
 import AutoComplete from '~/components/google/AutoComplete'
 import upload from '~/components/products/Upload'
 import Attribute from '~/components/common/Attribute'
+import Shiping from '~/components/products/shipping/Form'
 import { isEmpty } from '~/services/Helpers'
 import notifications from '~/mixins/notifications'
 
@@ -250,7 +253,7 @@ const formTailLayout = {
 }
 
 export default {
-  components: { AutoComplete, Attribute, upload },
+  components: { AutoComplete, Attribute, upload, Shiping },
   mixins: [notifications],
   props: {
     product: {
@@ -291,7 +294,7 @@ export default {
       category_id: null,
       errors: '',
       category: {},
-      step: 0,
+      step: 3, // for tetsing
       has_shiping: false,
     }
   },
@@ -400,6 +403,9 @@ export default {
     },
     handleShipping(isTrue) {
       this.has_shiping = isTrue
+    },
+    changeStep(step) {
+      this.step = step
     },
   },
 }
