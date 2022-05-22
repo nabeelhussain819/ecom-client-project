@@ -22,9 +22,7 @@
           <hr />
           <div class="payment-method-option">
             <h2>Payment method (required)</h2>
-            <a class="btn-add" @click="goto('/purchase/payment-method/')"
-              >Add</a
-            >
+            <a class="btn-add" @click="showCardDetailModal(true)">Add</a>
           </div>
           <hr />
           <div class="item-price-tag">
@@ -33,15 +31,17 @@
           </div>
           <div class="shipping-price-tag">
             <h2>Shipping Price</h2>
-            <h2>$7.00</h2>
+            <h2>$7.00 Static</h2>
           </div>
           <div class="sales-tax-tag">
             <h2>Sales Tax (Estimated)</h2>
-            <h2>$7.00</h2>
+            <h2>$7.00 Static</h2>
           </div>
           <div class="payed-tag">
             <h2><b> You Pay</b></h2>
-            <h2><b> $207.00 </b></h2>
+            <h2>
+              <b>{{ product.price }}$ </b>
+            </h2>
           </div>
           <div class="protect-payment-main">
             <div>
@@ -72,6 +72,15 @@
         </div>
       </a-col></a-row
     >
+
+    <a-modal
+      :visible="cardModal"
+      :width="900"
+      title="Visa Card Detail"
+      @cancel="showCardDetailModal(false)"
+    >
+      <VisaCard @cancel="showCardDetailModal" />
+    </a-modal>
   </div>
 </template>
 <script>
@@ -79,13 +88,21 @@ import imageSlider from '~/components/sliders/ImageSlider'
 import { isEmpty } from '~/services/Utilities'
 import Product from '~/services/API/ProductServices'
 import routeHelpers from '~/mixins/route-helpers'
+import VisaCard from '~/components/purchase/cards'
 export default {
   components: {
     imageSlider,
+    VisaCard,
   },
   mixins: [routeHelpers],
   data() {
-    return { loading: false, product: {}, images: [], values: {} }
+    return {
+      loading: false,
+      product: {},
+      images: [],
+      values: {},
+      cardModal: false,
+    }
   },
   mounted() {
     this.getProduct(this.$route.params.id)
@@ -117,6 +134,9 @@ export default {
       this.images = [
         'https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png',
       ]
+    },
+    showCardDetailModal(show) {
+      this.cardModal = show
     },
   },
 }
