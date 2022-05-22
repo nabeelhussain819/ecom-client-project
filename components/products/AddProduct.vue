@@ -294,7 +294,7 @@ export default {
       category_id: null,
       errors: '',
       category: {},
-      step: 3, // for tetsing
+      step: 0, // for tetsing
       has_shiping: false,
     }
   },
@@ -356,9 +356,9 @@ export default {
         .then((response) => {
           this.success(response.message)
           this.$emit('update', response)
-          // if (this.step === 2) {
-          //   this.$router.push({ path: '/' })
-          // }
+          if (this.step === 2 && !this.product.has_shiping) {
+            this.$router.push({ path: '/' })
+          }
           this.step++
         })
         .catch(this.error)
