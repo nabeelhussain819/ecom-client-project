@@ -17,7 +17,7 @@
           <hr />
           <div class="shipping-option">
             <h2>Shipping to (required)</h2>
-            <a class="btn-add" @click="goto('/purchase/add-shipping/')">Add</a>
+            <a class="btn-add" @click="showShippingModal(true)">Add</a>
           </div>
           <hr />
           <div class="payment-method-option">
@@ -72,7 +72,15 @@
         </div>
       </a-col></a-row
     >
-
+    <a-modal
+      :visible="shippingModal"
+      :width="900"
+      title="Shipping details"
+      :footer="null"
+      @cancel="showShippingModal(false)"
+    >
+      <Shipping @cancel="showShippingModal" />
+    </a-modal>
     <a-modal
       :visible="cardModal"
       :width="900"
@@ -89,10 +97,12 @@ import { isEmpty } from '~/services/Utilities'
 import Product from '~/services/API/ProductServices'
 import routeHelpers from '~/mixins/route-helpers'
 import VisaCard from '~/components/purchase/cards'
+import Shipping from '~/components/purchase/shipping'
 export default {
   components: {
     imageSlider,
     VisaCard,
+    Shipping,
   },
   mixins: [routeHelpers],
   data() {
@@ -102,6 +112,7 @@ export default {
       images: [],
       values: {},
       cardModal: false,
+      shippingModal: false,
     }
   },
   mounted() {
@@ -137,6 +148,9 @@ export default {
     },
     showCardDetailModal(show) {
       this.cardModal = show
+    },
+    showShippingModal(show) {
+      this.shippingModal = show
     },
   },
 }
