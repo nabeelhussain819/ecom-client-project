@@ -1,77 +1,106 @@
 <template>
   <div class="container container-buy-now">
-    <h1>Confirm Purchase</h1>
-    <a-row :gutter="16">
-      <a-col :xs="24" :sm="24" class="">
-        <div class="d-flex buy-slider-detail">
-          <image-slider class="purchase_img_slider" :images="images" />
-          <h2
-            type="inline "
-            :title="product.name"
-            class="primary-text buy-price"
-          >
-            {{ product.name }}
-          </h2>
-        </div>
-        <div class="purchase-content">
-          <hr />
-          <div class="shipping-option">
-            <h2>Shipping to (required)</h2>
-            <a class="btn-add" @click="showShippingModal(true)">Add</a>
-          </div>
-          <hr />
-          <div class="payment-method-option">
-            <h2>Payment method (required)</h2>
-            <a class="btn-add" @click="showCardDetailModal(true)">Add</a>
-          </div>
-          <hr />
-          <div class="item-price-tag">
-            <h2>Item Price</h2>
-            <h2>${{ product.price }}</h2>
-          </div>
-          <div class="shipping-price-tag">
-            <h2>Shipping Price</h2>
-            <h2>$7.00 Static</h2>
-          </div>
-          <div class="sales-tax-tag">
-            <h2>Sales Tax (Estimated)</h2>
-            <h2>$7.00 Static</h2>
-          </div>
-          <div class="payed-tag">
-            <h2><b> You Pay</b></h2>
-            <h2>
-              <b>{{ product.price }}$ </b>
+    <a-form
+      :form="form"
+      :label-col="{ span: 8 }"
+      :wrapper-col="{ span: 16 }"
+      @submit="onSubmit"
+    >
+      <h1>Confirm Purchase</h1>
+      <a-row :gutter="16">
+        <a-col :xs="24" :sm="24" class="">
+          <div class="d-flex buy-slider-detail">
+            <image-slider class="purchase_img_slider" :images="images" />
+            <h2
+              type="inline "
+              :title="product.name"
+              class="primary-text buy-price"
+            >
+              {{ product.name }}
             </h2>
           </div>
-          <div class="protect-payment-main">
-            <div>
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN5NEy1Is3DEFYZM5YW4kcbRrTILo9ddmyJisQrqws5ylSUlNagQA5OaKQ6cN7BdvHRDw&usqp=CAU"
-                width="100px"
-              />
+          <div class="purchase-content">
+            <hr />
+            <div class="shipping-option">
+              <h2>Shipping to (required)</h2>
+              <a class="btn-add" @click="showShippingModal(true)">Add</a>
+              <pre>{{ shiping_details }}</pre>
+              <a-descriptions
+                v-if="!isEmpty(shiping_details)"
+                bordered
+                title="Shipping Detail"
+              >
+                <a-descriptions-item label="UserName">
+                  {{ shiping_details.name }}
+                </a-descriptions-item>
+                <a-descriptions-item label="Street Address">
+                  {{ shiping_details.street_address }}
+                </a-descriptions-item>
+                <a-descriptions-item label="state">
+                  {{ shiping_details.state }}
+                </a-descriptions-item>
+                <a-descriptions-item label="city">
+                  {{ shiping_details.city }}
+                </a-descriptions-item>
+                <a-descriptions-item label="zip">
+                  {{ shiping_details.zip }}
+                </a-descriptions-item>
+              </a-descriptions>
             </div>
+            <hr />
+            <div class="payment-method-option">
+              <h2>Payment method (required)</h2>
+              <a class="btn-add" @click="showCardDetailModal(true)">Add</a>
+            </div>
+            <hr />
+            <div class="item-price-tag">
+              <h2>Item Price</h2>
+              <h2>${{ product.price }}</h2>
+            </div>
+            <div class="shipping-price-tag">
+              <h2>Shipping Price</h2>
+              <h2>$7.00 Static</h2>
+            </div>
+            <div class="sales-tax-tag">
+              <h2>Sales Tax (Estimated)</h2>
+              <h2>$7.00 Static</h2>
+            </div>
+            <div class="payed-tag">
+              <h2><b> You Pay</b></h2>
+              <h2>
+                <b>{{ product.price }}$ </b>
+              </h2>
+            </div>
+            <div class="protect-payment-main">
+              <div>
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN5NEy1Is3DEFYZM5YW4kcbRrTILo9ddmyJisQrqws5ylSUlNagQA5OaKQ6cN7BdvHRDw&usqp=CAU"
+                  width="100px"
+                />
+              </div>
+              <div>
+                <h2>2-Days Purchase Protection</h2>
+                <p>
+                  Items shipped through FlexEmarket come with a 2-day purchase
+                  protection. <a href="javascript:;"> Learn more </a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="confirm-purchase-main" style="text-align: center">
+            <button class="btn ant-btn ant-btn-primary ant-btn-lg">
+              Confirm Purchase
+            </button>
             <div>
-              <h2>2-Days Purchase Protection</h2>
-              <p>
-                Items shipped through FlexEmarket come with a 2-day purchase
-                protection. <a href="javascript:;"> Learn more </a>
+              <p class="label-confirm-purchase">
+                By tapping "Confirm Purchase", you agree to the FlexEmarket
+                <a href="javascript:;"> Term of Service</a>
               </p>
             </div>
           </div>
-        </div>
-        <div class="confirm-purchase-main" style="text-align: center">
-          <button class="btn ant-btn ant-btn-primary ant-btn-lg">
-            Confirm Purchase
-          </button>
-          <div>
-            <p class="label-confirm-purchase">
-              By tapping "Confirm Purchase", you agree to the FlexEmarket
-              <a href="javascript:;"> Term of Service</a>
-            </p>
-          </div>
-        </div>
-      </a-col></a-row
-    >
+        </a-col></a-row
+      >
+    </a-form>
     <a-modal
       :visible="shippingModal"
       :width="900"
@@ -79,7 +108,10 @@
       :footer="null"
       @cancel="showShippingModal(false)"
     >
-      <Shipping @cancel="showShippingModal" />
+      <Shipping
+        @cancel="showShippingModal"
+        @getShipingDetail="getShipingDetail"
+      />
     </a-modal>
     <a-modal
       :visible="cardModal"
@@ -113,12 +145,23 @@ export default {
       values: {},
       cardModal: false,
       shippingModal: false,
+      shiping_details: {},
+      form: this.$form.createForm(this, { name: 'orderNow' }),
     }
   },
   mounted() {
     this.getProduct(this.$route.params.id)
   },
   methods: {
+    isEmpty,
+    onSubmit(e) {
+      e.preventDefault()
+      this.form.validateFields((err, values) => {
+        if (!err) {
+          console.log(values)
+        }
+      })
+    },
     getProduct(id) {
       this.loading = true
       Product.get(id)
@@ -151,6 +194,10 @@ export default {
     },
     showShippingModal(show) {
       this.shippingModal = show
+    },
+    getShipingDetail(shippingDetials) {
+      this.shiping_details = shippingDetials.shipping
+      console.log(shippingDetials)
     },
   },
 }

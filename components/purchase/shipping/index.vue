@@ -1,52 +1,61 @@
 <template>
   <div class="container container-shipping">
-    <div class="row">
-      <div class="col">
-        <div class="shipping-header">
-          <h1>Add Shipping Info</h1>
-          <a @click="buyNow()">Cancel</a>
-        </div>
-        <div>
-          <label>Name </label>
-          <a-form-item :gutter="5">
-            <a-input v-decorator="['shipping']['name']" type="text" />
-          </a-form-item>
-        </div>
-        <div>
-          <label>Street Address </label>
-          <a-form-item span="8">
-            <a-input v-decorator="['shipping']['street_address']" type="text" />
-          </a-form-item>
-        </div>
-        <div class="basic-location">
-          <div class="item-city">
-            <label>City </label>
-            <a-form-item span="8">
-              <a-input v-decorator="['shipping']['state']" type="text" />
+    <a-form
+      :form="form"
+      :label-col="{ span: 8 }"
+      :wrapper-col="{ span: 16 }"
+      @submit="onSubmit"
+    >
+      <div class="row">
+        <div class="col">
+          <div class="shipping-header">
+            <h1>Add Shipping Info</h1>
+            <a @click="buyNow()">Cancel</a>
+          </div>
+          <div>
+            <label>Name </label>
+            <a-form-item :gutter="5">
+              <a-input v-decorator="['shipping[name]']" type="text" />
             </a-form-item>
           </div>
-          <div class="item-state">
-            <label>State </label>
+          <div>
+            <label>Street Address </label>
             <a-form-item span="8">
-              <a-input v-decorator="['shipping']['city']" type="text" />
+              <a-input v-decorator="['shipping[street_address]']" type="text" />
             </a-form-item>
           </div>
-        </div>
-        <div class="item-zip">
-          <label>Zip </label>
-          <a-input v-decorator="['shipping']['zip']" type="text" />
-        </div>
-        <div class="btn-ship">
-          <a-button
-            type="primary"
-            class="btn ant-btn ant-btn-primary ant-btn-lg"
-            @click="submit"
-          >
-            Save</a-button
-          >
+          <div class="basic-location">
+            <div class="item-city">
+              <label>City </label>
+              <a-form-item span="8">
+                <a-input v-decorator="['shipping[state]']" type="text" />
+              </a-form-item>
+            </div>
+            <div class="item-state">
+              <label>State </label>
+              <a-form-item span="8">
+                <a-input v-decorator="['shipping[city]']" type="text" />
+              </a-form-item>
+            </div>
+          </div>
+          <div class="item-zip">
+            <label>Zip </label>
+            <a-form-item span="8">
+              <a-input v-decorator="['shipping[zip]']" type="text" />
+            </a-form-item>
+          </div>
+          <div class="btn-ship">
+            <a-button
+              html-type="submit"
+              type="primary"
+              class="btn ant-btn ant-btn-primary ant-btn-lg"
+            >
+              Save</a-button
+            >
+          </div>
         </div>
       </div>
-    </div>
+    </a-form>
   </div>
 </template>
 <script>
@@ -56,6 +65,11 @@ import { EVENT_LOGIN_MODAL } from '~/services/Constant'
 
 export default {
   mixins: [routeHelpers],
+  data() {
+    return {
+      form: this.$form.createForm(this, { name: 'shippingDetail' }),
+    }
+  },
   computed: {
     isAuth() {
       return this.$store.getters.isAuthorize
@@ -70,8 +84,15 @@ export default {
         this.$nuxt.$emit(EVENT_LOGIN_MODAL, true)
       }
     },
-    submit() {
-      this.$emit('cancel', false)
+    onSubmit(e) {
+      e.preventDefault()
+      this.form.validateFields((err, values) => {
+        if (!err) {
+          console.log(values)
+          this.$emit('cancel', false)
+          this.$emit('getShipingDetail', values)
+        }
+      })
     },
   },
 }
