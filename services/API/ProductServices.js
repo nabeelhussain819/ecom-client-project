@@ -98,6 +98,20 @@ function getSaved(params = {}) {
   })
 }
 
+function buyingOffer(params = {}) {
+  return request({
+    url: `${baseUrl}/offers/buying`,
+    params,
+  })
+}
+
+function sellingOffer(params = {}) {
+  return request({
+    url: `${baseUrl}/offers/selling`,
+    params,
+  })
+}
+
 const ProductServices = {
   all,
   save,
@@ -112,6 +126,8 @@ const ProductServices = {
   saved,
   getSaved,
   offer,
+  buyingOffer,
+  sellingOffer,
 }
 
 export default ProductServices

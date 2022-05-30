@@ -107,6 +107,13 @@
           >
             Account
           </a-menu-item>
+          <a-menu-item
+            key="accountn"
+            class="f-black m-0"
+            @click="goto('/user/offers')"
+          >
+            Offers
+          </a-menu-item>
           <a-menu-item key="Logout" class="f-black m-0" @click="logout">
             Logout
           </a-menu-item>
