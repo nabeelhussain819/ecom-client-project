@@ -130,6 +130,8 @@ import Product from '~/services/API/ProductServices'
 import routeHelpers from '~/mixins/route-helpers'
 import VisaCard from '~/components/purchase/cards'
 import Shipping from '~/components/purchase/shipping'
+import OrderServices from '~/services/API/OrderServices'
+
 export default {
   components: {
     imageSlider,
@@ -158,7 +160,10 @@ export default {
       e.preventDefault()
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log(values)
+          OrderServices.save({
+            product_id: this.product.guid,
+            shippingDetail: this.shiping_details,
+          }).then((response) => {})
         }
       })
     },
