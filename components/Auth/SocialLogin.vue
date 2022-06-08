@@ -1,8 +1,8 @@
 <template>
   <div>
-    <facebook-login @login="facebookLogin" />
+    <facebook-login @facebook-login="facebookLogin" />
 
-    <google-login @login="googleLogin" />
+    <google-login @google-login="googleLogin" />
   </div>
 </template>
 
