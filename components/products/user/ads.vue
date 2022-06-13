@@ -57,8 +57,7 @@ export default {
       loading: false,
       user: {},
       products: [],
-      img:
-        'https://cdni.iconscout.com/illustration/premium/thumb/sorry-item-not-found-3328225-2809510.png',
+      img: 'https://cdni.iconscout.com/illustration/premium/thumb/sorry-item-not-found-3328225-2809510.png',
       services: null,
       serviceLoading: false,
     }
