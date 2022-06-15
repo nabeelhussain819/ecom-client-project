@@ -10,7 +10,7 @@
             {{ item.status_name }}
           </a-tag>
         </div>
-        <a-avatar slot="avatar" :src="item.productcover_image" />
+        <a-avatar slot="avatar" :src="item.product.cover_image" />
       </a-list-item-meta>
     </a-list-item>
   </a-list>

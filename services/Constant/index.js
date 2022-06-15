@@ -22,3 +22,7 @@ export const ATTRIBUTE_TYPES = {
   RADIO_GROUP: 'RADIO_GROUP',
   SELECT: 'SELECT',
 }
+
+export const OFFERS_STATUS = {
+  new: { name: 'NEW_REQUEST' },
+}
