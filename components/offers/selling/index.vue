@@ -15,6 +15,7 @@
             >
           </div>
           <a-tag v-else color="pink">{{ item.status_name }}</a-tag>
+          made an offer of ${{ item.price }} on {{ item.product.name }}
         </div>
 
         <a-avatar slot="avatar" :src="item.product.cover_image" />
