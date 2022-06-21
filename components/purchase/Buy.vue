@@ -95,7 +95,7 @@
             >
               Pay Now
             </button>
-            <Stripe v-if="pay" />
+            <Stripe v-if="pay" :shippingDetail="shiping_details" />
             <div>
               <p class="label-confirm-purchase">
                 By tapping "Confirm Purchase", you agree to the FlexEmarket
@@ -210,7 +210,6 @@ export default {
     },
     getShipingDetail(shippingDetials) {
       this.shiping_details = shippingDetials.shipping
-      console.log(shippingDetials)
     },
   },
 }

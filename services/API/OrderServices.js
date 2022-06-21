@@ -11,8 +11,17 @@ function save(data) {
   })
 }
 
+function update(id, data) {
+  return request({
+    url: baseUrl + `/${id}`,
+    data,
+    method: 'PATCH',
+  })
+}
+
 const OrderServices = {
   save,
+  update,
 }
 
 export default OrderServices
