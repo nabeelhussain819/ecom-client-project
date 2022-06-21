@@ -88,9 +88,14 @@
             </div>
           </div>
           <div class="confirm-purchase-main" style="text-align: center">
-            <button class="btn ant-btn ant-btn-primary ant-btn-lg">
-              Confirm Purchase
+            <button
+              v-if="!pay"
+              class="btn ant-btn ant-btn-primary ant-btn-lg"
+              @click="pay = true"
+            >
+              Pay Now
             </button>
+            <Stripe v-if="pay" />
             <div>
               <p class="label-confirm-purchase">
                 By tapping "Confirm Purchase", you agree to the FlexEmarket
@@ -131,12 +136,14 @@ import routeHelpers from '~/mixins/route-helpers'
 import VisaCard from '~/components/purchase/cards'
 import Shipping from '~/components/purchase/shipping'
 import OrderServices from '~/services/API/OrderServices'
+import Stripe from '~/components/purchase/Stripe'
 
 export default {
   components: {
     imageSlider,
     VisaCard,
     Shipping,
+    Stripe,
   },
   mixins: [routeHelpers],
   data() {
@@ -148,6 +155,7 @@ export default {
       cardModal: false,
       shippingModal: false,
       shiping_details: {},
+      pay: false,
       form: this.$form.createForm(this, { name: 'orderNow' }),
     }
   },
