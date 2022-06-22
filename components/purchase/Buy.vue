@@ -163,17 +163,21 @@ export default {
   },
   methods: {
     isEmpty,
-    onSubmit(ref) {
+    onSubmit(submit, ref) {
       this.form.validateFields((err, values) => {
         if (!err) {
-          OrderServices.save({
-            product_id: this.product.guid,
-            shippingDetail: this.shiping_details,
-          }).then((order) => {
-            ref.confirmParams.return_url =
-              window.location.origin + '/order/confirm/' + order.id
-            ref.submit()
-          })
+          if (!submit) ref.submit()
+          // required to trigger validation errors
+          else {
+            OrderServices.save({
+              product_id: this.product.guid,
+              shippingDetail: this.shiping_details,
+            }).then((order) => {
+              ref.confirmParams.return_url =
+                window.location.origin + '/order/confirm/' + order.id
+              ref.submit()
+            })
+          }
         }
       })
     },

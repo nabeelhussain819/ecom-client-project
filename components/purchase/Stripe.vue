@@ -6,6 +6,7 @@
       :pk="pk"
       :elements-options="elementsOptions"
       :confirm-params="confirmParams"
+      @element-change="change"
     />
     <button class="btn ant-btn ant-btn-primary ant-btn-lg" @click="pay">
       Confirm Purchase
@@ -28,6 +29,7 @@ export default {
   },
   data() {
     return {
+      submit: false,
       pk: STRIPE_PK,
       elementsOptions: {
         appearance: {}, // appearance options
@@ -49,7 +51,10 @@ export default {
       this.$forceUpdate()
     },
     pay() {
-      this.$emit('submit', this.$refs.paymentRef)
+      this.$emit('submit', this.submit, this.$refs.paymentRef)
+    },
+    change({ empty, complete }) {
+      if (!empty && complete) this.submit = true
     },
   },
 }
