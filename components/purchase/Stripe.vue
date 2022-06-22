@@ -15,7 +15,6 @@
 
 <script>
 import { StripeElementPayment } from '@vue-stripe/vue-stripe'
-import OrderServices from '~/services/API/OrderServices'
 import StripeService from '~/services/API/StripeService'
 import { STRIPE_PK } from '~/services/Constant'
 
@@ -25,6 +24,7 @@ export default {
   },
   props: {
     shippingDetail: Object,
+    orderId: Number,
   },
   data() {
     return {
@@ -49,16 +49,7 @@ export default {
       this.$forceUpdate()
     },
     pay() {
-      OrderServices.save({
-        shippingDetail: this.shippingDetail,
-        product_id: this.$route.params.id,
-      })
-        .then((order) => {
-          this.confirmParams.return_url =
-            window.location.origin + '/order/confirm/' + order.id
-          this.$refs.paymentRef.submit()
-        })
-        .catch(() => {})
+      this.$emit('submit', this.$refs.paymentRef)
     },
   },
 }

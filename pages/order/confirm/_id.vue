@@ -10,7 +10,7 @@ export default {
   mounted() {
     OrderServices.update(this.$route.params.id, {
       payment_intent: this.$route.query.payment_intent,
-      status: 'PAID',
+      status: 'UNCAPTURED',
     })
       .then(() => {})
       .catch(() => {})

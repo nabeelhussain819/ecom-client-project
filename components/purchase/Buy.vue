@@ -1,11 +1,6 @@
 <template>
   <div class="container container-buy-now">
-    <a-form
-      :form="form"
-      :label-col="{ span: 8 }"
-      :wrapper-col="{ span: 16 }"
-      @submit="onSubmit"
-    >
+    <a-form :form="form" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }">
       <h1>Confirm Purchase</h1>
       <a-row :gutter="16">
         <a-col :xs="24" :sm="24" class="">
@@ -95,7 +90,11 @@
             >
               Pay Now
             </button>
-            <Stripe v-if="pay" :shippingDetail="shiping_details" />
+            <Stripe
+              v-if="pay"
+              :shipping-detail="shiping_details"
+              @submit="onSubmit"
+            />
             <div>
               <p class="label-confirm-purchase">
                 By tapping "Confirm Purchase", you agree to the FlexEmarket
@@ -164,14 +163,17 @@ export default {
   },
   methods: {
     isEmpty,
-    onSubmit(e) {
-      e.preventDefault()
+    onSubmit(ref) {
       this.form.validateFields((err, values) => {
         if (!err) {
           OrderServices.save({
             product_id: this.product.guid,
             shippingDetail: this.shiping_details,
-          }).then((response) => {})
+          }).then((order) => {
+            ref.confirmParams.return_url =
+              window.location.origin + '/order/confirm/' + order.id
+            ref.submit()
+          })
         }
       })
     },
