@@ -39,6 +39,7 @@ export default {
     { src: '@/plugins/google-maps.js', ssr: false },
     { src: '@/plugins/persistedState.js' },
     { src: '@/plugins/echo.js', ssr: false },
+    { src: '@/plugins/vue-stripe.js', ssr: false },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

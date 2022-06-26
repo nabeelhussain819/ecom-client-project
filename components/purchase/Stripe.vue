@@ -15,14 +15,10 @@
 </template>
 
 <script>
-import { StripeElementPayment } from '@vue-stripe/vue-stripe'
 import StripeService from '~/services/API/StripeService'
 import { STRIPE_PK } from '~/services/Constant'
 
 export default {
-  components: {
-    StripeElementPayment,
-  },
   props: {
     shippingDetail: Object,
     orderId: Number,

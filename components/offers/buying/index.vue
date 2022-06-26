@@ -2,7 +2,7 @@
   <a-list item-layout="horizontal" :loading="loading" :data-source="data">
     <a-list-item slot="renderItem" slot-scope="item">
       <a-list-item-meta>
-        <a slot="title" href="https://www.antdv.com/">{{
+        <a slot="title" :href="'/product/purchase/' + item.product.guid">{{
           item.product.name
         }}</a>
         <div slot="description">
