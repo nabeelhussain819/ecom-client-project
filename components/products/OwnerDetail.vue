@@ -24,6 +24,7 @@
         </div>
         <div v-else>
           <a-button
+            v-if="!product.featured"
             class="btn"
             type="primary"
             :size="size"
