@@ -15,37 +15,26 @@
 </template>
 
 <script>
-import StripeService from '~/services/API/StripeService'
 import { STRIPE_PK } from '~/services/Constant'
 
 export default {
   props: {
-    shippingDetail: Object,
-    orderId: Number,
+    clientSecret: String,
   },
   data() {
     return {
       submit: false,
       pk: STRIPE_PK,
       elementsOptions: {
-        appearance: {}, // appearance options
+        appearance: {},
+        clientSecret: this.clientSecret,
       },
       confirmParams: {
         return_url: window.location.origin, // success url
       },
     }
   },
-  mounted() {
-    this.generatePaymentIntent()
-  },
   methods: {
-    async generatePaymentIntent() {
-      const paymentIntent = await StripeService.generatePaymentIntent(
-        this.$route.params.id
-      )
-      this.elementsOptions.clientSecret = paymentIntent.client_secret
-      this.$forceUpdate()
-    },
     pay() {
       this.$emit('submit', this.submit, this.$refs.paymentRef)
     },

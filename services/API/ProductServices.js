@@ -112,6 +112,14 @@ function sellingOffer(params = {}) {
   })
 }
 
+function feature(id, data) {
+  return request({
+    url: `${baseUrl}/${id}/feature`,
+    data,
+    method: 'POST',
+  })
+}
+
 const ProductServices = {
   all,
   save,
@@ -128,6 +136,7 @@ const ProductServices = {
   offer,
   buyingOffer,
   sellingOffer,
+  feature,
 }
 
 export default ProductServices

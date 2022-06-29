@@ -86,7 +86,7 @@
             <button
               v-if="!pay"
               class="btn ant-btn ant-btn-primary ant-btn-lg"
-              @click="pay = true"
+              @click="generatePaymentIntent"
             >
               Pay Now
             </button>
@@ -94,6 +94,7 @@
               v-if="pay"
               :shipping-detail="shiping_details"
               @submit="onSubmit"
+              :client-secret="clientSecret"
             />
             <div>
               <p class="label-confirm-purchase">
@@ -136,6 +137,7 @@ import VisaCard from '~/components/purchase/cards'
 import Shipping from '~/components/purchase/shipping'
 import OrderServices from '~/services/API/OrderServices'
 import Stripe from '~/components/purchase/Stripe'
+import StripeService from '~/services/API/StripeService'
 
 export default {
   components: {
@@ -156,6 +158,7 @@ export default {
       shiping_details: {},
       pay: false,
       form: this.$form.createForm(this, { name: 'orderNow' }),
+      clientSecret: null,
     }
   },
   mounted() {
@@ -216,6 +219,13 @@ export default {
     },
     getShipingDetail(shippingDetials) {
       this.shiping_details = shippingDetials.shipping
+    },
+    async generatePaymentIntent() {
+      const paymentIntent = await StripeService.generatePaymentIntent(
+        this.$route.params.id
+      )
+      this.clientSecret = paymentIntent.client_secret
+      this.pay = true
     },
   },
 }

@@ -8,8 +8,16 @@ function generatePaymentIntent(guid) {
   })
 }
 
+function generateFeatureIntent(params = {}) {
+  return request({
+    url: baseUrl + '/feature',
+    params,
+  })
+}
+
 const StripeService = {
   generatePaymentIntent,
+  generateFeatureIntent,
 }
 
 export default StripeService

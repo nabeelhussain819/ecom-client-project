@@ -47,6 +47,7 @@
         <a-modal
           title=""
           :width="1200"
+          :footer="null"
           :visible="showPromoteModal"
           @cancel="handlePromoteModal(false)"
           @click="handlePromoteModal(true)"
