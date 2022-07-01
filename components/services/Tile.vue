@@ -68,6 +68,7 @@ export default {
   background-size: cover;
   max-height: 130px !important;
   object-fit: cover;
+  max-width: 100%;
 }
 .price-tag {
   font-weight: 500;

@@ -15,8 +15,7 @@
         <a-col
           v-for="(product, index) in products"
           :key="index"
-          :span="4"
-          class="tile-width-x mb-2"
+          class="tile-width-x mb-2 ant-col-md-4 ant-col-xs-12"
         >
           <Tile :product="product"
         /></a-col>

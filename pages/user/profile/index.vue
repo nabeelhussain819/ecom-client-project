@@ -35,7 +35,7 @@
           >Follow</a-button
         >
       </a-col>
-      <a-col :xs="24" class="" :sm="16">
+      <a-col :xs="24" class="" :sm="18">
         <ads />
       </a-col>
     </a-row>

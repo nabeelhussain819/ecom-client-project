@@ -19,7 +19,7 @@
             <div class="shipping-option">
               <h2>Shipping to (required)</h2>
               <a class="btn-add" @click="showShippingModal(true)">Add</a>
-              <pre>{{ shiping_details }}</pre>
+              <!-- <pre>{{ shiping_details }}</pre> -->
               <a-descriptions
                 v-if="!isEmpty(shiping_details)"
                 bordered

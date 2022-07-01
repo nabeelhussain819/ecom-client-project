@@ -9,7 +9,7 @@
               v-for="product in products"
               :key="product.id"
               :xs="24"
-              :sm="6"
+              :sm="5"
               class="profile-tile-width pt-4"
             >
               <tile
@@ -95,7 +95,7 @@ export default {
   font-weight: 700;
 }
 .profile-tile-width {
-  width: auto;
+  margin: 0px 3px;
 }
 .main-ads-container {
   max-width: 1100px;

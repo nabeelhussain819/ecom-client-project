@@ -1,5 +1,5 @@
 <template>
-  <div>Ad Featured</div>
+  <div class="feature-tag">Ad Featured</div>
 </template>
 
 <script>
@@ -15,3 +15,13 @@ export default {
   },
 }
 </script>
+<style scoped>
+.feature-tag {
+  display: inline-block;
+  padding: 2px 5px;
+  background: #cee741;
+  /* color: #fff; */
+  font-weight: bold;
+  border-radius: 7px;
+}
+</style>

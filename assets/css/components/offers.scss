@@ -1,0 +1,24 @@
+.offers-main {
+    h1 {
+        font-size: 24px;
+        font-weight: 700;
+    }
+    .ant-tabs-nav-container {
+        text-align: center;
+    }
+    .offers-tabs {
+        .ant-tabs-tab{
+            padding: 10px 33px !important;
+            margin: 0px 10px !important;
+        }
+        .ant-tabs-ink-bar {
+            display: none !important;
+        }
+    }
+}
+@media (min-width:768px) {
+    .offers-main {
+        padding: 50px;
+    }
+
+}
