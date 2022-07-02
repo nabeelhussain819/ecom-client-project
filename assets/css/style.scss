@@ -57,7 +57,9 @@ body,
   margin: 8px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  width: 35%;
+      justify-content: space-around;
+  margin: auto;
 }
 //repetitive css here @todo optimizations
 .dot-facebook {
