@@ -3,7 +3,7 @@
     <div class="owner-detail">
       <div v-if="!product.is_sold">
         <rating-avatar :product="product" />
-        <div v-if="product.is_owner">
+        <div v-if="!product.is_owner">
           <a-button
             class="btn primary"
             type="primary"
