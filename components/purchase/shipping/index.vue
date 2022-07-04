@@ -10,7 +10,7 @@
         <div class="col">
           <div class="shipping-header">
             <h1>Add Shipping Info</h1>
-            <a @click="buyNow()">Cancel</a>
+            <a>Cancel</a>
           </div>
           <div>
             <label>Name </label>

@@ -3,7 +3,7 @@
     <div class="owner-detail">
       <div v-if="!product.is_sold">
         <rating-avatar :product="product" />
-        <div v-if="!product.is_owner">
+        <div v-if="product.is_owner">
           <a-button
             class="btn primary"
             type="primary"
@@ -12,7 +12,9 @@
           >
             Make An Offer
           </a-button>
-          <a-button class="btn" :size="size"> Ask</a-button>
+          <a-button class="btn" :size="size" @click="goto('/product/ask')">
+            Ask</a-button
+          >
           <a-button
             class="btn btn-secondary"
             :size="size"
