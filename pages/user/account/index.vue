@@ -24,7 +24,9 @@
             :default-selected-keys="['1']"
           >
             <a-menu-item key="1"> Account Settings </a-menu-item>
-            <a-menu-item key="2"> Transaction History </a-menu-item>
+            <a-menu-item key="2" @click="goto('./account/transaction-history')">
+              Transaction History
+            </a-menu-item>
             <a-menu-item key="3"> Payment Methods </a-menu-item>
             <a-menu-item key="4"> Deposit Account </a-menu-item>
           </a-menu>
@@ -71,9 +73,11 @@ import editProfile from '~/components/user/EditProfile'
 import Product from '~/services/API/ProductServices'
 import { isEmpty } from '~/services/Utilities'
 import userDetail from '~/mixins/user-detail'
+import routeHelpers from '~/mixins/route-helpers'
+
 export default {
   components: { editProfile, upload },
-  mixins: [userDetail],
+  mixins: [userDetail, routeHelpers],
   data() {
     return {
       loading: false,

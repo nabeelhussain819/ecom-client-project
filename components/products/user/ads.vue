@@ -8,7 +8,7 @@
             <a-col
               v-for="product in products"
               :key="product.id"
-              :xs="24"
+              :xs="11"
               :sm="5"
               class="profile-tile-width pt-4"
             >
@@ -27,7 +27,7 @@
               <a-col
                 v-for="service in services"
                 :key="service.id"
-                :xs="24"
+                :xs="11"
                 :sm="6"
                 :md="4"
               >
