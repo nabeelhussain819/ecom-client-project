@@ -49,6 +49,45 @@
             </template>
           </a-input>
         </a-menu-item>
+        <a-menu-item style="padding-right: 0">
+          <div class="msg-box-main">
+            <!-- <nuxt-link to="/">Home</nuxt-link> -->
+            <button class="btn-msg-box" @click="isShow = !isShow">
+              <img
+                src="https://icon-library.com/images/pink-messaging-icon/pink-messaging-icon-7.jpg"
+                alt="msg-icon"
+                width="35px"
+              />
+            </button>
+            <div v-if="!isShow" class="notify-msg-box">
+              <a-tabs default-active-key="1" @change="changeTab">
+                <a-tab-pane key="1" tab="Messages">
+                  <a-skeleton :loading="messagesLoading">
+                    <a-row>
+                      <a-col>
+                        <h5 :messages="messages">
+                          <div class="box-body">dummy text1</div>
+                        </h5>
+                      </a-col>
+                    </a-row>
+                  </a-skeleton>
+                </a-tab-pane>
+                <a-tab-pane key="2" tab="Notifications">
+                  <a-skeleton :loading="notificationsLoading">
+                    <a-row>
+                      <a-col>
+                        <h5 :notifications="notifications">
+                          <div class="box-body">dummy text2</div>
+                        </h5>
+                      </a-col>
+                    </a-row>
+                  </a-skeleton>
+                </a-tab-pane>
+              </a-tabs>
+              <!-- this is a dummy list (ul), add components in messages and notification respactively. -->
+            </div>
+          </div>
+        </a-menu-item>
         <a-menu-item>
           <nuxt-link to="">
             <a-icon type="environment" theme="filled" class="icon_nearby" />
@@ -60,9 +99,6 @@
             <a-icon type="plus" class="plus_icon" />
             <span class="post_txt"> Post Ads</span>
           </span>
-        </a-menu-item>
-        <a-menu-item key="1">
-          <nuxt-link to="/">Home</nuxt-link>
         </a-menu-item>
         <a-menu-item v-if="!isAuth" key="2">
           <LoginModal />
@@ -131,6 +167,7 @@ import categoryLookup from '~/components/categories/Lookup'
 import { EVENT_LOGIN_MODAL } from '~/services/Constant'
 
 export default {
+  name: 'ToggleDiv',
   components: {
     RegisterModal,
     LoginModal,
@@ -142,6 +179,9 @@ export default {
       visible: false,
       type: 1,
       query: '',
+      isShow: true,
+      loading: false,
+      purchaseLoading: false,
     }
   },
 
@@ -155,9 +195,14 @@ export default {
   },
   created() {},
   mounted() {},
+  props: {
+    msg: String,
+  },
   methods: {
-    redirectTo(url) {
-      this.$router.push({ path: url })
+    changeTab(tab) {
+      if (tab === 'notifications') {
+        this.notificationsLoading = true
+      }
     },
     logout() {
       localStorage.clear()
