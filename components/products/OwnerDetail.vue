@@ -26,7 +26,7 @@
         </div>
         <div v-else>
           <a-button
-            v-if="!product.featured"
+            v-if="!product.featured && !product.hired"
             class="btn"
             type="primary"
             :size="size"
@@ -54,7 +54,7 @@
           :visible="showPromoteModal"
           @cancel="handlePromoteModal(false)"
           @click="handlePromoteModal(true)"
-          ><ads
+          ><ads :product="product"
         /></a-modal>
       </div>
       <div v-else>

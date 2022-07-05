@@ -120,6 +120,14 @@ function feature(id, data) {
   })
 }
 
+function hire(id, data) {
+  return request({
+    url: `${baseUrl}/${id}/hire`,
+    data,
+    method: 'POST',
+  })
+}
+
 const ProductServices = {
   all,
   save,
@@ -137,6 +145,7 @@ const ProductServices = {
   buyingOffer,
   sellingOffer,
   feature,
+  hire,
 }
 
 export default ProductServices

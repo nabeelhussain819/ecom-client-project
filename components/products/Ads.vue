@@ -6,7 +6,7 @@
       style="display: block !important"
       @change="change"
     >
-      <a-form-model>
+      <a-form-model v-if="!product.featured">
         <h1 style="text-align: center; margin: 15px 0">
           Reach More Buyers And Seller Faster!
         </h1>
@@ -26,7 +26,7 @@
           </a-form-model-item>
         </div>
       </a-form-model>
-      <a-form-model>
+      <a-form-model v-if="!product.featured">
         <div class="ad_list">
           <a-form-model-item label="">
             <a-col>
@@ -46,14 +46,14 @@
       </a-form-model>
       <a-form-model>
         <div class="ad_list">
-          <a-form-model-item label="">
+          <a-form-model-item label="" v-if="!product.hired">
             <a-col>
               <h1 class="ad_btm_price" style="float: right; color: #9e9e9e">
                 $$
               </h1>
 
               <a-row>
-                <a-radio value="3" class="adType"
+                <a-radio id="hire_30" value="30" class="adType"
                   >Sales captain for 30 days
                 </a-radio>
               </a-row>
@@ -61,7 +61,7 @@
           </a-form-model-item>
         </div>
       </a-form-model>
-      <a-form-model>
+      <a-form-model v-if="!product.hired">
         <div class="ad_list">
           <a-form-model-item label="">
             <a-col>
@@ -70,7 +70,7 @@
               </h1>
 
               <a-row>
-                <a-radio value="4" class="adType"
+                <a-radio id="hire_7" value="7" class="adType"
                   >Sales captain for 7 days
                 </a-radio>
               </a-row>
@@ -97,8 +97,12 @@ export default {
   components: {
     Stripe,
   },
+  props: {
+    product: Object,
+  },
   data() {
     return {
+      feature: false,
       choice: null,
       clientSecret: null,
       pay: false,
@@ -121,24 +125,32 @@ export default {
       // required to trigger validation errors
       ref.confirmParams.return_url =
         window.location.origin +
-        '/product/feature/' +
+        (this.feature ? '/product/feature/' : '/product/hire/') +
         this.$route.params.id +
         '?days=' +
         this.choice
       ref.submit()
     },
     async buy() {
-      const paymentIntent = await StripeService.generateFeatureIntent({
-        choice: this.choice,
-      })
+      let paymentIntent = {}
+      if (this.feature)
+        paymentIntent = await StripeService.generateFeatureIntent({
+          choice: this.choice,
+        })
+      else {
+        paymentIntent = await StripeService.generateHireIntent({
+          choice: this.choice,
+        })
+      }
       this.clientSecret = paymentIntent.client_secret
       this.pay = true
     },
     skip() {
       this.$emit('cancel')
     },
-    change(e) {
-      this.choice = e.target.value
+    change({ target: { id, value } }) {
+      this.feature = id.includes('feature')
+      this.choice = value
     },
   },
 }
