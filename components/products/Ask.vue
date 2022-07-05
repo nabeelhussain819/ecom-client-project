@@ -29,9 +29,16 @@
 <script>
 import routeHelpers from '~/mixins/route-helpers'
 import imageSlider from '~/components/sliders/ImageSlider'
-// import { isEmpty } from '~/services/Helpers'
 
 export default {
   mixins: [routeHelpers, imageSlider],
+  data() {
+    return {
+      images: [],
+    }
+  },
+  method: {
+    getImages(product) {},
+  },
 }
 </script>

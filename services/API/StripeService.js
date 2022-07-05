@@ -15,9 +15,17 @@ function generateFeatureIntent(params = {}) {
   })
 }
 
+function generateHireIntent(params = {}) {
+  return request({
+    url: baseUrl + '/hire',
+    params,
+  })
+}
+
 const StripeService = {
   generatePaymentIntent,
   generateFeatureIntent,
+  generateHireIntent,
 }
 
 export default StripeService
