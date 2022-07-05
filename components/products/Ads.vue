@@ -17,7 +17,7 @@
               <h1 class="ad_price" style="float: right">$299</h1>
 
               <a-row>
-                <a-radio value="30" class="adType"
+                <a-radio value="feature_30" class="adType"
                   >Featured ad for 30 Days
                 </a-radio>
               </a-row>
@@ -35,7 +35,7 @@
               </h1>
 
               <a-row>
-                <a-radio value="7" class="adType"
+                <a-radio value="feature_7" class="adType"
                   >Featured ad for 7 Days
                 </a-radio>
               </a-row>
@@ -53,7 +53,7 @@
               </h1>
 
               <a-row>
-                <a-radio id="hire_30" value="30" class="adType"
+                <a-radio value="hire_30" class="adType"
                   >Sales captain for 30 days
                 </a-radio>
               </a-row>
@@ -70,7 +70,7 @@
               </h1>
 
               <a-row>
-                <a-radio id="hire_7" value="7" class="adType"
+                <a-radio value="hire_7" class="adType"
                   >Sales captain for 7 days
                 </a-radio>
               </a-row>
@@ -148,9 +148,9 @@ export default {
     skip() {
       this.$emit('cancel')
     },
-    change({ target: { id, value } }) {
-      this.feature = id.includes('feature')
-      this.choice = value
+    change({ target: { value } }) {
+      this.feature = value.includes('feature')
+      this.choice = value.split('_')[1]
     },
   },
 }

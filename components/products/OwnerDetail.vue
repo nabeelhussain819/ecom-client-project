@@ -13,15 +13,15 @@
             Make An Offer
           </a-button>
           <a-button class="btn" :size="size" @click="goto('/product/ask')">
-            Ask</a-button
-          >
+            Ask
+          </a-button>
           <a-button
             class="btn btn-secondary"
             :size="size"
             @click="buyNow(product)"
           >
-            Buy Now</a-button
-          >
+            Buy Now
+          </a-button>
           <share-and-save :product="product" />
         </div>
         <div v-else>
@@ -32,8 +32,8 @@
             :size="size"
             @click="handlePromoteModal(true)"
           >
-            Promote</a-button
-          >
+            Promote
+          </a-button>
         </div>
         <a-modal
           title="Make an Offer"
@@ -54,8 +54,9 @@
           :visible="showPromoteModal"
           @cancel="handlePromoteModal(false)"
           @click="handlePromoteModal(true)"
-          ><ads :product="product"
-        /></a-modal>
+        >
+          <ads :product="product" />
+        </a-modal>
       </div>
       <div v-else>
         <!-- <a-row :gutter="2">
@@ -86,12 +87,14 @@
                 <a-icon theme="filled" type="heart" /> Unsave
               </span>
               <span v-else> <a-icon type="heart" /> Save </span>
-            </a-button></a-col
-          >
-          <a-col :xs="{ span: 2 }"> <a-divider type="vertical" /></a-col>
+            </a-button>
+          </a-col>
+          <a-col :xs="{ span: 2 }">
+            <a-divider type="vertical" />
+          </a-col>
           <a-col :xs="{ span: 2 }" :sm="{ span: 11 }">
-            <a-button type="" icon="share-alt"> Share </a-button></a-col
-          >
+            <a-button type="" icon="share-alt"> Share</a-button>
+          </a-col>
         </a-row>
       </div>
     </div>
@@ -107,6 +110,7 @@ import { isEmpty } from '~/services/Helpers'
 import routeHelpers from '~/mixins/route-helpers'
 
 import { EVENT_LOGIN_MODAL } from '~/services/Constant'
+
 export default {
   components: { ads, ratingAvatar, ShareAndSave },
   mixins: [notifications, routeHelpers],
@@ -132,6 +136,11 @@ export default {
   },
   mounted() {
     this.isSaved = this.product.isSaved
+    if (this.product.hired && window.LiveChatWidget)
+      window.LiveChatWidget.call('maximize')
+  },
+  beforeDestroy() {
+    if (window.LiveChatWidget) window.LiveChatWidget.call('hide')
   },
   methods: {
     isEmpty,
