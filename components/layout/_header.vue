@@ -85,14 +85,6 @@
                 </a-tab-pane>
               </a-tabs>
               <!-- this is a dummy list (ul), add components in messages and notification respactively. -->
-              <ul>
-                <li>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Ipsum molestiae iusto officiis. Commodi quae nihil ipsam odit
-                  sed quibusdam qui error. Ut tempore unde minus voluptatum
-                  libero iure, quod error!
-                </li>
-              </ul>
             </div>
           </div>
         </a-menu-item>
