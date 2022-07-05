@@ -33,21 +33,5 @@ import imageSlider from '~/components/sliders/ImageSlider'
 
 export default {
   mixins: [routeHelpers, imageSlider],
-    data() {
-      return {
-        images: [],
-      }
-    },
-    method: {
-      getImages(product) {
-        if (!isEmpty(product.media)) {
-          const tempImage = []
-          product.media.map((product) => tempImage.push(images.url))
-          this.images = tempImage
-          return []
-        }
-        return []
-      },
-    },
 }
 </script>

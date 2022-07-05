@@ -57,7 +57,7 @@
   .ant-menu-item {
     border: none !important;
   }
-  header .ant-menu-horizontal .ant-menu-item:hover, 
+  header .ant-menu-horizontal .ant-menu-item:hover,
   .ant-menu-item div:hover {
     text-decoration: none;
     color: black;
@@ -76,15 +76,15 @@
 }
 .ant-dropdown {
   .ant-dropdown-menu {
-  .menu-category-heading {
-    cursor: context-menu;
-    font-weight: 700;
-    color: #000;
-    &:hover {
-      background-color: #fff;
+    .menu-category-heading {
+      cursor: context-menu;
+      font-weight: 700;
+      color: #000;
+      &:hover {
+        background-color: #fff;
+      }
     }
   }
- }
 }
 header {
   padding: 20px 30px !important;
@@ -118,4 +118,46 @@ header {
 }
 .ant-menu-horizontal > .ant-menu-item > a:hover {
   color: black !important;
+}
+.msg-box-main {
+  .ant-tabs-nav-scroll {
+    padding: 0;
+    .ant-tabs-nav {
+      padding: 5px;
+      .ant-tabs-tab-active {
+        color: $primary !important;
+        background-color: transparent !important;
+      }
+      .ant-tabs-tab {
+        margin: 0px 6px;
+      }
+      .ant-tabs-ink-bar {
+        display: none !important;
+      }
+    }
+  }
+  .ant-tabs-nav-container {
+    padding: 0px;
+  }
+  .btn-msg-box {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  .notify-msg-box {
+    position: absolute;
+    z-index: 55;
+    cursor: auto;
+    background-color: gainsboro;
+    overflow: hidden;
+    border-radius: 8px;
+    width: 250px;
+    padding: 5px 10px;
+    .box-body {
+      background-color: #fff;
+      width: 100%;
+      border-radius: 6px;
+      padding: 10px;
+    }
+  }
 }

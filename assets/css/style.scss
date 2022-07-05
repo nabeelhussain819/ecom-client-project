@@ -434,11 +434,12 @@ ul li:first-child .ant-menu-submenu-title {
   }
 }
 .product_card.ant-card.ant-card-bordered.ant-card-hoverable {
-  height: 215px !important;
+  // height: 215px !important;
   width: 100% !important;
   margin: 3px;
   .ant-card-body {
     padding: 16px 5px 0 8px;
+    height: 90px;
   }
 }
 
