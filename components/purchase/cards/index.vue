@@ -11,7 +11,7 @@
         <br />
         <div class="bycredit-main" @click="handleCardForm(true)">
           <h3 class="">Add Credit / Debit Card</h3>
-          <a>></a>
+          <a @click="goto('')">></a>
         </div>
         <hr class="pay-devider" />
         <savedcardList />

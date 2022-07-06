@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-spin :spinning="loading" class="p-5">
+    <a-spin :spinning="loading" class="p-5 container-box">
       <a-row :gutter="16" class="save-item-container">
         <h2 class="heading-save">Saved Items</h2>
         <a-col

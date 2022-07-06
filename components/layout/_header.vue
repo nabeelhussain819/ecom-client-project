@@ -14,7 +14,7 @@
         placeholder="check"
         class="header_nav no-hover-nav"
         mode="horizontal"
-        :style="{ lineHeight: '40px', float: 'right' }"
+        :style="{ lineHeight: '40px', float: 'right', cursor: 'pointer' }"
       >
         <category-lookup />
         <a-menu-item key="5" class="no-hover-nav search-bar">
@@ -56,7 +56,7 @@
               <img
                 src="https://icon-library.com/images/pink-messaging-icon/pink-messaging-icon-7.jpg"
                 alt="msg-icon"
-                width="35px"
+                width="33px"
               />
             </button>
             <div v-if="!isShow" class="notify-msg-box">

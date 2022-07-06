@@ -1,9 +1,9 @@
 <template>
   <a-skeleton :loading="isEmpty(product)">
     <div class="owner-detail">
-      <div v-if="!product.is_sold">
+      <div v-if="product.is_sold">
         <rating-avatar :product="product" />
-        <div v-if="!product.is_owner">
+        <div v-if="product.is_owner">
           <a-button
             class="btn primary"
             type="primary"
@@ -40,6 +40,7 @@
           :visible="visible"
           @cancel="handleOk"
           @ok="makeOffer"
+          class="offer-model"
         >
           <a-input-number
             v-model="offer"
