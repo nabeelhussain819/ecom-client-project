@@ -1,10 +1,24 @@
 .header {
+  .no-hover-nav.search-bar {
+    height: auto;
+  }
+  #menuToggle {
+    input {
+      display: none;
+    }
+  }
   height: auto;
-  padding-right: 0px !important;
+  // padding-right: 0px !important;
   .header_nav {
-    border-bottom: 0;
+    border: 0;
+    box-shadow: none;
     max-width: 100% !important;
+    align-items: center;
+    display: flex;
     font-weight: 500;
+
+    width: 100%;
+    justify-content: right;
   }
   .ant-dropdown-link {
     color: #fff;
@@ -58,6 +72,7 @@
   .ant-menu-item {
     border: none !important;
   }
+  
   header .ant-menu-horizontal .ant-menu-item:hover,
   .ant-menu-item div:hover {
     text-decoration: none;
@@ -65,6 +80,11 @@
   }
   .ant-menu-submenu-title {
     padding: 0px !important;
+  }
+}
+.header-menu {
+  .ant-menu-submenu-arrow {
+    display: none;
   }
 }
 .ant-menu-horizontal {

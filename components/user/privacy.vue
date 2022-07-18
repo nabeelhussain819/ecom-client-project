@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="container">
-      <h1 class="text-center">Privacy Policy</h1>
+      <h1 class="text-center" style="font-size: 24px"><b>Privacy Policy</b></h1>
 
-      <div class="text-center">Last updated: Jun 30, 2022</div>
-      <p style="font-size: 16px">
+      <div class="text-center"><b>Last updated: Jun 30, 2022</b></div>
+      <div class="border p-3" style="font-size: 16px">
         This Privacy Policy explains how information about you is collected,
         used and disclosed by Flexemarket. (hereafter "Flexemarket", "our",
         "we", or "us"). This Privacy Policy applies to information we collect
@@ -19,11 +19,9 @@
         information practices and the ways you can help protect your privacy. If
         you are a California resident, please see the "Information for
         California Consumers" section below.
-        <br />
-        Collection of Information
-        <br />
-        1. Information You Provide to Us. Flexemarket collects information that
-        you provide directly to us. For example, we collect information when you
+        <h5>1 .Collection of Information</h5>
+        Information You Provide to Us. Flexemarket collects information that you
+        provide directly to us. For example, we collect information when you
         register or update the details of your account, post information in
         order to sell any good through the Flexemarket Service, enroll in any
         third-party operated payment processing services offered in connection
@@ -37,39 +35,40 @@
         or comments you make using the Flexemarket Service, all correspondence
         or communications with other users or with us conducted via the
         Flexemarket Service, government-issued identification documents (such as
-        a driver's license), and any other information you choose to provide. 2.
-        Information We Collect Automatically When You Use the Flexemarket
-        Service. When you access or use the Flexemarket Service, we
-        automatically collect information about you, including: 2.1. Log
-        Information: We log information about your use of the Flexemarket
-        Service, including the type of browser you use, access times, pages
-        viewed, your IP address and the page you visited before navigating to
-        our Flexemarket Service. 2.2. Device Information: We collect information
-        about the computer or mobile device you use to access the Flexemarket
-        Service, including the hardware model, operating system and version,
-        unique device identifiers and mobile network information. 2.3. Location
-        Information: If you consent to the collection of location information
-        from your computer or mobile device, we may collect this information
-        when you access or use the FlexemarketService, or when you otherwise
-        consent to the collection of this information. We may also use your IP
-        address to infer an approximate geographic location for your computer or
-        device. For more details, please see "Your Information Choices" below.
-        2.4. Information Collected by Cookies and Other Tracking Technologies:
-        We use various technologies to collect information, and this may include
-        sending cookies to your computer or mobile device. Cookies are small
-        data files stored on your hard drive or in device memory that helps us
-        to improve the Flexemarket Service and your experience, see which areas
-        and features of the Flexemarket Service are popular and count visits. We
-        may also collect information using web beacons (also known as "gifs",
-        "pixel tags" and "tracking pixels"). Web beacons are electronic images
-        that may be used in the Flexemarket Service or emails and help deliver
-        cookies, count visits, understand usage and campaign effectiveness and
-        determine whether an email has been opened and acted upon. For more
-        information about cookies, and how to disable them, please see "Your
-        Information Choices" below.
-        <br />
-        3. Information from Third Parties.
-        <br />
+        a driver's license), and any other information you choose to provide.
+        <h5>
+          2. Information We Collect Automatically When You Use the Flexemarket
+          Service.
+        </h5>
+        When you access or use the Flexemarket Service, we automatically collect
+        information about you, including: 2.1. Log Information: We log
+        information about your use of the Flexemarket Service, including the
+        type of browser you use, access times, pages viewed, your IP address and
+        the page you visited before navigating to our Flexemarket Service. 2.2.
+        Device Information: We collect information about the computer or mobile
+        device you use to access the Flexemarket Service, including the hardware
+        model, operating system and version, unique device identifiers and
+        mobile network information. 2.3. Location Information: If you consent to
+        the collection of location information from your computer or mobile
+        device, we may collect this information when you access or use the
+        FlexemarketService, or when you otherwise consent to the collection of
+        this information. We may also use your IP address to infer an
+        approximate geographic location for your computer or device. For more
+        details, please see "Your Information Choices" below. 2.4. Information
+        Collected by Cookies and Other Tracking Technologies: We use various
+        technologies to collect information, and this may include sending
+        cookies to your computer or mobile device. Cookies are small data files
+        stored on your hard drive or in device memory that helps us to improve
+        the Flexemarket Service and your experience, see which areas and
+        features of the Flexemarket Service are popular and count visits. We may
+        also collect information using web beacons (also known as "gifs", "pixel
+        tags" and "tracking pixels"). Web beacons are electronic images that may
+        be used in the Flexemarket Service or emails and help deliver cookies,
+        count visits, understand usage and campaign effectiveness and determine
+        whether an email has been opened and acted upon. For more information
+        about cookies, and how to disable them, please see "Your Information
+        Choices" below.
+        <h5>3. Information from Third Parties.</h5>
         Flexemarket may, from time to time, obtain information from other
         sources and combine that with information we collect through the
         Flexemarket Service in order to enhance our ability to serve you,
@@ -83,9 +82,7 @@
         media site. We may also receive transaction information from Stripe Inc.
         when you purchase or sell a good using the Flexemarket payment solution,
         including the date and time of sale and the amount of the sale.
-        <br />
-        4. Payment Information Collected by Stripe.
-        <br />
+        <h5>4. Payment Information Collected by Stripe.</h5>
         Flexemarket is integrated with Stripe Inc.'s ("Stripe") services to
         allow sellers to accept credit card and other electronic payment methods
         for goods they list for sale on the Flexemarket Service. Stripe provides
@@ -96,77 +93,93 @@
         numbers, government IDs, and bank account information. For more
         information about the third-party payment processing services integrated
         with the Flexemarket Service, please see our FAQs.
+        <h5>5. Use of Information.</h5>
+        General Uses. Flexemarket uses information about you for various
+        purposes, including to: <br />
         <br />
-        Use of Information. 5. General Uses.
+        5.1 Enable you to access and use the Flexemarket Service, to personalize
+        the Flexemarket Service, and to optimize the type of offers presented to
+        you when you use the Flexemarket Service;<br />
         <br />
-        Flexemarket uses information about you for various purposes, including
-        to: 5.1. Enable you to access and use the Flexemarket Service, to
-        personalize the Flexemarket Service, and to optimize the type of offers
-        presented to you when you use the Flexemarket Service; 5.2. Create and
-        maintain a trusted and safer environment on the Flexemarket Service,
-        including through detection and prevention of fraud, unauthorized
-        access, intrusion, and service interruption; 5.3. Conduct investigations
-        and to respond to disputes between users, error resolution, and other
-        similar customer support service; 5.4. Enable any identification
-        programs we may institute and in which you elect or are required to
-        participate (e.g. TruYou), such as verifying your identity and address,
-        and conduct checks against various publicly available databases; 5.5.
-        Operate, protect, improve and optimize the Flexemarket Service, our
-        business, and our users' experience; 5.6. Perform analytics, conduct
-        research, and monitor and analyze trends, usage and activities in
-        connection with the Flexemarket Service; 5.7. Communicate with you about
-        products, services, offers, promotions, rewards, and events offered by
-        Flexemarket and others, and provide advertisements that match user
-        profiles or interests, news and information we think will be of interest
-        to you; 5.8. Send you service, support and administrative messages,
-        reminders, technical notices, updates, security alerts, and information
-        requested by you; 5.9. Comply with our legal obligations or requests
-        from law enforcement agencies, resolve any disputes that we may have
-        with any of our users, and enforce our agreements with third parties;
+        5.2. Create and maintain a trusted and safer environment on the
+        Flexemarket Service, including through detection and prevention of
+        fraud, unauthorized access, intrusion, and service interruption; 5.3.
+        Conduct investigations and to respond to disputes between users, error
+        resolution, and other similar customer support service; <br />
+        <br />
+        5.4. Enable any identification programs we may institute and in which
+        you elect or are required to participate (e.g. TruYou), such as
+        verifying your identity and address, and conduct checks against various
+        publicly available databases;<br />
+        <br />
+        5.5. Operate, protect, improve and optimize the Flexemarket Service, our
+        business, and our users' experience;<br />
+        <br />
+        5.6. Perform analytics, conduct research, and monitor and analyze
+        trends, usage and activities in connection with the Flexemarket
+        Service;<br />
+        <br />
+        5.7. Communicate with you about products, services, offers, promotions,
+        rewards, and events offered by Flexemarket and others, and provide
+        advertisements that match user profiles or interests, news and
+        information we think will be of interest to you;<br />
+        <br />
+        5.8. Send you service, support and administrative messages, reminders,
+        technical notices, updates, security alerts, and information requested
+        by you; <br />
+        <br />5.9. Comply with our legal obligations or requests from law
+        enforcement agencies, resolve any disputes that we may have with any of
+        our users, and enforce our agreements with third parties;<br />
+        <br />
         5.10. Link or combine with information we get from others to help
-        understand your needs and provide you with better service; 5.11. Assist
-        third-party payment processors with transaction processing, error,
-        chargeback and disputed transaction resolution, and similar payment
-        processing functions; and 5.12. Carry out any other purpose for which
-        the information was collected. Flexemarket is based in the United States
-        and the information we collect is governed by U.S. law. By accessing or
-        using the Flexemarket Service or otherwise providing information to us,
-        you consent to the processing and transfer of information in and to the
-        U.S. and other countries, where you may not have the same rights and
+        understand your needs and provide you with better service; <br />
+        <br />5.11. Assist third-party payment processors with transaction
+        processing, error, chargeback and disputed transaction resolution, and
+        similar payment processing functions;<br />
+        <br />
+        5.12. Carry out any other purpose for which the information was
+        collected. Flexemarket is based in the United States and the information
+        we collect is governed by U.S. law. By accessing or using the
+        Flexemarket Service or otherwise providing information to us, you
+        consent to the processing and transfer of information in and to the U.S.
+        and other countries, where you may not have the same rights and
         protections as you do under local law.
-        <br />
-        Sharing of Information. 6. General.
-        <br />
-        We may share information about you as follows or as otherwise described
-        in this Privacy Policy: 6.1. With the public on the Flexemarket Service.
-        For a detailed description of the type of information associated with
-        your Flexemarket account that is made available publicly through the
-        Flexemarket Service, please see our FAQs. 6.2 When sellers register
-        through the Flexemarket Service to receive electronic payments via
-        Stripe's services, we will share certain information about them with
-        Stripe, including name, address, IP address and date of birth. This
-        information is in addition to the information collected directly by
-        Stripe (as described above in "Payment Information Collected by
-        Stripe"). Stripe may use this information for the purposes described in
-        its privacy policy, including for fraud prevention. 6.3. With vendors,
-        consultants and other service providers who need access to such
-        information to carry out work on our behalf (including, without
+        <h5>6. Sharing of Information.</h5>
+        6.1 General. We may share information about you as follows or as
+        otherwise described in this Privacy Policy: 6.1. With the public on the
+        Flexemarket Service. For a detailed description of the type of
+        information associated with your Flexemarket account that is made
+        available publicly through the Flexemarket Service, please see our FAQs.
+        6.2 When sellers register through the Flexemarket Service to receive
+        electronic payments via Stripe's services, we will share certain
+        information about them with Stripe, including name, address, IP address
+        and date of birth. This information is in addition to the information
+        collected directly by Stripe (as described above in "Payment Information
+        Collected by Stripe"). Stripe may use this information for the purposes
+        described in its privacy policy, including for fraud prevention. 6.3.
+        With vendors, consultants and other service providers who need access to
+        such information to carry out work on our behalf (including, without
         limitation, with third-party service providers that may use the
         information we share to help us and other companies detect inaccurate
-        personal information and prevent fraudulent transactions); 6.4. In
-        response to a request for information if we believe disclosure is in
-        accordance with any applicable law, regulation or legal process, or as
-        otherwise required by any applicable law, rule or regulation; 6.5. If we
-        believe your actions are inconsistent with the spirit or language of our
-        user agreements or policies, or to protect the rights, property and
-        safety of Flexemarket or others; 6.6. In connection with, or during
+        personal information and prevent fraudulent transactions);
+        <br />
+        <br />
+        6.4. In response to a request for information if we believe disclosure
+        is in accordance with any applicable law, regulation or legal process,
+        or as otherwise required by any applicable law, rule or regulation; 6.5.
+        If we believe your actions are inconsistent with the spirit or language
+        of our user agreements or policies, or to protect the rights, property
+        and safety of Flexemarket or others; 6.6. In connection with, or during
         negotiations of, any merger, sale of company assets, financing or
         acquisition of all or a portion of our business to another company;
+        <br />
         <br />
         6.7. Between and among Flexemarket, and its current and future parents,
         affiliates, subsidiaries, and other companies under common control and
         ownership; and
         <br />
+        <br />
+
         6.8. With your consent or at your direction, including as mentioned in
         the Social Sharing Features section below or if we otherwise notify you
         through the Flexemarket Service that the information you provide will be
@@ -174,8 +187,7 @@
         also share aggregated or de-identified information, which cannot
         reasonably be used to identify you.
         <br />
-        7. Social Sharing Features.
-        <br />
+        <h5>7. Social Sharing Features.</h5>
         The Flexemarket Service may offer social sharing features and other
         integrated tools (such as the Facebook "Like" button), which let you
         share actions you take on the Flexemarket Service with other media, and
@@ -185,10 +197,7 @@
         information about the purpose and scope of data collection and
         processing in connection with social sharing features, please visit the
         privacy policies of the entities that provide those features.
-        <br />
-        Advertising and Analytics Services Provided by Others 8. Advertising and
-        Analytics Services.
-        <br />
+        <h5>8. Advertising and Analytics Services.</h5>
         We may allow others to serve advertisements on our behalf across the
         Internet and to provide analytics services. These entities may use
         cookies, web beacons and other technologies to collect information about
@@ -204,41 +213,39 @@
         certain information collected through apps used for behavioral
         advertising purposes.
 
-        <br />
-        9. Security.
-        <br />
+        <h5>9. Security.</h5>
         Flexemarket takes reasonable measures to help protect information about
         you from loss, theft, misuse and unauthorized access, disclosure,
-        alteration and destruction. Your Choices 10. Account Information. You
-        may update, correct or remove account profile information at any time by
-        logging in to your account. If you would like to cancel your Flexemarket
-        account entirely, please contact us, and enter your request for
-        cancellation, but please note that we may retain certain information as
-        required by law or for legitimate business purposes. For example, any
+        alteration and destruction. Your Choices
+        <h5>10. Account Information.</h5>
+        You may update, correct or remove account profile information at any
+        time by logging in to your account. If you would like to cancel your
+        Flexemarket account entirely, please contact us, and enter your request
+        for cancellation, but please note that we may retain certain information
+        as required by law or for legitimate business purposes. For example, any
         reviews, forum postings and similar materials posted by you may continue
         to be publicly available on the Flexemarket Service in association with
         your account name even after your Flexemarket account is cancelled. We
         may also retain cached or archived copies of information about you for a
-        certain period of time. 11. Location Information. When you first
-        download or launch any of our mobile applications that collect location
-        information or first use any features that use location information, you
-        will be asked to consent to the application's collection of this
-        information. If you initially consent to our collection of location
-        information, you can subsequently stop the collection of this
-        information at any time by changing the preferences on your mobile
-        device. You may also stop our collection of location information by
-        following the standard uninstall process to remove all of our mobile
-        applications form your device. Even if you do not provide us with
-        consent to collect precise location information from your mobile device
-        or platform, we may use your IP address to infer an approximation of
-        your location when using certain features of the Flexemarket Services,
-        such as the Flexemarket payments solution. In some features, Flexemarket
-        uses mapping services from Google Maps/Google Earth, including Google
-        Maps API(s). Your use of these services is subject to Google's terms of
-        service.
-        <br />
-        12. Cookies.
-        <br />
+        certain period of time.
+        <h5>11. Location Information.</h5>
+        When you first download or launch any of our mobile applications that
+        collect location information or first use any features that use location
+        information, you will be asked to consent to the application's
+        collection of this information. If you initially consent to our
+        collection of location information, you can subsequently stop the
+        collection of this information at any time by changing the preferences
+        on your mobile device. You may also stop our collection of location
+        information by following the standard uninstall process to remove all of
+        our mobile applications form your device. Even if you do not provide us
+        with consent to collect precise location information from your mobile
+        device or platform, we may use your IP address to infer an approximation
+        of your location when using certain features of the Flexemarket
+        Services, such as the Flexemarket payments solution. In some features,
+        Flexemarket uses mapping services from Google Maps/Google Earth,
+        including Google Maps API(s). Your use of these services is subject to
+        Google's terms of service.
+        <h5>12. Cookies.</h5>
         Most web browsers are set to accept cookies by default. If you prefer,
         you can usually choose to set your browser to remove or reject browser
         cookies. Removing or rejecting browser cookies does not necessarily
@@ -247,16 +254,12 @@
         www.adobe.com/products/flashplayer/security for more information. Please
         note that if you choose to remove or reject cookies, this could affect
         the availability and functionality of the Flexemarket Service.
-        <br />
-        13. Promotional Communications.
-        <br />
+        <h5>13. Promotional Communications.</h5>
         You may opt out of receiving promotional emails, text messages, and
         other communications from Flexemarket by following the instructions in
         those emails, text messages or other communications or by logging on to
         your Flexemarket account and going to Settings.
-        <br />
-        14. Information for California Residents.
-        <br />
+        <h5>14. Information for California Residents.</h5>
         This section provides additional disclosures required by the California
         Consumer Privacy Act ("CCPA"), which applies to the personal information
         we collect about California residents. In the preceding 12 months, we
@@ -304,7 +307,7 @@
         designated an authorized agent to submit requests on your behalf, we
         will require proof that the person is authorized to act on your behalf
         and may also still ask you to verify your identity with us directly.
-      </p>
+      </div>
     </div>
   </div>
 </template>

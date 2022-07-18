@@ -39,7 +39,8 @@
     }
   }
   .sold-purchase-tabs {
-    width: 100%;
+    width: fit-content;
+    float: right;
     .ant-tabs-bar {
       float: right;
     }

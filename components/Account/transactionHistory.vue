@@ -1,7 +1,15 @@
 <template>
   <div class="transactionHistory-main">
     <div class="sold-purchase-tabs">
-      <a-tabs default-active-key="1" @change="changeTab">
+      <a-select
+        default-value="Sold"
+        style="width: 120px"
+        @change="handleChange"
+      >
+        <a-select-option value="jack"> Purchase </a-select-option>
+        <a-select-option value="lucy"> Sold </a-select-option>
+      </a-select>
+      <!-- <a-tabs default-active-key="1" @change="changeTab">
         <a-tab-pane key="1" tab="sold">
           <a-skeleton :loading="soldLoading">
             <a-row>
@@ -20,7 +28,7 @@
             </a-row>
           </a-skeleton>
         </a-tab-pane>
-      </a-tabs>
+      </a-tabs> -->
       <br />
     </div>
     <img

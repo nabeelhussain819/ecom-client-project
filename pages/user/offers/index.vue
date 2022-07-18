@@ -1,5 +1,5 @@
 <template>
-  <div class="offers-main">
+  <div class="offers-main container border">
     <h1 class="">My Offers</h1>
     <a-tabs @change="callback" class="offers-tabs">
       <a-tab-pane key="1" tab="Buying"> <Buying /></a-tab-pane>

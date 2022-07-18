@@ -11,10 +11,9 @@
       /> -->
       </router-link>
       <a-menu
-        placeholder="check"
+        placeholder=""
         class="header_nav no-hover-nav"
-        mode="horizontal"
-        :style="{ lineHeight: '40px', float: 'right', cursor: 'pointer' }"
+        :style="{ lineHeight: '40px', cursor: 'pointer' }"
       >
         <category-lookup />
         <a-menu-item key="5" class="no-hover-nav search-bar">
@@ -88,6 +87,7 @@
             </div>
           </div>
         </a-menu-item>
+
         <a-menu-item>
           <nuxt-link to="">
             <a-icon type="environment" theme="filled" class="icon_nearby" />
@@ -107,7 +107,7 @@
         <a-menu-item v-if="!isAuth" key="3">
           <RegisterModal />
         </a-menu-item>
-        <a-sub-menu v-if="isAuth" class="header-menu p-0">
+        <a-sub-menu v-if="isAuth" class="header-menu p-0 d-flex">
           <span slot="title" class="submenu-title-wrapper"
             ><a-avatar :src="user.profile_url" />
             <span class="text-capitalize" :style="{ marginLeft: 16 }">
@@ -178,6 +178,7 @@ export default {
     return {
       visible: false,
       type: 1,
+      show: false,
       query: '',
       isShow: true,
       loading: false,
@@ -203,6 +204,9 @@ export default {
       if (tab === 'notifications') {
         this.notificationsLoading = true
       }
+    },
+    toggle() {
+      this.show = !this.show
     },
     logout() {
       localStorage.clear()
@@ -256,7 +260,9 @@ export default {
   .ant-dropdown-link {
     position: absolute;
     left: 0;
-    right: 0;
+    margin-right: 0 !important;
+    /* right: 0; */
+    color: #000;
     margin: auto;
     width: fit-content;
   }
@@ -279,4 +285,24 @@ export default {
   margin-left: 5px;
   margin-right: 5px;
 }
+/* ################################ */
+/* @media screen and (max-width: 786px) {
+  #menuExpand {
+    display: none !important;
+  }
+}
+.toggle-menu > .ant-menu-submenu-title {
+  width: 132px;
+}
+.toggle-menu > ul {
+  border-radius: 5px;
+  flex-direction: column;
+  background: aliceblue;
+  width: fit-content;
+  position: absolute;
+  margin: auto;
+  z-index: 98;
+  right: 0;
+  margin-right: 41px;
+} */
 </style>
