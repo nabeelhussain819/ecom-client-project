@@ -13,6 +13,7 @@
       <a-menu
         placeholder=""
         class="header_nav no-hover-nav"
+        mode="horizontal"
         :style="{ lineHeight: '40px', cursor: 'pointer' }"
       >
         <category-lookup />

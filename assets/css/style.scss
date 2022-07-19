@@ -1055,6 +1055,11 @@ ul li:first-child .ant-menu-submenu-title {
     cursor: pointer;
   }
 }
+.notify-msg-box {
+  .ant-tabs-nav-container {
+    border-bottom: 1px solid gray;
+  }
+}
 // globally defined classes
 
 .d-flex {
