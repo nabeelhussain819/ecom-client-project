@@ -77,7 +77,15 @@
                     <a-row>
                       <a-col>
                         <h5 :notifications="notifications">
-                          <div class="box-body">dummy text2</div>
+                          <div
+                            v-for="({ data }, index) in user.notifications"
+                            :key="index"
+                            class="box-body"
+                          >
+                            <a :href="data.url">
+                              {{ data.message }}
+                            </a>
+                          </div>
                         </h5>
                       </a-col>
                     </a-row>
@@ -122,14 +130,14 @@
             key="offer"
             class="f-black m-0"
             @click="goto('/user/advertisement')"
-            >My Ads</a-menu-item
-          >
+            >My Ads
+          </a-menu-item>
           <a-menu-item
             key="board"
             class="f-black m-0"
             @click="goto('/user/saved')"
-            >Saved Item</a-menu-item
-          >
+            >Saved Item
+          </a-menu-item>
           <a-menu-item
             key="profile"
             class="f-black m-0"
@@ -175,6 +183,9 @@ export default {
     categoryLookup,
   },
   mixins: [routeHelpers],
+  props: {
+    msg: String,
+  },
   data() {
     return {
       visible: false,
@@ -197,9 +208,6 @@ export default {
   },
   created() {},
   mounted() {},
-  props: {
-    msg: String,
-  },
   methods: {
     changeTab(tab) {
       if (tab === 'notifications') {
@@ -257,6 +265,7 @@ export default {
   color: #fff;
   font-weight: 700;
 }
+
 @media only screen and (max-width: 480px) {
   .ant-dropdown-link {
     position: absolute;
@@ -267,25 +276,31 @@ export default {
     margin: auto;
     width: fit-content;
   }
+
   .no-hover-nav.search-bar {
     margin-top: 20px;
   }
+
   .icon_search {
     top: 11px;
     color: #000 !important;
   }
 }
+
 .header-menu > .ant-menu-submenu-title {
   padding: 0px !important;
 }
+
 .ant-dropdown-link > i.anticon.anticon-down {
   font-size: 15px;
 }
+
 .no-hover-nav.search-bar {
   padding: 0px !important;
   margin-left: 5px;
   margin-right: 5px;
 }
+
 /* ################################ */
 /* @media screen and (max-width: 786px) {
   #menuExpand {
