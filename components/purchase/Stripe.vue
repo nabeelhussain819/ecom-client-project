@@ -7,6 +7,7 @@
       :elements-options="elementsOptions"
       :confirm-params="confirmParams"
       @element-change="change"
+      class="stripe-pay-main"
     />
     <button class="btn ant-btn ant-btn-primary ant-btn-lg" @click="pay">
       Confirm Purchase

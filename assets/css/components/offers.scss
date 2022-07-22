@@ -38,6 +38,7 @@
   .ant-list-item-meta-description {
     color: #000;
     button {
+      cursor: pointer;
       // position: absolute;
       left: 0;
       background-color: #a5dcf2;
@@ -66,6 +67,16 @@
       background: none;
       padding: 0;
       font-weight: 600;
+    }
+  }
+}
+@media screen and (max-width: 425px) {
+  offers-main {
+    .ant-tabs-tab {
+      padding: 10px 30px !important;
+    }
+    .ant-tabs-tab.ant-tabs-tab-active  {
+      padding: 10px 30px !important;
     }
   }
 }
