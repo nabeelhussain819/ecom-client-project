@@ -1,23 +1,40 @@
 <template>
-  <a-list item-layout="horizontal" :loading="loading" :data-source="data">
+  <a-list
+    item-layout="horizontal"
+    :loading="loading"
+    class="product-detail-list"
+    :data-source="data"
+  >
     <a-list-item slot="renderItem" slot-scope="item">
       <a-list-item-meta>
-        <a slot="title" href="https://www.antdv.com/">{{
+        <a slot="title" class="text-capitalize" href="https://www.antdv.com/">{{
           item.product.name
         }}</a>
         <div slot="description">
-          <div v-if="isNewRequest(item)">
-            <a-button type="primary" @click="status(item.guid, true)"
-              >Accept</a-button
-            >
-            <a-button type="danger" @click="status(item.guid, false)"
-              >Reject</a-button
-            >
+          <div class="left">
+            <div class="short-description">
+              <strong class="text-capitalize">
+                {{ item.requester.name }}</strong
+              >
+              made an offer of
+              <strong class="text-capitalize">${{ item.price }}</strong>
+              on
+              <strong class="text-capitalize"> {{ item.product.name }}</strong>
+            </div>
+            <div v-if="isNewRequest(item)">
+              <a-button type="primary" @click="status(item.guid, true)"
+                >Accept</a-button
+              >
+              <a-button type="danger" @click="status(item.guid, false)"
+                >Reject</a-button
+              >
+            </div>
+            <a-tag v-else color="pink">{{ item.status_name }}</a-tag>
           </div>
-          <a-tag v-else color="pink">{{ item.status_name }}</a-tag>
-          made an offer of ${{ item.price }} on {{ item.product.name }}
 
-          <img width="200" :src="item.product.cover_image" />
+          <span class="product-image right">
+            <img width="200" :src="item.product.cover_image" />
+          </span>
         </div>
 
         <a-avatar slot="avatar" :src="item.requester.profile_url" />

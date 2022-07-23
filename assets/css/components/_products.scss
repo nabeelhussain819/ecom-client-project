@@ -1,0 +1,21 @@
+.product-detail-list {
+  .ant-list-items {
+    width: 100%;
+    .ant-avatar {
+      height: 80px;
+      width: 80px;
+      border-radius: 0;
+    }
+    .product-image {
+      max-width: 200px;
+      float: right;
+    }
+    .left {
+      @include vp_min('767px') {
+        max-width: 80%;
+        float: left;
+        width: 100%;
+      }
+    }
+  }
+}

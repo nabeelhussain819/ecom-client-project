@@ -1,4 +1,5 @@
 @import 'partials/variables';
+@import 'partials/mixin';
 @import 'partials/btn';
 @import 'partials/bgColors';
 @import 'partials/navs';
@@ -16,6 +17,7 @@
 @import 'components/saveAndshare';
 @import 'components/accountSettings';
 @import 'components/purchase';
+@import 'components/products';
 
 .ant-layout {
   min-height: 100vh;
@@ -479,23 +481,22 @@ ul li:first-child .ant-menu-submenu-title {
   .ant-layout-header,
   .ant-layout-footer {
     padding: 0 20px !important;
-    display: block;  // usaid
+    display: block; // usaid
   }
 
   .ant-menu-submenu > .ant-menu {
     color: black;
-}
+  }
   .logo[data-v-22480042] {
     display: inline-block;
-}
- .header .header_nav {
-  padding-top: 14px;
-}
-  .header_nav{
+  }
+  .header .header_nav {
+    padding-top: 14px;
+  }
+  .header_nav {
     padding: 20px;
   }
-// usaid
-
+  // usaid
 
   .ant-input-group > .ant-input:last-child,
   .ant-input-group-addon:last-child {
@@ -754,8 +755,8 @@ ul li:first-child .ant-menu-submenu-title {
   color: black;
 }
 
-// usaid 
-.ant-menu-light{
+// usaid
+.ant-menu-light {
   left: 37px;
   top: 71px !important;
 }
@@ -780,7 +781,7 @@ ul li:first-child .ant-menu-submenu-title {
   padding: 0px;
 }
 
-// usaid 
+// usaid
 // }
 .ant-form-item-children {
   h1 {
@@ -818,7 +819,6 @@ ul li:first-child .ant-menu-submenu-title {
     border-right: 2px solid black;
   }
 }
-  
 
 .adModel {
   // width: 950px !important;
