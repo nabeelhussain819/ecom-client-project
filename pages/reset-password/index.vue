@@ -1,14 +1,15 @@
 <template>
   <a-form :form="form" @submit="handleSubmit">
-    <a-form-item hidden>
-      <a-input v-decorator="['token', { initialValue: $route.query.token }]" />
-    </a-form-item>
     <a-form-item label="Email">
       <a-input
         v-decorator="[
           'email',
-          { rules: [{ required: true, message: 'Please input your Email!' }] },
+          {
+            initialValue: $route.query.email,
+            rules: [{ required: true, message: 'Please input your Email!' }],
+          },
         ]"
+        :disabled="true"
       />
     </a-form-item>
     <a-form-item label="Password">
@@ -71,8 +72,12 @@ export default {
           this.loading = true
           AuthServices.resetPassword(values)
             .then(() => this.$router.push({ path: '/' }))
-            .catch()
-            .then(() => (this.loading = false))
+            .catch((e) => {
+              if (e.response.status === 404) {
+                this.errors = e.response.data.message
+              }
+              this.loading = false
+            })
         }
       })
     },

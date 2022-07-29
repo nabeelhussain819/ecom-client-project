@@ -43,7 +43,13 @@ function forgetPassword(data) {
     method: 'POST',
   })
 }
-
+function verifyOtp(data) {
+  return request({
+    url: `${baseApi}verify/otp`,
+    data,
+    method: 'POST',
+  })
+}
 function resetPassword(data) {
   return request({
     url: `${baseApi}password/reset`,
@@ -85,6 +91,7 @@ const AuthService = {
   facebookLogin,
   googleLogin,
   verify,
+  verifyOtp,
 }
 
 export default AuthService
