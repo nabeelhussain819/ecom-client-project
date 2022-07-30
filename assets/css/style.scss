@@ -1060,6 +1060,12 @@ ul li:first-child .ant-menu-submenu-title {
     border-bottom: 1px solid gray;
   }
 }
+.stripe-model > button.btn {
+  margin-top: 10px !important;
+}
+.stripe-pay-main {
+  margin-bottom: 10px;
+}
 // globally defined classes
 
 .d-flex {
@@ -1077,7 +1083,7 @@ ul li:first-child .ant-menu-submenu-title {
 }
 .ant-menu-item-active {
   a {
-   color: #000 !important; 
+    color: #000 !important;
   }
 }
 // -------------

@@ -40,7 +40,10 @@
   }
   .sold-purchase-tabs {
     width: fit-content;
-    float: right;
+    // float: right;
+    width: 100%;
+    display: flex;
+    justify-content: end;
     .ant-tabs-bar {
       float: right;
     }
@@ -50,6 +53,15 @@
     }
     .ant-tabs-tab {
       border: gainsboro !important;
+    }
+  }
+}
+@media screen and (max-width: 426px) {
+  .container-box.transaction-history
+  {
+    padding: 10px;
+    h1 {
+      font-size: 22px !important;
     }
   }
 }

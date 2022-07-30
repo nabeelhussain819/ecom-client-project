@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="stripe-model">
     <stripe-element-payment
       v-if="elementsOptions.clientSecret"
       ref="paymentRef"
@@ -45,3 +45,4 @@ export default {
   },
 }
 </script>
+<style scoped></style>

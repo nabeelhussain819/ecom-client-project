@@ -72,7 +72,7 @@
   .ant-menu-item {
     border: none !important;
   }
-  
+
   header .ant-menu-horizontal .ant-menu-item:hover,
   .ant-menu-item div:hover {
     text-decoration: none;
@@ -180,6 +180,131 @@ header {
       width: 100%;
       border-radius: 6px;
       padding: 10px;
+    }
+  }
+}
+@media only screen and (min-width: 426px) {
+  .mob-nav {
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 426px) {
+  .header {
+    .logo {
+      display: none !important;
+    }
+    ul.header_nav {
+      display: none;
+    }
+  }
+  .mob-nav {
+    background-color: $primary !important;
+    .icon_search {
+      color: black;
+      position: absolute;
+      left: 6px;
+      top: 13px;
+      /* align-items: center; */
+      height: fit-content;
+    }
+    .msg-box-main {
+      img {
+        width: 23px;
+      }
+    }
+    .search-bar {
+      width: 100%;
+      a {
+        right: 10px;
+        top: 0;
+        svg {
+          color: #000 !important;
+        }
+      }
+      .icon_search {
+        left: 22px;
+      }
+    }
+    .ant-menu-item.ant-menu-item-active.ant-menu-item-selected {
+      padding: 0px;
+      background-color: transparent;
+    }
+    .nearby-main {
+      width: 70px;
+      height: 58px !important;
+      margin: 0;
+      padding: 0;
+      width: fit-content;
+      a {
+        width: 60px;
+        i.icon_nearby {
+          position: absolute;
+          width: 28px;
+          height: 30px;
+          margin: 0;
+          svg {
+            width: 13px;
+          }
+        }
+        span {
+          position: absolute;
+          bottom: 0;
+          /* width: 53px; */
+          font-size: 11px;
+        }
+      }
+    }
+    // ########################
+    .search-box {
+      display: inline-flex;
+      padding: 2px;
+      border: 2px solid slategray;
+      outline: none;
+      border-radius: 30px;
+    }
+    .search-box:focus-within {
+      /* IE11 WILL IGNORE BECAUSE IT IS NOT SUPPORTED */
+      border-color: dodgerblue;
+    }
+    .search-box input {
+      outline: none;
+      border: none;
+      width: 0;
+      background-color: transparent;
+      color: black;
+      font-size: 16px;
+      padding: 0;
+      transition: width 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.33);
+    }
+    .search-box input::placeholder {
+      color: lightgray;
+    }
+    .search-box:hover input,
+    .search-box input:focus,
+    .search-box input:valid {
+      margin-left: 5px;
+      width: 250px;
+    }
+    .search-box .icon_search {
+      outline: none;
+      border: none;
+      cursor: pointer;
+      background-color: slategray;
+      padding: 8px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      -webkit-appearance: none;
+    }
+    .search-box:focus-within .icon_search {
+      /* can't combine selectors here because IE11 will whine */
+      background-color: red;
+    }
+    .search-box input:focus + .icon_search {
+      background-color: red;
+    }
+    .search-box input:valid + .icon_search {
+      background-color: limegreen;
     }
   }
 }
