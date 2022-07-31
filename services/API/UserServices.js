@@ -53,6 +53,13 @@ function update(data) {
     method: 'PATCH',
   })
 }
+
+function refreshOnboadingUrl(id) {
+  return request({
+    url: `${baseUrl}refresh/${id}`,
+  })
+}
+
 const UserService = {
   all,
   detail,
@@ -61,6 +68,7 @@ const UserService = {
   conversations,
   sendMessage,
   update,
+  refreshOnboadingUrl,
 }
 
 export default UserService

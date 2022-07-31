@@ -2,9 +2,9 @@
   <div class="byVisa-main">
     <div class="d-flex">
       <img
-        src="https://www.pngitem.com/pimgs/m/1-16193_visa-icon-png-black-and-white-transparent-png.png"
+        src="https://www.freeiconspng.com/uploads/visa-icon-5.png"
         alt="visa"
-        width="75px"
+        width="68px"
       />
       <div class="byVisa-inner-div">
         <h2>Visa</h2>

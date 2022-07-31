@@ -2,13 +2,13 @@
   <a-layout-footer class="footer">
     <a-row>
       <a-col>
-        <a-space id="space-links" :size="size">
-          <p>Explore</p>
-          <p>Terms</p>
-          <p>Privacy</p>
-          <p>Help</p>
-          <p>Safe Trade Sports</p>
-        </a-space>
+        <div id="space-links" :size="size">
+          <a href="javascript:;">Explore</a>
+          <a href="javascript:;">Terms</a>
+          <a @click="goto('/user/privacy')">privacy</a>
+          <a href="javascript:;">Help</a>
+          <a href="javascript:;">Safe Trade Sports</a>
+        </div>
       </a-col>
       <a-col>
         <a-space id="space-icon" :size="size2">
@@ -40,12 +40,21 @@
 </template>
 
 <script>
+import routeHelpers from '~/mixins/route-helpers'
+// import privacy from '/privacy'
+
 export default {
+  components: {
+    // privacy,
+  },
+  mixins: [routeHelpers],
+
   data() {
     return {
       size: 27,
       size2: 27,
     }
   },
+  methods: {},
 }
 </script>

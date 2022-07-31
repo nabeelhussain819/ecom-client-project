@@ -1,16 +1,34 @@
 <template>
-  <a-list item-layout="horizontal" :loading="loading" :data-source="data">
+  <a-list
+    item-layout="horizontal"
+    :loading="loading"
+    :data-source="data"
+    class="buy-offer-main"
+  >
     <a-list-item slot="renderItem" slot-scope="item">
       <a-list-item-meta>
-        <a slot="title" href="https://www.antdv.com/">{{
-          item.product.name
-        }}</a>
         <div slot="description">
-          <a-tag color="pink">
-            {{ item.status_name }}
+          <b>Robert</b> has
+
+          <a-tag>
+            <span> {{ item.status_name }}</span>
           </a-tag>
+          <div>
+            <button class="">Confirm Purchase</button>
+          </div>
         </div>
-        <a-avatar slot="avatar" :src="item.product.cover_image" />
+        <div slot="title">
+          <span>your offer of $$$ for</span>
+
+          <a slot="title" :href="'/product/purchase/' + item.product.guid">
+            {{ item.product.name }}</a
+          >
+        </div>
+        <a-avatar
+          slot="avatar"
+          :src="item.productcover_image"
+          class="offer-avatar"
+        />
       </a-list-item-meta>
     </a-list-item>
   </a-list>
@@ -39,4 +57,18 @@ export default {
   },
 }
 </script>
-<style></style>
+<style scoped>
+.ant-list-item-meta {
+  align-items: center;
+}
+.ant-list-item-meta-content {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.offer-avatar {
+  border-radius: 0 !important;
+  height: 45px;
+  width: 45px;
+}
+</style>

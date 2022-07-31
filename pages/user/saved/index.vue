@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-spin :spinning="loading" class="p-5">
+    <a-spin :spinning="loading" class="p-5 container-box">
       <a-row :gutter="16" class="save-item-container">
         <h2 class="heading-save">Saved Items</h2>
         <a-col
@@ -14,11 +14,13 @@
           <div class="button"><a href="#" title="Unsave Item"> Unsave </a></div>
         </a-col>
       </a-row>
-      <router-link to="/">
-        <a-button type="button" title=" Save new item" class="save-new">
-          +</a-button
-        >
-      </router-link>
+      <div class="text-center">
+        <router-link to="/">
+          <a-button type="button" title=" Save new item" class="save-new">
+            +</a-button
+          >
+        </router-link>
+      </div>
     </a-spin>
   </div>
 </template>

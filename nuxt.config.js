@@ -39,6 +39,7 @@ export default {
     { src: '@/plugins/google-maps.js', ssr: false },
     { src: '@/plugins/persistedState.js' },
     { src: '@/plugins/echo.js', ssr: false },
+    { src: '@/plugins/vue-stripe.js', ssr: false },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -71,6 +72,7 @@ export default {
     grant_type: process.env.VUE_APP_GRANT_TYPE,
     facebook_app_id: process.env.FACEBOOK_APP_ID,
     google_client_id: process.env.GOOGLE_CLIENT_ID,
+    stripe_pk: process.env.STRIPE_PK,
   },
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {

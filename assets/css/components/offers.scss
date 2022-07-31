@@ -1,0 +1,82 @@
+.offers-main {
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .ant-tabs-nav-container {
+    text-align: center;
+  }
+  .offers-tabs {
+    .ant-tabs-tab-active {
+      background: #ffd8e8 !important;
+      color: #000 !important;
+    }
+    .ant-tabs-tab {
+      padding: 10px 50px !important;
+      margin: 0px 10px !important;
+      background: #f0eaea;
+      border-radius: 5px;
+    }
+    .ant-tabs-ink-bar {
+      display: none !important;
+    }
+  }
+  .ant-tabs-nav-animated {
+    margin-bottom: 5px;
+  }
+}
+@media (min-width: 768px) {
+  .offers-main {
+    // padding: 50px;
+  }
+}
+// ############################## buy offer #####################
+.buy-offer-main {
+  .ant-list-item {
+    border-bottom: 1px solid gainsboro !important;
+  }
+  .ant-list-item-meta-description {
+    color: #000;
+    button {
+      cursor: pointer;
+      // position: absolute;
+      left: 0;
+      background-color: #a5dcf2;
+      border: none;
+      border-radius: 4px;
+      padding: 3px 7px;
+      margin: 6px 0px;
+    }
+  }
+  .ant-list-item-meta-title {
+    color: #000;
+    div {
+      position: relative;
+      span {
+        font-weight: 400;
+      }
+      a {
+        color: $primary;
+      }
+    }
+  }
+  .ant-list-item-meta-description {
+    .ant-tag {
+      color: $primary;
+      border: none;
+      background: none;
+      padding: 0;
+      font-weight: 600;
+    }
+  }
+}
+@media screen and (max-width: 425px) {
+  offers-main {
+    .ant-tabs-tab {
+      padding: 10px 30px !important;
+    }
+    .ant-tabs-tab.ant-tabs-tab-active  {
+      padding: 10px 30px !important;
+    }
+  }
+}

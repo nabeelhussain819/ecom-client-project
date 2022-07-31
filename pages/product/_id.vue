@@ -60,7 +60,7 @@
             >
           </a-descriptions>
         </a-col>
-        <a-col :xs="24" :sm="7" class="right_product_detail">
+        <a-col :xs="24" :sm="8" class="right_product_detail">
           <owner-detail :product="product" />
           <map-view
             v-if="product"

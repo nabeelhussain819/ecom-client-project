@@ -1,11 +1,6 @@
 <template>
   <div class="container container-buy-now">
-    <a-form
-      :form="form"
-      :label-col="{ span: 8 }"
-      :wrapper-col="{ span: 16 }"
-      @submit="onSubmit"
-    >
+    <a-form :form="form" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }">
       <h1>Confirm Purchase</h1>
       <a-row :gutter="16">
         <a-col :xs="24" :sm="24" class="">
@@ -24,7 +19,7 @@
             <div class="shipping-option">
               <h2>Shipping to (required)</h2>
               <a class="btn-add" @click="showShippingModal(true)">Add</a>
-              <pre>{{ shiping_details }}</pre>
+              <!-- <pre>{{ shiping_details }}</pre> -->
               <a-descriptions
                 v-if="!isEmpty(shiping_details)"
                 bordered
@@ -88,9 +83,19 @@
             </div>
           </div>
           <div class="confirm-purchase-main" style="text-align: center">
-            <button class="btn ant-btn ant-btn-primary ant-btn-lg">
-              Confirm Purchase
+            <button
+              v-if="!pay"
+              class="btn ant-btn ant-btn-primary ant-btn-lg"
+              @click="generatePaymentIntent"
+            >
+              Pay Now
             </button>
+            <Stripe
+              v-if="pay"
+              :shipping-detail="shiping_details"
+              @submit="onSubmit"
+              :client-secret="clientSecret"
+            />
             <div>
               <p class="label-confirm-purchase">
                 By tapping "Confirm Purchase", you agree to the FlexEmarket
@@ -131,12 +136,15 @@ import routeHelpers from '~/mixins/route-helpers'
 import VisaCard from '~/components/purchase/cards'
 import Shipping from '~/components/purchase/shipping'
 import OrderServices from '~/services/API/OrderServices'
+import Stripe from '~/components/purchase/Stripe'
+import StripeService from '~/services/API/StripeService'
 
 export default {
   components: {
     imageSlider,
     VisaCard,
     Shipping,
+    Stripe,
   },
   mixins: [routeHelpers],
   data() {
@@ -148,7 +156,9 @@ export default {
       cardModal: false,
       shippingModal: false,
       shiping_details: {},
+      pay: false,
       form: this.$form.createForm(this, { name: 'orderNow' }),
+      clientSecret: null,
     }
   },
   mounted() {
@@ -156,14 +166,21 @@ export default {
   },
   methods: {
     isEmpty,
-    onSubmit(e) {
-      e.preventDefault()
+    onSubmit(submit, ref) {
       this.form.validateFields((err, values) => {
         if (!err) {
-          OrderServices.save({
-            product_id: this.product.guid,
-            shippingDetail: this.shiping_details,
-          }).then((response) => {})
+          if (!submit) ref.submit()
+          // required to trigger validation errors
+          else {
+            OrderServices.save({
+              product_id: this.product.guid,
+              shippingDetail: this.shiping_details,
+            }).then((order) => {
+              ref.confirmParams.return_url =
+                window.location.origin + '/order/confirm/' + order.id
+              ref.submit()
+            })
+          }
         }
       })
     },
@@ -202,7 +219,13 @@ export default {
     },
     getShipingDetail(shippingDetials) {
       this.shiping_details = shippingDetials.shipping
-      console.log(shippingDetials)
+    },
+    async generatePaymentIntent() {
+      const paymentIntent = await StripeService.generatePaymentIntent(
+        this.$route.params.id
+      )
+      this.clientSecret = paymentIntent.client_secret
+      this.pay = true
     },
   },
 }

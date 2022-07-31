@@ -10,12 +10,18 @@
   .buy-slider-detail {
     align-items: center;
     color: #000;
-  .purchase_img_slider {
-    width: 50%;
-    img.img-fluid {
-      height: 25%;
+    .purchase_img_slider {
+      width: 40%;
+      img.img-fluid {
+        height: 25%;
+      }
     }
-  }}
+    h2 {
+      margin: 0px 30px;
+      font-weight: 700;
+      font-size: 22px;
+    }
+  }
   .purchase-content {
     font-size: 13px;
     line-height: 35px;
@@ -64,9 +70,9 @@
   .label-confirm-purchase {
     font-size: 15px;
     color: #000;
-      a {
-        color: $primary;
-      }
+    a {
+      color: $primary;
+    }
   }
   .confirm-purchase-main {
     text-align: center;
@@ -84,7 +90,7 @@
   width: 70%;
   input.ant-input {
     height: 45px;
-  } 
+  }
   h1 {
     font-weight: 700;
     font-size: 23px;
@@ -106,20 +112,21 @@
   }
   .btn-ship {
     text-align: center;
-  .btn.ant-btn {
-    width: 50%;
-    margin-top: 50px;
-  }}
+    .btn.ant-btn {
+      width: 50%;
+      margin-top: 50px;
+    }
+  }
   .basic-location {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-  .item-city {
-    width: 60%;
-  }
-  .item-state {
-    width: 35%;
-      }
+    .item-city {
+      width: 60%;
+    }
+    .item-state {
+      width: 35%;
+    }
   }
   .item-zip {
     width: 30%;
@@ -169,7 +176,7 @@
   .ant-radio-input {
     border: 1px solid gray;
   }
-  .bycredit-main{
+  .bycredit-main {
     display: flex;
     justify-content: space-between;
     a {
@@ -186,18 +193,18 @@
     background: gainsboro;
   }
   .btn-use-card {
-justify-content: center;
-position: absolute;
-width: 100%;
-bottom: 50px;
-button {
-  font-size: 18px;
-  font-weight: 600;
-   }
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    bottom: 50px;
+    button {
+      font-size: 18px;
+      font-weight: 600;
+    }
   }
 }
 // ---------------------------- card-payment -----------------------------
-.card-payment{
+.card-payment {
   // min-height: 100vh;
   width: 70%;
   .byCard-header {
@@ -206,13 +213,13 @@ button {
   }
   input.ant-input {
     height: 45px;
-}
+  }
   .card-detail {
     justify-content: space-between;
   }
   .secure-info {
     color: #b0b0b0;
-    margin-left: 10px ;
+    margin-left: 10px;
   }
   label {
     color: #000;
@@ -220,17 +227,18 @@ button {
     font-size: 18px;
   }
   .byCard-intro {
-    a{
-    color: $primary !important;}
+    a {
+      color: $primary !important;
+    }
   }
   .btn-card-payment {
-   text-align: center;
-   width: 100%;
-   margin-top: 20px;
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
     padding: 15px 0px;
-   button {
-     width: 50%;
-   }
+    button {
+      width: 50%;
+    }
   }
   .btn-powered {
     margin-top: 12px;
@@ -238,5 +246,59 @@ button {
     border: 1px solid grey !important;
     cursor: pointer;
     border-radius: 5px;
+  }
+}
+.confirm-pay {
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+  }
+  p {
+    color: #000;
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 426px) {
+  .container-buy-now {
+    padding: 0px !important;
+    h1 {
+      font-size: 25px;
+    }
+    .detail-slider.purchase_img_slider {
+      width: 100%;
+    }
+    h2.buy-price {
+      text-align: center;
+      width: 100%;
+    }
+    .protect-payment-main {
+      flex-direction: column;
+      h2 {
+        font-size: 16px;
+        line-height: 20px;
+      }
+      p {
+        font-size: 12px;
+        line-height: 20px;
+      }
+    }
+    .confirm-purchase-main {
+      text-align: center;
+    }
+    .stripe-pay-main {
+      button {
+        font-size: 14px;
+        width: 100%;
+      }
+    }
+    .label-confirm-purchase {
+      line-height: 22px;
+      font-size: 13px;
+    }
+  }
+  .footer {
+    #space-links {
+      width: 100%;
+    }
   }
 }

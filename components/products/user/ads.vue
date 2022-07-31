@@ -1,6 +1,6 @@
 <template>
-  <div class="py-4 border pl-3 pt-1 pb-0 ant-col ant-col-xs-24 ant-col-sm-24">
-    <div class="main-ads-container">
+  <div class="pl-3 pb-0 ant-col ant-col-xs-24 ant-col-sm-24">
+    <div class="main-ads-container p-3 border">
       <h1 class="heading-ads">My Ads</h1>
       <a-tabs default-active-key="1" @change="changeTab">
         <a-tab-pane key="1" tab="Products">
@@ -8,7 +8,8 @@
             <a-col
               v-for="product in products"
               :key="product.id"
-              :xs="24"
+              :xs="11"
+              :md="4"
               :sm="6"
               class="profile-tile-width pt-4"
             >
@@ -27,7 +28,7 @@
               <a-col
                 v-for="service in services"
                 :key="service.id"
-                :xs="24"
+                :xs="11"
                 :sm="6"
                 :md="4"
               >
@@ -95,7 +96,7 @@ export default {
   font-weight: 700;
 }
 .profile-tile-width {
-  width: auto;
+  margin: 0px 3px;
 }
 .main-ads-container {
   max-width: 1100px;

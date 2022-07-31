@@ -4,14 +4,14 @@
       <div class="col">
         <div class="pay-method-header">
           <h1>Payment Methods</h1>
-          <a-button type="link" @click="cancel(false)">Cancel</a-button>
+          <a-button type="link">Cancel</a-button>
         </div>
 
         <br />
         <br />
         <div class="bycredit-main" @click="handleCardForm(true)">
           <h3 class="">Add Credit / Debit Card</h3>
-          <a>></a>
+          <a @click="goto('')">></a>
         </div>
         <hr class="pay-devider" />
         <savedcardList />

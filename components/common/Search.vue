@@ -79,7 +79,7 @@
         </a-row>
         <div class="product-nav-width">
           <a-col>
-            <div class="side_nav">
+            <div class="side_nav border p-2">
               <h2>Searched Items</h2>
               <a-row class="product_nav">
                 <div>

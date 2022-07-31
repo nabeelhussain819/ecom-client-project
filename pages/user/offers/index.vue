@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <a-tabs @change="callback">
+  <div class="offers-main container border">
+    <h1 class="">My Offers</h1>
+    <a-tabs @change="callback" class="offers-tabs">
       <a-tab-pane key="1" tab="Buying"> <Buying /></a-tab-pane>
       <a-tab-pane key="2" tab="Selling"> <Selling /> </a-tab-pane>
     </a-tabs>

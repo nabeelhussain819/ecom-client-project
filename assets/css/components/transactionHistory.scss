@@ -1,0 +1,67 @@
+.transaction-history {
+  div.d-flex {
+    justify-content: space-between;
+    margin: 20px 0px;
+    h1 {
+      font-size: 26px;
+    }
+    button {
+      border: none;
+      color: #000;
+    }
+  }
+  .ant-tabs-bar {
+    .ant-tabs-nav-scroll {
+      text-align: center;
+      .ant-tabs-tab {
+        color: #000;
+        border: none !important;
+        padding: 10px 18px !important;
+      }
+      .ant-tabs-tab-active {
+        color: $primary !important;
+        background-color: transparent !important;
+      }
+    }
+  }
+  .transactionHistory-main {
+    text-align: center;
+  }
+  .accountBalance-main {
+    // height: 80vh;
+    align-items: center;
+    .account-balance {
+      text-align: center;
+      color: $primary;
+      font-weight: 700;
+      font-size: 50px;
+      margin: 30px 0px;
+    }
+  }
+  .sold-purchase-tabs {
+    width: fit-content;
+    // float: right;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    .ant-tabs-bar {
+      float: right;
+    }
+    .ant-tabs-tab-active {
+      border: $primary !important;
+      color: #fff !important;
+    }
+    .ant-tabs-tab {
+      border: gainsboro !important;
+    }
+  }
+}
+@media screen and (max-width: 426px) {
+  .container-box.transaction-history
+  {
+    padding: 10px;
+    h1 {
+      font-size: 22px !important;
+    }
+  }
+}
