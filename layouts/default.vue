@@ -2,7 +2,7 @@
   <a-layout id="components-layout-demo-top" class="layout">
     <!-- <Header /> -->
     <a-layout-content class="main-container">
-      <Nuxt />
+      <!-- <Nuxt /> -->
     </a-layout-content>
     <NewsLetter />
     <Footer />
