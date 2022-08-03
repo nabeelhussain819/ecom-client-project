@@ -7,9 +7,9 @@
   >
     <a-list-item slot="renderItem" slot-scope="item">
       <a-list-item-meta>
-        <a slot="title" class="text-capitalize" href="https://www.antdv.com/">{{
-          item.product.name
-        }}</a>
+        <!-- <a slot="title" class="text-capitalize" href="https://www.antdv.com/">
+          {{ item.product.name }}
+        </a> -->
         <div slot="description">
           <div class="left">
             <div class="short-description">
@@ -29,14 +29,19 @@
                 >Reject</a-button
               >
             </div>
-            <a-tag v-else color="pink">{{ item.status_name }}</a-tag>
+            <a-button v-else class="btn-success">
+              Offer {{ item.status_name }}
+            </a-button>
+            <a-span v-if="!isNewRequest(item)">- View Details</a-span>
           </div>
 
           <span class="product-image right">
             <img width="200" :src="item.product.cover_image" />
+            <a-span>
+              {{ item.created_at }}
+            </a-span>
           </span>
         </div>
-
         <a-avatar slot="avatar" :src="item.requester.profile_url" />
       </a-list-item-meta>
     </a-list-item>
