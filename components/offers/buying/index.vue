@@ -14,11 +14,13 @@
             <span>made an offer</span>
           </a-tag>
           <div>
-            <button class="btn-warning">Offer Pending</button>
+            <button class="btn-warning" @click="pending(item)">
+              Offer Pending
+            </button>
           </div>
         </div>
         <div slot="title">
-          <span>of $$$ for</span>
+          <span>of ${{ item.price }} for</span>
           <a slot="title" :href="'/product/purchase/' + item.product.guid">
             "{{ item.product.name }}"</a
           >
@@ -49,7 +51,9 @@
             <button v-if="item.status_name === 'Rejected'" class="btn-danger">
               Offer Again
             </button>
-            <button v-else>Confirm Purchase</button>
+            <a-button v-else class="btn btn-secondary" @click="buyNow(item)">
+              Buy Now
+            </a-button>
           </div>
         </div>
         <div slot="title">
@@ -102,6 +106,12 @@ export default {
     },
     isNewRequest(offer) {
       return offer.status_name === this.statuses.new.name
+    },
+    buyNow(product) {
+      this.$router.push(`/product/purchase/${product.product.guid} `)
+    },
+    pending(product) {
+      this.$router.push(`/order/pending/${product.id} `)
     },
   },
 }

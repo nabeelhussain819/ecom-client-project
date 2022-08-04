@@ -22,10 +22,10 @@
               <strong class="text-capitalize"> {{ item.product.name }}</strong>
             </div>
             <div v-if="isNewRequest(item)">
-              <a-button type="primary" @click="status(item.guid, true)"
+              <a-button class="btn-success" @click="status(item.guid, true)"
                 >Accept</a-button
               >
-              <a-button type="danger" @click="status(item.guid, false)"
+              <a-button class="btn-danger" @click="status(item.guid, false)"
                 >Reject</a-button
               >
             </div>

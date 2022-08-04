@@ -3,7 +3,7 @@
     <h1>Order Confirmed!</h1>
     <p>
       Invoice has been sent to your verified email or
-      <a href="">click here</a> to view invoice
+      <a-button @click="isNewRequest()">click here</a-button> to view invoice
     </p>
     <!-- svg img -->
     <div style="width: 400px; margin: auto">
@@ -785,6 +785,11 @@ export default {
     })
       .then(() => {})
       .catch(() => {})
+  },
+  methods: {
+    isNewRequest() {
+      this.$router.push('/order/product/' + this.$route.params.id)
+    },
   },
 }
 </script>

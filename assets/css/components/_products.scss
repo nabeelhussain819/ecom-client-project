@@ -10,6 +10,25 @@
       max-width: 200px;
       float: right;
     }
+    button {
+      cursor: pointer;
+      // position: absolute;
+      left: 0;
+      background-color: #a5dcf2;
+      border: none;
+      border-radius: 4px;
+      padding: 3px 7px;
+      margin: 6px 0px;
+    }
+    .btn-warning{
+      background-color: #e9f2a5;
+    }
+    .btn-danger{
+      background-color: #f2a5d4;
+    }
+    .btn-success{
+      background-color: #b1f2a5;
+    }
     .left {
       @include vp_min('767px') {
         max-width: 80%;
