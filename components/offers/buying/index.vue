@@ -52,7 +52,7 @@
               Offer Again
             </button>
             <a-button v-else class="btn btn-secondary" @click="buyNow(item)">
-              Buy Now
+              Confirm Purchase
             </a-button>
           </div>
         </div>

@@ -19,54 +19,17 @@
               <image-slider class="product_img_slider" :images="images" />
               <h1
                 type="inline "
-                :title="item.buyer.name"
+                :title="item.user.name"
                 class="primary-text product-price"
               >
-                ${{ item.buyer.name }}
+                Offer to (seller){{ item.user.name }}
               </h1>
-              <h2 type="inline" class="product-name">
-                {{ item.product.name }}
-              </h2>
-              <div class="purchase-content">
-                <hr />
-                <div class="shipping-option">
-                  <h2>Shipping to (required)</h2>
-                  <a class="btn-add">Add</a>
-                  <!-- <pre>{{ shiping_details }}</pre> -->
-                </div>
-                <hr />
-                <div class="payment-method-option">
-                  <h2>Payment method (required)</h2>
-                </div>
-                <hr />
-                <div class="item-price-tag">
-                  <h2>Item Price</h2>
-                  <h2>${{ item.product.price }}</h2>
-                </div>
-                <div class="shipping-price-tag">
-                  <h2>Shipping Price</h2>
-                  <h2>$7.00 Static</h2>
-                </div>
-                <div class="sales-tax-tag">
-                  <h2>Sales Tax (Estimated)</h2>
-                  <h2>$7.00 Static</h2>
-                </div>
-                <div class="payed-tag">
-                  <h2><b> You Pay</b></h2>
-                  <h2>
-                    <b>{{ item.product.price }}$ </b>
-                  </h2>
-                </div>
-              </div>
-              <div>{{ item.product.categoryDetails }}</div>
-              <a-divider />
-              <h3 class="heading">Description</h3>
-              <p></p>
-              <a-divider />
-              <h3 class="heading">Pick up Locally</h3>
-              <span>lorem ipsum dolor qwerty,quibusdamiure!</span>
-              <br />
-              <a class="product_view_style">Learn more about pickup</a>
+              <p>Item Price {{ item.price }}</p>
+              <p>Shipping Price $7.00</p>
+              <p>Sales Tax (Estimated) $7.00</p>
+              <p>You recieved ${{ Number(item.price) + 7 }}</p>
+              <a-button>Contact Buyer(chat)</a-button>
+              <a-button>Cancel Offer</a-button>
             </a-col>
           </div>
         </div>
