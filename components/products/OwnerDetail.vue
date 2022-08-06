@@ -56,7 +56,7 @@
           @cancel="handlePromoteModal(false)"
           @click="handlePromoteModal(true)"
         >
-          <ads :product="product" />
+          <ads :product="product" @close="close" />
         </a-modal>
       </div>
       <div v-else>
