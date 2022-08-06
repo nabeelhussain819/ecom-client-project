@@ -5,7 +5,7 @@
       <a-step title="Details" />
       <a-step title="Image" />
       <a-step title="Price" />
-      <a-step v-if="product.has_shipping || has_shiping" title="Shipping" />
+      <a-step v-if="product.has_shipping || has_shipping" title="Shipping" />
     </a-steps>
     <a-layout-content>
       <div v-if="step === 0">
@@ -216,7 +216,7 @@
         v-if="step > 0"
         size="large"
         style="margin-left: 2px"
-        @click="step--"
+        @click="changePrevious"
       >
         Previous
       </a-button>
@@ -295,7 +295,7 @@ export default {
       errors: '',
       category: {},
       step: 0, // for tetsing
-      has_shiping: false,
+      has_shipping: false,
     }
   },
   mounted() {
@@ -356,7 +356,7 @@ export default {
         .then((response) => {
           this.success(response.message)
           this.$emit('update', response)
-          if (this.step === 2 && !this.product.has_shiping) {
+          if (this.step === 2 && !this.has_shipping) {
             this.$router.push({ path: '/' })
           }
           this.step++
@@ -402,7 +402,11 @@ export default {
       return null
     },
     handleShipping(isTrue) {
-      this.has_shiping = isTrue
+      this.has_shipping = isTrue
+    },
+    changePrevious() {
+      this.has_shipping = false
+      this.step--
     },
     changeStep(step) {
       this.step = step
