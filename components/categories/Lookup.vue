@@ -16,10 +16,11 @@
         <hr />
       </a-menu-item>
       <a-sub-menu v-for="category in categories" :key="category.id">
-        <span slot="title"
-          ><span>{{ category.name }}</span></span
-        >
-
+        <span slot="title">
+          <a @click="selectCategory(category.id)">
+            <span>{{ category.name }} </span>
+          </a>
+        </span>
         <sub-menu :key="category.id" :menu-info="category" />
       </a-sub-menu>
 
@@ -36,12 +37,13 @@ const childMenu = {
   template: `
       <a-sub-menu :key="menuInfo.key" v-bind="$props" v-on="$listeners">
         <span slot="title">
-          <a-icon type="mail" /><span>{{ menuInfo.name }}</span>
+          <a-icon type="mail" />
+          <a @click="selectCategory(menuInfo.id)"><span>{{ menuInfo.name }}</span></a>
         </span>
         <template v-for="item in menuInfo.children_recursive">
           <a-menu-item v-if="!item.children_recursive" :key="item.id">
             <a-icon type="pie-chart" />
-            <span>{{ item.title }}</span>
+            <span>{{ item.title }} </span>
           </a-menu-item>
           <sub-menu v-else :key="item.id" :menu-info="item" />
         </template>
@@ -80,6 +82,30 @@ export default {
         .finally(() => {
           this.loading = false
         })
+    },
+    selectCategory(categoryId) {
+      this.search({ category_id: categoryId })
+      // this.$router.push({
+      //   path: `/${this.type}/search`,
+      //   query: { query: this.$route.query.query, category },
+      // })
+    },
+    search(searchParams = {}) {
+      const params = {
+        ...searchParams,
+        query: this.$route.query.query,
+        ...this.filters,
+      }
+
+      // if (this.$route.query.category) {
+      //   params.category_id = this.$route.query.category
+      //   params.filters = this.filters
+      // }
+      this.params = params
+      this.$router.push({
+        path: '/product/search',
+        query: { ...this.params },
+      })
     },
   },
 }

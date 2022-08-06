@@ -27,7 +27,9 @@
             <a-menu-item key="2" @click="goto('./account/transaction-history')">
               Transaction History
             </a-menu-item>
-            <a-menu-item key="3"> Payment Methods </a-menu-item>
+            <a-menu-item key="3" @click="showCardDetailModal(true)">
+              Payment Methods
+            </a-menu-item>
             <a-menu-item key="4"> Deposit Account </a-menu-item>
           </a-menu>
           <!-- <a-select
@@ -64,8 +66,15 @@
           <!-- <hr /> -->
         </a-col>
       </a-row>
-    </div></a-skeleton
-  >
+      <a-modal
+        :visible="cardModal"
+        :width="900"
+        title="Visa Card Detail"
+        @cancel="showCardDetailModal(false)"
+      >
+        <VisaCard @cancel="showCardDetailModal" class="border" />
+      </a-modal></div
+  ></a-skeleton>
 </template>
 <script>
 import upload from '~/components/user/upload'
@@ -74,9 +83,10 @@ import Product from '~/services/API/ProductServices'
 import { isEmpty } from '~/services/Utilities'
 import userDetail from '~/mixins/user-detail'
 import routeHelpers from '~/mixins/route-helpers'
+import VisaCard from '~/components/purchase/cards'
 
 export default {
-  components: { editProfile, upload },
+  components: { editProfile, upload, VisaCard },
   mixins: [userDetail, routeHelpers],
   data() {
     return {
@@ -84,6 +94,8 @@ export default {
       user: {},
       products: [],
       rating: 4.5,
+      cardModal: false,
+      shippingModal: false,
     }
   },
   mounted() {
@@ -96,6 +108,9 @@ export default {
     },
     afterUpload() {
       this.getUserDetails()
+    },
+    showCardDetailModal(show) {
+      this.cardModal = show
     },
     isEmpty,
     getProducts() {

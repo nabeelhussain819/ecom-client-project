@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <a-form :form="form" @submit="handleSubmit"> -->
-    <a-form-item>
+    <a-form-item class="shiping-form">
       {{ product.shipping_size_id }}
       <!-- <pre> {{ product }}</pre> -->
       <a-radio-group
@@ -21,8 +21,15 @@
           class="shiping-radio"
           :value="shipping.id"
         >
-          {{ shipping.name }}
-          {{ shipping.description }}
+          <span> {{ shipping.name }} </span>
+          <span
+            ><img
+              src="https://pngimg.com/uploads/box/box_PNG68.png"
+              alt="box"
+              width="45px"
+              class="box"
+          /></span>
+          <span class="item-size"> {{ shipping.description }}</span>
         </a-radio>
       </a-radio-group>
     </a-form-item>
@@ -70,7 +77,36 @@ export default {
 }
 </script>
 <style scoped>
+.shiping-form {
+  width: 40%;
+  display: flex;
+  margin: 15px 0px;
+  margin: auto;
+  margin-top: 40px !important;
+  flex-direction: column;
+  display: block;
+}
 .shiping-radio {
-  border: 1px solid red;
+  /* border: 1px solid red; */
+  margin: 7px 0px;
+  display: block;
+  margin: 7px 0px;
+  display: block;
+  background: #e5e5e5;
+  padding: 4px 15px;
+  height: 55px;
+  border: 2px solid silver;
+  border-radius: 10px;
+}
+.ant-radio-group {
+  display: block;
+}
+img.box {
+  float: right;
+}
+.item-size {
+  color: gray;
+  font-size: 14px;
+  display: block;
 }
 </style>
