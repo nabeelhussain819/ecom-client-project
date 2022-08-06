@@ -137,7 +137,7 @@ export default {
   },
   mounted() {
     this.isSaved = this.product.isSaved
-    if (this.product.hired && window.LiveChatWidget && this.isAuth)
+    if (this.product.hired && window.LiveChatWidget)
       window.LiveChatWidget.call('maximize')
   },
   beforeDestroy() {
