@@ -42,7 +42,7 @@ function destroy(id) {
 
 function uploadImages(productId, data) {
   return request({
-    url: `${baseUrl}/upload/${productId}`,
+    url: `${baseUrl}/image-upload/${productId}`,
     data,
     method: 'POST',
   })
