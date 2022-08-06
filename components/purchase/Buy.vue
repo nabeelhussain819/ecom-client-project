@@ -124,7 +124,7 @@
       title="Visa Card Detail"
       @cancel="showCardDetailModal(false)"
     >
-      <VisaCard @cancel="showCardDetailModal" />
+      <VisaCard @cancel="showCardDetailModal" class="border" />
     </a-modal>
   </div>
 </template>
