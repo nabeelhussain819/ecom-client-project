@@ -30,13 +30,17 @@
               <div class="purchase-content">
                 <hr />
                 <div class="shipping-option">
+                  <p>order Number</p>
+                  <p>Invoice Date: {{ item.created_at }}</p>
+                  <p>shippinf from {{ item.shipping_detail.name }}</p>
                   <h2>Shipping to (required)</h2>
                   <a class="btn-add">Add</a>
                   <!-- <pre>{{ shiping_details }}</pre> -->
                 </div>
                 <hr />
                 <div class="payment-method-option">
-                  <h2>Payment method (required)</h2>
+                  <p>buyer name {{ item.buyer.name }}</p>
+                  <h2>Payment method{{ item.payment_intent }}</h2>
                 </div>
                 <hr />
                 <div class="item-price-tag">
