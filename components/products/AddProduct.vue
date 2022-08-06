@@ -186,7 +186,7 @@
             v-decorator="[
               'has_shipping',
               {
-                initialValue: product.has_shipping,
+                initialValue: has_shipping,
                 rules: [
                   { required: true, message: 'Please enter product price' },
                 ],
@@ -196,8 +196,8 @@
             :size="size"
             addon-before="USD"
             placeholder="Please Enter Product Price"
+            @change="handleShipping($event)"
             v-on="showShiping"
-            @change="handleShipping"
           />
         </a-form-item>
       </a-form>
@@ -402,6 +402,7 @@ export default {
       return null
     },
     handleShipping(isTrue) {
+      console.log(isTrue)
       this.has_shipping = isTrue
     },
     changePrevious() {
