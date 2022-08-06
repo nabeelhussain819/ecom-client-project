@@ -368,13 +368,14 @@ export default {
     },
     handleSubmit(e) {
       e.preventDefault()
-
       if (this.step === 1) this.step++
       else {
         this.form.validateFields((err, values) => {
           if (!err) {
             const params = { ...values, category_id: this.category_id }
+            console.log(values)
             this.isCreated ? this.update(params) : this.save(params)
+            if (values.shipping_size_id) this.$router.push('/')
           }
         })
       }
@@ -402,7 +403,6 @@ export default {
       return null
     },
     handleShipping(isTrue) {
-      console.log(isTrue)
       this.has_shipping = isTrue
     },
     changePrevious() {

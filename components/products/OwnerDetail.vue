@@ -94,7 +94,7 @@
             <a-divider type="vertical" />
           </a-col>
           <a-col :xs="{ span: 2 }" :sm="{ span: 11 }">
-            <a-button type="" icon="share-alt"> Share</a-button>
+            <a :href="product.google_address" icon="share-alt">Share</a>
           </a-col>
         </a-row>
       </div>
