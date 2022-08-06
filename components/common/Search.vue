@@ -17,9 +17,17 @@
                   slot-scope="category"
                   class="category_name"
                 >
-                  <a @click="selectCategory(category.id)">{{
-                    category.name
-                  }}</a>
+                  <a @click="selectCategory(category.id)">
+                    <span
+                      :class="
+                        matchQueryParams(category.id)
+                          ? 'high_light_selected_category_name'
+                          : ''
+                      "
+                    >
+                      {{ category.name }}
+                    </span>
+                  </a>
                 </a-list-item>
               </a-list>
             </a-card>
@@ -220,6 +228,13 @@ export default {
     resultsDetails(guid) {
       this.$router.push({ path: `/${this.type}/${guid}` })
     },
+    matchQueryParams(params) {
+      // eslint-disable-next-line eqeqeq
+      if (this.$route.query.category_id == params) {
+        return true
+      }
+      return false
+    },
   },
 }
 </script>
@@ -241,5 +256,9 @@ export default {
 }
 .category_main > span {
   margin-bottom: 6px;
+}
+.high_light_selected_category_name {
+  font-weight: bolder;
+  color: black;
 }
 </style>
