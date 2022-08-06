@@ -41,7 +41,7 @@
               </a-list> -->
               <!-- // dynmaic attr -->
               <!-- bottom side select card -->
-              <a-select style="width: 250px" placeholder="Pickup Distance">
+              <!-- <a-select style="width: 250px" placeholder="Pickup Distance">
                 <a-select-option value="example1">
                   <a-radio-group>
                     <a-radio :style="radioStyle" :value="1"> Option A </a-radio>
@@ -56,13 +56,16 @@
                     </a-radio>
                   </a-radio-group>
                 </a-select-option>
-              </a-select>
+              </a-select> -->
               <a-select style="width: 250px" placeholder="Price">
                 <a-select-option value="example2">
                   <a-radio-group>
-                    <a-radio :style="radioStyle" :value="1"> Option A </a-radio>
-                    <a-radio :style="radioStyle" :value="2"> Option B </a-radio>
-                    <a-radio :style="radioStyle" :value="3"> Option C </a-radio>
+                    <a-radio :style="radioStyle" :value="1"> Below 50 </a-radio>
+                    <a-radio :style="radioStyle" :value="2"> 50-100 </a-radio>
+                    <a-radio :style="radioStyle" :value="3"> 100-250 </a-radio>
+                    <a-radio :style="radioStyle" :value="3">
+                      250 Above
+                    </a-radio>
                     <a-radio :style="radioStyle" :value="4">
                       More...
                       <a-input

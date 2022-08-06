@@ -48,10 +48,12 @@
         <div class="ad_list">
           <a-form-model-item label="" v-if="!product.hired">
             <a-col>
-              <h1 class="ad_btm_price" style="float: right; color: #9e9e9e">
-                $$
+              <h1
+                class="ad_btm_price"
+                style="float: right; color: #9e9e9e; font-size: 32px"
+              >
+                $99
               </h1>
-
               <a-row>
                 <a-radio value="hire_30" class="adType"
                   >Sales captain for 30 days
@@ -65,10 +67,12 @@
         <div class="ad_list">
           <a-form-model-item label="">
             <a-col>
-              <h1 class="ad_btm_price" style="float: right; color: #9e9e9e">
-                $$
+              <h1
+                class="ad_btm_price"
+                style="float: right; color: #9e9e9e; font-size: 32px"
+              >
+                $49
               </h1>
-
               <a-row>
                 <a-radio value="hire_7" class="adType"
                   >Sales captain for 7 days
@@ -80,7 +84,6 @@
       </a-form-model>
       <a-form-model-item class="ads_button">
         <a-button type="primary" @click="buy"> AVAIL NOW</a-button>
-        <a-button type="default" @click="skip"> SKIP</a-button>
       </a-form-model-item>
     </a-radio-group>
     <div>
@@ -146,7 +149,7 @@ export default {
       this.pay = true
     },
     skip() {
-      this.$emit('cancel')
+      this.$emit('close')
     },
     change({ target: { value } }) {
       this.feature = value.includes('feature')

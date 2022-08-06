@@ -56,7 +56,7 @@
           @cancel="handlePromoteModal(false)"
           @click="handlePromoteModal(true)"
         >
-          <ads :product="product" />
+          <ads :product="product" @close="close" />
         </a-modal>
       </div>
       <div v-else>
@@ -137,7 +137,7 @@ export default {
   },
   mounted() {
     this.isSaved = this.product.isSaved
-    if (this.product.hired && window.LiveChatWidget)
+    if (this.product.hired && window.LiveChatWidget && this.isAuth)
       window.LiveChatWidget.call('maximize')
   },
   beforeDestroy() {

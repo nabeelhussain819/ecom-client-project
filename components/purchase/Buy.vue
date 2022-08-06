@@ -54,11 +54,11 @@
             </div>
             <div class="shipping-price-tag">
               <h2>Shipping Price</h2>
-              <h2>$7.00 Static</h2>
+              <h2>$7.00</h2>
             </div>
             <div class="sales-tax-tag">
               <h2>Sales Tax (Estimated)</h2>
-              <h2>$7.00 Static</h2>
+              <h2>$7.00</h2>
             </div>
             <div class="payed-tag">
               <h2><b> You Pay</b></h2>

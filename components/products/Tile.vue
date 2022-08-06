@@ -1,13 +1,19 @@
 <template>
   <div>
     <!-- <pre>{{ product }}</pre> -->
-    <a-card hoverable class="product_card" @click="handleGotoLink(product)">
+    <a-card
+      :title="product.featured ? 'Featured' : ''"
+      hoverable
+      class="product_card"
+      @click="handleGotoLink(product)"
+    >
       <img
         slot="cover"
         class="tile_img"
         alt="example"
         :src="getFirstImage(product)"
       />
+
       <!-- :src="product.cover_image" -- /> -->
       <a-card-meta :title="product.name" class="product-title">
         <template slot="description"
@@ -22,6 +28,7 @@
         </template>
       </a-card-meta>
     </a-card>
+
     <a-button
       v-if="showEditable && product.is_owner"
       class="btn"
