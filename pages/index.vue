@@ -67,7 +67,7 @@
       />
     </div>
     <a-spin :spinning="loading" class="p-5">
-      <a-row :gutter="16">
+      <a-row :gutter="16" class="d-flex">
         <a-col
           v-for="(product, index) in products"
           :key="index"

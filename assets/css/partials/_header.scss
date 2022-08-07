@@ -338,3 +338,18 @@ header {
     align-items: center;
   }
 }
+
+.notify-list .notify-text {
+  white-space: pre-line;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  overflow-x: hidden;
+  margin: 9px 6px;
+  padding: 15px 0px;
+  line-height: 6px;
+  align-items: center;
+  word-wrap: break-word;
+  word-wrap: break-word;
+  overflow: hidden;
+}
