@@ -2,8 +2,9 @@
   <div class="container border text-center confirm-pay">
     <h1>Your Product Has Been Promoted!</h1>
     <p>
-      Amount has been detected and your product has been promoted
-      <a-button @click="isNewRequest()">click here</a-button> to view my ads
+      Amount has been deducted and your product has been promoted
+      <a-button @click="isNewRequest()" style="border: 0">click here</a-button>
+      to view my ads
     </p>
     <!-- svg img -->
     <div style="width: 400px; margin: auto">

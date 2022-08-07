@@ -255,7 +255,9 @@ export default {
   justify-content: flex-start;
 }
 .category_main > span {
-  margin-bottom: 6px;
+  /* margin-bottom: 6px; */
+  margin: 5px 10px;
+  width: 22%;
 }
 .high_light_selected_category_name {
   font-weight: bolder;
