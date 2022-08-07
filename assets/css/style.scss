@@ -366,6 +366,43 @@ div.ant-modal-title:after {
   font-size: 12px;
   background: rgb(236, 0, 165);
 }
+.figure.tag1::before {
+  position: absolute;
+  bottom: 38%;
+  display: block;
+  color: white;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-weight:normal;
+  left: 0;
+  height: 20px;
+}
+.figure.tag-shipping::before {
+  font-size: 12px;
+  background: rgb(236, 0, 165);
+}
+.img {
+  position: absolute;
+  top: 52%;
+  display: block;
+  color: white;
+  padding-right: 10px;
+  padding-left: 0px;
+  font-weight:normal;
+  left: 0;
+  height: 20px;
+  background: rgba(22, 22, 22, 0);
+}
+.img1 {
+  background-image: url('../image.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-right: 33px;
+  width: auto;
+  padding-left: 12px;
+  padding-top: 11px;
+  left: 0;
+}
 .product_card {
   margin: 0px 5px !important;
   
