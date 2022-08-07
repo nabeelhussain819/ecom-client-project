@@ -19,6 +19,7 @@
             class="btn btn-secondary"
             :size="size"
             @click="buyNow(product)"
+            v-if="product.has_shipping"
           >
             Buy Now
           </a-button>

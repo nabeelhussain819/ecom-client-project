@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <pre>{{ product }}</pre> -->
     <a-card hoverable class="product_card" @click="handleGotoLink(product)">
       <img
         slot="cover"
@@ -9,7 +8,9 @@
         :src="getFirstImage(product)"
       />
       <figure v-if="product.featured" class="figure tag tag-featured"></figure>
-      <!-- :src="product.cover_image" -- /> -->
+      <span class="img" v-if="product.has_shipping">
+        <span class="img1"></span>
+      </span>
       <a-card-meta :title="product.name" class="product-title">
         <template slot="description"
           ><span class="price-tag"
@@ -17,10 +18,8 @@
             <a-tag v-if="!product.active" color="red">inactive </a-tag>
           </span>
           <br v-if="!product.active" />
-          <!-- <vue-title :title="product.google_address"> -->
           <span class="location d-inline" v-html="product.google_address">
           </span>
-          <!-- </vue-title> -->
         </template>
       </a-card-meta>
     </a-card>
