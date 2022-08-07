@@ -90,7 +90,7 @@
                           </div>
                           <div class="cmnt-box">
                             <p class="notify-text d-flex">
-                              Your bicycle item has been delivered to buyer
+                              Robert has accepted your offer
                             </p>
                           </div>
                           <div>
@@ -98,7 +98,7 @@
                               src="https://cdn.shopify.com/s/files/1/0232/3305/products/state_bicycle_4130_fixed_gear_matte_black_2.jpg"
                               alt="slider-img"
                               class="box-slider"
-                              width="60px"
+                              width="50px"
                             />
                           </div>
                         </div>
