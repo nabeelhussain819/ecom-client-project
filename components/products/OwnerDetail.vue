@@ -56,7 +56,7 @@
           @cancel="handlePromoteModal(false)"
           @click="handlePromoteModal(true)"
         >
-          <ads :product="product" @close="close" />
+          <ads :product="product" />
         </a-modal>
       </div>
       <div v-else>
@@ -94,7 +94,7 @@
             <a-divider type="vertical" />
           </a-col>
           <a-col :xs="{ span: 2 }" :sm="{ span: 11 }">
-            <a :href="product.google_address" icon="share-alt">Share</a>
+            <a-button type="" icon="share-alt"> Share</a-button>
           </a-col>
         </a-row>
       </div>
