@@ -1,26 +1,22 @@
 <template>
   <div>
     <!-- <pre>{{ product }}</pre> -->
-    <a-card
-      :title="product.featured ? 'Featured' : ''"
-      hoverable
-      class="product_card"
-      @click="handleGotoLink(product)"
-    >
+    <a-card hoverable class="product_card" @click="handleGotoLink(product)">
       <img
         slot="cover"
         class="tile_img"
         alt="example"
         :src="getFirstImage(product)"
       />
-
+      <figure v-if="product.featured" class="figure tag tag-featured"></figure>
       <!-- :src="product.cover_image" -- /> -->
       <a-card-meta :title="product.name" class="product-title">
         <template slot="description"
           ><span class="price-tag"
             >$ {{ product.price }}
-            <a-tag v-if="!product.active" color="red">inactive </a-tag> </span
-          ><br />
+            <a-tag v-if="!product.active" color="red">inactive </a-tag>
+          </span>
+          <br v-if="!product.active" />
           <!-- <vue-title :title="product.google_address"> -->
           <span class="location d-inline" v-html="product.google_address">
           </span>
@@ -28,7 +24,6 @@
         </template>
       </a-card-meta>
     </a-card>
-
     <a-button
       v-if="showEditable && product.is_owner"
       class="btn"

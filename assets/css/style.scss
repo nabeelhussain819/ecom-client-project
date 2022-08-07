@@ -347,9 +347,28 @@ div.ant-modal-title:after {
   cursor: pointer !important;
 }
 //
-
+.figure{
+  background: rgb(170, 255, 0);
+}
+.figure.tag::before {
+  position: absolute;
+  top: 5%;
+  display: block;
+  color: white;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-weight:normal;
+  left: 3%;
+  height: 20px;
+}
+.figure.tag-featured::before {
+  content: "FEATURED";
+  font-size: 12px;
+  background: rgb(236, 0, 165);
+}
 .product_card {
   margin: 0px 5px !important;
+  
 }
 .container_bottem {
   padding: 0px 20px;
