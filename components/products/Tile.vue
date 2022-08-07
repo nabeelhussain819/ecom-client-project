@@ -8,9 +8,9 @@
         :src="getFirstImage(product)"
       />
       <figure v-if="product.featured" class="figure tag tag-featured"></figure>
-      <span class="img" v-if="product.has_shipping">
+      <figure class="img" v-if="product.has_shipping">
         <span class="img1"></span>
-      </span>
+      </figure>
       <a-card-meta :title="product.name" class="product-title">
         <template slot="description"
           ><span class="price-tag"

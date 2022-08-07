@@ -383,7 +383,8 @@ div.ant-modal-title:after {
 }
 .img {
   position: absolute;
-  top: 52%;
+  top: 0;
+  margin-top: 50%;
   display: block;
   color: white;
   padding-right: 10px;

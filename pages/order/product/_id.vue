@@ -127,6 +127,7 @@ export default {
     },
     getImages(product) {
       if (!isEmpty(product.media)) {
+        console.log(product)
         const tempImage = []
         product.media.map((images) => tempImage.push(images.url))
         this.images = tempImage
