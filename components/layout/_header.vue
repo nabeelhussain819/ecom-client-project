@@ -59,13 +59,17 @@
               />
             </button>
             <div v-if="!isShow" class="notify-msg-box">
-              <a-tabs default-active-key="1" @change="changeTab">
+              <a-tabs
+                default-active-key="1"
+                @change="changeTab"
+                class="tabs-header"
+              >
                 <a-tab-pane key="1" tab="Messages">
                   <a-skeleton :loading="messagesLoading">
                     <a-row>
                       <a-col>
                         <h5 :messages="messages">
-                          <div class="box-body">dummy text1</div>
+                          <div class="box-body">No messages yet.</div>
                         </h5>
                       </a-col>
                     </a-row>
@@ -74,6 +78,33 @@
                 <a-tab-pane key="2" tab="Notifications">
                   <a-skeleton :loading="notificationsLoading">
                     <a-row>
+                      <a-col>
+                        <div class="d-flex notify-list">
+                          <div>
+                            <img
+                              src="https://iconape.com/wp-content/png_logo_vector/avatar-4.png"
+                              alt="avatar"
+                              class="box-avatar"
+                              width="50px"
+                            />
+                          </div>
+                          <div class="cmnt-box">
+                            <p class="notify-text d-flex">
+                              Your bicycle item has been delivered to buyer
+                            </p>
+                          </div>
+                          <div>
+                            <img
+                              src="https://cdn.shopify.com/s/files/1/0232/3305/products/state_bicycle_4130_fixed_gear_matte_black_2.jpg"
+                              alt="slider-img"
+                              class="box-slider"
+                              width="60px"
+                            />
+                          </div>
+                        </div>
+                      </a-col>
+                    </a-row>
+                    <!-- <a-row>
                       <a-col>
                         <h5 :notifications="notifications">
                           <div
@@ -87,7 +118,7 @@
                           </div>
                         </h5>
                       </a-col>
-                    </a-row>
+                    </a-row> -->
                   </a-skeleton>
                 </a-tab-pane>
               </a-tabs>

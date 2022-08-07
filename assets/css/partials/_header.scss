@@ -152,6 +152,7 @@ header {
       }
       .ant-tabs-tab {
         margin: 0px 6px;
+        border-bottom: 2px solid gainsboro;
       }
       .ant-tabs-ink-bar {
         display: none !important;
@@ -170,16 +171,28 @@ header {
     position: absolute;
     z-index: 55;
     cursor: auto;
-    background-color: #ededed;
+    background-color: #f2f3f5;
     overflow: hidden;
     border-radius: 8px;
-    width: 250px;
-    padding: 5px 10px;
+    width: 400px;
+    padding: 5px 2px;
     .box-body {
       background-color: #fff;
       width: 100%;
       border-radius: 6px;
       padding: 10px;
+    }
+    .tabs-header {
+      .ant-tabs-tab-active {
+        margin: 0px 3px !important;
+        border-radius: 0 !important;
+        padding: 12px 16px !important;
+        border-bottom: 2px solid $primary;
+      }
+      .ant-tabs-bar.ant-tabs-top-bar {
+        border: 0 !important;
+        margin: 0;
+      }
     }
   }
 }
@@ -306,5 +319,22 @@ header {
     .search-box input:valid + .icon_search {
       background-color: limegreen;
     }
+  }
+}
+.notify-list {
+  background: #fff;
+  padding: 5px 3px;
+  justify-content: space-between;
+  .cmnt-box {
+    width: 260px;
+    display: flex;
+    align-items: center;
+  }
+  .notify-text {
+    // width: 193px;
+    height: max-content;
+    overflow-x: hidden;
+    margin: 0px 5px;
+    align-items: center;
   }
 }
