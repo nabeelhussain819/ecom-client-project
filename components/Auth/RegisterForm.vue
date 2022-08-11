@@ -182,6 +182,7 @@ export default {
         .then((response) => {
           this.$emit('close', false)
           this.success(response.message)
+          console.log('hello')
         })
         .catch(this.error)
         .finally(() => (this.loading = false))

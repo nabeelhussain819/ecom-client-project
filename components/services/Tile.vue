@@ -53,7 +53,7 @@ export default {
       console.log(url)
     },
     handleGotoLink(entity) {
-      return this.goto(`/${this.gotoLink}/${entity.guid}`)
+      return this.goto(`/${this.gotoLink}/${this.service.guid}`)
     },
   },
 }

@@ -19,7 +19,7 @@
   </div>
 </template>
 <script>
-import Product from '~/services/API/Services'
+import Services from '~/services/API/Services'
 import { isEmpty } from '~/services/Helpers'
 function getBase64(file) {
   return new Promise((resolve, reject) => {
@@ -78,7 +78,7 @@ export default {
       const formData = new FormData()
       formData.append('file', f.file)
 
-      Product.uploadImages(this.product.guid, formData).then((f) => {
+      Services.uploadImages(this.product.guid, formData).then((f) => {
         this.fileList = [...this.fileList, f]
       })
       setTimeout(() => {
@@ -94,7 +94,7 @@ export default {
     },
     getServiceFileList() {},
     deleteImage(id) {
-      Product.removeImage(id.uid).then(() => {
+      Services.removeImage(id.uid).then(() => {
         this.fileList = this.fileList
           .filter((f) => f.uid !== id.uid)
           .map((f) => f)

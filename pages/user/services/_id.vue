@@ -9,7 +9,7 @@
       <a-skeleton :loading="!showUploader">
         <upload :product="service" :f-list="fileList" />
       </a-skeleton>
-      <a-button type=""> Save </a-button>
+      <a-button type="" @click="update"> Save </a-button>
     </a-skeleton>
   </a-card>
 </template>
@@ -19,6 +19,7 @@ import AddService from '~/components/services/AddService'
 import Services from '~/services/API/Services'
 import upload from '~/components/services/Upload'
 import BreadCrumb from '~/components/ui/BreadCrumb'
+import { success } from '~/services/Helpers'
 const components = {
   AddService,
   BreadCrumb,
@@ -49,6 +50,10 @@ export default {
           this.galery(service.guid)
         })
         .finally(() => (this.loading = false))
+    },
+    update() {
+      success(this, { message: 'updated successfully' })
+      this.$router.push('/')
     },
     galery(id) {
       Services.images(id).then((fileList) => {

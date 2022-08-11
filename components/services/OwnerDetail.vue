@@ -1,16 +1,16 @@
 <template>
   <div class="owner-detail">
+    <rating-avatar v-if="service.name" :product="service" />
     <div v-if="service.active">
       <div v-if="!service.is_owner">
-        <rating-avatar :product="service" />
-        <a-button
+        <!-- <a-button
           class="btn primary"
           type="primary"
           :size="size"
           @click="handleOk"
         >
           Make An Offer
-        </a-button>
+        </a-button> -->
         <a-button class="btn" :size="size"> Ask</a-button>
 
         <share-and-save :product="service" />

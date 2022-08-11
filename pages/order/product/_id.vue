@@ -16,6 +16,12 @@
           <div class="left">
             <h1>Purchased Item Detials</h1>
             <a-col :xs="24" :sm="17" class="left_product_detail">
+              <!-- <img
+                slot="cover"
+                class="tile_img"
+                alt="example"
+                :src="getFirstImage(product)"
+              /> -->
               <image-slider class="product_img_slider" :images="images" />
               <h1
                 type="inline "
@@ -138,6 +144,13 @@ export default {
         'https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png',
       ]
     },
+    // getFirstImage(product) {
+    //   if (!isEmpty(product.media)) {
+    //     return product.media[0].url
+    //   } else {
+    //     return 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
+    //   }
+    // },
   },
 }
 </script>

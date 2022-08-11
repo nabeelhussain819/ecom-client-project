@@ -69,6 +69,7 @@ function search(params = {}) {
 }
 
 function uploadImages(serviceId, data) {
+  console.log(serviceId, data)
   return request({
     url: `${baseUrl}/upload/${serviceId}`,
     data,
