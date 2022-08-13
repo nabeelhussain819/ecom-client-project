@@ -60,6 +60,32 @@ const childMenu = {
       default: () => ({}),
     },
   },
+  methods: {
+    selectCategory(categoryId) {
+      this.search({ category_id: categoryId })
+      // this.$router.push({
+      //   path: `/${this.type}/search`,
+      //   query: { query: this.$route.query.query, category },
+      // })
+    },
+    search(searchParams = {}) {
+      const params = {
+        ...searchParams,
+        query: this.$route.query.query,
+        ...this.filters,
+      }
+
+      // if (this.$route.query.category) {
+      //   params.category_id = this.$route.query.category
+      //   params.filters = this.filters
+      // }
+      this.params = params
+      this.$router.push({
+        path: '/product/search',
+        query: { ...this.params },
+      })
+    },
+  },
 }
 export default {
   components: {
@@ -69,9 +95,6 @@ export default {
     return {
       categories: [],
     }
-  },
-  mounted() {
-    this.fetch()
   },
   methods: {
     fetch() {
