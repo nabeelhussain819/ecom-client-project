@@ -51,7 +51,6 @@ export default {
       if (!isEmpty(product.media)) {
         return product.media[0].url
       }
-      console.log(this.product)
       return 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
     },
     editPage(url) {
