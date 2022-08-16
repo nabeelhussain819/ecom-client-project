@@ -96,6 +96,10 @@ export default {
       categories: [],
     }
   },
+  mounted() {
+    this.fetch()
+  },
+
   methods: {
     fetch() {
       CategoryServices.all({ type: 1 })
