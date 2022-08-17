@@ -68,10 +68,19 @@
               <a-select style="width: 250px" placeholder="Price">
                 <a-select-option value="example2">
                   <a-radio-group>
-                    <a-radio :style="radioStyle" :value="1"> Below 50 </a-radio>
-                    <a-radio :style="radioStyle" :value="2"> 50-100 </a-radio>
-                    <a-radio :style="radioStyle" :value="3"> 100-250 </a-radio>
-                    <a-radio :style="radioStyle" :value="3">
+                    <a-radio :style="radioStyle" @click="selectPrice(0, 50)">
+                      Below 50
+                    </a-radio>
+                    <a-radio :style="radioStyle" @click="selectPrice(50, 100)">
+                      50-100
+                    </a-radio>
+                    <a-radio :style="radioStyle" @click="selectPrice(100, 250)">
+                      100-250
+                    </a-radio>
+                    <a-radio
+                      :style="radioStyle"
+                      @click="selectPrice(250, 1000)"
+                    >
                       250 Above
                     </a-radio>
                     <a-radio :style="radioStyle" :value="4">
@@ -197,6 +206,13 @@ export default {
           this.products = results
         })
         .catch(() => {})
+    },
+    selectPrice(min, max) {
+      this.search({ min_price: min, max_price: max })
+      // this.$router.push({
+      //   path: `/${this.type}/search`,
+      //   query: { query: this.$route.query.query, category },
+      // })
     },
     selectCategory(categoryId) {
       this.search({ category_id: categoryId })
