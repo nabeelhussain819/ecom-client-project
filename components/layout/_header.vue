@@ -128,10 +128,10 @@
         </a-menu-item>
 
         <a-menu-item>
-          <nuxt-link to="">
+          <a-href class="text-white" @click="onClick">
             <a-icon type="environment" theme="filled" class="icon_nearby" />
             <span class="nearby_txt">Near by</span>
-          </nuxt-link>
+          </a-href>
         </a-menu-item>
         <a-menu-item key="4" class="btn_post">
           <span @click="postHandle">
@@ -427,6 +427,10 @@ export default {
         path,
         query: { query: this.query },
       })
+    },
+    onClick() {
+      this.query = 'near_by'
+      this.search()
     },
     onChange(e) {
       this.query = e.target.value
