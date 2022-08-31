@@ -114,6 +114,7 @@ export default Vue.extend({
       this.loading = true
       return Products.all({ is_sold: false })
         .then((products) => {
+          console.log(products)
           this.products = products.data
         })
         .finally(() => {

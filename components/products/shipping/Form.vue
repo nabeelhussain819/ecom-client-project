@@ -2,6 +2,14 @@
   <div>
     <!-- <a-form :form="form" @submit="handleSubmit"> -->
     <a-form-item class="shiping-form">
+      <h3>
+        Price
+        <h2 class="text-primary">$500.00</h2>
+      </h3>
+      <p>Firm On Price</p>
+      <hr />
+      <h3>Delivery Method</h3>
+      <p>{{ product.location }}</p>
       {{ product.shipping_size_id }}
       <!-- <pre> {{ product }}</pre> -->
       <a-radio-group
@@ -32,11 +40,17 @@
           <span class="item-size"> {{ shipping.description }}</span>
         </a-radio>
       </a-radio-group>
+      <p class="text-center">
+        No side over 18 or weight over 20 pounds buyer pays $14.49 <br />
+        By tapping "Next" you agree to the offer up
+        <span class="text-primary">Shipping Policy</span>
+      </p>
     </a-form-item>
 
     <!-- <a-form-item
       ><a-button
         html-type="submit"
+        @click="handleSubmit"
         :loading="loading"
         type="primary"
         size="large"
@@ -44,7 +58,6 @@
         Post
       </a-button></a-form-item
     > -->
-    <!-- </a-form> -->
   </div>
 </template>
 <script>
