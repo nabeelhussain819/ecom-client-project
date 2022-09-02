@@ -396,12 +396,20 @@ export default {
     },
   },
   created() {},
-  mounted() {},
+  mounted() {
+    this.catchEvent()
+  },
   methods: {
     changeTab(tab) {
       if (tab === 'notifications') {
         this.notificationsLoading = true
       }
+    },
+    catchEvent() {
+      window.Echo.private('channel-test').listen('NewMessage', (e) => {
+        console.log('channel-test')
+        console.log(e)
+      })
     },
     toggle() {
       this.show = !this.show
