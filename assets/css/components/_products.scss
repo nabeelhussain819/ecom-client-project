@@ -7,7 +7,7 @@
       border-radius: 0;
     }
     .product-image {
-      max-width: 200px;
+      max-width: 400px;
       float: right;
     }
     button {
@@ -36,5 +36,19 @@
         width: 100%;
       }
     }
+    
+  }
+  .table {
+    width: 155%;
+    margin-bottom: 30px;
+  }
+  .td {
+    padding-left: 28px;
+  }
+  .table-100{
+    width: 100%;
+  }
+  .td-100 {
+    text-align: right;
   }
 }

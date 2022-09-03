@@ -166,7 +166,10 @@ export default {
       ProductServices.offer(this.product.guid, {
         offer: this.offer,
       })
-        .then((res) => this.handleOk())
+        .then((res) => {
+          this.handleOk()
+          this.success(res.message)
+        })
         .catch(this.error)
     },
     save(isSaved) {

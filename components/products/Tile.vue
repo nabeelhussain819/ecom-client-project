@@ -3,7 +3,7 @@
     <a-card hoverable class="product_card" @click="handleGotoLink(product)">
       <img
         slot="cover"
-        class="tile_img"
+        class="tile_img card-image"
         alt="example"
         :src="getFirstImage(product)"
       />
