@@ -361,7 +361,6 @@ import LoginModal from '~/components/Auth/LoginModal'
 import routeHelpers from '~/mixins/route-helpers'
 import categoryLookup from '~/components/categories/Lookup'
 import { EVENT_LOGIN_MODAL } from '~/services/Constant'
-import userDetail from '~/mixins/user-detail'
 import { isEmpty } from '~/services/Utilities'
 
 export default {
@@ -373,7 +372,7 @@ export default {
     LoginModal,
     categoryLookup,
   },
-  mixins: [routeHelpers, userDetail],
+  mixins: [routeHelpers],
   props: {
     msg: String,
   },
@@ -408,7 +407,7 @@ export default {
       }
     },
     catchEvent() {
-      const user = this.getUserDetails()
+      const user = this.$store.getters.getUser
       if (isEmpty(user)) {
         window.Echo.private('channel-test.' + user.id).listen(
           'NewMessage',
