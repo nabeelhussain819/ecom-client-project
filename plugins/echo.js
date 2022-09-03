@@ -5,7 +5,7 @@ window.Pusher = require('pusher-js')
 window.Echo = new Echo({
   broadcaster: 'pusher',
   key: 'b3b98bac6133600147ab',
-  wsHost: window.location.hostname,
+  wsHost: 'api.flexemarket.com',
   encrypted: true,
   secret: '2163ec7e9436092ea7a1',
   wsPort: 6001,
