@@ -4,16 +4,16 @@ window.Pusher = require('pusher-js')
 
 window.Echo = new Echo({
   broadcaster: 'pusher',
-  key: 'ABCD',
-  wsHost: 'web-api.letsdeploy.us',
-  encrypted: false,
-  secret: 'ABCD1234',
+  key: 'b3b98bac6133600147ab',
+  wsHost: window.location.hostname,
+  encrypted: true,
+  secret: '2163ec7e9436092ea7a1',
   wsPort: 6001,
   wssPort: 6001,
-  enabledTransports: ['ws'],
+  enabledTransports: ['ws', 'wss'],
   disableStats: true,
-  forceTLS: false,
-  authEndpoint: 'https://web-api.letsdeploy.us/broadcasting/auth',
+  forceTLS: true,
+  authEndpoint: 'https://api.flexemarket.com/broadcasting/auth',
   auth: {
     headers: {
       Authorization: `Bearer ${localStorage.getItem('access_token')}`,
