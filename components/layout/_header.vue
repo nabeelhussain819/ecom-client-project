@@ -406,7 +406,7 @@ export default {
       }
     },
     catchEvent() {
-      window.Echo.channel('channel-test').listen('NewMessage', (e) => {
+      window.Echo.private('channel-test').listen('NewMessage', (e) => {
         console.log('channel-test')
         console.log(e)
       })
