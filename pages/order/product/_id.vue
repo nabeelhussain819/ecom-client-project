@@ -16,67 +16,114 @@
           <div class="left">
             <h1>Purchased Item Detials</h1>
             <a-col :xs="24" :sm="17" class="left_product_detail">
-              <!-- <img
-                slot="cover"
-                class="tile_img"
-                alt="example"
-                :src="getFirstImage(product)"
-              /> -->
-              <image-slider class="product_img_slider" :images="images" />
-              <h1
-                type="inline "
-                :title="item.buyer.name"
-                class="primary-text product-price"
-              >
-                ${{ item.buyer.name }}
-              </h1>
-              <h2 type="inline" class="product-name">
-                {{ item.product.name }}
-              </h2>
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td>
+                      <img
+                        slot="cover"
+                        class="product-image"
+                        alt="example"
+                        :src="images"
+                      />
+                      <!-- <image-slider class="tile_img" :images="images" /> -->
+                    </td>
+                    <td class="td">
+                      <h1
+                        type="inline "
+                        :title="item.buyer.name"
+                        class="primary-text product-price"
+                      >
+                        {{ item.product.name }}
+                      </h1>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscin Lorem
+                        ipsum dolor sit amet, consectetur adipiscin
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <a-divider />
+              <table class="table-100">
+                <tbody>
+                  <tr>
+                    <td>order Number</td>
+                    <td class="td-100"><p>adas</p></td>
+                  </tr>
+                  <tr>
+                    <td>Invoice Date</td>
+                    <td class="td-100">{{ item.created_at }}</td>
+                  </tr>
+                  <tr>
+                    <td>Shipped from</td>
+                    <td class="td-100">{{ item.shipping_detail.name }}</td>
+                  </tr>
+                  <tr>
+                    <td>Shipped to</td>
+                    <td class="td-100"><p>adas</p></td>
+                  </tr>
+                </tbody>
+              </table>
               <div class="purchase-content">
-                <hr />
-                <div class="shipping-option">
-                  <p>order Number</p>
-                  <p>Invoice Date: {{ item.created_at }}</p>
-                  <p>shippinf from {{ item.shipping_detail.name }}</p>
-                  <h2>Shipping to (required)</h2>
-                  <a class="btn-add">Add</a>
-                  <!-- <pre>{{ shiping_details }}</pre> -->
-                </div>
-                <hr />
-                <div class="payment-method-option">
-                  <p>buyer name {{ item.buyer.name }}</p>
-                  <h2>Payment method{{ item.payment_intent }}</h2>
-                </div>
-                <hr />
-                <div class="item-price-tag">
-                  <h2>Item Price</h2>
-                  <h2>${{ item.product.price }}</h2>
-                </div>
-                <div class="shipping-price-tag">
-                  <h2>Shipping Price</h2>
-                  <h2>$7.00 Static</h2>
-                </div>
-                <div class="sales-tax-tag">
-                  <h2>Sales Tax (Estimated)</h2>
-                  <h2>$7.00 Static</h2>
-                </div>
-                <div class="payed-tag">
-                  <h2><b> You Pay</b></h2>
-                  <h2>
-                    <b>{{ item.product.price }}$ </b>
-                  </h2>
-                </div>
+                <a-divider />
+                <table class="table-100">
+                  <tbody>
+                    <tr>
+                      <td><h4>Buyer Name</h4></td>
+                      <td class="td-100">
+                        <p>
+                          {{ item.buyer.name }}
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Payment Method</h4></td>
+                      <td class="td-100">{{ item.payment_intent }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a-divider />
+                <table class="table-100">
+                  <tbody>
+                    <tr>
+                      <td>Item Price</td>
+                      <td class="td-100">
+                        <p>
+                          $
+                          {{ item.product.price }}
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Shipping</td>
+                      <td class="td-100">$7.00 Static</td>
+                    </tr>
+                    <tr>
+                      <td>Sales Tax (Estimated)</td>
+                      <td class="td-100">$0.00</td>
+                    </tr>
+                    <tr>
+                      <td><h3>You Pay</h3></td>
+                      <td class="td-100">
+                        <b>{{ item.product.price }}$ </b>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a-divider />
+                <table class="table-100">
+                  <tbody>
+                    <tr>
+                      <td><h2>Status</h2></td>
+                      <td class="td-100">
+                        <i>Pending Shipment</i>
+                        <p class="primary-text">Track our item?</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-              <div>{{ item.product.categoryDetails }}</div>
-              <a-divider />
-              <h3 class="heading">Description</h3>
-              <p></p>
-              <a-divider />
-              <h3 class="heading">Pick up Locally</h3>
-              <span>lorem ipsum dolor qwerty,quibusdamiure!</span>
-              <br />
-              <a class="product_view_style">Learn more about pickup</a>
             </a-col>
           </div>
         </div>
@@ -89,12 +136,12 @@ import notifications from '~/mixins/notifications'
 import { isEmpty } from '~/services/Helpers'
 import OrderServices from '~/services/API/OrderServices'
 import routeHelpers from '~/mixins/route-helpers'
-import imageSlider from '~/components/sliders/ImageSlider'
+// import imageSlider from '~/components/sliders/ImageSlider'
 
 export default {
-  components: {
-    imageSlider,
-  },
+  // components: {
+  //   imageSlider,
+  // },
   mixins: [notifications, routeHelpers],
   props: {
     product: {

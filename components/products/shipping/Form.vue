@@ -4,7 +4,7 @@
     <a-form-item class="shiping-form">
       <h3>
         Price
-        <h2 class="text-primary">$500.00</h2>
+        <h2 class="text-primary">${{ product.price }}</h2>
       </h3>
       <p>Firm On Price</p>
       <hr />
