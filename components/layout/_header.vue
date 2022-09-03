@@ -361,6 +361,8 @@ import LoginModal from '~/components/Auth/LoginModal'
 import routeHelpers from '~/mixins/route-helpers'
 import categoryLookup from '~/components/categories/Lookup'
 import { EVENT_LOGIN_MODAL } from '~/services/Constant'
+import userDetail from '~/mixins/user-detail'
+import { isEmpty } from '~/services/Utilities'
 
 export default {
   name: 'ToggleDiv',
@@ -371,7 +373,7 @@ export default {
     LoginModal,
     categoryLookup,
   },
-  mixins: [routeHelpers],
+  mixins: [routeHelpers, userDetail],
   props: {
     msg: String,
   },
@@ -406,10 +408,16 @@ export default {
       }
     },
     catchEvent() {
-      window.Echo.private('channel-test').listen('NewMessage', (e) => {
-        console.log('channel-test')
-        console.log(e)
-      })
+      const user = this.getUserDetails()
+      if (isEmpty(user)) {
+        window.Echo.private('channel-test.' + user.id).listen(
+          'NewMessage',
+          (e) => {
+            console.log('channel-test')
+            console.log(e)
+          }
+        )
+      }
     },
     toggle() {
       this.show = !this.show
