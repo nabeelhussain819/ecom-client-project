@@ -1,12 +1,12 @@
 <template>
   <div>
-    <Ask />
+    <Message />
   </div>
 </template>
 <script>
-import Ask from '~/components/products/Ask'
+import Message from 'components/layout/Message'
 
 export default {
-  components: { Ask },
+  components: { Message },
 }
 </script>
