@@ -119,7 +119,7 @@ export default {
     catchEvent() {
       const user = this.$store.getters.getUser
       window.Echo.channel(`messages.${user.id}`).listen(
-        'MessageReceived',
+        '.MessageReceived',
         (e) => {
           console.log(e)
           this.messages = e
