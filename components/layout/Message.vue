@@ -117,10 +117,14 @@ export default {
   },
   methods: {
     catchEvent() {
-      window.Echo.private('messages.1').listen('MessageReceived', (e) => {
-        console.log('ad')
-        console.log(e)
-      })
+      const user = this.$store.getters.getUser
+      window.Echo.channel(`messages.${user.id}`).listen(
+        'MessageReceived',
+        (e) => {
+          console.log(e)
+          this.messages = e
+        }
+      )
     },
     fetchMessages(conversation) {
       this.active = conversation
