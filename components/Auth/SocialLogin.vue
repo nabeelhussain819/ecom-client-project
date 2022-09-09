@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import userDetail from '~/mixins/user-detail'
 import FacebookLogin from '~/components/Auth/FacebookLogin'
 import GoogleLogin from '~/components/Auth/GoogleLogin'
 import AuthService from '~/services/API/AuthService'
@@ -19,14 +20,16 @@ export default {
     FacebookLogin,
     GoogleLogin,
   },
+  mixins: [userDetail],
   data() {
     return { appId: FACEBOOK_APP_ID }
   },
   methods: {
     facebookLogin({ authResponse }) {
-      AuthService.facebookLogin(authResponse).then((response) =>
+      AuthService.facebookLogin(authResponse).then((response) => {
         this.setToken(response)
-      )
+        this.getUserDetails()
+      })
     },
     googleLogin(response) {
       const profile = response.getBasicProfile()
@@ -34,7 +37,10 @@ export default {
       AuthService.googleLogin({
         ...response.getAuthResponse(),
         user,
-      }).then((resp) => this.setToken(resp))
+      }).then((resp) => {
+        this.setToken(resp)
+        this.getUserDetails()
+      })
     },
     setToken(response) {
       const token = response.refresh_token
