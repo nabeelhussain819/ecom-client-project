@@ -27,47 +27,69 @@
   </div>
 </template>
 <script>
+import moment from 'moment'
 import routeHelpers from '~/mixins/route-helpers'
+import MessagesServices from '~/services/API/MessagesServices'
 // import imageSlider from '~/components/sliders/ImageSlider'
 // import Product from '~/services/API/ProductServices'
 // import { isEmpty } from '~/services/Utilities'
 
 export default {
   mixins: [routeHelpers],
-  //   data() {
-  //     return { loading: false, product: {}, images: [], values: {} }
-  //   },
-  //   mounted() {
-  //     // this.getProduct(this.$route.params.id)
-  //   },
-  //   method: {
-  //     getProduct(id) {
-  //       this.loading = true
-  //       Product.get(id)
-  //         .then((product) => {
-  //           this.product = product
-  //           this.getImages(product)
-
-  //           product.products_attributes.map(
-  //             (a) => (this.values[a.attribute_id] = a.value)
-  //           )
-  //         })
-  //         .finally(() => {
-  //           this.loading = false
-  //         })
-  //     },
-  //     getImages(product) {
-  //       if (!isEmpty(product.media)) {
-  //         const tempImage = []
-  //         product.media.map((images) => tempImage.push(images.url))
-  //         this.images = tempImage
-  //         return
-  //       }
-
-  //       this.images = [
-  //         'https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png',
-  //       ]
-  //     },
-  //   },
+  data() {
+    return {
+      data: [],
+      conversations: [],
+      active: {},
+      messages: [],
+      messageText: '',
+      moment,
+      flex: 'flex',
+      loading: true,
+    }
+  },
+  mounted() {
+    this.catchEvent()
+  },
+  beforeMount() {
+    MessagesServices.conversations()
+      .then((conversations) => {
+        this.conversations = conversations.data
+        if (conversations.data.length > 0) {
+          this.fetchMessages(conversations.data[0])
+        }
+      })
+      .finally(() => (this.loading = false))
+  },
+  methods: {
+    catchEvent() {
+      const user = this.$store.getters.getUser
+      window.Echo.channel(`messages.${user.id}`).listen(
+        'MessageReceived',
+        (e) => {
+          console.log(e)
+          this.messages = e
+        }
+      )
+    },
+    fetchMessages(conversation) {
+      this.active = conversation
+      this.loading = true
+      MessagesServices.get(conversation.id)
+        .then((res) => (this.messages = res.data))
+        .finally(() => (this.loading = false))
+    },
+    sendMessage() {
+      this.loading = true
+      MessagesServices.saveAssociated(this.active.id, {
+        data: this.messageText,
+      })
+        .then(() => {
+          this.fetchMessages(this.active)
+          this.messageText = null
+        })
+        .finally(() => (this.loading = false))
+    },
+  },
 }
 </script>
