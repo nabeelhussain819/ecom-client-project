@@ -121,8 +121,8 @@ export default {
       window.Echo.channel(`messages.${user.id}`).listen(
         '.MessageReceived',
         (e) => {
-          console.log(e)
-          this.messages = e
+          console.log(e.messages)
+          this.messages = e.messages
         }
       )
     },
