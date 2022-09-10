@@ -126,6 +126,7 @@ export default {
         }
       )
 
+      console.log(`messages.1`)
       window.Echo.channel(`messages.1`).listen('.MessageReceived', (e) => {
         console.log(e.messages)
         this.messages = e.messages
