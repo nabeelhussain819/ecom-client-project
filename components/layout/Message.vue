@@ -125,12 +125,6 @@ export default {
           this.messages = e.messages
         }
       )
-
-      console.log(`messages.1`)
-      window.Echo.channel(`messages.1`).listen('.MessageReceived', (e) => {
-        console.log(e.messages)
-        this.messages = e.messages
-      })
     },
     fetchMessages(conversation) {
       this.active = conversation
