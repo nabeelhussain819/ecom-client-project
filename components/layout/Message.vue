@@ -120,7 +120,7 @@ export default {
       const user = this.$store.getters.getUser
       console.log(`messages.${user.id}`)
       window.Echo.channel(`messages.${user.id}`).listen(
-        '.MessageReceived',
+        'MessageReceived',
         (e) => {
           console.log(e.messages)
           this.messages = e.messages
