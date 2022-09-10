@@ -135,7 +135,7 @@ export default {
     },
     sendMessage() {
       this.loading = true
-      MessagesServices.saveAssociated(this.active.id, {
+      MessagesServices.saveAssociated(2, {
         data: this.messageText,
       })
         .then(() => {
