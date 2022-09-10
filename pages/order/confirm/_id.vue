@@ -791,7 +791,7 @@ export default {
         this.order = order
       })
       .catch((error) => {
-        console.log("Error: ", error)
+        console.log(error.response)
         window.location.href = window.location.origin
       })
   },
