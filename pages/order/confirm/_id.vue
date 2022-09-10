@@ -788,11 +788,11 @@ export default {
       status: 'UNCAPTURED',
     })
       .then((order) => {
-        this.order = order
+        console.log(order)
+        if (order.tracking_id) this.order = order
+        else window.location.href = window.location.origin
       })
       .catch((error) => {
-        console.log(error.response)
-        window.location.href = window.location.origin
       })
   },
   methods: {
