@@ -1,0 +1,9 @@
+/components/**
+/pages/**
+/layouts/**
+/middleware/**
+/mixins/**
+/pages/**
+/plugins/**
+/services/**
+/store/**

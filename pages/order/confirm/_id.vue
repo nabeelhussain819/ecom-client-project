@@ -1,6 +1,6 @@
 <template>
   <div class="container border text-center confirm-pay">
-    <h1>Order Confirmed!</h1>
+    <h1>Order Confirmed! ({{this.order.tracking_id}})</h1>
     <p>
       Invoice has been sent to your verified email or
       <a-button @click="isNewRequest()">click here</a-button> to view invoice
@@ -778,13 +778,21 @@ import OrderServices from '~/services/API/OrderServices'
 
 export default {
   name: 'Order Confirm',
+  data : {
+	order : {}
+  },
   mounted() {
     OrderServices.update(this.$route.params.id, {
       payment_intent: this.$route.query.payment_intent,
       status: 'UNCAPTURED',
     })
-      .then(() => {})
-      .catch(() => {})
+      .then((order) => {
+		this.order = order
+	  })
+      .catch((error) => {
+		console.log("Error: ", error)
+		window.location.href = window.location.origin
+	  })
   },
   methods: {
     isNewRequest() {
