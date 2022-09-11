@@ -179,6 +179,8 @@ export default {
               ref.confirmParams.return_url =
                 window.location.origin + '/order/confirm/' + order.id
               ref.submit()
+            }).catch((error) => {
+              window.location.href = window.location.origin
             })
           }
         }
