@@ -66,15 +66,17 @@
                 @change="changeTab"
               >
                 <a-tab-pane key="1" tab="Messages">
-                  <a-skeleton :loading="messagesLoading">
+                  <a-spin :spinning="notificationLoading">
                     <a-row>
                       <a-col>
                         <h5 v-for="message in messages" :key="message.id">
-                          <div class="box-body">{{ message.data }}</div>
+                          <nuxt-link to="/product/ask">
+                            <div class="box-body">{{ message.data }}</div>
+                          </nuxt-link>
                         </h5>
                       </a-col>
                     </a-row>
-                  </a-skeleton>
+                  </a-spin>
                 </a-tab-pane>
                 <a-tab-pane key="2" tab="Notifications">
                   <a-skeleton :loading="notificationsLoading">
@@ -389,6 +391,7 @@ export default {
       loading: false,
       purchaseLoading: false,
       count: 0,
+      notificationLoading: false,
     }
   },
 

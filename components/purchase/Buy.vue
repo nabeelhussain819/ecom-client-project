@@ -175,13 +175,15 @@ export default {
             OrderServices.save({
               product_id: this.product.guid,
               shippingDetail: this.shiping_details,
-            }).then((order) => {
-              ref.confirmParams.return_url =
-                window.location.origin + '/order/confirm/' + order.id
-              ref.submit()
-            }).catch((error) => {
-              window.location.href = window.location.origin
             })
+              .then((order) => {
+                ref.confirmParams.return_url =
+                  window.location.origin + '/order/confirm/' + order.id
+                ref.submit()
+              })
+              .catch((error) => {
+                window.location.href = window.location.origin
+              })
           }
         }
       })

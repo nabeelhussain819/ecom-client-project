@@ -7,9 +7,12 @@ export default {
       })
     },
     loadNotification() {
-      return MessagesServices.getNotifications().then((response) => {
-        return response
-      })
+      this.notificationLoading = true
+      return MessagesServices.getNotifications()
+        .then((response) => {
+          return response
+        })
+        .finally((this.notificationLoading = false))
     },
   },
 }
