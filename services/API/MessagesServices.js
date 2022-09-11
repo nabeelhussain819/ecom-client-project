@@ -55,6 +55,20 @@ function saveAssociated(id, data) {
   })
 }
 
+function getcount() {
+  return request({
+    url: `${baseUrl}/getCount`,
+    method: 'get',
+  })
+}
+
+function getNotifications() {
+  return request({
+    url: `${baseUrl}/getNotifications`,
+    method: 'get',
+  })
+}
+
 const MessagesServices = {
   get,
   conversations,
@@ -63,6 +77,8 @@ const MessagesServices = {
   update,
   destroy,
   saveAssociated,
+  getcount,
+  getNotifications,
 }
 
 export default MessagesServices

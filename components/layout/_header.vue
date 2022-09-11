@@ -51,25 +51,26 @@
         <a-menu-item style="padding-right: 0">
           <div class="msg-box-main">
             <!-- <nuxt-link to="/">Home</nuxt-link> -->
-            <button class="btn-msg-box" @click="isShow = !isShow">
+            <button class="btn-msg-box" @click="isShowDropdown()">
               <img
                 src="https://icon-library.com/images/pink-messaging-icon/pink-messaging-icon-7.jpg"
                 alt="msg-icon"
                 width="33px"
               />
+              {{ count }}
             </button>
             <div v-if="!isShow" class="notify-msg-box">
               <a-tabs
                 default-active-key="1"
-                @change="changeTab"
                 class="tabs-header"
+                @change="changeTab"
               >
                 <a-tab-pane key="1" tab="Messages">
                   <a-skeleton :loading="messagesLoading">
                     <a-row>
                       <a-col>
-                        <h5 :messages="messages">
-                          <div class="box-body">No messages yet.</div>
+                        <h5 v-for="message in messages" :key="message.id">
+                          <div class="box-body">{{ message.data }}</div>
                         </h5>
                       </a-col>
                     </a-row>
@@ -359,8 +360,10 @@
 import RegisterModal from '~/components/Auth/RegisterModal'
 import LoginModal from '~/components/Auth/LoginModal'
 import routeHelpers from '~/mixins/route-helpers'
+import notification from '~/mixins/socket-notification'
 import categoryLookup from '~/components/categories/Lookup'
 import { EVENT_LOGIN_MODAL } from '~/services/Constant'
+import { isEmpty } from '~/services/Utilities'
 // import { isEmpty } from '~/services/Utilities'
 
 export default {
@@ -372,7 +375,7 @@ export default {
     LoginModal,
     categoryLookup,
   },
-  mixins: [routeHelpers],
+  mixins: [routeHelpers, notification],
   props: {
     msg: String,
   },
@@ -385,6 +388,7 @@ export default {
       isShow: true,
       loading: false,
       purchaseLoading: false,
+      count: 0,
     }
   },
 
@@ -399,8 +403,31 @@ export default {
   created() {},
   mounted() {
     this.catchEvent()
+    this.getNotificationCount()
   },
   methods: {
+    isShowDropdown() {
+      if (this.isShow) {
+        this.getMessages()
+      }
+      this.isShow = !this.isShow
+    },
+    getNotificationCount() {
+      const user = this.$store.getters.getUser
+      if (!isEmpty(user)) {
+        this.getCount().then((response) => {
+          this.count = response
+        })
+      }
+    },
+    getMessages() {
+      const user = this.$store.getters.getUser
+      if (!isEmpty(user)) {
+        this.loadNotification().then((response) => {
+          this.messages = response.data
+        })
+      }
+    },
     changeTab(tab) {
       if (tab === 'notifications') {
         this.notificationsLoading = true
