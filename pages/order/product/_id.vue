@@ -118,11 +118,9 @@
                       <td><h2>Status</h2></td>
                       <td class="td-100">
                         <i>Pending Shipment</i>
-                        <nuxt-link
-                          to="https://www.fedex.com/en-us/tracking.html"
-                        >
+                        <a href="https://www.fedex.com/en-us/tracking.html">
                           <p class="primary-text">Track our item?</p>
-                        </nuxt-link>
+                        </a>
                       </td>
                     </tr>
                   </tbody>
