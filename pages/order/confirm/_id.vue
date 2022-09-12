@@ -1,6 +1,6 @@
 <template>
   <div class="container border text-center confirm-pay">
-    <h1>Order Confirmed! ({{ this.order.tracking_id }})</h1>
+    <h1>Order Confirmed!</h1>
     <p>
       Invoice has been sent to your verified email or
       <a-button @click="isNewRequest()">click here</a-button>
@@ -780,7 +780,7 @@ import OrderServices from '~/services/API/OrderServices'
 export default {
   name: 'Order Confirm',
   data() {
-    return {order: {}}
+    return { order: {} }
   },
   mounted() {
     OrderServices.update(this.$route.params.id, {

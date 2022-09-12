@@ -93,8 +93,8 @@
             <Stripe
               v-if="pay"
               :shipping-detail="shiping_details"
-              @submit="onSubmit"
               :client-secret="clientSecret"
+              @submit="onSubmit"
             />
             <div>
               <p class="label-confirm-purchase">
@@ -124,7 +124,7 @@
       title="Visa Card Detail"
       @cancel="showCardDetailModal(false)"
     >
-      <VisaCard @cancel="showCardDetailModal" class="border" />
+      <VisaCard class="border" @cancel="showCardDetailModal" />
     </a-modal>
   </div>
 </template>
