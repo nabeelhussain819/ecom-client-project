@@ -778,8 +778,8 @@ import OrderServices from '~/services/API/OrderServices'
 
 export default {
   name: 'Order Confirm',
-  data : {
-	order : {}
+  data() {
+	return {order : {}}
   },
   mounted() {
     OrderServices.update(this.$route.params.id, {
