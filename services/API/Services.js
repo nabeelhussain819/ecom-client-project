@@ -64,7 +64,7 @@ function self(params = {}) {
 function search(params = {}) {
   return request({
     url: `${baseUrl}/search`,
-    params,
+    params: this.$route.query,
   })
 }
 

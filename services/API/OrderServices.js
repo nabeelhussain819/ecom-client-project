@@ -9,7 +9,12 @@ function index(id) {
     method: 'GET',
   })
 }
-
+function getUserData() {
+  return request({
+    url: `${baseUrl}`,
+    method: 'GET',
+  })
+}
 function save(data) {
   return request({
     url: baseUrl,
@@ -29,6 +34,7 @@ const OrderServices = {
   save,
   update,
   index,
+  getUserData,
 }
 
 export default OrderServices

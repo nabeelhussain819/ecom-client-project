@@ -93,8 +93,8 @@
             <Stripe
               v-if="pay"
               :shipping-detail="shiping_details"
-              @submit="onSubmit"
               :client-secret="clientSecret"
+              @submit="onSubmit"
             />
             <div>
               <p class="label-confirm-purchase">
@@ -124,7 +124,7 @@
       title="Visa Card Detail"
       @cancel="showCardDetailModal(false)"
     >
-      <VisaCard @cancel="showCardDetailModal" class="border" />
+      <VisaCard class="border" @cancel="showCardDetailModal" />
     </a-modal>
   </div>
 </template>
@@ -175,13 +175,15 @@ export default {
             OrderServices.save({
               product_id: this.product.guid,
               shippingDetail: this.shiping_details,
-            }).then((order) => {
-              ref.confirmParams.return_url =
-                window.location.origin + '/order/confirm/' + order.id
-              ref.submit()
-            }).catch((error) => {
-              window.location.href = window.location.origin
             })
+              .then((order) => {
+                ref.confirmParams.return_url =
+                  window.location.origin + '/order/confirm/' + order.id
+                ref.submit()
+              })
+              .catch((error) => {
+                window.location.href = window.location.origin
+              })
           }
         }
       })
