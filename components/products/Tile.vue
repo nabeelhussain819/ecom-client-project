@@ -70,7 +70,7 @@ export default {
 }
 .tile_img {
   background-size: cover;
-  /* height: 110px !important; */
+  height: 145px !important;
   object-fit: cover;
   max-width: 100%;
 }

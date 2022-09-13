@@ -118,7 +118,14 @@
                       <td><h2>Status</h2></td>
                       <td class="td-100">
                         <i>Pending Shipment</i>
-                        <p class="primary-text">Track our item?</p>
+                        <p>
+                          <a
+                            href="https://www.fedex.com/en-us/tracking.html"
+                            class="primary-text"
+                          >
+                            Track our item?
+                          </a>
+                        </p>
                       </td>
                     </tr>
                   </tbody>

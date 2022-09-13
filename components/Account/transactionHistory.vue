@@ -30,41 +30,47 @@
         </a-tab-pane>
       </a-tabs> -->
       <br />
-      <a-list
-        item-layout="horizontal"
-        :loading="loading"
-        class="product-detail-list"
-        :data-source="data"
-        v-if="data"
-      >
-        <a-list-item slot="renderItem" slot-scope="item">
-          <table class="table">
-            <tbody>
-              <tr>
-                <td>
-                  <img
-                    slot="cover"
-                    class="product-image"
-                    alt="example"
-                    :src="images"
-                  />
-                  <!-- <image-slider class="tile_img" :images="images" /> -->
-                </td>
-                <td class="td">
-                  <h1
-                    type="inline "
-                    :title="item.buyer.name"
-                    class="primary-text product-price"
-                  >
-                    {{ item.product.name }}
-                  </h1>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </a-list-item>
-      </a-list>
     </div>
+    <a-list
+      item-layout="horizontal"
+      :loading="loading"
+      :data-source="data"
+      v-if="data"
+    >
+      <a-list-item slot="renderItem" slot-scope="item">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>
+                <img
+                  slot="cover"
+                  class="image"
+                  alt="example"
+                  :src="item.product.cover_image"
+                />
+                <!-- <image-slider class="tile_img" :images="images" /> -->
+              </td>
+              <td class="td">
+                <a-button
+                  type="inline "
+                  :title="item.buyer.name"
+                  class="btn-primary"
+                  @click="isNewRequest(item.product.id)"
+                >
+                  Purchased
+                </a-button>
+                <br />
+                <p>
+                  {{ item.product.name }}
+                  <br />
+                  <b>${{ item.product.price }}</b>
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </a-list-item>
+    </a-list>
     <div v-if="!data">
       <img
         src="https://icon-library.com/images/delivery-truck-icon-png/delivery-truck-icon-png-18.jpg"
@@ -77,13 +83,11 @@
 </template>
 <script>
 import OrderServices from '~/services/API/OrderServices'
-import { isEmpty } from '~/services/Helpers'
 export default {
   data() {
     return {
       data: {},
       loading: false,
-      images: [],
       purchaseLoading: false,
     }
   },
@@ -98,22 +102,13 @@ export default {
         })
         .finally(() => (this.loading = false))
     },
+    isNewRequest(data) {
+      this.$router.push('/order/product/' + data)
+    },
     changeTab(tab) {
       if (tab === 'sold') {
         this.soldLoading = true
       }
-    },
-    getImages(data) {
-      if (!isEmpty(data.product.media)) {
-        const tempImage = []
-        data.product.media.map((images) => tempImage.push(images.url))
-        this.images = tempImage
-        return
-      }
-
-      this.images = [
-        'https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png',
-      ]
     },
   },
 }

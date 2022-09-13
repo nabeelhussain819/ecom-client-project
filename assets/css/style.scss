@@ -205,7 +205,10 @@ body,
 .ant-menu-submenu-title .anticon:hover {
   color: #fff;
 }
-
+.image{
+  width: 100px;
+  margin-right:12px ;
+}
 div.ant-modal-title:after {
   content: '' !important;
   width: 135px;
@@ -384,7 +387,7 @@ div.ant-modal-title:after {
 .img {
   position: absolute;
   top: 0;
-  margin-top: 50%;
+  margin-top: 68%;
   display: block;
   color: white;
   padding-right: 10px;

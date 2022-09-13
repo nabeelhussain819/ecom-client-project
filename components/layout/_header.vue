@@ -463,7 +463,9 @@ export default {
       } else {
         path = '/service/search'
       }
-
+      setTimeout(() => {
+        document.location.reload()
+      }, 1000)
       this.$router.push({
         path,
         query: { query: this.query },

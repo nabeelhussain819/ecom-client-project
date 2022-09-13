@@ -201,7 +201,8 @@ export default {
       console.log(this.$route.query, params)
       params = { ...params, ...this.defaultFilters, active: true }
       this.service(isEmpty(params) ? this.$route.query : params)
-        .then(({ categories, results }) => {
+        .then(({ categories, results, category }) => {
+          console.log(categories, results, category)
           this.categories = categories
           this.products = results
         })
@@ -227,14 +228,16 @@ export default {
         query: this.$route.query.query,
         ...this.filters,
       }
-
+      setTimeout(() => {
+        document.location.reload()
+      }, 1000)
       // if (this.$route.query.category) {
       //   params.category_id = this.$route.query.category
       //   params.filters = this.filters
       // }
       this.params = params
       this.$router.push({
-        path: '/product/search',
+        path: `/${this.type}/search`,
         query: { ...this.params },
       })
     },
