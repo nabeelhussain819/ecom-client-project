@@ -790,9 +790,10 @@ export default {
       .then((order) => {
         this.order = order
       })
-      .catch((error) => {
-        window.location.href = window.location.origin
-      })
+       // .catch()
+	.catch((error) => {
+		window.location.href = window.location.origin
+	})
   },
   methods: {
     isNewRequest() {

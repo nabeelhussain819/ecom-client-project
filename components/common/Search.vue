@@ -226,9 +226,7 @@ export default {
         query: this.$route.query.query,
         ...this.filters,
       }
-      setTimeout(() => {
-        document.location.reload()
-      }, 500)
+      this.onFetch()
       // if (this.$route.query.category) {
       //   params.category_id = this.$route.query.category
       //   params.filters = this.filters

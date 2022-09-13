@@ -55,9 +55,19 @@
                   type="inline "
                   :title="item.buyer.name"
                   class="btn-primary"
+                  v-if="user.id == item.buyer_id"
                   @click="isNewRequest(item.product.id)"
                 >
                   Purchased
+                </a-button>
+                <a-button
+                  type="inline "
+                  :title="item.buyer.name"
+                  class="btn-primary"
+                  v-if="user.id == item.seller_id"
+                  @click="isNewRequest(item.product.id)"
+                >
+                  Sold
                 </a-button>
                 <br />
                 <p>
@@ -93,6 +103,11 @@ export default {
   },
   mounted() {
     this.fetch()
+  },
+  computed: {
+    user() {
+      return this.$store.getters.getUser
+    },
   },
   methods: {
     fetch() {

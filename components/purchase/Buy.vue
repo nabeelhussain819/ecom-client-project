@@ -181,9 +181,10 @@ export default {
                   window.location.origin + '/order/confirm/' + order.id
                 ref.submit()
               })
-              .catch((error) => {
-                window.location.href = window.location.origin
-              })
+              // .catch()
+            .catch((error) => {
+              window.location.href = window.location.origin
+            })
           }
         }
       })
