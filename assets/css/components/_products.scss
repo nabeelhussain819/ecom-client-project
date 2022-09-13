@@ -8,6 +8,7 @@
     }
     .product-image {
       max-width: 400px;
+      max-height: 140px;
       float: right;
     }
     button {
@@ -30,10 +31,12 @@
       background-color: #b1f2a5;
     }
     .left {
+      border: 1px solid black;
       @include vp_min('767px') {
         max-width: 80%;
         float: left;
-        width: 100%;
+        width: 65%;
+        margin-left: 11rem;
       }
     }
     

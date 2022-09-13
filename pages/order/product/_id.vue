@@ -13,10 +13,10 @@
           {{ item.product.name }}
         </a> -->
         <div slot="description">
-          <div class="left">
+          <div class="left container">
             <h1>Purchased Item Detials</h1>
-            <a-col :xs="24" :sm="17" class="left_product_detail">
-              <table class="table">
+            <a-col :xs="24" :sm="17" class="left_product">
+              <table class="table-100">
                 <tbody>
                   <tr>
                     <td>
@@ -24,7 +24,7 @@
                         slot="cover"
                         class="product-image"
                         alt="example"
-                        :src="images"
+                        :src="item.product.cover_image"
                       />
                       <!-- <image-slider class="tile_img" :images="images" /> -->
                     </td>
@@ -49,7 +49,7 @@
                 <tbody>
                   <tr>
                     <td>order Number</td>
-                    <td class="td-100"><p>adas</p></td>
+                    <td class="td-100">{{ item.id }}</td>
                   </tr>
                   <tr>
                     <td>Invoice Date</td>
@@ -57,11 +57,15 @@
                   </tr>
                   <tr>
                     <td>Shipped from</td>
-                    <td class="td-100">{{ item.shipping_detail.name }}</td>
+                    <td class="td-100">{{ item.product.location }}</td>
                   </tr>
                   <tr>
                     <td>Shipped to</td>
-                    <td class="td-100"><p>adas</p></td>
+                    <td class="td-100">{{ item.shipping_detail.name }}</td>
+                  </tr>
+                  <tr>
+                    <td>Tracking Number</td>
+                    <td class="td-100">{{ item.tracking_id }}</td>
                   </tr>
                 </tbody>
               </table>

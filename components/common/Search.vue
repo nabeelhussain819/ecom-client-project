@@ -198,11 +198,9 @@ export default {
   },
   methods: {
     onFetch(params = {}) {
-      console.log(this.$route.query, params)
       params = { ...params, ...this.defaultFilters, active: true }
       this.service(isEmpty(params) ? this.$route.query : params)
         .then(({ categories, results, category }) => {
-          console.log(categories, results, category)
           this.categories = categories
           this.products = results
         })
@@ -230,7 +228,7 @@ export default {
       }
       setTimeout(() => {
         document.location.reload()
-      }, 1000)
+      }, 500)
       // if (this.$route.query.category) {
       //   params.category_id = this.$route.query.category
       //   params.filters = this.filters

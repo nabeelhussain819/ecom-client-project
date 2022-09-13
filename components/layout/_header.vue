@@ -465,7 +465,7 @@ export default {
       }
       setTimeout(() => {
         document.location.reload()
-      }, 1000)
+      }, 500)
       this.$router.push({
         path,
         query: { query: this.query },
