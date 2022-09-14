@@ -45,7 +45,15 @@
                 <img
                   slot="cover"
                   class="image"
+                  v-if="item.product.cover_image == null"
                   alt="example"
+                  :src="'https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png'"
+                />
+                <img
+                  slot="cover"
+                  class="image"
+                  alt="example"
+                  v-else
                   :src="item.product.cover_image"
                 />
                 <!-- <image-slider class="tile_img" :images="images" /> -->
@@ -63,7 +71,7 @@
                 <a-button
                   type="inline "
                   :title="item.buyer.name"
-                  class="btn-primary"
+                  class="btn-sold"
                   v-if="user.id == item.seller_id"
                   @click="isNewRequest(item.product.id)"
                 >

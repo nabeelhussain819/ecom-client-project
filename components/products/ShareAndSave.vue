@@ -42,6 +42,8 @@ export default {
       ProductServices.saved(this.product.guid, {}).then()
     },
     sendToast() {
+      const copy = window.location.href
+      navigator.clipboard.writeText(copy)
       success(this, { message: `URL Copied!` })
     },
   },
