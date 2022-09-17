@@ -81,52 +81,6 @@
                     </a-row>
                   </a-spin>
                 </a-tab-pane>
-                <a-tab-pane key="2" tab="Notifications">
-                  <a-skeleton :loading="notificationsLoading">
-                    <a-row>
-                      <a-col>
-                        <div class="d-flex notify-list">
-                          <div>
-                            <img
-                              src="https://iconape.com/wp-content/png_logo_vector/avatar-4.png"
-                              alt="avatar"
-                              class="box-avatar"
-                              width="50px"
-                            />
-                          </div>
-                          <div class="cmnt-box">
-                            <p class="notify-text d-flex">
-                              Robert has accepted your offer
-                            </p>
-                          </div>
-                          <div>
-                            <img
-                              src="https://cdn.shopify.com/s/files/1/0232/3305/products/state_bicycle_4130_fixed_gear_matte_black_2.jpg"
-                              alt="slider-img"
-                              class="box-slider"
-                              width="50px"
-                            />
-                          </div>
-                        </div>
-                      </a-col>
-                    </a-row>
-                    <!-- <a-row>
-                      <a-col>
-                        <h5 :notifications="notifications">
-                          <div
-                            v-for="({ data }, index) in user.notifications"
-                            :key="index"
-                            class="box-body"
-                          >
-                            <a :href="data.url">
-                              {{ data.message }}
-                            </a>
-                          </div>
-                        </h5>
-                      </a-col>
-                    </a-row> -->
-                  </a-skeleton>
-                </a-tab-pane>
               </a-tabs>
               <!-- this is a dummy list (ul), add components in messages and notification respactively. -->
             </div>
@@ -397,6 +351,7 @@ export default {
       purchaseLoading: false,
       count: 0,
       notificationLoading: false,
+      messages: [],
     }
   },
 
