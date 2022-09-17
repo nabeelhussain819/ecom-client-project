@@ -57,7 +57,7 @@
                 alt="msg-icon"
                 width="33px"
               />
-              {{ count }}
+              <span v-if="count > 0"> {{ count }}</span>
             </button>
             <div v-if="!isShow" class="notify-msg-box">
               <a-tabs
@@ -71,7 +71,7 @@
                       <a-col>
                         <h5 v-for="message in messages" :key="message.id">
                           <nuxt-link to="/product/ask">
-                            <div class="box-body">{{ message.data }}</div>
+                            <div class="box-body"><strong>{{message.sender.name}}</strong>{{ message.data }}</div>
                           </nuxt-link>
                         </h5>
                       </a-col>
