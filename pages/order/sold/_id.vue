@@ -10,11 +10,11 @@
     <a-list-item slot="renderItem" slot-scope="item">
       <a-list-item-meta>
         <!-- <a slot="title" class="text-capitalize" href="https://www.antdv.com/">
-          {{ item.product.name }}
+        {{ item.product.name }}
         </a> -->
         <div slot="description">
           <div class="left container">
-            <h1>Purchased Item Details</h1>
+            <h1>Sold Item Details</h1>
             <a-col :xs="24" :sm="17" class="left_product">
               <table class="table-100">
                 <tbody>
@@ -86,10 +86,10 @@
                 <table class="table-100">
                   <tbody>
                     <tr>
-                      <td><h4>Buyer Name</h4></td>
+                      <td><h4>Seller Name</h4></td>
                       <td class="td-100">
                         <p>
-                          {{ item.buyer.name }}
+                          {{ user.name }}
                         </p>
                       </td>
                     </tr>
@@ -141,7 +141,6 @@
                     </tr>
                   </tbody>
                 </table>
-                <Rate :id="item.id" />
               </div>
             </a-col>
           </div>
@@ -155,16 +154,12 @@ import notifications from '~/mixins/notifications'
 import { isEmpty } from '~/services/Helpers'
 import OrderServices from '~/services/API/OrderServices'
 import routeHelpers from '~/mixins/route-helpers'
-import Rate from '~/pages/user/rate/index.vue'
 // import imageSlider from '~/components/sliders/ImageSlider'
 
 export default {
   // components: {
   //   imageSlider,
   // },
-  components: {
-    Rate,
-  },
   mixins: [notifications, routeHelpers],
   props: {
     product: {
@@ -180,9 +175,11 @@ export default {
       visible: false,
       isSaved: false,
       showPromoteModal: false,
+      user: {},
     }
   },
   mounted() {
+    this.user = this.$store.getters.getUser
     this.fetch()
   },
   methods: {
@@ -209,7 +206,6 @@ export default {
         this.images = tempImage
         return
       }
-
       this.images = [
         'https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png',
       ]

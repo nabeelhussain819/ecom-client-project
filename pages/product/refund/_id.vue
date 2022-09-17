@@ -10,7 +10,7 @@
     <a-list-item slot="renderItem" slot-scope="item">
       <a-list-item-meta>
         <!-- <a slot="title" class="text-capitalize" href="https://www.antdv.com/">
-          {{ item.product.name }}
+        {{ item.product.name }}
         </a> -->
         <div slot="description">
           <div class="left container">
@@ -53,96 +53,6 @@
                 </tbody>
               </table>
               <a-divider />
-              <table class="table-100">
-                <tbody>
-                  <tr>
-                    <td>order Number</td>
-                    <td class="td-100">{{ item.id }}</td>
-                  </tr>
-                  <tr>
-                    <td>Invoice Date</td>
-                    <td class="td-100">{{ item.created_at }}</td>
-                  </tr>
-                  <tr>
-                    <td>Shipped from</td>
-                    <td class="td-100">{{ item.product.location }}</td>
-                  </tr>
-                  <tr>
-                    <td>Shipped to</td>
-                    <td class="td-100">
-                      {{ item.shipping_detail.street_address }}
-                      {{ item.shipping_detail.city }}
-                      {{ item.shipping_detail.state }}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Tracking Number</td>
-                    <td class="td-100">{{ item.tracking_id }}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="purchase-content">
-                <a-divider />
-                <table class="table-100">
-                  <tbody>
-                    <tr>
-                      <td><h4>Buyer Name</h4></td>
-                      <td class="td-100">
-                        <p>
-                          {{ item.buyer.name }}
-                        </p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><h4>Payment Method</h4></td>
-                      <td class="td-100">VISA</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <a-divider />
-                <table class="table-100">
-                  <tbody>
-                    <tr>
-                      <td>Item Price</td>
-                      <td class="td-100">
-                        <p>
-                          $
-                          {{ item.product.price }}
-                        </p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Shipping</td>
-                      <td class="td-100">$7.00 Static</td>
-                    </tr>
-                    <tr>
-                      <td>Sales Tax (Estimated)</td>
-                      <td class="td-100">$0.00</td>
-                    </tr>
-                    <tr>
-                      <td><h3>You Pay</h3></td>
-                      <td class="td-100">
-                        <b>{{ item.product.price }}$ </b>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <a-divider />
-                <table class="table-100">
-                  <tbody>
-                    <tr>
-                      <td><h2>Status</h2></td>
-                      <td class="td-100">
-                        <i>Pending Shipment</i>
-                        <a href="https://www.fedex.com/en-us/tracking.html">
-                          <p class="primary-text">Track our item?</p>
-                        </a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <Rate :id="item.id" />
-              </div>
             </a-col>
           </div>
         </div>
@@ -155,16 +65,8 @@ import notifications from '~/mixins/notifications'
 import { isEmpty } from '~/services/Helpers'
 import OrderServices from '~/services/API/OrderServices'
 import routeHelpers from '~/mixins/route-helpers'
-import Rate from '~/pages/user/rate/index.vue'
-// import imageSlider from '~/components/sliders/ImageSlider'
 
 export default {
-  // components: {
-  //   imageSlider,
-  // },
-  components: {
-    Rate,
-  },
   mixins: [notifications, routeHelpers],
   props: {
     product: {

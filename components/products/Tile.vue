@@ -17,7 +17,7 @@
             >$ {{ product.price }}
             <a-tag v-if="!product.active" color="red">inactive </a-tag>
           </span>
-          <br v-if="!product.active" />
+          <br />
           <span class="location d-inline" v-html="product.google_address">
           </span>
         </template>
@@ -45,6 +45,14 @@ export default {
     },
     showEditable: { type: Boolean, default: false },
     gotoLink: { type: String, default: 'product' },
+  },
+  data() {
+    return {
+      user: {},
+    }
+  },
+  mounted() {
+    this.user = this.$store.getters.getUser
   },
   methods: {
     getFirstImage(product) {
@@ -79,6 +87,6 @@ export default {
   color: rgba(0, 0, 0, 0.85);
 }
 .product-title {
-  line-height: 24px;
+  line-height: 20px;
 }
 </style>
