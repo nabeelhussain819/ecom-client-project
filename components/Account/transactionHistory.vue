@@ -73,7 +73,7 @@
                   :title="item.buyer.name"
                   class="btn-sold"
                   v-if="user.id == item.seller_id"
-                  @click="isNewRequest(item.product.id)"
+                  @click="isSoldRequest(item.product.id)"
                 >
                   Sold
                 </a-button>
@@ -127,6 +127,9 @@ export default {
     },
     isNewRequest(data) {
       this.$router.push('/order/product/' + data)
+    },
+    isSoldRequest(data) {
+      this.$router.push('/order/sold/' + data)
     },
     changeTab(tab) {
       if (tab === 'sold') {

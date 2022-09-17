@@ -65,30 +65,42 @@
                   </a-radio-group>
                 </a-select-option>
               </a-select> -->
-              <a-select style="width: 250px" placeholder="Price">
-                <a-select-option value="example2">
+              <a-select
+                ref="select"
+                style="width: 250px"
+                placeholder="Price"
+                @focus="focus"
+                @change="handleChange"
+              >
+                <a-select-option value="example2" disabled>
                   <a-radio-group>
-                    <a-radio :style="radioStyle" @click="selectPrice(0, 50)">
+                    <a-radio
+                      :style="radioStyle"
+                      value="1"
+                      @click="selectPrice(0, 50)"
+                    >
                       Below 50
                     </a-radio>
-                    <a-radio :style="radioStyle" @click="selectPrice(50, 100)">
+                    <a-radio
+                      :style="radioStyle"
+                      value="2"
+                      @click="selectPrice(50, 100)"
+                    >
                       50-100
                     </a-radio>
-                    <a-radio :style="radioStyle" @click="selectPrice(100, 250)">
+                    <a-radio
+                      :style="radioStyle"
+                      value="3"
+                      @click="selectPrice(100, 250)"
+                    >
                       100-250
                     </a-radio>
                     <a-radio
                       :style="radioStyle"
+                      value="5"
                       @click="selectPrice(250, 1000)"
                     >
                       250 Above
-                    </a-radio>
-                    <a-radio :style="radioStyle" :value="4">
-                      More...
-                      <a-input
-                        v-if="value === 4"
-                        :style="{ width: 100, marginLeft: 10 }"
-                      />
                     </a-radio>
                   </a-radio-group>
                 </a-select-option>

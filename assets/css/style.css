@@ -1188,6 +1188,26 @@ ul li:first-child .ant-menu-submenu-title span:after {
   .profile-icon {
     padding-left: 8px;
   }
+  .ant-rate-star.ant-rate-star-full i svg {
+    font-size: xx-large;
+    width: 150px;
+    height: 200px;
+    /* margin: -3.5px; */
+  }
+  .ant-rate-star.ant-rate-star-zero i svg {
+    width: 150px;
+    height: 200px;
+    /* margin: -3.5px; */
+  }
+  
+  .ant-rate-star.ant-rate-star-half.ant-rate-star-active i svg {
+    width: 150px;
+    height: 200px;
+    /* margin: -3.5px; */
+  }
+  .display-none {
+    display: none;
+  }
   .profile-detail {
     width: 90% !important;
     position: relative;

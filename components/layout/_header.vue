@@ -298,7 +298,7 @@
         </span>
       </a-menu-item>
       <a-menu-item v-if="!isAuth" key="2">
-        <LoginModal />
+        <!-- <LoginModal /> -->
       </a-menu-item>
 
       <a-menu-item v-if="!isAuth" key="3">
