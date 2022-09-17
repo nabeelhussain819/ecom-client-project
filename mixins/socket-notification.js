@@ -6,13 +6,6 @@ export default {
         return response
       })
     },
-    loadNotification() {
-      this.notificationLoading = true
-      return MessagesServices.getNotifications()
-        .then((response) => {
-          return response
-        })
-        .finally((this.notificationLoading = false))
-    },
+    
   },
 }

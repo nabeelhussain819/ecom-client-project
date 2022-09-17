@@ -71,7 +71,10 @@
                       <a-col>
                         <h5 v-for="message in messages" :key="message.id">
                           <nuxt-link to="/product/ask">
-                            <div class="box-body"><strong>{{message.sender.name}}</strong>{{ message.data }}</div>
+                            <div class="box-body">
+                              <strong>{{ message.sender.name }}</strong>
+                              <br />{{ message.data }}
+                            </div>
                           </nuxt-link>
                         </h5>
                       </a-col>
@@ -264,6 +267,7 @@
                 <a-skeleton :loading="notificationsLoading">
                   <a-row>
                     <a-col>
+                      {{ notificationLoading }}
                       <h5 :notifications="notifications">
                         <div
                           v-for="({ data }, index) in user.notifications"
@@ -366,6 +370,7 @@ import notification from '~/mixins/socket-notification'
 import categoryLookup from '~/components/categories/Lookup'
 import { EVENT_LOGIN_MODAL } from '~/services/Constant'
 import { isEmpty } from '~/services/Utilities'
+import MessagesServices from '~/services/API/MessagesServices'
 // import { isEmpty } from '~/services/Utilities'
 
 export default {
@@ -409,6 +414,14 @@ export default {
     this.getNotificationCount()
   },
   methods: {
+    loadNotification() {
+      this.notificationLoading = true
+      return MessagesServices.getNotifications()
+        .then((response) => {
+          return response
+        })
+        .finally((this.notificationLoading = false))
+    },
     isShowDropdown() {
       if (this.isShow) {
         this.getMessages()
