@@ -126,11 +126,21 @@
             </div>
 
             <!-- products -->
-            <div class="category_main">
-              <span v-for="(product, index) in products" :key="index" :span="6">
-                <Tile :product="product" :goto-link="type"
-              /></span>
-            </div>
+            <template>
+              <div style="padding: 1px">
+                <a-row :gutter="92">
+                  <div
+                    v-for="(product, index) in products"
+                    :span="6"
+                    :key="index"
+                  >
+                    <a-col :span="6" class="mb-2">
+                      <Tile :product="product" :goto-link="type" />
+                    </a-col>
+                  </div>
+                </a-row>
+              </div>
+            </template>
             <!-- // products -->
           </a-col>
         </div>

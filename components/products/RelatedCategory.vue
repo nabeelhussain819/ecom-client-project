@@ -13,7 +13,7 @@
             v-for="product in products"
             :key="product.id"
             :xs="{ span: 12 }"
-            :sm="{ span: 4 }"
+            :sm="{ span: 5 }"
           >
             <tile :product="product" />
           </a-col>

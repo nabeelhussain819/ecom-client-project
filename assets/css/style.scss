@@ -350,13 +350,9 @@ div.ant-modal-title:after {
   cursor: pointer !important;
 }
 //
-.figure{
-  background: rgb(170, 255, 0);
-}
-.figure.tag::before {
+.figure.tag {
   position: absolute;
   top: 5%;
-  display: block;
   color: white;
   padding-right: 10px;
   padding-left: 10px;
@@ -364,30 +360,15 @@ div.ant-modal-title:after {
   left: 3%;
   height: 20px;
 }
-.figure.tag-featured::before {
+.figure.tag-featured {
   content: "FEATURED";
-  font-size: 12px;
-  background: rgb(236, 0, 165);
-}
-.figure.tag1::before {
-  position: absolute;
-  bottom: 38%;
-  display: block;
-  color: white;
-  padding-right: 10px;
-  padding-left: 10px;
-  font-weight:normal;
-  left: 0;
-  height: 20px;
-}
-.figure.tag-shipping::before {
   font-size: 12px;
   background: rgb(236, 0, 165);
 }
 .img {
   position: absolute;
   top: 0;
-  margin-top: 68%;
+  margin-top: 60%;
   display: block;
   color: white;
   padding-right: 10px;
@@ -528,7 +509,7 @@ ul li:first-child .ant-menu-submenu-title {
 .ant-card-cover {
   img {
     background-size: cover;
-    max-height: 150px !important;
+    max-height: 160px !important;
     object-fit: contain;
     // padding-top: 20px;
   }

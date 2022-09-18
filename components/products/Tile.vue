@@ -1,25 +1,32 @@
 <template>
-  <div>
-    <a-card hoverable class="product_card" @click="handleGotoLink(product)">
-      <img
-        slot="cover"
-        class="tile_img card-image"
-        alt="example"
-        :src="getFirstImage(product)"
-      />
-      <figure v-if="product.featured" class="figure tag tag-featured"></figure>
-      <figure class="img" v-if="product.has_shipping">
-        <span class="img1"></span>
-      </figure>
-      <a-card-meta :title="product.name" class="product-title">
+  <div class="">
+    <a-card
+      @click="handleGotoLink(product)"
+      hoverable
+      v-if="insane === false"
+      style="width: 220px"
+    >
+      <template #cover>
+        <img
+          slot="cover"
+          class="tile_img card-image"
+          alt="example"
+          :src="getFirstImage(product)"
+        />
+        <figure v-if="product.featured">
+          <span class="figure tag tag-featured">FEATURE</span>
+        </figure>
+        <figure class="img" v-if="product.has_shipping">
+          <span class="img1"></span>
+        </figure>
+      </template>
+      <a-card-meta :title="product.name">
         <template slot="description"
-          ><span class="price-tag"
-            >$ {{ product.price }}
-            <a-tag v-if="!product.active" color="red">inactive </a-tag>
-          </span>
-          <br />
-          <span class="location d-inline" v-html="product.google_address">
-          </span>
+          ><span class="price-tag">$ {{ product.price }}</span>
+          <span
+            class="location d-inline"
+            v-html="product.google_address"
+          ></span>
         </template>
       </a-card-meta>
     </a-card>
@@ -32,7 +39,6 @@
     >
   </div>
 </template>
-
 <script>
 import routeHelpers from '~/mixins/route-helpers'
 import { isEmpty } from '~/services/Utilities'
@@ -49,10 +55,17 @@ export default {
   data() {
     return {
       user: {},
+      insane: true,
     }
+  },
+  computed: {
+    isAuth() {
+      return this.$store.getters.isAuthorize
+    },
   },
   mounted() {
     this.user = this.$store.getters.getUser
+    this.checkOrder(this.product)
   },
   methods: {
     getFirstImage(product) {
@@ -67,6 +80,21 @@ export default {
     handleGotoLink(entity) {
       return this.goto(`/${this.gotoLink}/${entity.guid}`)
     },
+    checkOrder(product) {
+      if (this.isAuth) {
+        if (product.order) {
+          if (product.order.buyer_id === this.user.id) {
+            this.insane = true
+          } else {
+            this.insane = false
+          }
+        } else {
+          this.insane = false
+        }
+      } else {
+        this.insane = false
+      }
+    },
   },
 }
 </script>
@@ -78,7 +106,7 @@ export default {
 }
 .tile_img {
   background-size: cover;
-  height: 145px !important;
+  height: 160px !important;
   object-fit: cover;
   max-width: 100%;
 }

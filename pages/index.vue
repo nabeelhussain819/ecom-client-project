@@ -71,9 +71,9 @@
         <a-col
           v-for="(product, index) in products"
           :key="index"
-          class="tile-width-x mb-2 ant-col-md-4 ant-col-xs-12"
+          class="mb-2 p-0"
         >
-          <Tile :product="product"
+          <Tile :product="product" style="margin-left: 7px"
         /></a-col>
       </a-row>
     </a-spin>

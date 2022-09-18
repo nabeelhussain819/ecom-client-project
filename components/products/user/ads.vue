@@ -9,8 +9,8 @@
               v-for="product in products"
               :key="product.id"
               :xs="11"
-              :md="4"
-              :sm="6"
+              :md="5"
+              :sm="4"
               class="profile-tile-width pt-4"
             >
               <tile
